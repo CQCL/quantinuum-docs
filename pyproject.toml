@@ -7,6 +7,14 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+jupyter-book = "^1.0.0"
+sphinx = "7.3.7"
+pytket = "1.27.0"
+pytket-cirq = "0.36.0"
+pytket-qiskit = "0.53.0"
+pytket-qujax = "0.19.0"
+openfermion = "^1.6.1"
+pytest = "^8.1.1"
 
 
 [build-system]
