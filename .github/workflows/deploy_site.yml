@@ -1,0 +1,34 @@
+name: Deploy prototype unified site
+
+on:
+  workflow_dispatch:
+
+# Set permissions of the GITHUB_TOKEN to allow deployment to Github Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+env:
+  DOCS_DIR: base_site
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Pages
+        uses: actions/configure-pages@v3
+      - name: (not implemented) Pull in other resources
+        run: echo "At this point we'd pull in release assets from other repos"
+      - name: Upload Github Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.DOCS_DIR }}
+      - name: Deploy to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
