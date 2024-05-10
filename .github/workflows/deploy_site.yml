@@ -54,7 +54,7 @@ jobs:
       - name: (Qermit) Remove placeholder index file
         run: rm ${{ env.DOCS_DIR }}/qermit/index.html
       - name: (Qermit) Extract docs tarball into correct place
-        run: tar -xzf qermit-docs-${{ steps.latest-lambeq.outputs.release }}.tar.gz -C ${{ env.DOCS_DIR }}/qermit
+        run: tar -xzf qermit-docs-${{ steps.latest-qermit.outputs.release }}.tar.gz -C ${{ env.DOCS_DIR }}/qermit
       - name: Upload Github Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
