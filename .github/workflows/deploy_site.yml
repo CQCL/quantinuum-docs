@@ -25,7 +25,7 @@ jobs:
         uses: actions/configure-pages@v3
       - name: (Lambeq) Get version of latest release
         id: latest-lambeq
-        run: echo "release=$(gh release view -R isobelhooper/lambeq -jq .tag_name)" >> $GITHUB_OUTPUT
+        run: echo "release=$(gh release view -R isobelhooper/lambeq --json tagName --jq .tagName)" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: (Lambeq) Get tarball from latest release
