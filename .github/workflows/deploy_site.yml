@@ -23,8 +23,22 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Pages
         uses: actions/configure-pages@v3
-      - name: (not implemented) Pull in other resources
-        run: echo "At this point we'd pull in release assets from other repos"
+      - name: (Lambeq) Get version of latest release
+        id: latest-lambeq
+        run: echo "release=$(gh release view -R isobelhooper/lambeq -jq .tag_name)" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: (Lambeq) Get tarball from latest release
+        uses: dsaltares/fetch-gh-release-asset@1.1.2
+        with:
+          repo: 'isobelhooper/lambeq'
+          version: 'tags/${{ steps.latest-lambeq.outputs.release }}'
+          file: 'lambeq-docs-${{ steps.latest-lambeq.outputs.release }}.tar.gz'
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: (Lambeq) Remove placeholder index file
+        run: rm ${{ env.DOCS_DIR }}/lambeq/index.html
+      - name: (Lambeq) Extract docs tarball into correct place
+        run: tar -xzf lambeq-docs-${{ steps.latest-lambeq.outputs.release }}.tar.gz -C ${{ env.DOCS_DIR }}/lambeq
       - name: Upload Github Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
