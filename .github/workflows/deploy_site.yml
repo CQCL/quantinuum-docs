@@ -39,6 +39,22 @@ jobs:
         run: rm ${{ env.DOCS_DIR }}/lambeq/index.html
       - name: (Lambeq) Extract docs tarball into correct place
         run: tar -xzf lambeq-docs-${{ steps.latest-lambeq.outputs.release }}.tar.gz -C ${{ env.DOCS_DIR }}/lambeq
+      - name: (Qermit) Get version of latest release
+        id: latest-qermit
+        run: echo "release=$(gh release view -R isobelhooper/Qermit --json tagName --jq .tagName)" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: (Qermit) Get tarball from latest release
+        uses: dsaltares/fetch-gh-release-asset@1.1.2
+        with:
+          repo: 'isobelhooper/Qermit'
+          version: 'tags/${{ steps.latest-qermit.outputs.release }}'
+          file: 'qermit-docs-${{ steps.latest-qermit.outputs.release }}.tar.gz'
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: (Qermit) Remove placeholder index file
+        run: rm ${{ env.DOCS_DIR }}/qermit/index.html
+      - name: (Qermit) Extract docs tarball into correct place
+        run: tar -xzf qermit-docs-${{ steps.latest-lambeq.outputs.release }}.tar.gz -C ${{ env.DOCS_DIR }}/qermit
       - name: Upload Github Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
