@@ -1,42 +1,77 @@
 <!doctype html>
-<title>Example</title>
-<style>
-  * {
-   box-sizing: border-box; 
-  }
-  body {
-    margin: 0;
-  }
-  #main {
-    display: flex;
-    min-height: calc(100vh - 40vh);
-    background: beige;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  }
-  #main > #lambeq > img {
-    max-height: 30vh;
-  }
-  #main > #qermit > img {
-    max-height: 30vh;
-  }
-  header, footer {
-    padding: 1em;
-  }
-  header, footer {
-    background: yellowgreen;
-    height: 20vh;
-  }
-</style>
+<head>
+  <meta charset="utf-8">
+  <title>Quantinuum Documentation</title>
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet">
+  <link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet">
+  <link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet">
+</head>
 <body>
-<header>Prototype - click the lamb for Lambeq, or the frog for Qermit</header>
-<div id="main">
-  <div id="lambeq">
-    <a href="lambeq/index.html"><img src="static/lamb-public-domain-wwf.jpeg"/></a>
+<header class="bd-header navbar navbar-expand-lg">
+  <div class="bd-header__inner bd-page-width">
+    <div class="col-lg-3 navbar-header-items__start">
+      <div class="navbar-item">
+        <a class="navbar-brand logo" href="#">
+          <img src="_static/Quantinuum_logo_black.png" class="logo__image only-light" alt="Quantinuum Documentation - Home">
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-9 navbar-header-items">
+      <div class="navbar-item">
+        <nav class="navbar-nav">
+          <ul class="bd-navbar-elements navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link nav-internal" href="qermit/index.html"> Qermit </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-internal" href="lambeq/index.html"> Lambeq </a>
+            </li>
+        </nav>
+      </div>
+    </div>
   </div>
-  <div id="qermit">
-    <a href="qermit/index.html"><img src="static/frog-public-domain-wwf.jpeg"/></a>
-  </div>
+</header>
+<div class="bd-container">
+  <main id="main-content" class="bd-main">
+    <div class="bd-content">
+      <div class="bd-article-container">
+        <article class="bd-article">
+
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Qermit</h4>
+                <p>A Python library for running error-mitigation protocols on quantum computers using Pytket.</p>
+                <a href="qermit/index.html">See Qermit docs</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Lambeq</h4>
+                <p>A Python library for Quantum Natural Language Processing (QNLP).</p>
+                <a href="lambeq/index.html">See Lambeq docs</a>
+              </div>
+            </div>
+        </article>
+      </div>
+    </div>
+  </main>
 </div>
-<footer>This is not an actual site which is why the header and footer are this colour.</footer>
-</body> 
+<footer class="bd-footer">
+  <div class="bd-footer__inner bd-page-width">
+    <div class="footer-items__start">
+      <p class="copyright">
+        © Copyright 2024 Quantinuum.
+      </p>
+    </div>
+    <div class="footer-items__end">
+      <div class="footer-item">
+        <p class="theme-version">
+          Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
