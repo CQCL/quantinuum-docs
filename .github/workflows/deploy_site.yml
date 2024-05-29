@@ -23,38 +23,22 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Pages
         uses: actions/configure-pages@v3
-      - name: (Lambeq) Get version of latest release
-        id: latest-lambeq
-        run: echo "release=$(gh release view -R isobelhooper/lambeq --json tagName --jq .tagName)" >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: (Lambeq) Get tarball from latest release
-        uses: dsaltares/fetch-gh-release-asset@1.1.2
+      # Use a composite action to extract the docs one product at a time.
+      - name: Extract Lambeq docs
+        uses: ./.github/actions/extract-docs
         with:
+          subdir: '${{ env.DOCS_DIR }}/lambeq'
           repo: 'isobelhooper/lambeq'
-          version: 'tags/${{ steps.latest-lambeq.outputs.release }}'
-          file: 'lambeq-docs-${{ steps.latest-lambeq.outputs.release }}.tar.gz'
+          tarball_prefix: 'lambeq-docs'
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: (Lambeq) Remove placeholder index file
-        run: rm ${{ env.DOCS_DIR }}/lambeq/index.html
-      - name: (Lambeq) Extract docs tarball into correct place
-        run: tar -xzf lambeq-docs-${{ steps.latest-lambeq.outputs.release }}.tar.gz -C ${{ env.DOCS_DIR }}/lambeq
-      - name: (Qermit) Get version of latest release
-        id: latest-qermit
-        run: echo "release=$(gh release view -R isobelhooper/Qermit --json tagName --jq .tagName)" >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: (Qermit) Get tarball from latest release
-        uses: dsaltares/fetch-gh-release-asset@1.1.2
+      - name: Extract Qermit docs
+        uses: ./.github/actions/extract-docs
         with:
+          subdir: '${{ env.DOCS_DIR }}/qermit'
           repo: 'isobelhooper/Qermit'
-          version: 'tags/${{ steps.latest-qermit.outputs.release }}'
-          file: 'qermit-docs-${{ steps.latest-qermit.outputs.release }}.tar.gz'
+          tarball_prefix: 'qermit-docs'
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: (Qermit) Remove placeholder index file
-        run: rm ${{ env.DOCS_DIR }}/qermit/index.html
-      - name: (Qermit) Extract docs tarball into correct place
-        run: tar -xzf qermit-docs-${{ steps.latest-qermit.outputs.release }}.tar.gz -C ${{ env.DOCS_DIR }}/qermit
+      # Once they're all extracted, we can upload.
       - name: Upload Github Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
