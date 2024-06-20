@@ -8,7 +8,7 @@ import {
   //@ts-ignore
 } from '@cqcl/quantinuum-ui'
 
-import { Link, textLinks } from './config'
+import { Link, navConfig } from './config'
 
 export const Navigation = (props: {
   activePath: string
@@ -20,7 +20,7 @@ export const Navigation = (props: {
   return (
     <NavigationMenu className="place-self-center sm:block">
       <NavigationMenuList className="hidden md:flex">
-        {textLinks.map((item) => {
+        { navConfig.navTextLinks.map((item) => {
           return (
             <NavigationMenuItem key={item.title}>
               <NavigationMenuLink

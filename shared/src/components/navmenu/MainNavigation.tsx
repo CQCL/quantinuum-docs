@@ -1,9 +1,7 @@
 import { Navigation } from './NavigationMenu'
 import React, { ComponentProps } from 'react'
-import { Link, productName } from './config'
-
+import { Link, navConfig } from './config'
 import { QuantinuumLogo } from './QuantinuumLogo'
-import { FaGithub, FaSlack, FaStackExchange } from 'react-icons/fa'
 import { MobileMenu } from './MobileMenu'
 export const MainNavigation = (props: {
   activePath: string
@@ -22,7 +20,7 @@ export const MainNavigation = (props: {
           <div className=" whitespace-nowrap flex items-center gap-2">
             <QuantinuumLogo></QuantinuumLogo>
             <div className="text-muted-foreground text-xs font-medium flex items-center gap-1.5">
-              <div>|</div><div>{productName}</div>
+              <div>|</div><div>{navConfig.navProductName}</div>
             </div>
           </div>
           <Link href="/" className="ml-4 mr-4 flex items-center space-x-2">
@@ -33,7 +31,7 @@ export const MainNavigation = (props: {
 
         <div className="flex items-center">
           <div className="flex items-center gap-2">
-            {navIconLinks.map(link => {
+            {navConfig.navIconLinks.map(link => {
                 return <Link href={link.href} target='_blank' key={link.title}>
                <img src={link.iconImageURL} className='w-6 h-6'></img>
              </Link>
