@@ -1,6 +1,6 @@
 import { Navigation } from './NavigationMenu'
 import React, { ComponentProps } from 'react'
-import { Link } from './config'
+import { Link, productName } from './config'
 
 import { QuantinuumLogo } from './QuantinuumLogo'
 import { FaGithub, FaSlack, FaStackExchange } from 'react-icons/fa'
@@ -22,7 +22,7 @@ export const MainNavigation = (props: {
           <div className=" whitespace-nowrap flex items-center gap-2">
             <QuantinuumLogo></QuantinuumLogo>
             <div className="text-muted-foreground text-xs font-medium">
-              | TKET
+              | {productName}
             </div>
           </div>
           <Link href="/" className="ml-4 mr-4 flex items-center space-x-2">
