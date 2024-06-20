@@ -33,7 +33,7 @@ export const MainNavigation = (props: {
           <div className="flex items-center gap-2">
             {navConfig.navIconLinks.map(link => {
                 return <Link href={link.href} target='_blank' key={link.title}>
-               <img src={link.iconImageURL} className='w-6 h-6'></img>
+               <img src={link.iconImageURL} className='w-6 h-6 hover:opacity-70 transition'></img>
              </Link>
             
             })}
