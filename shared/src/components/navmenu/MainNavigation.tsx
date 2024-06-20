@@ -21,8 +21,8 @@ export const MainNavigation = (props: {
             </div>
           <div className=" whitespace-nowrap flex items-center gap-2">
             <QuantinuumLogo></QuantinuumLogo>
-            <div className="text-muted-foreground text-xs font-medium">
-              | {productName}
+            <div className="text-muted-foreground text-xs font-medium flex items-center gap-1.5">
+              <div>|</div><div>{productName}</div>
             </div>
           </div>
           <Link href="/" className="ml-4 mr-4 flex items-center space-x-2">
@@ -32,19 +32,14 @@ export const MainNavigation = (props: {
         </div>
 
         <div className="flex items-center">
-          <div className="flex items-center gap-3">
-            <Link href="https://github.com/CQCL/tket" target="_blank">
-              <FaGithub className="text-foreground hover:text-muted-foreground h-[1.5rem] w-[1.5rem] transition" />
-            </Link>
-            <Link href="https://tketusers.slack.com/" target="_blank">
-              <FaSlack className="text-foreground hover:text-muted-foreground h-6 w-6 transition" />
-            </Link>
-            <Link
-              href="https://quantumcomputing.stackexchange.com/questions/tagged/pytket"
-              target="_blank"
-            >
-              <FaStackExchange className="text-foreground hover:text-muted-foreground h-5 w-5 transition"></FaStackExchange>
-            </Link>
+          <div className="flex items-center gap-2">
+            {navIconLinks.map(link => {
+                return <Link href={link.href} target='_blank' key={link.title}>
+               <img src={link.iconImageURL} className='w-6 h-6'></img>
+             </Link>
+            
+            })}
+           
            
           </div>
           {/* <div className="mx-2 ml-4">
