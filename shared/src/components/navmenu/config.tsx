@@ -1,8 +1,9 @@
 import { ComponentProps } from 'react'
 
 
-export const textLinks = navTextLinks;
-export const productName = navProductName;
+export const textLinks = navTextLinks ?? []
+export const productName = navProductName ?? '';
+export const iconLinks = navIconLinks ?? []
 
 export type ActivePaths = (typeof textLinks)[number]['href']
 const defaultLink = (props: ComponentProps<'a'>) => <a {...props}></a>
