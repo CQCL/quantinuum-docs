@@ -30,7 +30,7 @@ jobs:
           subdir: '${{ env.DOCS_DIR }}/h-series'
           repo: 'CQCL/hseries-documentation'
           tarball_prefix: 'hseries-docs'
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.HSERIES_DOCS_READ_ACCESS_TOKEN }}
       - name: Extract Lambeq docs
         uses: ./.github/actions/extract-docs
         with:
