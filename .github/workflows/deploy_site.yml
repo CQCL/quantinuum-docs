@@ -24,6 +24,13 @@ jobs:
       - name: Set up Pages
         uses: actions/configure-pages@v3
       # Use a composite action to extract the docs one product at a time.
+      - name: Extract Inquanto docs
+        uses: ./.github/actions/extract-docs
+        with:
+          subdir: '${{ env.DOCS_DIR }}/inquanto'
+          repo: 'CQCL-DEV/inquanto-docs'
+          tarball_prefix: 'inquanto-docs'
+          token: ${{ secrets.INQUANTO_DOCS_READ_ACCESS_TOKEN }}
       - name: Extract Lambeq docs
         uses: ./.github/actions/extract-docs
         with:
