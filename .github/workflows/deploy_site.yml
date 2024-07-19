@@ -31,6 +31,13 @@ jobs:
           repo: 'CQCL/hseries-documentation'
           tarball_prefix: 'hseries-docs'
           token: ${{ secrets.HSERIES_DOCS_READ_ACCESS_TOKEN }}
+      - name: Extract Nexus docs
+        uses: ./.github/actions/extract-docs
+        with:
+          subdir: '${{ env.DOCS_DIR }}/nexus'
+          repo: 'CQCL-DEV/nexus-docs'
+          tarball_prefix: 'nexus-docs'
+          token: ${{ secrets.NEXUS_DOCS_READ_ACCESS_TOKEN }}
       - name: Extract Inquanto docs
         uses: ./.github/actions/extract-docs
         with:
