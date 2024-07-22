@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "test": "npx serve ./build && npm run cypress "
   },
   "author": "",
   "license": "ISC",
