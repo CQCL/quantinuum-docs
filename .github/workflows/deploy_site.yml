@@ -52,20 +52,6 @@ jobs:
           repo: 'CQCL-DEV/tket-site'
           tarball_prefix: 'tket-docs'
           token: ${{ secrets.TKET_DOCS_READ_ACCESS_TOKEN }}
-      - name: Extract Lambeq docs
-        uses: ./.github/actions/extract-docs
-        with:
-          subdir: '${{ env.DOCS_DIR }}/lambeq'
-          repo: 'isobelhooper/lambeq'
-          tarball_prefix: 'lambeq-docs'
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Extract Qermit docs
-        uses: ./.github/actions/extract-docs
-        with:
-          subdir: '${{ env.DOCS_DIR }}/qermit'
-          repo: 'isobelhooper/Qermit'
-          tarball_prefix: 'qermit-docs'
-          token: ${{ secrets.GITHUB_TOKEN }}
       # Once they're all extracted, we can upload.
       - name: Upload Github Pages artifact
         uses: actions/upload-pages-artifact@v3
