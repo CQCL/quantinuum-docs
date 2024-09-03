@@ -56,7 +56,7 @@ jobs:
         uses: ./.github/actions/extract-docs
         with:
           subdir: '${{ env.DOCS_DIR }}/lambeq'
-          repo: 'CQCL/lambeq'
+          repo: 'CQCL/lambeq-docs'
           tarball_prefix: 'lambeq-docs'
           token: ${{ secrets.GITHUB_TOKEN }}
       # Once they're all extracted, we can upload.
