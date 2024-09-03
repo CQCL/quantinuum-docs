@@ -55,7 +55,7 @@ jobs:
       - name: Extract Lambeq docs
         uses: ./.github/actions/extract-docs
         with:
-          subdir: '${{ env.DOCS_DIR }}/lambeq-docs'
+          subdir: '${{ env.DOCS_DIR }}/lambeq'
           repo: 'CQCL/lambeq-docs'
           tarball_prefix: 'lambeq-docs'
           token: ${{ secrets.GITHUB_TOKEN }}
