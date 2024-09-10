@@ -1,0 +1,69 @@
+[
+    {
+        "logo": "nexus.svg",
+        "logo_link": "https://docs.quantinuum.com/nexus",
+        "description": "Cloud platform connecting users with hardware services and data.",
+        "links": [{
+            "title": "Apply for Access",
+            "description": "Register your interest in becoming an early adopter of Quantinuum Nexus.",
+            "url": "https://nexus.quantinuum.com/signup"
+        },{
+            "title": "Tutorials and Documentation",
+            "description": "Read the full Quantinuum Nexus documentation",
+            "url": "https://docs.quantinuum.com/nexus/examples/overview.html"
+        }]
+    },
+    {
+        "logo": "h-series.svg",
+        "logo_link": "https://docs.quantinuum.com/h-series",
+        "description": "The world's highest-performing quantum hardware",
+        "links": [{
+            "title": "H-Series User Guide",
+            "description": "Explore how to use the industry's leading quantum processors",
+            "url": "https://docs.quantinuum.com/h-series/user_guide/hardware_user_guide/access"
+        }, {
+            "title": "Getting started with H-Series",
+            "description": "Find the latest technical documentation and additional resources",
+            "url": "https://docs.quantinuum.com/h-series/trainings/getting_started/index.html"
+        }]
+    },{
+        "logo": "tket.svg",
+        "logo_link": "https://docs.quantinuum.com/tket",
+        "description": "Quantum computing toolkit and optimizing compiler",
+        "links": [{
+            "title": "Get Started with TKET",
+            "description": "Getting started tutorial showing basic usage of pytket",
+            "url": "https://docs.quantinuum.com/tket/user-guide/"
+        }, {
+            "title": "Documentation for TKET",
+            "description": "Overview of all TKET documentation including the user guide, API docs, and developer blog",
+            "url": "https://docs.quantinuum.com/tket"
+        }]
+    },{
+        "logo": "inquanto.svg",
+        "logo_link": "https://docs.quantinuum.com/inquanto",
+        "description": "State-of-the-art quantum chemistry platform for complex molecular and materials simulations",
+        "links": [{
+            "title": "User Manual",
+            "description": "Learn how to use the InQuanto package",
+            "url": "https://docs.quantinuum.com/inquanto/manual/howto.html"
+        }, {
+            "title": "Tutorials and Examples",
+            "description": "Hands-on tutorials and examples to get started with running quantum chemical calculations",
+            "url": "https://docs.quantinuum.com/inquanto/tutorials/tutorial_overview.html"
+        }]
+    },{
+        "logo": "lambeq.png",
+        "logo_link": "https://docs.quantinuum.com/lambeq/",
+        "description": "Α Python toolkit for quantum natural language processing",
+        "links": [{
+            "title": "Get Started with λambeq",
+            "description": "Learn how to convert your text into quantum circuits and train quantum models to solve language-related tasks",
+            "url": "http://docs.quantinuum.com/lambeq/intro.html"
+        }, {
+            "title": "Tutorials and Documentation",
+            "description": "Find the latest technical documentation and additional resources",
+            "url": "http://docs.quantinuum.com/lambeq/index.html"
+        }]
+    }
+]
