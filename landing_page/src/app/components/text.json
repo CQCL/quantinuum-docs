@@ -42,7 +42,7 @@
     },{
         "logo": "inquanto.svg",
         "logo_link": "https://docs.quantinuum.com/inquanto",
-        "description": "State-of-the-art quantum chemistry platform for complex molecular and materials simulations",
+        "description": "Python toolkit for complex molecular and materials simulations",
         "links": [{
             "title": "User Manual",
             "description": "Learn how to use the InQuanto package",
