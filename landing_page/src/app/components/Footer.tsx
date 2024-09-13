@@ -3,30 +3,34 @@ import { QuantinuumLogo } from './QuantinuumLogo'
 
 const columns = [
   {
-    title: 'Documentation',
+    title: "Legal",
     items: [
-      { name: 'Quantinuum Nexus', href: 'https://docs.quantinuum.com/nexus' },
-      { name: 'InQuanto', href: 'https://docs.quantinuum.com/inquanto' },
-      { name: 'Lambeq', href: 'https://docs.quantinuum.com/lambeq' },
-      { name: 'TKET', href: 'https://docs.quantinuum.com/tket' },
-      { name: 'H-Series', href: 'https://docs.quantinuum.com/h-series' },
+      {name: "Terms & Conditions", href: "https://www.quantinuum.com/terms-conditions"},
+      {name: "Privacy Policy", href: "https://www.quantinuum.com/terms-conditions"},
+      {name: "Cookie Notice", href: "https://www.quantinuum.com/cookie-notice"}
 
+    ]
+  },
+  {
+    title: 'Solutions',
+    items: [
+      { name: 'Nexus', href: 'https://docs.quantinuum.com/nexus' },
+      { name: 'TKET', href: 'https://docs.quantinuum.com/tket' },
+      { name: 'InQuanto', href: 'https://docs.quantinuum.com/inquanto' },
+      { name: 'lambeq', href: 'https://docs.quantinuum.com/lambeq' },
     ],
   },
   {
     title: 'Hardware',
     items: [
-      { name: 'System Model H1', href: 'https://www.quantinuum.com/hardware/h1' },
-      {
-        name: 'System Model H2', href: 'https://www.quantinuum.com/hardware/h2',
-      },
+      { name: 'H-Series', href: 'https://docs.quantinuum.com/h-series' },
       { name: 'Get Access', href: 'https://www.quantinuum.com/hardware#access' },
     ],
   },
   {
     title: "Quantinuum",
     items: [
-      { name: 'About Quantinuum', href: ' https://www.quantinuum.com/about' },
+      { name: 'About', href: ' https://www.quantinuum.com/about' },
       { name: 'Research', href: 'https://www.quantinuum.com/publications' },
       { name: 'Events', href: 'https://www.quantinuum.com/events' },
     ],
@@ -45,11 +49,8 @@ export const Footer = () => {
         <p className="max-w-[24rem] text-xs leading-5">
           ©{new Date().getFullYear()} Quantinuum Ltd. All rights reserved.{' '}
         </p>
-        <div className='flex items-center gap-2 mt-2'>
-          <Link href="https://www.quantinuum.com/terms-conditions" target="_blank" className='font-medium text-xs tracking-tight text-blue-600 dark:text-blue-300'>Terms and Conditions</Link> <div>/</div>  <Link target="_blank" href="https://www.quantinuum.com/privacy-statement" className='font-medium text-xs tracking-tight text-blue-600 dark:text-blue-300'>Privacy Policy</Link>
-        </div>
       </div>
-      <div className="grid grid-cols-1 gap-16 md:grid-cols-3 md:gap-24">
+      <div className="grid grid-cols-1 gap-16 md:grid-cols-4 md:gap-24">
         {columns.map((col) => {
           return (
             <div key={col.title} className="flex flex-col md:items-end">
