@@ -9,7 +9,7 @@ export const Header = () => {
           <h1 className="text-6xl font-semibold tracking-tighter ">
             <Image
               className="md:block dark:brightness-[0.97] dark:grayscale transform "
-              src="/logo.svg"
+              src="/_static/logo.svg"
               alt="Quantinuum Logo."
               height={50}
               width={400}
@@ -28,7 +28,7 @@ export const Header = () => {
       <div className='text-muted-foreground flex-grow h-64 flex flex-col items-center justify-center mix-blend-overlay'>
         <Image
           className="lg:ml-4 mt-10 hidden md:block dark:brightness-[0.97] dark:grayscale dark:invert transform "
-          src="/q.svg"
+          src="/_static/q.svg"
           alt="Quantinuum Hero"
           objectFit="contain"
           height={100}

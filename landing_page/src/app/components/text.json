@@ -1,6 +1,6 @@
 [
     {
-        "logo": "nexus.svg",
+        "logo": "/_static/nexus.svg",
         "logo_link": "https://docs.quantinuum.com/nexus",
         "description": "Cloud platform connecting users with hardware services and data.",
         "links": [{
@@ -14,7 +14,7 @@
         }]
     },
     {
-        "logo": "h-series.svg",
+        "logo": "/_static/h-series.svg",
         "logo_link": "https://docs.quantinuum.com/h-series",
         "description": "The world's highest-performing quantum hardware",
         "links": [{
@@ -27,7 +27,7 @@
             "url": "https://docs.quantinuum.com/h-series/trainings/getting_started/index.html"
         }]
     },{
-        "logo": "tket.svg",
+        "logo": "/_static/tket.svg",
         "logo_link": "https://docs.quantinuum.com/tket",
         "description": "Quantum computing toolkit and optimizing compiler",
         "links": [{
@@ -40,7 +40,7 @@
             "url": "https://docs.quantinuum.com/tket"
         }]
     },{
-        "logo": "inquanto.svg",
+        "logo": "/_static/inquanto.svg",
         "logo_link": "https://docs.quantinuum.com/inquanto",
         "description": "Python toolkit for complex molecular and materials simulations",
         "links": [{
@@ -53,7 +53,7 @@
             "url": "https://docs.quantinuum.com/inquanto/tutorials/tutorial_overview.html"
         }]
     },{
-        "logo": "lambeq.png",
+        "logo": "/_static/lambeq.png",
         "logo_link": "https://docs.quantinuum.com/lambeq/",
         "description": "Α Python toolkit for quantum natural language processing",
         "links": [{
