@@ -1,5 +1,19 @@
 [
     {
+        "logo": "/_static/h-series.svg",
+        "logo_link": "https://docs.quantinuum.com/h-series",
+        "description": "The world's highest-performing quantum hardware",
+        "links": [{
+            "title": "H-Series User Guide",
+            "description": "Explore how to use the industry's leading quantum processors",
+            "url": "https://docs.quantinuum.com/h-series/user_guide/hardware_user_guide/access"
+        }, {
+            "title": "Getting started with H-Series",
+            "description": "Find the latest technical documentation and additional resources",
+            "url": "https://docs.quantinuum.com/h-series/trainings/getting_started/index.html"
+        }]
+    },
+    {
         "logo": "/_static/nexus.svg",
         "logo_link": "https://docs.quantinuum.com/nexus",
         "description": "Cloud platform connecting users with hardware services and data.",
@@ -14,19 +28,6 @@
         }]
     },
     {
-        "logo": "/_static/h-series.svg",
-        "logo_link": "https://docs.quantinuum.com/h-series",
-        "description": "The world's highest-performing quantum hardware",
-        "links": [{
-            "title": "H-Series User Guide",
-            "description": "Explore how to use the industry's leading quantum processors",
-            "url": "https://docs.quantinuum.com/h-series/user_guide/hardware_user_guide/access"
-        }, {
-            "title": "Getting started with H-Series",
-            "description": "Find the latest technical documentation and additional resources",
-            "url": "https://docs.quantinuum.com/h-series/trainings/getting_started/index.html"
-        }]
-    },{
         "logo": "/_static/tket.svg",
         "logo_link": "https://docs.quantinuum.com/tket",
         "description": "Quantum computing toolkit and optimizing compiler",
