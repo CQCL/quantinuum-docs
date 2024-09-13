@@ -28,18 +28,18 @@ export const Body = () => {
         <div className='text-xs'>
           {item.description}
         </div>
-        <ul className="mt-5 flex flex-col gap-8">
+        <div className="mt-5 flex flex-col grid-flow-row auto-rows-auto gap-8">
         {item.links.map((link) => {
-          return <li>
+          return <div>
             <Link className='text-base text-blue-600 font-semibold' href={link.url}>
               {link.title}
             </Link>
             <div className='text-xs'>
               {link.description}
             </div>
-          </li>
+          </div>
         })}
-        </ul>
+        </div>
       </Card>
       })}
     </div>
