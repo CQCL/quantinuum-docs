@@ -43,8 +43,7 @@ export const Footer = () => {
           </Link>
         </div>
         <p className="max-w-[24rem] text-xs leading-5">
-          ©{new Date().getFullYear()} Quantinuum Inc. All rights reserved.{' '}
-          <br /> H-Series is a registered trademark of Quantinuum.
+          ©{new Date().getFullYear()} Quantinuum Ltd. All rights reserved.{' '}
         </p>
         <div className='flex items-center gap-2 mt-2'>
           <Link href="https://www.quantinuum.com/terms-conditions" target="_blank" className='font-medium text-xs tracking-tight text-blue-600 dark:text-blue-300'>Terms and Conditions</Link> <div>/</div>  <Link target="_blank" href="https://www.quantinuum.com/privacy-statement" className='font-medium text-xs tracking-tight text-blue-600 dark:text-blue-300'>Privacy Policy</Link>
