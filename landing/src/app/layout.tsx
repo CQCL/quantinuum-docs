@@ -36,7 +36,7 @@ export default function RootLayout({
           <link rel="icon" type="image/svg+xml" href="quantinuum_favicon.svg" />
       </head>
       <body
-        className={`${inter.variable} bg-backgorund dark:bg-[#101010] overflow-x-hidden font-sans antialiased ${jetBrains.variable} `}
+        className={`${inter.variable} bg-background dark:bg-[#101010] overflow-x-hidden font-sans antialiased ${jetBrains.variable} `}
       >
         {children}
       </body>
