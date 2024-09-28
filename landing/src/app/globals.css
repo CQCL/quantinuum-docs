@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply text-foreground;
+    @apply text-sm;
+  }
+}
+@keyframes animate-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.font-sans {
+  font-family: var(--font-inter);
+}
+
+.font-mono,
+code,
+pre {
+  font-family: var(--font-jetbrains-mono);
+}
+
+.lucide {
+  /* Change this! */
+  stroke-width: 2px;
+}
+
+.lucide * {
+  vector-effect: non-scaling-stroke;
+}
