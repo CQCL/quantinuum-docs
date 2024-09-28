@@ -27,41 +27,50 @@ import { TKETLogo } from "./TKETLogo";
 
 
 const productsConfig = [
-  {name: "H-Series", link:"h-series", description: `The world's highest-performing quantum hardware`, links: [{
+  {name: "H-Series", link:"h-series", description: `Quantinuum's QCCD ion-trap hardware, the world's highest peforming quantum computer.`, links: [{
     title: 'H-Series User Guide',
     link: 'h-series/user_guide/hardware_user_guide/access',
     subtitle: "Explore how to use the industry's leading quantum processors"
   },
-
-
   {
     title: 'Getting started with H-Series',
     link: 'h-series/trainings/getting_started/index.html',
     subtitle: "Find the latest technical documentation and additional resources."
   }], logo: <HSeriesLogo width={150 * 1.5} height={16 * 1.5}></HSeriesLogo>, },
-  {name: "Nexus", link:"nexus", description: `Cloud platform connecting users with hardware services and data.`, links: [{
+
+  {name: "Nexus", link:"nexus", description: `Cloud platform connecting users with hardware and compilation services, alongside associated data.`, links: [{
     title: 'Apply for Access',
     link: 'https://nexus.quantinuum.com/signup',
     subtitle: "Register your interest in becoming an early adopter of Quantinuum Nexus."
   }, 
   {
     title: 'Tutorials and Documentation',
-
     link: 'https://docs.quantinuum.com/nexus/examples/overview.html',
     subtitle: "Read the full Quantinuum Nexus documentation."
   }], logo:  <NexusLogo variant="horizontal"  className="h-10 w-48 -mt-1"  />, },
-  {name: "InQuanto",  link:"inquanto", description: `Python toolkit for complex molecular and materials simulations`, links: [{
+
+  {name: "TKET",link:"tket", logo:<TKETLogo className="h-8 w-32" ></TKETLogo>,  description: `Quantum computing toolkit and optimizing compiler`, links: [{
+    title: 'Get Started with TKET',
+    link: 'tket/user-guide/',
+    subtitle: "Getting started tutorial showing basic usage of pytket"
+  },
+  {
+    title: 'Documentation for TKET',
+    link: 'tket',
+    subtitle: "Overview of all TKET documentation including the user guide, API docs, and developer blog"
+  }],  },
+
+  {name: "InQuanto",  link:"inquanto", description: `Toolkit for complex molecular and materials simulations`, links: [{
     title: 'User Manual',
     link: 'inquanto/manual/howto.html',
     subtitle: "Learn how to use the InQuanto package"
   },
-
-
   {
     title: 'Tutorials and Examples',
     link: 'inquanto/tutorials/tutorial_overview.html',
     subtitle: "Hands-on tutorials and examples to get started with running quantum chemical calculations."
   }], logo:  <InquantoLogo className="h-8 w-56"></InquantoLogo>, },
+
   {name: "Lambeq", link:"lambeq", description: `Α Python toolkit for quantum natural language processing`, links: [{
     title: 'Get Started with λambeq',
     link: 'lambeq/intro.html',
@@ -72,16 +81,6 @@ const productsConfig = [
     link: 'lambeq/index.htmll',
     subtitle: "Find the latest technical documentation and additional resources"
   }], logo:  <LambeqLogo className="h-8 w-48"></LambeqLogo>, },
-  {name: "TKET",link:"tket", logo:<TKETLogo className="h-8 w-32" ></TKETLogo>,  description: `Quantum computing toolkit and optimizing compiler`, links: [{
-    title: 'Get Started with TKET',
-    link: 'tket/user-guide/',
-    subtitle: "Getting started tutorial showing basic usage of pytket"
-  },
-  {
-    title: 'Documentation for TKET',
-    link: 'tket',
-    subtitle: "Overview of all TKET documentation including the user guide, API docs, and developer blog"
-  }],  }
 ]
 
 
@@ -98,22 +97,18 @@ const navConfig = {
 const footerConfig = {
   columns: [
     {
-      title: "Solutions",
+      title: "Products",
       items: [
+        { name: "H-Series", href: "https://docs.quantinuum.com/h-series" },
         { name: "Nexus", href: "https://docs.quantinuum.com/nexus" },
-        { name: "TKET", href: "https://docs.quantinuum.com/tket" },
         { name: "InQuanto", href: "https://docs.quantinuum.com/inquanto" },
-        { name: "lambeq", href: "https://docs.quantinuum.com/lambeq" },
       ],
     },
     {
-      title: "Hardware",
+      title: "Opensource",
       items: [
-        { name: "H-Series", href: "https://docs.quantinuum.com/h-series" },
-        {
-          name: "Get Access",
-          href: "https://www.quantinuum.com/hardware#access",
-        },
+        { name: "TKET", href: "https://docs.quantinuum.com/tket" },
+        { name: "λambeq", href: "https://docs.quantinuum.com/lambeq" },
       ],
     },
     {
@@ -128,6 +123,24 @@ const footerConfig = {
   subtitle: "",
 };
 
+
+const helpSectionConfig = [
+  {
+    title: "Get in touch for support",
+    image_description: "Support Icon",
+    icon: LifeBuoyIcon,
+    link: "mailto:qcsupport@quantinuum.com",
+    description: "Need help? Contact our support team here",
+   
+  },
+  {
+    title: "Publications",
+    image_description: "Publications Icon",
+    icon: BookIcon,
+    description: "Find our latest research publications here",
+    link: "https://quantinuum.com/publications",
+  },
+];
 
 export default function Home() {
   return (
@@ -175,9 +188,27 @@ export default function Home() {
       })}
       
       </section>
-  
-       
-        <DocsFooter {...footerConfig} />
+      <div className="my-24 grid grid-cols-1 flex-grow gap-8 md:grid-cols-2">
+      {helpSectionConfig.map((item) => {
+        return (
+          <a href={item.link}             key={item.title}>
+          <Card
+      className="hover:bg-muted transition"
+          >
+                <CardHeader>
+
+                  <item.icon className="w-6 h-6 mb-3 inline" aria-label={item.image_description}></item.icon>
+                
+            
+      <CardTitle className="text-[1rem] font-semibold inline-block">       {item.title}</CardTitle>
+      <CardDescription>{item.description}</CardDescription>
+      </CardHeader>
+          </Card>
+          </a>
+        );
+      })}
+      </div> 
+      <DocsFooter {...footerConfig} />
       </DocsPageLayout>
     </>
   );
