@@ -129,8 +129,8 @@ const helpSectionConfig = [
     title: "Get in touch for support",
     image_description: "Support Icon",
     icon: LifeBuoyIcon,
-    link: "mailto:qcsupport@quantinuum.com",
-    description: "Need help? Contact our support team here",
+    link: "https://www.quantinuum.com/contact/docs",
+    description: "Need help? Fill out our support form here",
    
   },
   {
