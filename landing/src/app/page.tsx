@@ -29,12 +29,12 @@ import { TKETLogo } from "./TKETLogo";
 const productsConfig = [
   {name: "H-Series", link:"h-series", description: `Quantinuum's QCCD ion-trap hardware, the world's highest peforming quantum computer.`, links: [{
     title: 'H-Series User Guide',
-    link: 'h-series/user_guide/hardware_user_guide/access',
+    link: 'https://docs.quantinuum.com/h-series/user_guide/hardware_user_guide/access',
     subtitle: "Explore how to use the industry's leading quantum processors"
   },
   {
     title: 'Getting started with H-Series',
-    link: 'h-series/trainings/getting_started/index.html',
+    link: 'https://docs.quantinuum.com/h-series/trainings/getting_started/getting_started_index.html',
     subtitle: "Find the latest technical documentation and additional resources."
   }], logo: <HSeriesLogo width={150 * 1.5} height={16 * 1.5}></HSeriesLogo>, },
 
@@ -45,40 +45,40 @@ const productsConfig = [
   }, 
   {
     title: 'Tutorials and Documentation',
-    link: 'https://docs.quantinuum.com/nexus/examples/overview.html',
+    link: 'https://docs.quantinuum.com/nexus/trainings/getting_started.html',
     subtitle: "Read the full Quantinuum Nexus documentation."
   }], logo:  <NexusLogo variant="horizontal"  className="h-10 w-48 -mt-1"  />, },
 
   {name: "TKET",link:"tket", logo:<TKETLogo className="h-8 w-32" ></TKETLogo>,  description: `Quantum computing toolkit and optimizing compiler`, links: [{
     title: 'Get Started with TKET',
-    link: 'tket/user-guide/',
+    link: 'https://docs.quantinuum.com/tket/user-guide/',
     subtitle: "Getting started tutorial showing basic usage of pytket"
   },
   {
     title: 'Documentation for TKET',
-    link: 'tket',
-    subtitle: "Overview of all TKET documentation including the user guide, API docs, and developer blog"
+    link: 'https://docs.quantinuum.com/tket',
+    subtitle: "Overview of all TKET documentation including the user guide, API documentation, and developer blog"
   }],  },
 
   {name: "InQuanto",  link:"inquanto", description: `Toolkit for complex molecular and materials simulations`, links: [{
     title: 'User Manual',
-    link: 'inquanto/manual/howto.html',
+    link: 'https://docs.quantinuum.com/inquanto/manual/howto.html',
     subtitle: "Learn how to use the InQuanto package"
   },
   {
     title: 'Tutorials and Examples',
-    link: 'inquanto/tutorials/tutorial_overview.html',
+    link: 'https://docs.quantinuum.com/inquanto/tutorials/tutorial_overview.html',
     subtitle: "Hands-on tutorials and examples to get started with running quantum chemical calculations."
   }], logo:  <InquantoLogo className="h-8 w-56"></InquantoLogo>, },
 
-  {name: "Lambeq", link:"lambeq", description: `Α Python toolkit for quantum natural language processing`, links: [{
+  {name: "λambeq", link:"lambeq", description: `Α Python toolkit for quantum natural language processing`, links: [{
     title: 'Get Started with λambeq',
-    link: 'lambeq/intro.html',
+    link: 'https://docs.quantinuum.com/lambeq/intro.html',
     subtitle: "Learn how to convert your text into quantum circuits and train quantum models to solve language-related tasks"
   },
   {
     title: 'Tutorials and Documentation',
-    link: 'lambeq/index.htmll',
+    link: 'https://docs.quantinuum.com/lambeq/tutorials/sentence-input.html',
     subtitle: "Find the latest technical documentation and additional resources"
   }], logo:  <LambeqLogo className="h-8 w-48"></LambeqLogo>, },
 ]
@@ -90,7 +90,7 @@ const navConfig = {
         href: item.link,
         pathMatch: "",
   })) ,
-  navProductName: "Docs",
+  navProductName: "Documentation",
   navIconLinks: [],
 }
 
