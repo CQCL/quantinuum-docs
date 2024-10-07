@@ -13,6 +13,7 @@ import {
   CardHeader,
   CardDescription,
   CardContent,
+  DocsHelpCard
 } from "@cqcl/quantinuum-ui";
 import { LifeBuoyIcon, BookIcon } from "lucide-react";
 import Image from "next/image";
@@ -84,46 +85,6 @@ const productsConfig = [
 ]
 
 
-const navConfig = {
-  navTextLinks: productsConfig.map(item => ({
-    title: item.name,
-        href: item.link,
-        pathMatch: "",
-  })) ,
-  navProductName: "Documentation",
-  navIconLinks: [],
-}
-
-const footerConfig = {
-  columns: [
-    {
-      title: "Products",
-      items: [
-        { name: "H-Series", href: "https://docs.quantinuum.com/h-series" },
-        { name: "Nexus", href: "https://docs.quantinuum.com/nexus" },
-        { name: "InQuanto", href: "https://docs.quantinuum.com/inquanto" },
-      ],
-    },
-    {
-      title: "Opensource",
-      items: [
-        { name: "TKET", href: "https://docs.quantinuum.com/tket" },
-        { name: "λambeq", href: "https://docs.quantinuum.com/lambeq" },
-      ],
-    },
-    {
-      title: "Quantinuum",
-      items: [
-        { name: "About", href: " https://www.quantinuum.com/about" },
-        { name: "Research", href: "https://www.quantinuum.com/publications" },
-        { name: "Events", href: "https://www.quantinuum.com/events" },
-      ],
-    },
-  ],
-  subtitle: "",
-};
-
-
 const helpSectionConfig = [
   {
     title: "Get in touch for support",
@@ -145,7 +106,7 @@ const helpSectionConfig = [
 export default function Home() {
   return (
     <>
-      <DocsNavBar activePath="/" {...navConfig} />
+      <DocsNavBar activePath="/" />
       <DocsPageLayout>
         <DocsHeaderWrapper>
           <DocsHeaderLeft>
@@ -184,31 +145,10 @@ export default function Home() {
   
           </CardHeader>
         </Card>
-     
       })}
-      
       </section>
-      <div className="my-24 grid grid-cols-1 flex-grow gap-8 md:grid-cols-2">
-      {helpSectionConfig.map((item) => {
-        return (
-          <a href={item.link}             key={item.title}>
-          <Card
-      className="hover:bg-muted transition"
-          >
-                <CardHeader>
-
-                  <item.icon className="w-6 h-6 mb-3 inline" aria-label={item.image_description}></item.icon>
-                
-            
-      <CardTitle className="text-[1rem] font-semibold inline-block">       {item.title}</CardTitle>
-      <CardDescription>{item.description}</CardDescription>
-      </CardHeader>
-          </Card>
-          </a>
-        );
-      })}
-      </div> 
-      <DocsFooter {...footerConfig} />
+      <DocsHelpCard {...helpSectionConfig} />
+      <DocsFooter />
       </DocsPageLayout>
     </>
   );
