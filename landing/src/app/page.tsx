@@ -88,18 +88,17 @@ const productsConfig = [
 const helpSectionConfig = {
   columns: [{
     title: "Get in touch for support",
-    image_description: "Support Icon",
+    icon_description: "Support Icon",
     icon: LifeBuoyIcon,
     link: "https://www.quantinuum.com/contact/docs",
     description: "Need help? Fill out our support form here",
    
-  },
-  {
+  }, {
     title: "Publications",
-    image_description: "Publications Icon",
+    icon_description: "Publications Icon",
     icon: BookIcon,
-    description: "Find our latest research publications here",
     link: "https://quantinuum.com/publications",
+    description: "Find our latest research publications here",
   },
 ]};
 
