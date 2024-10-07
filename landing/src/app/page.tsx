@@ -85,8 +85,8 @@ const productsConfig = [
 ]
 
 
-const helpSectionConfig = [
-  {
+const helpSectionConfig = {
+  columns: [{
     title: "Get in touch for support",
     image_description: "Support Icon",
     icon: LifeBuoyIcon,
@@ -101,7 +101,7 @@ const helpSectionConfig = [
     description: "Find our latest research publications here",
     link: "https://quantinuum.com/publications",
   },
-];
+]};
 
 export default function Home() {
   return (
