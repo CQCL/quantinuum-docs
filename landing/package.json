@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@cqcl/quantinuum-ui": "^1.20.3",
+    "@cqcl/quantinuum-ui": "^1.23.0",
     "next": "14.2.0",
     "react": "^18",
     "react-dom": "^18",
