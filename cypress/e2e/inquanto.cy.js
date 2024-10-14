@@ -18,7 +18,7 @@ describe('E2E Tests', () => {
   it("examples is accessed from Navbar -> InQuanto", () => {  
     cy.visit('http://localhost:3000/inquanto/')
     cy.contains('button', 'InQuanto').should('be.visible')
-    cy.contains('button', 'InQuanto', { timeout: 15000 }).trigger('click');
+    cy.contains('button', 'InQuanto', { timeout: 15000 }).click();
     cy.contains(/toolkit for complex molecular and materials simulations/i).should("be.visible")
     cy.contains(/introduction/i).should("be.visible")
     cy.contains(/user guide/i).should("be.visible")
