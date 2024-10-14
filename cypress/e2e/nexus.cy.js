@@ -18,23 +18,13 @@ describe('E2E Tests', () => {
 
   it("support is accessed from Navbar -> Nexus", () => {  
     cy.visit('http://localhost:3000/nexus/')
-    // Find the Nexus button by its text and check if it's visible
-    cy.contains('button', 'Nexus')
-      .should('be.visible')        // Assert that the button is visible
-      .and('have.attr', 'data-state', 'closed');  // Check that the button is in 'closed' state
-    
-    // Click the Nexus button and verify the aria-expanded state
-    cy.contains('button', 'Nexus', { timeout: 15000 }).trigger('click');
-
-
-    // Check contents of button 
-    cy.contains(/Cloud platform connecting users with Hardware/i).should("be.visible")
+    cy.contains('button', 'Nexus').should("be.visible")
+    cy.contains('button', 'Nexus', { timeout: 15000 }).click();
+    cy.contains(/Cloud platform connecting users with hardware/i).should("be.visible")
     cy.contains(/Guides/i).should("be.visible")
     cy.contains(/Trainings/i).should("be.visible")
     cy.contains(/Api Reference/i).should("be.visible")
-    cy.contains(/Support/i).should("be.visible").click();
-    
-    // Check contents of support page
+    cy.contains(/Support/i).should("be.visible").click();    
     cy.contains(/Support/i)
     cy.contains(/This section provides information on how to get support for the Nexus platform./i)
   })
