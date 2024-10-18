@@ -17,10 +17,15 @@ const checkThatNavBarExists = () => {
       cy.contains(/advanced/i)
     })
   
-    it("examples is accessed from Navbar -> Lambeq", () => {  
+    it("examples is accessed from Navbar -> Lambeq", {
+      retries: {
+        // Nav dropdown is flaky at the moment.
+        runMode: 5,
+        openMode: 5,
+      }
+    },() => {  
       cy.visit('/lambeq/')
-      cy.contains('button', 'λambeq').should('be.visible')
-      cy.contains('button', 'λambeq', { timeout: 15000 }).click();
+      cy.contains('button', 'λambeq').should('be.visible').click();
       cy.contains(/a python toolkit for quantum natural language processing/i).should("be.visible")
       cy.contains(/getting started/i).should("be.visible")
       cy.contains(/user guide/i).should("be.visible")

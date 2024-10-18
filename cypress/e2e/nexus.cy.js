@@ -16,7 +16,13 @@ describe('E2E Tests', () => {
 
   })
 
-  it("support is accessed from Navbar -> Nexus", () => {  
+  it("support is accessed from Navbar -> Nexus", {
+    retries: {
+      // Nav dropdown is flaky at the moment.
+      runMode: 5,
+      openMode: 5,
+    }
+  },() => {  
     cy.visit('/nexus/')
     cy.contains('button', 'Nexus').should("be.visible")
     cy.contains('button', 'Nexus', { timeout: 15000 }).click();

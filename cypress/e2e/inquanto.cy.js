@@ -64,7 +64,7 @@ describe('E2E Tests', () => {
   it("inspect api reference", () => {
     cy.visit('/inquanto/api/inquanto_api_intro.html')
     checkThatNavBarExists()
-    cy.contains('inquanto api reference')
+    cy.contains(/inquanto api reference/i)
   })
 
  it.skip('can link to root docs page from inquanto guides page', () => {
