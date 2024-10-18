@@ -6,7 +6,7 @@ const checkThatNavBarExists = () => {
 
 describe('E2E Tests', () => {
   it('can view / (landing page)', () => {
-    cy.visit('http://localhost:3000/inquanto/')
+    cy.visit('/inquanto/')
     checkThatNavBarExists()
     cy.contains(/quantum chemistry on quantum computers/i)
     cy.contains(/access inquanto/i)
@@ -16,7 +16,7 @@ describe('E2E Tests', () => {
   })
 
   it("examples is accessed from Navbar -> InQuanto", () => {  
-    cy.visit('http://localhost:3000/inquanto/')
+    cy.visit('/inquanto/')
     cy.contains('button', 'InQuanto').should('be.visible')
     cy.contains('button', 'InQuanto', { timeout: 15000 }).click();
     cy.contains(/platform for complex molecular and materials simulations/i).should("be.visible")
@@ -28,20 +28,20 @@ describe('E2E Tests', () => {
   })
 
   it('can view user guide', () => {
-    cy.visit('http://localhost:3000/inquanto/manual/howto.html')
+    cy.visit('/inquanto/manual/howto.html')
     checkThatNavBarExists()
     cy.contains(/How to use InQuanto/i)
   })
 
   it('can view introduction', () => {
-    cy.visit('http://localhost:3000/inquanto/introduction/overview.html')
+    cy.visit('/inquanto/introduction/overview.html')
     checkThatNavBarExists()
     cy.contains(/what is inquanto?/i)
     cy.contains(/why use inquanto?/i)
   })
 
   it('inspect getting tutorials page', () => {
-    cy.visit('http://localhost:3000/inquanto/tutorials/tutorial_overview.html')
+    cy.visit('/inquanto/tutorials/tutorial_overview.html')
     checkThatNavBarExists()
     cy.contains(/tutorials/i)
     cy.contains(/core tutorials/i)
@@ -49,7 +49,7 @@ describe('E2E Tests', () => {
   })
 
   it('inspect examples page', () => {
-    cy.visit('http://localhost:3000/inquanto/tutorials/examples_overview.html')
+    cy.visit('/inquanto/tutorials/examples_overview.html')
     checkThatNavBarExists()
     cy.contains(/overview of examples/i)
     cy.contains(/in addition to the detailed tutorials, inquanto contains several example scripts showing how various functionality is used. /i)
@@ -57,13 +57,13 @@ describe('E2E Tests', () => {
   })
 
   if("inspect api reference", () => {
-    cy.visit('http://localhost:3000/inquanto/api/inquanto_api_intro.html')
+    cy.visit('/inquanto/api/inquanto_api_intro.html')
     checkThatNavBarExists()
     cy.contains('inquanto api reference')
   })
 
  it.skip('can link to root docs page from inquanto guides page', () => {
-    cy.visit('http://localhost:3000/inquanto/guides.html')
+    cy.visit('/inquanto/guides.html')
    cy.findByLabelText(/quantinuum documentation/i).click()
   cy.origin('https://docs.quantinuum.com', () => {
   cy.contains(/technical documentation/i)
