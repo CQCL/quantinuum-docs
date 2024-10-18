@@ -52,7 +52,7 @@ const checkThatNavBarExists = () => {
     })
 
     it('inspect examples', () => {
-        cy.visit('http:localhost:3000/lambeq/notebooks.html')
+        cy.visit('http://localhost:3000/lambeq/notebooks.html')
         checkThatNavBarExists()
         cy.contains(/tokenisation/i)
     })

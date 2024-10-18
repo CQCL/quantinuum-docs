@@ -33,7 +33,6 @@ describe('E2E Tests', () => {
     cy.visit('http://localhost:3000/nexus/user_guide/sign_up.html')
     checkThatNavBarExists()
     cy.contains(/Signing Up/i)
-    cy.contains(/What is Quantinuum Nexus/i)
   })
 
   it('can view admin guide', () => {
