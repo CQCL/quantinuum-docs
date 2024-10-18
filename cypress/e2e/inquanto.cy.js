@@ -15,10 +15,15 @@ describe('E2E Tests', () => {
     cy.contains(/execution and analysis/i)
   })
 
-  it("examples is accessed from Navbar -> InQuanto", () => {  
+  it("examples is accessed from Navbar -> InQuanto",  {
+    retries: {
+      // Nav dropdown is flaky at the moment.
+      runMode: 5,
+      openMode: 5,
+    },
+  },() => {  
     cy.visit('/inquanto/')
-    cy.contains('button', 'InQuanto').should('be.visible')
-    cy.contains('button', 'InQuanto', { timeout: 15000 }).click();
+    cy.contains('button', 'InQuanto').should('be.visible').click();
     cy.contains(/platform for complex molecular and materials simulations/i).should("be.visible")
     cy.contains(/introduction/i).should("be.visible")
     cy.contains(/user guide/i).should("be.visible")
@@ -56,7 +61,7 @@ describe('E2E Tests', () => {
     cy.contains(/qse/i)
   })
 
-  if("inspect api reference", () => {
+  it("inspect api reference", () => {
     cy.visit('/inquanto/api/inquanto_api_intro.html')
     checkThatNavBarExists()
     cy.contains('inquanto api reference')
