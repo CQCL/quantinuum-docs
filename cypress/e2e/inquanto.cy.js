@@ -65,8 +65,8 @@ describe('E2E Tests', () => {
   })
 
  it.skip('can link to root docs page from inquanto guides page', () => {
-    cy.visit('/inquanto/guides.html')
-   cy.findByLabelText(/quantinuum documentation/i).click()
+  cy.visit('/inquanto/guides.html')
+  cy.findByLabelText(/quantinuum documentation/i).click()
   cy.origin('https://docs.quantinuum.com', () => {
   cy.contains(/technical documentation/i)
  })
