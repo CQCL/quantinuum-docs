@@ -56,6 +56,21 @@ describe('E2E Tests', () => {
 
   })
 
+  it('inspect concepts/lab page', () => {
+    cy.visit('/nexus/user_guide/concepts/lab.html')
+    checkThatNavBarExists()
+    cy.contains(/nexus lab/i)
+    cy.contains(/cloud storage/i)
+    cy.contains(/git integration/i)
+  })
+
+  it('inspect api reference page', () => {
+    cy.visit('/nexus/api_index')
+    checkThatNavBarExists()
+    cy.contains(/Nexus API Reference/i)
+    cy.contains(/qnexus/i)
+  })
+
  it.skip('can link to root docs page from nexus guides page', () => {
     cy.visit('/nexus/guides.html')
    cy.findByLabelText(/quantinuum documentation/i).click()
