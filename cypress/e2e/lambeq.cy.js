@@ -1,8 +1,4 @@
-const checkThatNavBarExists = () => {
-    cy.get('nav').contains(/λambeq/i).parent().parent().within(() => {
-      cy.contains(/λambeq/i)
-    })
-  }
+import { checkThatNavBarExists } from './utils.js'
   
   describe('E2E Tests', () => {
     it('can view / (landing page)', () => {
