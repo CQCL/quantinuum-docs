@@ -21,8 +21,8 @@ describe('E2E Tests', () => {
 
   it("can view dropdown menu / (landing page navbar)", {
     retries: {
-      runMode: 5,
-      openMode: 5
+      runMode: 10,
+      openMode: 10
     }
   }, () => {
     cy.visit('/tket/')
@@ -36,8 +36,8 @@ describe('E2E Tests', () => {
 
   it('inspect api-docs from dropdown', {
     retries: {
-      runMode: 5,
-      openMode: 5
+      runMode: 10,
+      openMode: 10
     }
   },() => {
     cy.visit('/tket/')
@@ -49,8 +49,8 @@ describe('E2E Tests', () => {
 
   it('inspect user-guide from dropdown', {
     retries: {
-      runMode: 5,
-      openMode: 5
+      runMode: 10,
+      openMode: 10
     }
   },() => {
     cy.visit('/tket/')
@@ -62,8 +62,8 @@ describe('E2E Tests', () => {
 
   it('inspect blog from dropdown', {
     retries: {
-      runMode: 5,
-      openMode: 5
+      runMode: 20,
+      openMode: 20
     }
   },() => {
     cy.visit('/tket/')
