@@ -61,7 +61,7 @@ const productsConfig = [
     subtitle: "Overview of all TKET documentation including the user guide, API documentation, and developer blog"
   }],  },
 
-  {name: "InQuanto",  link:"inquanto", description: `Toolkit for complex molecular and materials simulations`, links: [{
+  {name: "InQuanto",  link:"inquanto", description: `Platform for complex molecular and materials simulations`, links: [{
     title: 'User Manual',
     link: 'https://docs.quantinuum.com/inquanto/manual/howto.html',
     subtitle: "Learn how to use the InQuanto package"
