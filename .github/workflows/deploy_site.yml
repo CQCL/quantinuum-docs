@@ -2,9 +2,6 @@ name: Deploy prototype unified site
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - 'local_build'
 
 # Set permissions of the GITHUB_TOKEN to allow deployment to Github Pages
 permissions:
