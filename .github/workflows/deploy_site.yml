@@ -62,6 +62,10 @@ jobs:
           repo: 'CQCL/lambeq-docs'
           tarball_prefix: 'lambeq-docs'
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Cypress Tests
+        run: |
+          npm install
+          npx serve base_site & npm run test 
       # Once they're all extracted, we can upload.
       - name: Upload Github Pages artifact
         uses: actions/upload-pages-artifact@v3
