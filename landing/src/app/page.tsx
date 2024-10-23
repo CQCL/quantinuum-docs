@@ -93,7 +93,7 @@ const helpSectionConfig = {
     title: "Publications",
     icon_description: "Publications Icon",
     icon: BookIcon,
-    link: "https://quantinuum.com/publications",
+    link: "https://www.quantinuum.com/research/research-areas#publications",
     description: "Find our latest research publications here",
   },
 ]};
