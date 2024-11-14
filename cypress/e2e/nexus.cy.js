@@ -45,7 +45,7 @@ describe('E2E Tests', () => {
   })
 
   it('inspect getting started page', () => {
-    cy.visit('/nexus/trainings/notebooks/getting_started.html')
+    cy.visit('/nexus/trainings/notebooks/basics/getting_started.html')
     checkThatNavBarExists()
     cy.contains(/Getting Started with qnexus/i)
     cy.contains(/pip install qnexus/i)
