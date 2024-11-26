@@ -1,6 +1,8 @@
 name: Deploy prototype unified site
 
 on:
+  schedule:
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 # Set permissions of the GITHUB_TOKEN to allow deployment to Github Pages
