@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import "@cqcl/quantinuum-ui/tokens.css";
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const jetBrains = Roboto_Mono({
@@ -40,6 +42,7 @@ export default function RootLayout({
       >
         {children}
       </body>
+      <GoogleAnalytics gaId="G-YPQ1FTGDL3"/>
     </html>
   );
 }
