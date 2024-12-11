@@ -40,21 +40,21 @@ jobs:
         uses: ./.github/actions/extract-docs
         with:
           subdir: '${{ env.DOCS_DIR }}/nexus'
-          repo: 'CQCL-DEV/nexus-docs'
+          repo: 'quantinuum-dev/nexus-docs'
           tarball_prefix: 'nexus-docs'
           token: ${{ secrets.NEXUS_DOCS_READ_ACCESS_TOKEN }}
       - name: Extract Inquanto docs
         uses: ./.github/actions/extract-docs
         with:
           subdir: '${{ env.DOCS_DIR }}/inquanto'
-          repo: 'CQCL-DEV/inquanto-docs'
+          repo: 'quantinuum-dev/inquanto-docs'
           tarball_prefix: 'inquanto-docs'
           token: ${{ secrets.INQUANTO_DOCS_READ_ACCESS_TOKEN }}
       - name: Extract tket docs
         uses: ./.github/actions/extract-docs
         with:
           subdir: '${{ env.DOCS_DIR }}/tket'
-          repo: 'CQCL-DEV/tket-site'
+          repo: 'quantinuum-dev/tket-site'
           tarball_prefix: 'tket-docs'
           token: ${{ secrets.TKET_DOCS_READ_ACCESS_TOKEN }}
       - name: Extract Lambeq docs
