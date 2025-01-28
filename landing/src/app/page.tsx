@@ -24,7 +24,7 @@ import { TKETLogo } from "./TKETLogo";
 
 
 const productsConfig = [
-  {name: "H-Series", link:"h-series", description: `Quantinuum's QCCD ion-trap hardware, the world's highest peforming quantum computer.`, links: [{
+  {name: "H-Series", link:"h-series", description: `Quantinuum's QCCD ion-trap hardware, the world's highest performing quantum computer.`, links: [{
     title: 'H-Series User Guide',
     link: 'https://docs.quantinuum.com/h-series/user_guide/hardware_user_guide/access',
     subtitle: "Explore how to use the industry's leading quantum processors."
