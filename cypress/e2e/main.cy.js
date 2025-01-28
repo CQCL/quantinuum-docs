@@ -4,7 +4,7 @@ describe("E2E Tests", () => {
     it('can view cards', () => {
         cy.visit('/')
         checkThatNavBarExists()
-        cy.contains(/quantinuum's qccd ion-trap hardware, the world's highest peforming quantum computer./i)
+        cy.contains(/quantinuum's qccd ion-trap hardware, the world's highest performing quantum computer./i)
         cy.contains(/cloud platform connecting users with hardware and compilation services, alongside associated data./i)
         cy.contains(/quantum computing toolkit and optimizing compiler/i)
         cy.contains(/platform for complex molecular and materials simulations/i)

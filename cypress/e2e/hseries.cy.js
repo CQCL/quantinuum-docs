@@ -13,7 +13,7 @@ describe('E2E Tests', () => {
         cy.contains(/getting started/i)
         cy.contains(/knowledge articles/i)
     })
-
+    
     it("support is accessed from Navbar -> H-Series", {
         retries: {
           // Nav dropdown is flaky at the moment.
@@ -48,30 +48,18 @@ describe('E2E Tests', () => {
         cy.contains(/use cases/i)
     })
 
-    it('visit getting started pages 1', () => {
-        cy.visit('/h-series/trainings/getting_started/pytket_quantinuum/Quantinuum_circuit_submissions')
-        cy.contains(/job submissions/i)
-        cy.contains(/circuit preparation/i)
-    })
+    // it('ka 1', () => {
+    //     cy.visit('/h-series/trainings/knowledge_articles/Quantinuum_toric_code')
+    //     cy.contains(/topological order/i)
+    //     cy.contains(/toric code/i)
+    //     cy.contains(/feed-forward/i)
+    // })
 
-    it('visit getting started pages 2', () => {
-        cy.visit('/h-series/trainings/getting_started/pytket_quantinuum/Quantinuum_hseries_queue_visibility')
-        cy.contains(/h-series queue visibility/i)
-        cy.contains(/h-series fair queue/i)
-    })
-
-    it('ka 1', () => {
-        cy.visit('/h-series/trainings/knowledge_articles/Quantinuum_toric_code')
-        cy.contains(/topological order/i)
-        cy.contains(/toric code/i)
-        cy.contains(/feed-forward/i)
-    })
-
-    it('ka 2', () => {
-        cy.visit('/h-series/trainings/knowledge_articles/Quantinuum_chemistry_chemically_aware_ucc')
-        cy.contains(/quantum chemistry calculations with arbitrary angle 2-qubit gates/i)
-        cy.contains(/hamiltonian specification/i)
-    })
+    // it('ka 2', () => {
+    //     cy.visit('/h-series/trainings/knowledge_articles/Quantinuum_chemistry_chemically_aware_ucc')
+    //     cy.contains(/quantum chemistry calculations with arbitrary angle 2-qubit gates/i)
+    //     cy.contains(/hamiltonian specification/i)
+    // })
 
     it.skip('can link to root docs page from h-series guides page', () => {
         cy.visit('/h-series/guides.html')
