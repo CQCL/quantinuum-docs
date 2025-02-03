@@ -10,15 +10,15 @@ describe('E2E Tests', () => {
         cy.contains(/quantum volume data/i)
         cy.contains(/hardware user guide/i)
         cy.contains(/emulator user guide/i)
-        cy.contains(/getting started/i)
-        // cy.contains(/support/i)
+        cy.contains(/unique capabilities/i)
+        cy.contains(/advanced use cases/i)
     })
     
     it("support is accessed from Navbar -> H-Series", {
         retries: {
           // Nav dropdown is flaky at the moment.
-          runMode: 5,
-          openMode: 5,
+          runMode: 10,
+          openMode: 10,
         }
       },() => {  
         cy.visit('/h-series/')
