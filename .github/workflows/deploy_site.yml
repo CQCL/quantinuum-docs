@@ -35,7 +35,7 @@ jobs:
           subdir: '${{ env.DOCS_DIR }}/h-series'
           repo: 'CQCL/systems-documentation'
           tarball_prefix: 'hseries-docs'
-          token: ${{ secrets.HSERIES_DOCS_READ_ACCESS_TOKEN }}
+          token: ${{ secrets.SYSTEMS_DOCS_READ_ACCESS_TOKEN }}
       - name: Extract Nexus docs
         uses: ./.github/actions/extract-docs
         with:
