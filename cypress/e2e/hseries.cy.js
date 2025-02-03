@@ -11,7 +11,7 @@ describe('E2E Tests', () => {
         cy.contains(/hardware user guide/i)
         cy.contains(/emulator user guide/i)
         cy.contains(/getting started/i)
-        cy.contains(/knowledge articles/i)
+        // cy.contains(/support/i)
     })
     
     it("support is accessed from Navbar -> H-Series", {
@@ -48,18 +48,18 @@ describe('E2E Tests', () => {
         cy.contains(/use cases/i)
     })
 
-    // it('ka 1', () => {
-    //     cy.visit('/h-series/trainings/knowledge_articles/Quantinuum_toric_code')
-    //     cy.contains(/topological order/i)
-    //     cy.contains(/toric code/i)
-    //     cy.contains(/feed-forward/i)
-    // })
+    it('ka 1', () => {
+        cy.visit('/h-series/trainings/knowledge_articles/Quantinuum_toric_code')
+        cy.contains(/topological order/i)
+        cy.contains(/toric code/i)
+        cy.contains(/feed-forward/i)
+    })
 
-    // it('ka 2', () => {
-    //     cy.visit('/h-series/trainings/knowledge_articles/Quantinuum_chemistry_chemically_aware_ucc')
-    //     cy.contains(/quantum chemistry calculations with arbitrary angle 2-qubit gates/i)
-    //     cy.contains(/hamiltonian specification/i)
-    // })
+    it('ka 2', () => {
+        cy.visit('/h-series/trainings/knowledge_articles/Quantinuum_chemistry_chemically_aware_ucc')
+        cy.contains(/quantum chemistry calculations with arbitrary angle 2-qubit gates/i)
+        cy.contains(/hamiltonian specification/i)
+    })
 
     it.skip('can link to root docs page from h-series guides page', () => {
         cy.visit('/h-series/guides.html')
