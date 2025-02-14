@@ -1,0 +1,25 @@
+Sharing admin permissions
+=========================
+An organization administrator can grant or revoke administrator permissions
+from the Users table of the :doc:`management page<accessing_org_page>`.
+
+Granting or revoking administration permissions
+-----------------------------------------------
+
+#. Search for the user in the Users table and select the "Update permissions"
+   option in the three-dots menu.
+
+   .. image:: images/update_user_permissions_dots_menu.png
+      :width: 800
+      :alt: Users table
+
+#. Check/un-check the "Organization Admin" check-box for granting/revoking
+   the admin permissions. Finally, click on "Update permissions".
+
+   .. image:: images/update_user_permissions_filled.png
+      :width: 800
+      :alt: Update user permissions
+
+.. note::
+    When admin permissions are granted, the user must re-login to Nexus in order
+    for the changes to take effect.

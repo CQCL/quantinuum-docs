@@ -1,0 +1,52 @@
+Quantinuum Nexus Documentation
+=============================================
+
+This documentation provides an overview of the `Quantinuum Nexus platform <https://nexus.quantinuum.com>`_.
+
+- **Nexus Concepts**: explains the main concepts behind Nexus, such as projects and jobs.
+- **Guides**: covers basic Nexus usage for users and administrators, mostly focusing on the web user interface.
+- **Trainings**: provides examples and tutorials on how to use Nexus capabilities, mostly via the Python client, ``qnexus``.
+- **API Reference**: lists the Python API documentation for the ``qnexus`` package.
+
+
+.. toctree::
+    :caption: Guides
+    :maxdepth: 1
+    
+    user_guide/user_guide.rst
+    admin_guide/admin_guide.rst
+
+
+.. toctree::
+    :caption: Trainings
+    :maxdepth: 1
+
+    trainings/getting_started.rst
+    trainings/knowledge_articles.rst
+
+
+.. toctree::
+    :caption: API Reference
+    :maxdepth: 1
+
+    nexus_api/qnexus_api.rst
+    nexus_api/openapi.rst
+
+
+.. toctree::
+    :caption: Support
+    :maxdepth: 1
+
+    support/getting_support.rst
+    support/faq.rst
+    support/nexus_citations.rst
+    support/release_notes.md
+    
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

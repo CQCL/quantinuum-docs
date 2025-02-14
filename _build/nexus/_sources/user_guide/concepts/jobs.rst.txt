@@ -1,0 +1,56 @@
+.. _jobs:
+
+Jobs in Nexus
+==============
+
+This page assumes you are familiar with quantum :ref:`compilation <tket_user_guide:manual/manual_intro:quantum compilation>` and :ref:`execution <backend_concepts>`. 
+
+
+When a user wants to compile or execute circuits remotely using Nexus, they can do so by submitting a job. There are two primary job types in Nexus:
+
+^^^^^^^^^^^^^^^^^^
+:code:`CompileJob`
+^^^^^^^^^^^^^^^^^^
+Instructs Nexus to compile a circuit for a particular backend architecture. Additional compilation parameters can be passed to configure the level of optimization.
+
+^^^^^^^^^^^^^^^^^^
+:code:`ExecuteJob`
+^^^^^^^^^^^^^^^^^^
+Instructs Nexus to execute a circuit on a particular :ref:`backend <backend_concepts>`. Nexus offers a variety of different simulators, syntax checkers and hardware backends both hosted by Nexus as well as by third parties (Quantinuum, IBM, Amazon Braket). Additional backend specific parameters can be passed to configure how the circuit is run, i.e. how many shots, seed etc.
+
+
+^^^^^^^^^^^^^
+Job Lifecycle
+^^^^^^^^^^^^^
+Jobs transition through different states as they are processed by Nexus. 
+
+.. image:: ./images/job_status_flow.png
+   :width: 500
+
+Jobs sent to busy hardware backends can often spend days or weeks in the queue. Nexus periodically checks in with third party services to make sure its own status is up to date.
+
+.. image:: ./images/lifecycle_external.png
+   :width: 580
+
+
+
+
+"""""""""""""""
+Cancellation
+"""""""""""""""
+If a job hasn't yet finished, users can cancel their job either through the Nexus user interface or using the :code:`qnexus` python client.
+
+"""""""""""""""
+Resubmission
+"""""""""""""""
+In the event that a user's job gets stuck either in Nexus or with a third party, users can resubmit jobs (partially or fully).
+
+
+^^^^^^^^^^^^^^^^
+Circuit Batching
+^^^^^^^^^^^^^^^^
+Users can send up to 300 circuits in a single job. If a job runs within Nexus (not sent to third party), the circuit batch will be split into multiple job items and processed in parallel. If your circuit batch ends up being processed by a third party, the batch processing technique is deferred to them.
+
+Learn more about batching under :ref:`backend_concepts`.
+
+

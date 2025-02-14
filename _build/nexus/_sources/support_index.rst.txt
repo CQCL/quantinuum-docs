@@ -1,0 +1,15 @@
+:orphan:
+
+Support
+==========
+
+This section provides information on how to get support for the Nexus platform.
+
+.. toctree::
+    :maxdepth: 1
+
+    support/getting_support.rst
+    support/faq.rst
+    support/nexus_citations.rst
+    support/release_notes.rst
+

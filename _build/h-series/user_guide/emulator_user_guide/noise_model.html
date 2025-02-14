@@ -1,0 +1,658 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPQ1FTGDL3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YPQ1FTGDL3');
+    </script>
+    <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="System Model H1 Emulators" href="emulators/h1_emulators.html" /><link rel="prev" title="H-Series Emulators" href="introduction.html" />
+
+    <link rel="shortcut icon" href="../../_static/quantinuum_favicon.svg"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>Emulator Noise Model - H-Series</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=2d233a06" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+<link rel="stylesheet" href="../../_static/tokens.css"/>
+<link rel="stylesheet" href="../../_static/styles.css"/>
+<link rel="stylesheet" href="../../_static/tailwind.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="preload"
+as="style">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>  
+  .sidebar-sticky {
+    top: calc(3.5rem - 0px);
+    height: calc(100vh - 3.5rem);
+  }
+  
+  @media (min-width: 97em) {
+    html {
+      font-size: 100% !important;
+    }
+  }
+  
+</style>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+<!-- <script type="text/javascript" src="../../_static/syncTheme.global.js" ></script> -->
+ <!--Force light mode -->
+ <script>document.body.setAttribute('data-theme','light')</script>
+<nav style="position:fixed;top:0;z-index:1021;width:100%;">
+    <div class="nexus-nav"></div>
+</nav>
+<script type="text/javascript" src="../../_static/injectNav.global.js"></script>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">H-Series</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/h-series.svg" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hardware_user_guide/access.html">Hardware User Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Hardware User Guide</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hardware_user_guide/access.html">H-Series Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware_user_guide/system_operation.html">System Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware_user_guide/workflow.html">H-Series Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware_user_guide/fair_queue.html">Fair Queue</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="introduction.html">Emulator User Guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Emulator User Guide</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Quantinuum Emulators</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emulators/h1_emulators.html">H1 Emulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emulators/h2_emulators.html">H2 Emulators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.quantinuum.com/nexus/user_guide/user_guide.html">Nexus User Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.quantinuum.com/nexus/admin_guide/admin_guide.html">Nexus Admin Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Trainings</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../trainings/getting_started/getting_started_index.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Getting Started</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/getting_started/getting_started_index.html">Unique Capabilities</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/nexus/trainings/getting_started.html">Quantinuum Nexus</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/user-guide/index.html">TKET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/getting_started/emulators.html">Quantinuum Emulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/getting_started/mcmr.html">Mid-Circuit Measurement &amp; Reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/getting_started/arbitrary_angle_2_qubit_gates.html">Native Arbitrary Angle Hardware Gates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/getting_started/conditional_operations_and_classical_logic.html">Conditional Operations &amp; Classical Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/getting_started/batch_jobs.html">Batch Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/getting_started/api_options.html">Quantinuum Systems API Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/getting_started/access_systems_with_qiskit.html">Using Qiskit with Quantinuum Devices</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../trainings/getting_started/qec_decoder_toolkit/qec_decoder_toolkit.html">QEC Decoder Toolkit</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of QEC Decoder Toolkit</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../trainings/getting_started/qec_decoder_toolkit/qec_decoder_toolkit.html">QEC Decoder Toolkit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../trainings/getting_started/qec_decoder_toolkit/repeat_until_success/rus_index.html">Repeat Until Success</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../trainings/getting_started/qec_decoder_toolkit/repetition_code/repetition_code_index.html">Repetition Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../trainings/getting_started/qec_decoder_toolkit/surface_code/surface_code_index.html">Surface Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/getting_started/pytket_quantinuum/pytket_quantinuum.html"><code class="docutils literal notranslate"><span class="pre">pytket-quantinuum</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../trainings/knowledge_articles/ka_index.html">Knowledge Articles</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Knowledge Articles</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/knowledge_articles/Quantinuum_chemistry_chemically_aware_ucc.html">Quantum Chemistry Calculations with Arbitrary Angle 2-Qubit Gates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/knowledge_articles/Quantinuum_high_energy_physics_experiment.html">High Energy Physics: Implementing <span class="math notranslate nohighlight">\(SU(2)\)</span> Lattice Gauge Theory Trotter Circuits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/knowledge_articles/Quantinuum_leakage_detection.html">Automatic Leakage Error Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/knowledge_articles/Quantinuum_toric_code.html">Topological Order from Measurements and Feed-Forward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/knowledge_articles/Quantinuum_variational_experiment_with_batching.html">Variational Experiment with Batching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/knowledge_articles/Quantinuum_n56_ghz_state_fidelity.html">GHZ State Fidelity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trainings/knowledge_articles/circuit_stitching.html">Circuit Stitching</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support/product_change_notifications.html">Product Change Notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/faqs.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/hseries_citations.html">How to Cite H-Series</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="emulator-noise-model">
+<h1>Emulator Noise Model<a class="headerlink" href="#emulator-noise-model" title="Link to this heading">¶</a></h1>
+<p>Users who have direct access to the Quantinuum API have the option of experimenting with the physical noise parameters of the emulator. When deviating from the default emulation model, users should not assume that performance predicted with modified error parameters will match hardware performance. As updates to the quantum computers are made, the emulator noise parameters and the underlying error models are subject to change to accommodate performance improvements, updates in the methodology for measuring device parameters and research into the noise sources themselves.</p>
+<p>All the errors are applied even when only certain parameters are specified. Only the parameters specified are overridden. To turn off certain error parameters, explicitly set them to 0.</p>
+<section id="physical-noise">
+<h2>Physical Noise<a class="headerlink" href="#physical-noise" title="Link to this heading">¶</a></h2>
+<p>The emulator runs with default error parameters that represent a noise environment that closely resembles the respective hardware. These error parameters can be set and used to override the default error parameters and do finer-grain tweaks of the error model. <em>Modification of the error parameters away from default values is an advanced option and not recommended as a starting point for emulations of hardware performance.</em></p>
+<div class="table-wrapper colwidths-given docutils container" id="id2">
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Physical Noise API Options</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Name</strong></p></td>
+<td><p><strong>API Option</strong></p></td>
+<td><p><strong>Description</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>1-Qubit Fault Probability</p></td>
+<td><p><em>p1</em></p></td>
+<td><p>Probability of a fault occurring during a 1-qubit gate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2-Qubit Fault Probability</p></td>
+<td><p><em>p2</em></p></td>
+<td><p>Probability of a fault occurring during a 2-qubit gate.</p></td>
+</tr>
+<tr class="row-even"><td><p>Bit Flip Measurement Probability</p></td>
+<td><p><em>p_meas</em></p></td>
+<td><p>Probability of a bit flip being applied to a measurement. Either a float or a tuple of 2 floats. If it is a single float then that error rate is used to bitflip both 0 and 1 measurement results. If a tuple is supplied, the first element is the probability a bit flip is applied if a 0 result occurs during measurement while the second error rate if a 1 is measured.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Crosstalk Measurement Fault Probability</p></td>
+<td><p><em>p_crosstalk_meas</em></p></td>
+<td><p>Probability of a crosstalk measurement fault occurring.</p></td>
+</tr>
+<tr class="row-even"><td><p>Initialization Fault Probability</p></td>
+<td><p><em>p_init</em></p></td>
+<td><p>Probability of a fault occurring during initialization of a qubit.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Crosstalk Initialization Fault Probability</p></td>
+<td><p><em>p_crosstalk_init</em></p></td>
+<td><p>Probability of a cross-talk fault occurring during initialization of a qubit.</p></td>
+</tr>
+<tr class="row-even"><td><p>Ratio of 1-Qubit Spontaneous Emission to p1</p></td>
+<td><p><em>p1_emission ratio</em></p></td>
+<td><p>Fraction of <em>p1</em> that is spontaneous emission for a single qubit instead of asymmetric depolarizing noise.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ratio of 1-Qubit Spontaneous Emission in 2-Qubit Gate to p2</p></td>
+<td><p><em>p2_emission_ratio</em></p></td>
+<td><p>Fraction of <em>p2</em> that is spontaneous emission for a 1- qubit in a 2-qubit gate instead of asymmetric depolarizing noise.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The 1- and 2-qubit fault probabilities are largely modeled using asymmetric depolarizing channels; however, there is smaller probability that a spontaneous emission event happens. The probability is about an order of magnitude lower than the corresponding asymmetric depolarizing error rate. The spontaneous emission error rates can be scaled using the scaling parameters given in the Scaling section. If a spontaneous emission event happens then <span class="math notranslate nohighlight">\(\frac{1}{4}\)</span> the time <span class="math notranslate nohighlight">\(Pauli-X\)</span> is applied, <span class="math notranslate nohighlight">\(\frac{1}{4}\)</span> the time <code class="docutils literal notranslate"><span class="pre">Pauli-Y</span></code> is applied, and <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> the time leakage is applied<a class="footnote-reference brackets" href="#footcite-2021-ryan-anderson" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>The 2-qubit fault probability corresponds to the asymmetric depolarizing probability of the H-Series fully entangling 2-qubit gate, <span class="math notranslate nohighlight">\(ZZ()\)</span>. The probability of asymmetric depolarizing error for the arbitrary angle 2-qubit gate, <span class="math notranslate nohighlight">\(RZZ(\theta)\)</span>, depends on the angle <span class="math notranslate nohighlight">\(\theta\)</span>. The spontaneous emission error channel is the same for both <span class="math notranslate nohighlight">\(ZZ()\)</span> and <span class="math notranslate nohighlight">\(RZZ(\theta)\)</span>.</p>
+</section>
+<section id="dephasing-noise">
+<h2>Dephasing Noise<a class="headerlink" href="#dephasing-noise" title="Link to this heading">¶</a></h2>
+<p>The noise model includes a memory error for which <span class="math notranslate nohighlight">\(Z\)</span> is applied. This is often called “dephasing” or “memory” noise and depends on the duration for which the qubits are idling or transporting in the trap. We potentially model two types of dephasing noise: one where the probability of applying <span class="math notranslate nohighlight">\(Z\)</span> is quadratically dependent on the duration, <span class="math notranslate nohighlight">\(d\)</span> and another where the probability is linearly dependent on <span class="math notranslate nohighlight">\(d\)</span>. Note, we apply both sorts of noise simultaneously. For state vector simulations, the quadratic noise is modeled in the emulator by default as coherent noise. For this coherent quadratic dephasing noise, the <span class="math notranslate nohighlight">\(RZ\)</span> gate is applied with an angle, <span class="math notranslate nohighlight">\(a\)</span>, proportional to quadratic dephasing frequency, <span class="math notranslate nohighlight">\(f\)</span> multiplied by the duration, <span class="math notranslate nohighlight">\(d\)</span>. The resulting probability of the <span class="math notranslate nohighlight">\(RZ\)</span> gate applying a <span class="math notranslate nohighlight">\(Z\)</span> operation on a plus state is <span class="math notranslate nohighlight">\(sin⁡(0.5fd)^2\)</span>, which is why we call this a form of quadratic dephasing.</p>
+<p>For the stabilizer simulator, by default this quadratic noise is modeled incoherently by applying Pauli-<span class="math notranslate nohighlight">\(Z\)</span> with probability, <span class="math notranslate nohighlight">\(sin⁡(0.5 f d)^2\)</span>, to model more closely the quadratic dependency with frequency, <span class="math notranslate nohighlight">\(f\)</span> and duration, <span class="math notranslate nohighlight">\(d\)</span>, as seen in the coherent model. Note, stabilizer simulations can only simulate Clifford and measurement-like gates, so the <span class="math notranslate nohighlight">\(RZ\)</span> gate cannot be applied directly.</p>
+<p>For both state vector and stabilizer simulations, linear dephasing is modeled with <span class="math notranslate nohighlight">\(Z\)</span> applied using a probability equal to the linear dephasing rate multiplied by the duration.</p>
+<p>Switching between the coherent and incoherent quadratic dephasing model can be accomplished by setting coherent_dephasing either <em>True</em> or <em>False</em>. As mentioned, <em>coherent_dephasing</em> is <em>True</em> by default for the state vector simulations and <em>False</em> by default for stabilizer simulations. If <em>coherent_dephasing</em> is set to <em>False</em> then the frequency for the quadratic error model (<em>quadratic_dephasing_rate</em>) is multiplied by <em>coherent_to_incoherent_factor</em> to attempt to make up for increased noise due to coherent effects; however, how sensitive circuits are to coherent effects depends on the circuit. Therefore, users may want to adjust this factor appropriately.</p>
+<p>In addition, a transport dephasing parameter (<em>transport_dephasing</em>) and an idle dephasing parameter (<em>idle_dephasing</em>) are both turned on by default. Both can be toggled off.</p>
+<div class="table-wrapper colwidths-given docutils container" id="id3">
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Dephasing Noise Emulator API Options</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Name</strong></p></td>
+<td><p><strong>API Option</strong></p></td>
+<td><p><strong>Description</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Coherent Dephasing</p></td>
+<td><p><em>coherent_dephasing</em></p></td>
+<td><p>A boolean value determining whether quadratic dephasing is applied (default: True)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Coherent Quadratic Dephasing Model</p></td>
+<td></td>
+<td><p>the gate RZ (frequency x duration) is applied during transport and qubit idling where frequency is equal to <cite>quadratic_dephasing_rate</cite>  (units of <span class="math notranslate nohighlight">\(2\pi\)</span> radians per second). This model is used if <cite>coherent_dephasing</cite> is True. Applied by default for the state vector simulator.</p></td>
+</tr>
+<tr class="row-even"><td><p>Quadratic Dephasing Rate</p></td>
+<td><p><em>quadratic_dephasing_rate</em></p></td>
+<td><p>The frequency, <span class="math notranslate nohighlight">\(f\)</span>, in applying <span class="math notranslate nohighlight">\(RZ(fd)\)</span> during transport and idling.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Incoherent Quadratic Dephasing Model</p></td>
+<td></td>
+<td><p>Pauli-<span class="math notranslate nohighlight">\(Z\)</span> is applied during transport and qubit idling according to the probability, <span class="math notranslate nohighlight">\(sin(\frac{fd}{2})^2\)</span>, where frequency is equal to <em>quadratic_dephasing_rate</em> multiplied by the <em>coherent_to_incoherent_factor</em> (all in units of <span class="math notranslate nohighlight">\(2\pi\)</span> radians per second). This model is used if <em>coherent_dephasing</em> is <em>False</em>. This model is mostly used to mimic coherent dephasing noise for stabilizer simulations and is applied by default for the stabilizer simulator.</p></td>
+</tr>
+<tr class="row-even"><td><p>Incoherence Multiplier</p></td>
+<td><p><em>coherent_to_incoherent_factor</em></p></td>
+<td><p>A multiplier on the quadratic term when running stabilizer simulations to attempt to account for increases in error due to coherent effects in the circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Linear Dephasing Model</p></td>
+<td></td>
+<td><p>Pauli <span class="math notranslate nohighlight">\(Z\)</span> is applied during transport and qubit idling according to the probability of linear_dephasing_rate multiplied by duration (<span class="math notranslate nohighlight">\(fd\)</span>) where linear_dephasing_rate is per second (<span class="math notranslate nohighlight">\(s^{-1}\)</span>), and duration is in units of seconds. This model is used in conjunction with either the coherent or incoherent quadratic dephasing model.</p></td>
+</tr>
+<tr class="row-even"><td><p>Linear Dephasing Rate</p></td>
+<td><p><em>linear_dephasing_rate</em></p></td>
+<td><p>The probability of applying <span class="math notranslate nohighlight">\(Z\)</span> with <span class="math notranslate nohighlight">\(p=rd\)</span> where <span class="math notranslate nohighlight">\(r\)</span> is rate and <span class="math notranslate nohighlight">\(d\)</span> is duration. This models the memory error. Note both the quadratic and linear term can be applied in the same simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Transport Dephasing</p></td>
+<td><p><em>transport_dephasing</em></p></td>
+<td><p>A boolean affecting whether memory noise is applied during transport.</p></td>
+</tr>
+<tr class="row-even"><td><p>Idle Dephasing</p></td>
+<td><p><em>idle_dephasing</em></p></td>
+<td><p>A boolean affecting if memory noise is applied due to qubit idling.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="arbitrary-angle-scaling">
+<h2>Arbitrary Angle Scaling<a class="headerlink" href="#arbitrary-angle-scaling" title="Link to this heading">¶</a></h2>
+<p>The H-Series systems have a native arbitrary-angle <span class="math notranslate nohighlight">\(ZZ\)</span> gate, <span class="math notranslate nohighlight">\(RZZ(\theta)\)</span>. For implementation of this gate in the H-Series emulators, certain parameters relate to the strength of the asymmetric depolarizing noise. These parameters depend on the angle <span class="math notranslate nohighlight">\(\theta\)</span>. This is normalized so that <span class="math notranslate nohighlight">\(\theta=\frac{\pi}{2}\)</span> gives the 2-qubit fault probability (<em>p2</em>). The parameters for asymmetric depolarizing noise are fit parameters that fit the noise estimated as the angle <span class="math notranslate nohighlight">\(\theta\)</span> changes per this equation:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left({przz}_a \times (\frac{|\theta|}{\pi})^{{przz}_{power}} + {przz}_b\right) &amp; \times p_2; \quad \theta &lt; 0\\
+\left({przz}_c \times (\frac{|\theta|}{\pi})^{{przz}_{power}} + {przz}_d\right) &amp; \times p_2; \quad \theta &lt; 0\\
+\left({przz}_b + {przz}_d \right) &amp; \times 0.5; \quad \theta = 0
+\end{split}\]</div>
+</div>
+<div class="table-wrapper colwidths-given docutils container" id="id4">
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Arbitrary Angle Scaling API Options</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Name</strong></p></td>
+<td><p><strong>API Option</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Fit Parameter 1</p></td>
+<td><p><span class="math notranslate nohighlight">\(przz_a\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Fit Parameter 2</p></td>
+<td><p><span class="math notranslate nohighlight">\(przz_b\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Fit Parameter 3</p></td>
+<td><p><span class="math notranslate nohighlight">\(przz_c\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Fit Parameter 4</p></td>
+<td><p><span class="math notranslate nohighlight">\(przz_d\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Polynomial</p></td>
+<td><p><span class="math notranslate nohighlight">\(przz_{power}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="scaling">
+<h2>Scaling<a class="headerlink" href="#scaling" title="Link to this heading">¶</a></h2>
+<p>A scaling factor can be applied that multiplies all the default or supplied error parameters by the scaling rate. In this case, a 1 does not change the error rates while 0 makes all the errors have a probability of 0. Other aspects of the noise model can scale specific error rates in the error model, as specified in the table below.</p>
+<div class="table-wrapper colwidths-given docutils container" id="id5">
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Scaling Noise API Options</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Name</strong></p></td>
+<td><p><strong>API Option</strong></p></td>
+<td><p><strong>Description</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Scaling</p></td>
+<td><p><em>scale</em></p></td>
+<td><p>Scale all error rates in the model linearly.</p></td>
+</tr>
+<tr class="row-odd"><td><p>P1 Scaling</p></td>
+<td><p><em>p1_scale</em></p></td>
+<td><p>Scale the probability of 1-qubit gates having a fault.</p></td>
+</tr>
+<tr class="row-even"><td><p>P2 Scaling</p></td>
+<td><p><em>p2_scale</em></p></td>
+<td><p>Scale the probability of 2-qubit gates having a fault.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Measurement Scaling</p></td>
+<td><p><em>meas_scale</em></p></td>
+<td><p>Scale the probability of measurement having a fault.</p></td>
+</tr>
+<tr class="row-even"><td><p>Initialization Scaling</p></td>
+<td><p><em>init_scale</em></p></td>
+<td><p>Scale the probability of initialization having a fault.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Memory Scaling</p></td>
+<td><p><em>memory_scale</em></p></td>
+<td><p>Linearly scale the probability of dephasing causing a fault.</p></td>
+</tr>
+<tr class="row-even"><td><p>Emission Scaling</p></td>
+<td><p><em>emission_scale</em></p></td>
+<td><p>Scale the probability that a spontaneous emission event happens during a 1- or 2-qubit gate.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cross-talk Scaling</p></td>
+<td><p><em>crosstalk_scale</em></p></td>
+<td><p>Scale the probability that measurement or initialization crosstalk events get applied to qubits, during mid-circuit measurement and reset (initialization), <em>crosstalk</em> noise can occur that effectively measures other qubits in the trap or cause them to leak.</p></td>
+</tr>
+<tr class="row-even"><td><p>Leakage Scaling</p></td>
+<td><p><em>leakage_scale</em></p></td>
+<td><p>Scale the probability that a leakage even happens during 1- or 2-qubit gates as well as during initialization or crosstalk; on the device half the time, spontaneous emission leads to a leakage event.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
+<div class="docutils container" id="id1">
+</div>
+</section>
+</section>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-2021-ryan-anderson" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>C. Ryan-Anderson, J. G. Bohnet, K. Lee, D. Gresh, A. Hankin, J. P. Gaebler, D. Francois, A. Chernoguzov, D. Lucchetti, N. C. Brown, T. M. Gatterman, S. K. Halit, K. Gilmore, J. A. Gerber, B. Neyenhuis, D. Hayes, and R. P. Stutz. Realization of real-time fault-tolerant quantum error correction. <em>Phys. Rev. X</em>, 11:041058, Dec 2021. URL: <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevX.11.041058">https://link.aps.org/doi/10.1103/PhysRevX.11.041058</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevX.11.041058">doi:10.1103/PhysRevX.11.041058</a>.</p>
+</aside>
+</aside>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="emulators/h1_emulators.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">System Model H1 Emulators</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="introduction.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">H-Series Emulators</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+              Copyright &#169; 2024 Quantinuum Ltd. All rights reserved.
+            </div>
+            <div class="terms" style="display:flex; gap:0.5rem; align-items:center; margin: 0.25rem 0rem;">
+              <a href="https://www.quantinuum.com/privacy-statement" target="_blank">Privacy Statement</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/cookie-notice" target="_blank">Cookie Notice</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/terms-conditions" target="_blank">Terms and Conditions</a>
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Emulator Noise Model</a><ul>
+<li><a class="reference internal" href="#physical-noise">Physical Noise</a></li>
+<li><a class="reference internal" href="#dephasing-noise">Dephasing Noise</a></li>
+<li><a class="reference internal" href="#arbitrary-angle-scaling">Arbitrary Angle Scaling</a></li>
+<li><a class="reference internal" href="#scaling">Scaling</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=17c178fb"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

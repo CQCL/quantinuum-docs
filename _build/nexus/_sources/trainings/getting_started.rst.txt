@@ -1,0 +1,52 @@
+.. _getting_started:
+
+Getting Started
+================
+
+In this section is a collection of examples demonstrating how to use Nexus
+capabilities, mostly via the Python client, qnexus.
+
+If you have a Nexus account, you can run the code in the
+:ref:`Lab <nexus_lab>`. You can also use `qnexus` from your own
+environment.
+
+To get started, please see `our getting started guide <notebooks/basics/getting_started>`_.
+
+For more details on the qnexus API, please see the `Nexus API Reference overview. <../nexus_api/qnexus_api.rst>`_.
+
+Installation
+^^^^^^^^^^^^
+
+The ``qnexus`` package is publicly available on `PyPI <https://pypi.org/project/qnexus/>`_ and
+can be installed with 
+
+.. code-block:: bash 
+
+    pip install qnexus
+
+
+Extras:
+
+If you are planning on running Qiskit simulations with noise models on Nexus, 
+you will need to install the extra dependency with ``pip install qnexus[qiskit]``.
+
+
+Available code examples
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+    :titlesonly:
+    :maxdepth: 1
+
+    notebooks/basics/getting_started.ipynb
+    notebooks/basics/auth_quotas.ipynb
+    notebooks/basics/backend_configuration.ipynb
+    notebooks/basics/devices_credentials.ipynb
+    notebooks/basics/jobs_results.ipynb
+    notebooks/basics/projects_properties_context.ipynb
+    notebooks/basics/refs_nexus_iterator.ipynb
+    notebooks/basics/saving_refs.ipynb
+    notebooks/basics/teams_roles.ipynb
+    H-Series <https://docs.quantinuum.com/h-series/trainings/getting_started/getting_started_index.html>
+    notebooks/basics/braket_examples.ipynb
+    notebooks/basics/ibmq_examples.ipynb

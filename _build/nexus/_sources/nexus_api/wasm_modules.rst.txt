@@ -1,0 +1,10 @@
+
+wasm_modules
+=============================================
+
+.. automodule:: qnexus.client.wasm_modules
+   :members:
+   :exclude-members: Params
+
+.. autoclass:: qnexus.wasm_modules.WasmModuleRef
+   :members: df, download_wasm_contents

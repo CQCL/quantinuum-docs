@@ -1,0 +1,51 @@
+.. _nexus_lab:
+
+Nexus Lab
+=========
+
+Nexus Lab is a JupyterHub coding environment already configured with everything you need to
+:ref:`start writing quantum programs <getting_started>`.
+
+Start the environment by clicking "Lab" from the Nexus web interface.
+
+Cloud Storage
+-------------
+
+Notebooks and other files saved in the Lab are securely stored in the cloud.
+:doc:`Circuits </user_guide/circuits>`, results and other Nexus resources are
+also stored in Nexus, so using the Lab means your work is available to you and
+independent of the computer(s) you use to log in.
+
+Quantum and scientific software already installed
+-------------------------------------------------
+
+The Lab is based on the familiar and widely-used `Jupyter Lab
+<https://jupyterlab.readthedocs.io/en/stable/>`_ and has key packages already
+installed and available, including:
+
+* See :ref:`getting_started` for saving circuits, running compilations and quantum executions on Nexus.
+
+* :std:doc:`tket_api:index` plus extensions for compiling and running quantum circuits. Nexus provides a number of backends: for more details see :ref:`Backends <backend_concepts>`.
+
+* ``scipy``, ``numpy``, ``pandas``, ``matplotlib`` and many other widely-used Python libraries.
+* plus many others. For a full list, launch a notebook and run ``!pip freeze | sort``
+
+Automatic authentication with Nexus
+-----------------------------------
+
+In addition, when Nexus is used from the Lab environment, it is automatically
+authenticated as you. (Find out how to authenticate and use Nexus from other
+environments :doc:`here </trainings/notebooks/basics/auth_quotas>`.)
+
+Monitor jobs and devices from the Lab
+-------------------------------------
+
+Finally, plugins in the Lab enable you to check on :ref:`job <jobs>` status,
+device access and manage code checked out using ``git`` without leaving the Lab.
+
+Git Integration
+-------------------------------------
+
+The Lab also has Git integration, allowing you to clone, push, pull, and commit to Git 
+repositories directly from the Lab interface or via the git command line interface in 
+the terminal.

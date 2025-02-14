@@ -1,0 +1,19 @@
+.. _priorities:
+
+Priorities
+==========
+
+When :ref:`jobs<jobs>` are submitted to H-Series quantum computers and
+emulators, they are given a **priority**. This is a number which comes either
+from the user submitting the job or from a :ref:`group <groups>`, if one is
+specified.
+
+This number determines the order in which jobs are executed.
+
+1 is the highest priority and 10 is the lowest.
+
+You can discover your personal H-Series priority and those of your groups by
+clicking your profile and navigating to "Settings" then "Organization".
+
+Learn more about priorities in the :h_series:`H-Series Hardware User Guide
+<user_guide/hardware_user_guide/workflow.html#queue>`.

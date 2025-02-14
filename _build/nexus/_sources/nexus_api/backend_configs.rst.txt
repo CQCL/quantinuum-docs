@@ -1,0 +1,32 @@
+
+configuring backends
+=============================================
+
+.. autoclass:: qnexus.AerConfig
+    :exclude-members:
+
+.. autoclass:: qnexus.AerStateConfig
+    :exclude-members:
+
+.. autoclass:: qnexus.AerUnitaryConfig
+    :exclude-members:
+
+.. autoclass:: qnexus.BraketConfig
+    :exclude-members:
+
+.. autoclass:: qnexus.QuantinuumConfig
+    :exclude-members:
+
+.. autoclass:: qnexus.IBMQConfig
+    :exclude-members:
+
+.. autoclass:: qnexus.IBMQEmulatorConfig
+    :exclude-members:
+
+.. autoclass:: qnexus.ProjectQConfig
+    :exclude-members:
+
+.. autoclass:: qnexus.QulacsConfig
+    :exclude-members:
+
+.. autoenum:: qnexus.models.language.Language

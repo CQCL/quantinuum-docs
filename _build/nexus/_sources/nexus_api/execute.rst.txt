@@ -1,0 +1,13 @@
+
+execute
+=============================================
+
+.. autofunction:: qnexus.execute
+
+.. autofunction:: qnexus.start_execute_job
+
+.. autoclass:: qnexus.models.references.ExecuteJobRef
+   :members: df
+
+.. autoclass:: qnexus.models.references.ExecutionResultRef
+   :members: get_input, download_result, download_backend_info, df

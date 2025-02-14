@@ -1,0 +1,20 @@
+.. _access_control:
+
+Access Control and Permissions
+==============================
+
+If you have made a :ref:`project <projects>` in Nexus, you can grant other users or :ref:`teams <teams>` permission to view or change that project.
+This is done by assigning the user or team a role, which is a set of permissions that they have for that project.
+
+The roles are:
+
+:Reader: Can view project information, jobs run as part of the project, and any resources that are part of the project (such as circuits run in jobs). Cannot edit the project.
+:Contributor: All of the permissions that a reader has, and can also run jobs as part of the project, change the project's properties, and edit resources that are part of the project.
+:Maintainer: All of the permissions that a contributor has, and can also delete resources that are part of the project, archive the project, and delete an archived project.
+:Administrator: All of the permissions that a maintainer has, and can also change user or team permissions for the project, and add or remove users or teams from the project.
+
+Team access is tied to the team itself, so if a user leaves a team then they will lose whatever access they had as part of that team.
+
+If a user has access to a project as an individual and also as part of a team, then if their individual and team access have different permissions,
+the most permissive role is used. For example, if a user was in a team with Reader access to a project, but they had also been granted Maintainer access,
+they would have the permissions of the Maintainer role.

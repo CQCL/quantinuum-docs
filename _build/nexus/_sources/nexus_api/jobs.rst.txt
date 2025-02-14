@@ -1,0 +1,17 @@
+
+jobs
+=============================================
+
+.. automodule:: qnexus.client.jobs
+   :members: 
+   :exclude-members: Params, compile, execute
+
+
+.. autoenum:: qnexus.jobs.StatusEnum
+
+.. autoenum:: qnexus.jobs.JobStatusEnum
+
+.. autoclass:: qnexus.jobs.JobRef
+   :members: df
+
+.. autoenum:: qnexus.jobs.JobType

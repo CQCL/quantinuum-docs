@@ -1,0 +1,796 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPQ1FTGDL3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YPQ1FTGDL3');
+    </script>
+    <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Changelog" href="changelog.html" /><link rel="prev" title="pytket-braket" href="index.html" />
+
+    <link rel="shortcut icon" href="_static/quantinuum_favicon.svg"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
+        <title>API documentation - pytket-braket 0.39.0 API documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+<link rel="stylesheet" href="_static/tokens.css"/>
+<link rel="stylesheet" href="_static/styles.css"/>
+<link rel="stylesheet" href="_static/tailwind.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="preload"
+as="style">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>  
+  .sidebar-sticky {
+    top: calc(3.5rem - 0px);
+    height: calc(100vh - 3.5rem);
+  }
+  
+  @media (min-width: 97em) {
+    html {
+      font-size: 100% !important;
+    }
+  }
+  
+</style>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+<!-- <script type="text/javascript" src="_static/syncTheme.global.js" ></script> -->
+ <!--Force light mode -->
+ <script>document.body.setAttribute('data-theme','light')</script>
+<nav style="position:fixed;top:0;z-index:1021;width:100%;">
+    <div class="nexus-nav"></div>
+</nav>
+<script type="text/javascript" src="_static/injectNav.global.js"></script>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">pytket-braket 0.39.0 API documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">pytket-braket 0.39.0 API documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">API documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/CQCL/pytket-braket/issues">Issue tracker</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/pytket-braket/">PyPi</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/api.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="module-pytket.extensions.braket">
+<span id="api-documentation"></span><h1>API documentation<a class="headerlink" href="#module-pytket.extensions.braket" title="Link to this heading">¶</a></h1>
+<p>Module for conversion from tket to braket</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytket.extensions.braket.</span></span><span class="sig-name descname"><span class="pre">BraketBackend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">local</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_bucket</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provider</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aws_session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend" title="Link to this definition">¶</a></dt>
+<dd><p>Interface to Amazon Braket service</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">local</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_bucket</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provider</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aws_session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Construct a new braket backend.</p>
+<p>If <cite>local=True</cite>, other parameters are ignored.</p>
+<p>All parameters except <cite>device</cite> can be set in config using
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">pytket.extensions.braket.set_braket_config()</span></code>.
+For <cite>device_type</cite>, <cite>provider</cite> and <cite>device</cite> if no parameter
+is specified as a keyword argument or
+in the config file the defaults specified below are used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>local</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span>) – use simulator running on local machine,
+default: False</p></li>
+<li><p><strong>local_device</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span>) – name of local device (ignored if local=False) – e.g.
+“braket_sv” (default) or “braket_dm”.</p></li>
+<li><p><strong>device</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span>) – device name from device ARN (e.g. “ionQdevice”, “Aspen-8”, …),
+default: “sv1”</p></li>
+<li><p><strong>region</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span>) – region from device ARN, default: “”</p></li>
+<li><p><strong>s3_bucket</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span>) – name of S3 bucket to store results</p></li>
+<li><p><strong>s3_folder</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span>) – name of folder (“key”) in S3 bucket to store results in</p></li>
+<li><p><strong>device_type</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span>) – device type from device ARN (e.g. “qpu”),
+default: “quantum-simulator”</p></li>
+<li><p><strong>provider</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span>) – provider name from device ARN (e.g. “ionq”, “rigetti”, …),
+default: “amazon”</p></li>
+<li><p><strong>aws_session</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">AwsSession</span></code>]</span>) – braket AwsSession object, to pass credentials in if not
+configured on local machine</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.available_devices">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">available_devices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.available_devices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.available_devices" title="Link to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.available_devices" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pytket.backends.Backend.available_devices()</span></code></a>.
+Supported kwargs:
+:rtype: <span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.backendinfo.BackendInfo" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendInfo</span></code></a>]</span></p>
+<ul class="simple">
+<li><p><cite>region</cite> (default None). The particular AWS region to search for
+devices (e.g. us-east-1). Default to the region configured with AWS.
+See the Braket docs for more details.</p></li>
+<li><p><cite>aws_session</cite> (default None). The credentials of the provided session
+will be used to create a new session with the specified region. Otherwise,
+a default new session will be created</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.cancel">
+<span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.cancel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.cancel" title="Link to this definition">¶</a></dt>
+<dd><p>Cancel a job.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<em>ResultHandle</em>) – handle to job</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.13)"><strong>NotImplementedError</strong></a> – If backend does not support job cancellation</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.circuit_status">
+<span class="sig-name descname"><span class="pre">circuit_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.circuit_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.circuit_status" title="Link to this definition">¶</a></dt>
+<dd><p>Return a CircuitStatus reporting the status of the circuit execution
+corresponding to the ResultHandle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.status.CircuitStatus" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CircuitStatus</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.default_compilation_pass">
+<span class="sig-name descname"><span class="pre">default_compilation_pass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimisation_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.default_compilation_pass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.default_compilation_pass" title="Link to this definition">¶</a></dt>
+<dd><p>A suggested compilation pass that will will, if possible, produce an equivalent
+circuit suitable for running on this backend.</p>
+<p>At a minimum it will ensure that compatible gates are used and that all two-
+qubit interactions are compatible with the backend’s qubit architecture. At
+higher optimisation levels, further optimisations may be applied.</p>
+<p>This is a an abstract method which is implemented in the backend itself, and so
+is tailored to the backend’s requirements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>optimisation_level</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – <p>The level of optimisation to perform during
+compilation.</p>
+<ul class="simple">
+<li><p>Level 0 does the minimum required to solves the device constraints,
+without any optimisation.</p></li>
+<li><p>Level 1 additionally performs some light optimisations.</p></li>
+<li><p>Level 2 (the default) adds more computationally intensive optimisations
+that should give the best results from execution.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Compilation pass guaranteeing required predicates.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BasePass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.get_amplitudes">
+<span class="sig-name descname"><span class="pre">get_amplitudes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.get_amplitudes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.get_amplitudes" title="Link to this definition">¶</a></dt>
+<dd><p>Compute the complex coefficients of the final state.</p>
+<p>Supported <cite>kwargs</cite> are as for <cite>BraketBackend.process_circuits</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>states</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span>) – classical states of interest, as binary strings of ‘0’ and ‘1’</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>final complex amplitudes if initial state is all-zeros</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.get_operator_expectation_value">
+<span class="sig-name descname"><span class="pre">get_operator_expectation_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_shots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.get_operator_expectation_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.get_operator_expectation_value" title="Link to this definition">¶</a></dt>
+<dd><p>Compute the (exact or empirical) expectation of the observed eigenvalues.</p>
+<p>See <cite>pytket.expectations.get_operator_expectation_value</cite>.</p>
+<p>If <cite>n_shots &gt; 0</cite> the probabilities are calculated empirically by measurements.
+If <cite>n_shots = 0</cite> (if supported) they are calculated exactly by simulation.</p>
+<p>Supported <cite>kwargs</cite> are as for <cite>BraketBackend.get_pauli_expectation_value</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float64</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.get_operator_variance">
+<span class="sig-name descname"><span class="pre">get_operator_variance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_shots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.get_operator_variance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.get_operator_variance" title="Link to this definition">¶</a></dt>
+<dd><p>Compute the (exact or empirical) variance of the observed eigenvalues.</p>
+<p>See <cite>pytket.expectations.get_operator_expectation_value</cite>.</p>
+<p>If <cite>n_shots &gt; 0</cite> the probabilities are calculated empirically by measurements.
+If <cite>n_shots = 0</cite> (if supported) they are calculated exactly by simulation.</p>
+<p>Supported <cite>kwargs</cite> are as for <cite>BraketBackend.get_pauli_expectation_value</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float64</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.get_pauli_expectation_value">
+<span class="sig-name descname"><span class="pre">get_pauli_expectation_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pauli</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_shots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.get_pauli_expectation_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.get_pauli_expectation_value" title="Link to this definition">¶</a></dt>
+<dd><p>Compute the (exact or empirical) expectation of the observed eigenvalues.</p>
+<p>See <cite>pytket.expectations.get_pauli_expectation_value</cite>.</p>
+<p>If <cite>n_shots &gt; 0</cite> the probabilities are calculated empirically by measurements.
+If <cite>n_shots = 0</cite> (if supported) they are calculated exactly by simulation.</p>
+<p>Supported <cite>kwargs</cite> (not valid for local simulator):
+:rtype: <span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float64</span></code></span></p>
+<ul class="simple">
+<li><p><cite>poll_timeout_seconds</cite> (int) : Polling timeout for synchronous retrieval of
+result, in seconds (default: 5 days).</p></li>
+<li><p><cite>poll_interval_seconds</cite> (int) : Polling interval for synchronous retrieval of
+result, in seconds (default: 1 second).</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.get_pauli_variance">
+<span class="sig-name descname"><span class="pre">get_pauli_variance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pauli</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_shots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.get_pauli_variance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.get_pauli_variance" title="Link to this definition">¶</a></dt>
+<dd><p>Compute the (exact or empirical) variance of the observed eigenvalues.</p>
+<p>See <cite>pytket.expectations.get_pauli_expectation_value</cite>.</p>
+<p>If <cite>n_shots &gt; 0</cite> the probabilities are calculated empirically by measurements.
+If <cite>n_shots = 0</cite> (if supported) they are calculated exactly by simulation.</p>
+<p>Supported <cite>kwargs</cite> are as for <cite>BraketBackend.get_pauli_expectation_value</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float64</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.get_probabilities">
+<span class="sig-name descname"><span class="pre">get_probabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_shots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.get_probabilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.get_probabilities" title="Link to this definition">¶</a></dt>
+<dd><p>Compute the (exact or empirical) probability distribution of outcomes.</p>
+<p>If <cite>n_shots &gt; 0</cite> the probabilities are calculated empirically by measurements.
+If <cite>n_shots = 0</cite> (if supported) they are calculated exactly by simulation.</p>
+<p>Supported <cite>kwargs</cite> are as for <cite>BraketBackend.process_circuits</cite>.</p>
+<p>The order is big-endian with respect to the order of qubits in the argument.
+For example, if qubits=[0,1] then the order of probabilities is [p(0,0), p(0,1),
+p(1,0), p(1,1)], while if qubits=[1,0] the order is [p(0,0), p(1,0), p(0,1),
+p(1,1)], where p(i,j) is the probability of qubit 0 being in state i and qubit 1
+being in state j.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>qubits</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]]</span>) – qubits of interest</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of probabilities of outcomes if initial state is all-zeros</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.get_result">
+<span class="sig-name descname"><span class="pre">get_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.get_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.get_result" title="Link to this definition">¶</a></dt>
+<dd><p>See <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.get_result" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pytket.backends.Backend.get_result()</span></code></a>.
+Supported kwargs: <cite>timeout</cite> (default none), <cite>wait</cite> (default 1s).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.backendresult.BackendResult" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendResult</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.process_circuits">
+<span class="sig-name descname"><span class="pre">process_circuits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_shots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.process_circuits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.process_circuits" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.resulthandle.ResultHandle" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultHandle</span></code></a>]</span></p>
+</dd>
+</dl>
+<p>Supported <cite>kwargs</cite>:
+- <cite>postprocess</cite>: apply end-of-circuit simplifications and classical</p>
+<blockquote>
+<div><p>postprocessing to improve fidelity of results (bool, default False)</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><cite>simplify_initial</cite>: apply the pytket <code class="docutils literal notranslate"><span class="pre">SimplifyInitial</span></code> pass to improve
+fidelity of results assuming all qubits initialized to zero (bool, default
+False)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.rebase_pass">
+<span class="sig-name descname"><span class="pre">rebase_pass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/braket.html#BraketBackend.rebase_pass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.rebase_pass" title="Link to this definition">¶</a></dt>
+<dd><p>A single compilation pass that when run converts all gates in a Circuit to
+an OpType supported by the Backend (ignoring architecture constraints).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Compilation pass that converts gates to primitives supported by
+Backend.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>BasePass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.backend_info">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backend_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.backendinfo.BackendInfo" title="(in Project name not set)"><span class="pre">BackendInfo</span></a></em><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.backend_info" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve all Backend properties in a BackendInfo object, including
+device architecture, supported gate set, gate errors and other hardware-specific
+information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The BackendInfo describing this backend if it exists.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[BackendInfo]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.required_predicates">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">required_predicates</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/predicates.html#pytket.predicates.Predicate" title="(in Project name not set)"><span class="pre">Predicate</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.required_predicates" title="Link to this definition">¶</a></dt>
+<dd><p>The minimum set of predicates that a circuit must satisfy before it can
+be successfully run on this backend.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Required predicates.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[Predicate]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.supports_amplitude">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">supports_amplitude</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.supports_amplitude" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the backend support calculation of final state amplitudes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.supports_probability">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">supports_probability</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.supports_probability" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the backend support calculation of outcome probabilities</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pytket.extensions.braket.BraketBackend.supports_variance">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">supports_variance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pytket.extensions.braket.BraketBackend.supports_variance" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the backend support calculation of operator variance</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-pytket.extensions.braket.backends.config">
+<dt class="sig sig-object py" id="pytket.extensions.braket.backends.config.BraketConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytket.extensions.braket.backends.config.</span></span><span class="sig-name descname"><span class="pre">BraketConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s3_bucket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provider</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/config.html#BraketConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.backends.config.BraketConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Holds config parameters for pytket-braket.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.extensions.braket.backends.config.BraketConfig.from_extension_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_extension_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/config.html#BraketConfig.from_extension_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.backends.config.BraketConfig.from_extension_dict" title="Link to this definition">¶</a></dt>
+<dd><p>Abstract method to build PytketExtConfig from dictionary serialized form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#pytket.extensions.braket.backends.config.BraketConfig" title="pytket.extensions.braket.backends.config.BraketConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BraketConfig</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pytket.extensions.braket.backends.config.set_braket_config">
+<span class="sig-prename descclassname"><span class="pre">pytket.extensions.braket.backends.config.</span></span><span class="sig-name descname"><span class="pre">set_braket_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s3_bucket</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provider</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/backends/config.html#set_braket_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.backends.config.set_braket_config" title="Link to this definition">¶</a></dt>
+<dd><p>Set default values for any of s3_bucket, s3_folder, device_type or provider
+for AWS Braket. Can be overridden in backend construction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-pytket.extensions.braket.braket_convert">Conversion from tket to braket</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pytket.extensions.braket.braket_convert.braket_to_tk">
+<span class="sig-prename descclassname"><span class="pre">pytket.extensions.braket.braket_convert.</span></span><span class="sig-name descname"><span class="pre">braket_to_tk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bkcirc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/braket_convert.html#braket_to_tk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.braket_convert.braket_to_tk" title="Link to this definition">¶</a></dt>
+<dd><p>Convert a braket circuit to a tket <code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bkcirc</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></span>) – circuit to be converted</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>circuit converted to tket</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pytket.extensions.braket.braket_convert.tk_to_braket">
+<span class="sig-prename descclassname"><span class="pre">pytket.extensions.braket.braket_convert.</span></span><span class="sig-name descname"><span class="pre">tk_to_braket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tkcirc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapped_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forced_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_ops_on_target_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/braket/braket_convert.html#tk_to_braket"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.braket.braket_convert.tk_to_braket" title="Link to this definition">¶</a></dt>
+<dd><p>Convert a tket <code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code> to a braket circuit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tkcirc</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a></span>) – circuit to be converted</p></li>
+<li><p><strong>mapped_qubits</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span>) – if True, <cite>tkcirc</cite> must have a single one-dimensional qubit
+register; the indices of the qubits in that register correspond directly to the
+qubit identifiers in the braket circuit</p></li>
+<li><p><strong>forced_qubits</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]]</span>) – optional list of braket qubit identifiers to include in the
+converted circuit even if they are unused</p></li>
+<li><p><strong>force_ops_on_target_qubits</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span>) – if True, add no-ops to all target qubits</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>circuit converted to braket; list of braket qubit ids corresponding in
+order of corresponding positions in tkcirc.qubits; (partial) map from braket
+qubit ids to corresponding pytket bit indices holding measurement results</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="changelog.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Changelog</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+              Copyright &#169; 2024 Quantinuum Ltd. All rights reserved.
+            </div>
+            <div class="terms" style="display:flex; gap:0.5rem; align-items:center; margin: 0.25rem 0rem;">
+              <a href="https://www.quantinuum.com/privacy-statement" target="_blank">Privacy Statement</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/cookie-notice" target="_blank">Cookie Notice</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/terms-conditions" target="_blank">Terms and Conditions</a>
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">API documentation</a><ul>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend"><code class="docutils literal notranslate"><span class="pre">BraketBackend</span></code></a><ul>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.__init__"><code class="docutils literal notranslate"><span class="pre">BraketBackend.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.available_devices"><code class="docutils literal notranslate"><span class="pre">BraketBackend.available_devices()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.cancel"><code class="docutils literal notranslate"><span class="pre">BraketBackend.cancel()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.circuit_status"><code class="docutils literal notranslate"><span class="pre">BraketBackend.circuit_status()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.default_compilation_pass"><code class="docutils literal notranslate"><span class="pre">BraketBackend.default_compilation_pass()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.get_amplitudes"><code class="docutils literal notranslate"><span class="pre">BraketBackend.get_amplitudes()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.get_operator_expectation_value"><code class="docutils literal notranslate"><span class="pre">BraketBackend.get_operator_expectation_value()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.get_operator_variance"><code class="docutils literal notranslate"><span class="pre">BraketBackend.get_operator_variance()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.get_pauli_expectation_value"><code class="docutils literal notranslate"><span class="pre">BraketBackend.get_pauli_expectation_value()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.get_pauli_variance"><code class="docutils literal notranslate"><span class="pre">BraketBackend.get_pauli_variance()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.get_probabilities"><code class="docutils literal notranslate"><span class="pre">BraketBackend.get_probabilities()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.get_result"><code class="docutils literal notranslate"><span class="pre">BraketBackend.get_result()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.process_circuits"><code class="docutils literal notranslate"><span class="pre">BraketBackend.process_circuits()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.rebase_pass"><code class="docutils literal notranslate"><span class="pre">BraketBackend.rebase_pass()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.backend_info"><code class="docutils literal notranslate"><span class="pre">BraketBackend.backend_info</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.required_predicates"><code class="docutils literal notranslate"><span class="pre">BraketBackend.required_predicates</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.supports_amplitude"><code class="docutils literal notranslate"><span class="pre">BraketBackend.supports_amplitude</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.supports_probability"><code class="docutils literal notranslate"><span class="pre">BraketBackend.supports_probability</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.BraketBackend.supports_variance"><code class="docutils literal notranslate"><span class="pre">BraketBackend.supports_variance</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pytket.extensions.braket.backends.config.BraketConfig"><code class="docutils literal notranslate"><span class="pre">BraketConfig</span></code></a><ul>
+<li><a class="reference internal" href="#pytket.extensions.braket.backends.config.BraketConfig.from_extension_dict"><code class="docutils literal notranslate"><span class="pre">BraketConfig.from_extension_dict()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pytket.extensions.braket.backends.config.set_braket_config"><code class="docutils literal notranslate"><span class="pre">set_braket_config()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.braket_convert.braket_to_tk"><code class="docutils literal notranslate"><span class="pre">braket_to_tk()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.extensions.braket.braket_convert.tk_to_braket"><code class="docutils literal notranslate"><span class="pre">tk_to_braket()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

@@ -1,0 +1,1312 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPQ1FTGDL3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YPQ1FTGDL3');
+    </script>
+    <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Bibliography" href="bibliography.html" /><link rel="prev" title="inquanto-cutensornet" href="../api/extensions/inquanto-cutensornet_api.html" />
+
+    <link rel="shortcut icon" href="../_static/quantinuum_favicon.svg"/><!-- Generated with Sphinx 6.2.1 and Furo 2024.08.06 -->
+        <title>Release Notes - InQuanto 4.1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=04c057b233f3c8d71940eee6080f658a04e2027d" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=cf727022eb7470bc603c08d2e55c3247faec75c9" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+<link rel="stylesheet" href="../_static/tokens.css"/>
+<link rel="stylesheet" href="../_static/styles.css"/>
+<link rel="stylesheet" href="../_static/tailwind.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="preload"
+as="style">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>  
+  .sidebar-sticky {
+    top: calc(3.5rem - 0px);
+    height: calc(100vh - 3.5rem);
+  }
+  
+  @media (min-width: 97em) {
+    html {
+      font-size: 100% !important;
+    }
+  }
+  
+</style>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+<!-- <script type="text/javascript" src="../_static/syncTheme.global.js" ></script> -->
+ <!--Force light mode -->
+ <script>document.body.setAttribute('data-theme','light')</script>
+<nav style="position:fixed;top:0;z-index:1021;width:100%;">
+    <div class="nexus-nav"></div>
+</nav>
+<script type="text/javascript" src="../_static/injectNav.global.js"></script>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">InQuanto 4.1.0</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/inquanto_short_logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">InQuanto 4.1.0</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/overview.html">What is InQuanto?</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/installation.html">Installation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Installation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/quickstart.html">Quick-start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../manual/howto.html">How to use InQuanto</a></li>
+</ul>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../manual/algorithms_overview.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../manual/algorithms/variational_overview.html">Variational Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Variational Algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/algorithms_vqe.html">Variational Quantum Eigensolver <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmVQE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/algorithms_vqd.html">Variational Quantum Deflation <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmVQD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/algorithms_adapt.html">ADAPT-VQE</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../manual/algorithms/non_variational_overview.html">Non-variational and Phase Estimation algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Non-variational and Phase Estimation algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/algorithms_qse.html">Quantum Subspace Expansion <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmQSE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/algorithms_sceom.html">Quantum Self Consistent Equation of Motion <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmSCEOM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/qpe_canonical.html">Canonical Quantum Phase Estimation <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmDeterministicQPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/qpe_iterative.html">Iterative Phase Estimation Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../manual/algorithms/time_evolution_overview.html">Time evolution algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Time evolution algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/te_vqs.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmVQS</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmMcLachlanRealTime</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmMcLachlanImagTime</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../manual/computables_overview.html">Computables</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Computables</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../manual/computables/basic_usage.html">Basic Usage and Composability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/computables/evaluating_w_protocols.html">Evaluating Computables with Protocols</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../manual/computables/composite_computables.html">Composite Computables</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Composite Computables</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/computables/greens_function.html">Krylov subspace &amp; Green’s functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/computables/rdms.html">Reduced Density Matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/computables/overlap_matrix.html">Overlap Matrices &amp; Non-Orthogonal Subspaces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/computables/primitives.html">Primitive Computables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/computables/custom_computables.html">Custom Computables &amp; Partial Evaluations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../manual/protocols_overview.html">Protocols</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Protocols</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/expval.html">Protocols for expectation values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/overlap_squared.html">Protocols for overlap squared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/overlap.html">Protocols for overlaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/derivative.html">Protocols for derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/other.html">Other averaging protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/phase_est.html">Protocols for Phase Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/resource_estimation.html">Resource estimation</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../manual/errmit.html">Noise mitigation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/spaces.html">Spaces, Operators, and States</a></li>
+</ul>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../manual/ansatzae_overview.html">Ansatzes</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Ansatzes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/ucc_family.html">The UCC Family</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/chemically_aware.html">Chemically Aware Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/trotter_ansatz.html">Trotter Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/fermion_state_exp.html">Fermionic Exponentiated Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/circuit_ansatz.html">Circuit Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/composed_ansatz.html">Composed Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/hea.html">Hardware Efficient Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/multi_configurational.html">Multiconfiguration States Using Givens Rotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/basis_rotation.html">Real Basis Rotation Ansatzes</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../manual/symmetry.html">Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/geometry.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/minimizers.html">Classical Minimizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/dmet.html">Density Matrix Embedding Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/express.html">Express</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials &amp; Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial_overview.html">Tutorials</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/tutorial_overview.html#core-tutorials">Core Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Core Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_tut_vqe_1.html">A basic VQE simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_tut_vqe_2.html">Extended VQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_tut_vqd.html">Variational Quantum Deflation for excited states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_tut_viz.html">Visualization with inquanto-nglview</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/tutorial_overview.html#backend-tutorials">Backend Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Backend Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_tut_Nexus_1.html"><b>Tutorial: InQuanto + qnexus</b></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_htut_Aer_H2.html">Running on the Aer simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_htut_Hser_H2.html">Running on Quantinuum H-Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_htut_Hser_l%2Br.html">Quantinuum H-Series -  Launching circuits and retrieving results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_htut_Hser_qse.html">Quantinuum H-Series -  Quantum Subspace Expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/quantinuum_hardware.html">Quantinuum H-Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/setup_ibm.html">IBMQ Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/tutorial_overview.html#case-study-tutorials-fe4n2">Case Study Tutorials - Fe4N2</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of Case Study Tutorials - Fe4N2</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_tut_fe4n2_1.html">Fe4N2 - 1 - system construction with AVAS and CASSCF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_tut_fe4n2_2.html">Fe4N2 - 2 - circuit construction with ADAPT-VQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_tut_fe4n2_3.html">Fe4N2 - 3 - calculations on the H-series</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/tutorial_overview.html#fragmentation-tutorials">Fragmentation Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Fragmentation Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_tut_dmet.html">Tackling larger systems with fragmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_tut_wft_dft.html">Projection-based embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_tut_nevpt2_AC0.html">NEVPT2 and AC0 energy corrections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/InQ_tut_wft_dft_2.html">Projection-based embedding with energy corrections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/examples_overview.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/extensions-overview.html">Extensions overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/inquanto-nexus.html">InQuanto-Nexus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/inquanto-pyscf.html">InQuanto-PySCF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/inquanto-nglview.html">InQuanto-NGLView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/inquanto-phayes.html">InQuanto-Phayes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/extensions_examples.html">Extensions examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/inquanto_api_intro.html">InQuanto</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of InQuanto</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/algorithms.html">inquanto.algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/ansatz.html">inquanto.ansatzes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/computables.html">inquanto.computables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/core.html">inquanto.core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/embeddings.html">inquanto.embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/express.html">inquanto.express</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/geometry.html">inquanto.geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/mappings.html">inquanto.mappings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/minimizers.html">inquanto.minimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/operators.html">inquanto.operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/protocols.html">inquanto.protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/spaces.html">inquanto.spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/states.html">inquanto.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/symmetry.html">inquanto.symmetry</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/inquanto-ext_api_intro.html">InQuanto-Extensions</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of InQuanto-Extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/extensions/inquanto-nexus_api.html">InQuanto-Nexus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/extensions/inquanto-pyscf_api.html">InQuanto-PySCF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/extensions/inquanto-nglview_api.html">InQuanto-NGLView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/extensions/inquanto-phayes.html">InQuanto-Phayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/extensions/inquanto-cutensornet_api.html">InQuanto-cuTensorNet</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">How to cite InQuanto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">License and Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opensource.html">Open-source Attribution</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="release-notes">
+<h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this heading">¶</a></h1>
+<section id="inquanto-4-1-0">
+<h2>InQuanto 4.1.0<a class="headerlink" href="#inquanto-4-1-0" title="Permalink to this heading">¶</a></h2>
+<p><em>17 December 2024</em></p>
+<ul class="simple">
+<li><p>Added preoptimize_passes to <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.SparseStatevectorProtocol" title="inquanto.protocols.SparseStatevectorProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">SparseStatevectorProtocol</span></code></a> to address ansatz inconsistencies from v4 refactor.</p></li>
+<li><p>Fix for <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.PMSV" title="inquanto.protocols.PMSV"><code class="xref py py-class docutils literal notranslate"><span class="pre">PMSV</span></code></a> due to changes in tket’s opgroup labelling.</p></li>
+</ul>
+</section>
+<section id="inquanto-4-0-1">
+<h2>InQuanto 4.0.1<a class="headerlink" href="#inquanto-4-0-1" title="Permalink to this heading">¶</a></h2>
+<p><em>28 November 2024</em></p>
+<ul class="simple">
+<li><p>Improved statevector caching performance.</p></li>
+</ul>
+</section>
+<section id="inquanto-4-0-0">
+<h2>InQuanto 4.0.0<a class="headerlink" href="#inquanto-4-0-0" title="Permalink to this heading">¶</a></h2>
+<p><em>19 November 2024</em></p>
+<ul class="simple">
+<li><p><strong>General changes</strong></p>
+<ul>
+<li><p>InQuanto API is now standardiZed to use American English spelling (optimiZe, diagonaliZe, etc.).</p></li>
+<li><p>[<code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolDict</span></code>] and [<code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolSet</span></code>] have been replaced with Python dictionaries. This is most noticeable in ansatz and protocols, for example <code class="code docutils literal notranslate"><span class="pre">to_dict</span></code> and <code class="code docutils literal notranslate"><span class="pre">from_dict</span></code> methods have been removed.</p></li>
+<li><p>Two new extensions: inquanto-nexus and inquanto-cutensornet</p></li>
+<li><p>InQuanto now supports Numpy v2+, along with other related dependency updates.</p></li>
+<li><p>Default numerical tolerances are now defined only in <code class="code docutils literal notranslate"><span class="pre">core</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Protocols</strong> have had a major refactor to enable better interaction with circuit compilation using <a class="reference external" href="https://docs.quantinuum.com/tket/user-guide/examples/circuit_compilation/compilation_example.html">tket passes</a>. See e.g. <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.PauliAveraging.compile_circuits" title="inquanto.protocols.PauliAveraging.compile_circuits"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compile_circuits()</span></code></a> and the <a class="reference internal" href="../manual/protocols_overview.html#protocol-usage"><span class="std std-ref">protocols manual</span></a>.</p>
+<ul>
+<li><p>Circuit protocols must now explicitly be compiled. Therefore the circuit protocol workflow involves: instancing, building, compiling, running, and evaluation.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">build</span></code> methods now creates the set of uncompiled measurement circuits.</p></li>
+<li><p>We recommend <code class="code docutils literal notranslate"><span class="pre">compile_circuits</span></code> as the only place to apply circuit compression, and therefore some implicit pytket passes which were applied in (e.g.) ansatz construction are now carried to the protocol as <code class="code docutils literal notranslate"><span class="pre">preoptimize_passes</span></code></p></li>
+<li><p>Because of the above, state circuits contained in ansatz classes may contain <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/passes.html#pytket._tket.passes.DecomposeBoxes">undecomposed circuit boxes</a>.  Therefore, certain metrics of the ansatz (such as from using ansatz.state_circuit.n_2qb_gates) may not accurately reflect the final circuits in the protocol.</p></li>
+<li><p>SPAM <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.SPAM.calibrate" title="inquanto.protocols.SPAM.calibrate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">calibrate()</span></code></a> method now has an option to be performed asynchronously, to manage job delivery.</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.HadamardTestDerivative" title="inquanto.protocols.HadamardTestDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">HadamardTestDerivative</span></code></a> has been refactored for easier computation of real, imaginary, or complex components.</p></li>
+<li><p>Statevector protocols have been refactored to generalize for tensor network based protocols. Use of hashing has been made more efficient.</p></li>
+<li><p>Modified protocols to allow Quantinuum Nexus client instances through the inquanto-nexus extension.</p></li>
+</ul>
+</li>
+<li><p><strong>Operators</strong></p>
+<ul>
+<li><p>Operator mappings are now performed using C++ routines.</p></li>
+<li><p>Added <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.FCIDumpRestricted" title="inquanto.operators.FCIDumpRestricted"><code class="xref py py-class docutils literal notranslate"><span class="pre">FCIDumpRestricted</span></code></a> and <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.FCIDumpUnrestricted" title="inquanto.operators.FCIDumpUnrestricted"><code class="xref py py-class docutils literal notranslate"><span class="pre">FCIDumpUnrestricted</span></code></a> for importing systems from other chemistry codes.</p></li>
+<li><p>Double factorization classes have been refactored.</p>
+<ul>
+<li><p>Added double factorization for unrestricted-spin systems (see double_factorization_h3.py in examples) <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.ChemistryRestrictedIntegralOperator.double_factorize" title="inquanto.operators.ChemistryRestrictedIntegralOperator.double_factorize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">double_factorize()</span></code></a>.</p></li>
+<li><p>Added ‘core tensor’ method for double factorization <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.XDFCoreTensor" title="inquanto.operators.XDFCoreTensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">XDFCoreTensor</span></code></a></p></li>
+</ul>
+</li>
+<li><p>InQuanto’s <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperator" title="inquanto.operators.QubitOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperator</span></code></a> has been fully separated from pytket’s QubitPauliOperator (see: <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/utils.html#pytket.utils.QubitPauliOperator">pytket docs</a>).</p></li>
+</ul>
+</li>
+<li><p><strong>Ansatzes</strong></p>
+<ul>
+<li><p>Added <a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.CircuitAnsatz.unsympify" title="inquanto.ansatzes.CircuitAnsatz.unsympify"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unsympify()</span></code></a> to convert from sympy to floats to avoid symbolic circuit submission. For example it will replace instances of sympy.pi with float(3.14..).</p></li>
+<li><p>Improved performance of ansatz hashing and comparison operations.</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.TrotterAnsatz.to_QubitState" title="inquanto.ansatzes.TrotterAnsatz.to_QubitState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_QubitState()</span></code></a> uses efficient implementation by default.</p></li>
+<li><p>State circuits contained in ansatz classes may now contain <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/passes.html#pytket._tket.passes.DecomposeBoxes">undecomposed circuit boxes</a>.</p></li>
+<li><p>As such, approximate state resource estimation should be performed with <a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.GeneralAnsatz.circuit_resources" title="inquanto.ansatzes.GeneralAnsatz.circuit_resources"><code class="xref py py-meth docutils literal notranslate"><span class="pre">circuit_resources()</span></code></a></p></li>
+<li><p>SHSV problem is solved.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="inquanto-pyscf-2-0-0">
+<h2>InQuanto-PySCF 2.0.0<a class="headerlink" href="#inquanto-pyscf-2-0-0" title="Permalink to this heading">¶</a></h2>
+<p><em>19 November 2024</em></p>
+<ul class="simple">
+<li><p>[<code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolDict</span></code>] and [<code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolSet</span></code>] have been replaced with Python dictionaries.</p></li>
+<li><p>API is now standardiZed to use American English spellings of words.</p></li>
+<li><p>Added an example for computing oscillator strengths between VQE ground states and VQD excited states.</p></li>
+<li><p>Performance improvements through better use of numpy.einsum and in-memory pyscf ao2mo usage.</p></li>
+</ul>
+</section>
+<section id="inquanto-nglview-0-8-0">
+<h2>InQuanto-NGLView 0.8.0<a class="headerlink" href="#inquanto-nglview-0-8-0" title="Permalink to this heading">¶</a></h2>
+<p><em>19 November 2024</em></p>
+<ul class="simple">
+<li><p>API is now standardiZed to use American English spelling.</p></li>
+<li><p>Update <cite>pint</cite> version dependency due to <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> compatibility.</p></li>
+</ul>
+</section>
+<section id="inquanto-phayes-0-3-0">
+<h2>InQuanto-Phayes 0.3.0<a class="headerlink" href="#inquanto-phayes-0-3-0" title="Permalink to this heading">¶</a></h2>
+<p><em>19 November 2024</em></p>
+<ul class="simple">
+<li><p>Align dependencies with other packages.</p></li>
+</ul>
+</section>
+<section id="inquanto-nexus-0-1-0">
+<h2>InQuanto-Nexus 0.1.0<a class="headerlink" href="#inquanto-nexus-0-1-0" title="Permalink to this heading">¶</a></h2>
+<p><em>19 November 2024</em></p>
+<ul class="simple">
+<li><p>Added support for the Quantinuum Nexus client for storing and managing projects, and compilation and execution jobs.</p>
+<ul>
+<li><p>See documentation on Nexus usage  (see: <a class="reference internal" href="../extensions/inquanto-nexus.html#iqnexus"><span class="std std-ref">InQuanto-Nexus</span></a> and <a class="reference external" href="https://docs.quantinuum.com/nexus/">Quantinuum nexus</a> ).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="inquanto-cutensornet-0-0-0">
+<h2>InQuanto-cuTensorNet 0.0.0<a class="headerlink" href="#inquanto-cutensornet-0-0-0" title="Permalink to this heading">¶</a></h2>
+<p><em>19 November 2024</em></p>
+<ul class="simple">
+<li><p>Created <a class="reference internal" href="../api/extensions/inquanto-cutensornet_api.html#inquanto.extensions.cutensornet.CuTensorNetProtocol" title="inquanto.extensions.cutensornet.CuTensorNetProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">CuTensorNetProtocol</span></code></a> for performing state-vector and shot emulation using the <a class="reference external" href="https://github.com/CQCL/pytket-cutensornet">pytket-cutensornet</a> backend.</p></li>
+<li><p>See <a class="reference external" href="../extensions/extensions_examples.html#inquanto-cutensornet-algorithms">examples</a>.</p></li>
+</ul>
+</section>
+<section id="inquanto-3-7-0">
+<h2>InQuanto 3.7.0<a class="headerlink" href="#inquanto-3-7-0" title="Permalink to this heading">¶</a></h2>
+<p><em>22 October 2024</em></p>
+<ul class="simple">
+<li><p>Added asynchronous calibration to <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.SPAM" title="inquanto.protocols.SPAM"><code class="xref py py-class docutils literal notranslate"><span class="pre">SPAM</span></code></a> so hardware delivery is controllable</p></li>
+<li><p>Licensing modified for improved Quantinuum Nexus usage</p></li>
+</ul>
+</section>
+<section id="inquanto-3-6-1">
+<h2>InQuanto 3.6.1<a class="headerlink" href="#inquanto-3-6-1" title="Permalink to this heading">¶</a></h2>
+<p><em>3 September 2024</em></p>
+<ul class="simple">
+<li><p>Add <a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.QCM4Computable" title="inquanto.computables.composite.QCM4Computable"><code class="xref py py-class docutils literal notranslate"><span class="pre">QCM4Computable</span></code></a> computable for quantum computed moments up to the 4th order</p></li>
+<li><p>Make remaining protocol classes compatible with <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.ProtocolList" title="inquanto.protocols.ProtocolList"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolList</span></code></a> by adding <code class="xref py py-meth docutils literal notranslate"><span class="pre">build_protocols_from()</span></code> method definitions</p></li>
+<li><p>New examples for the factorized overlap protocol classes (e.g. <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.FactorizedOverlap" title="inquanto.protocols.FactorizedOverlap"><code class="xref py py-class docutils literal notranslate"><span class="pre">FactorizedOverlap</span></code></a>) with comparisons to <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.HadamardTestOverlap" title="inquanto.protocols.HadamardTestOverlap"><code class="xref py py-class docutils literal notranslate"><span class="pre">HadamardTestOverlap</span></code></a></p></li>
+<li><p>Improve the information given in the dataframe outputted by protocols using the <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.PauliAveraging.dataframe_circuit_shot" title="inquanto.protocols.PauliAveraging.dataframe_circuit_shot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dataframe_circuit_shot()</span></code></a> function</p></li>
+<li><p>Add <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperatorString.to_QubitPauliString" title="inquanto.operators.QubitOperatorString.to_QubitPauliString"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_QubitPauliString()</span></code></a>, <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperatorString.from_QubitPauliString" title="inquanto.operators.QubitOperatorString.from_QubitPauliString"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_QubitPauliString()</span></code></a> methods to <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperatorString" title="inquanto.operators.QubitOperatorString"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperatorString</span></code></a> class, and <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperator.to_QubitPauliOperator" title="inquanto.operators.QubitOperator.to_QubitPauliOperator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_QubitPauliOperator()</span></code></a>, and <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperator.from_QubitPauliOperator" title="inquanto.operators.QubitOperator.from_QubitPauliOperator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_QubitPauliOperator()</span></code></a> methods to the <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperator" title="inquanto.operators.QubitOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperator</span></code></a> class to allow the conversion of <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperator" title="inquanto.operators.QubitOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperator</span></code></a> to/from the pytket accessible <code class="code docutils literal notranslate"><span class="pre">pytket.utils.QubitPauliOperator</span></code></p></li>
+<li><p>Add <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperator.all_nontrivial_qubits" title="inquanto.operators.QubitOperator.all_nontrivial_qubits"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all_nontrivial_qubits()</span></code></a> property to <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperator" title="inquanto.operators.QubitOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperator</span></code></a>, <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperatorString" title="inquanto.operators.QubitOperatorString"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperatorString</span></code></a>, and <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperatorList" title="inquanto.operators.QubitOperatorList"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperatorList</span></code></a> classes</p></li>
+<li><p>InQuanto now throws a warning when there are dependency conflicts or required upgrades</p></li>
+<li><p>Ensured calls to <code class="code docutils literal notranslate"><span class="pre">numpy.einsum</span></code> correctly scale via optimize keyword argument</p></li>
+<li><p>Make InQuanto installable with poetry</p></li>
+<li><p>Bug fixes:</p>
+<ul>
+<li><p>Fixed <a class="reference internal" href="../api/inquanto/geometry.html#inquanto.geometries.GeometryMolecular.load_xyz" title="inquanto.geometries.GeometryMolecular.load_xyz"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_xyz()</span></code></a> defaulting to Geometry base class when called</p></li>
+<li><p>Fix bug where integer type parameters could cause unwarranted rounding of non-integer quantities giving incorrect results</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="inquanto-3-5-8">
+<h2>InQuanto 3.5.8<a class="headerlink" href="#inquanto-3-5-8" title="Permalink to this heading">¶</a></h2>
+<p><em>23 August 2024</em></p>
+<ul class="simple">
+<li><p>Hotfix release latest pytket version</p></li>
+</ul>
+</section>
+<section id="inquanto-3-5-7">
+<h2>InQuanto 3.5.7<a class="headerlink" href="#inquanto-3-5-7" title="Permalink to this heading">¶</a></h2>
+<p><em>2 August 2024</em></p>
+<ul class="simple">
+<li><p>Hotfix pytket v1.31 dependency issues</p></li>
+</ul>
+</section>
+<section id="inquanto-3-5-6">
+<h2>InQuanto 3.5.6<a class="headerlink" href="#inquanto-3-5-6" title="Permalink to this heading">¶</a></h2>
+<p><em>10 July 2024</em></p>
+<ul class="simple">
+<li><p>Hotfix sympy v1.13 dependency issues</p></li>
+</ul>
+</section>
+<section id="inquanto-3-5-5">
+<h2>InQuanto 3.5.5<a class="headerlink" href="#inquanto-3-5-5" title="Permalink to this heading">¶</a></h2>
+<p><em>4 June 2024</em></p>
+<ul class="simple">
+<li><p>Upgraded Zeus dependency to v0.0.1b6</p></li>
+</ul>
+</section>
+<section id="inquanto-3-5-4">
+<h2>InQuanto 3.5.4<a class="headerlink" href="#inquanto-3-5-4" title="Permalink to this heading">¶</a></h2>
+<p><em>13 May 2024</em></p>
+<ul class="simple">
+<li><p>Upgraded Sourcedefender dependency to v14.0</p></li>
+</ul>
+</section>
+<section id="inquanto-3-5-3">
+<h2>InQuanto 3.5.3<a class="headerlink" href="#inquanto-3-5-3" title="Permalink to this heading">¶</a></h2>
+<p><em>10 May 2024</em></p>
+<ul class="simple">
+<li><p>Upgraded Sourcedefender dependency to v13.0</p></li>
+</ul>
+</section>
+<section id="inquanto-3-5-2">
+<h2>InQuanto 3.5.2<a class="headerlink" href="#inquanto-3-5-2" title="Permalink to this heading">¶</a></h2>
+<p><em>10 May 2024</em></p>
+<ul class="simple">
+<li><p>Upgraded Sourcedefender dependency to v12.0</p></li>
+</ul>
+</section>
+<section id="inquanto-3-5-1">
+<h2>InQuanto 3.5.1<a class="headerlink" href="#inquanto-3-5-1" title="Permalink to this heading">¶</a></h2>
+<p><em>07 May 2024</em></p>
+<ul class="simple">
+<li><p>Resolved scipy dependency conflict.</p></li>
+<li><p>Bug fixes:</p>
+<ul>
+<li><p>Fixed a slowdown in qubit mappings caused in 3.5.0. Mapping speed should now be consistent with InQuanto versions &lt;3.5.0.</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.ChemistryRestrictedIntegralOperator.qubit_encode" title="inquanto.operators.ChemistryRestrictedIntegralOperator.qubit_encode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">qubit_encode()</span></code></a> for integral operators now takes the <code class="code docutils literal notranslate"><span class="pre">qubits</span></code> argument, allowing <a class="reference internal" href="../api/inquanto/mappings.html#inquanto.mappings.QubitMappingBravyiKitaev" title="inquanto.mappings.QubitMappingBravyiKitaev"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitMappingBravyiKitaev</span></code></a> support.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="inquanto-3-5-0">
+<h2>InQuanto 3.5.0<a class="headerlink" href="#inquanto-3-5-0" title="Permalink to this heading">¶</a></h2>
+<p><em>24 April 2024</em></p>
+<ul class="simple">
+<li><p>Introducing new protocols: <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.ComputeUncomputeFactorizedOverlap" title="inquanto.protocols.ComputeUncomputeFactorizedOverlap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ComputeUncomputeFactorizedOverlap</span></code></a> and <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.SwapFactorizedOverlap" title="inquanto.protocols.SwapFactorizedOverlap"><code class="xref py py-class docutils literal notranslate"><span class="pre">SwapFactorizedOverlap</span></code></a> for computing complex overlaps.</p></li>
+<li><p>Expanded <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.ProtocolList" title="inquanto.protocols.ProtocolList"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolList</span></code></a> support to the following averaging protocols:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.HadamardTest" title="inquanto.protocols.HadamardTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">HadamardTest</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.SwapTest" title="inquanto.protocols.SwapTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">SwapTest</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.ComputeUncompute" title="inquanto.protocols.ComputeUncompute"><code class="xref py py-class docutils literal notranslate"><span class="pre">ComputeUncompute</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.DestructiveSwapTest" title="inquanto.protocols.DestructiveSwapTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">DestructiveSwapTest</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.HadamardTestOverlap" title="inquanto.protocols.HadamardTestOverlap"><code class="xref py py-class docutils literal notranslate"><span class="pre">HadamardTestOverlap</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.SwapFactorizedOverlap" title="inquanto.protocols.SwapFactorizedOverlap"><code class="xref py py-class docutils literal notranslate"><span class="pre">SwapFactorizedOverlap</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.ComputeUncomputeFactorizedOverlap" title="inquanto.protocols.ComputeUncomputeFactorizedOverlap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ComputeUncomputeFactorizedOverlap</span></code></a></p></li>
+</ul>
+</li>
+<li><p>End-to-end runners for averaging protocols now support symbolic compilation with the <code class="code docutils literal notranslate"><span class="pre">compile_symbolic</span></code> argument (see <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.PauliAveraging.get_runner" title="inquanto.protocols.PauliAveraging.get_runner"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_runner()</span></code></a>).</p></li>
+<li><p>Protocols now allow control over pytket <code class="code docutils literal notranslate"><span class="pre">optimisation_level</span></code> arg at the <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.PauliAveraging.build" title="inquanto.protocols.PauliAveraging.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build()</span></code></a> step.</p></li>
+<li><p>Updated pandas dependency to version 2.2.</p></li>
+<li><p>Added the <a class="reference internal" href="../api/inquanto/states.html#inquanto.states.FermionState.qubit_encode" title="inquanto.states.FermionState.qubit_encode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">qubit_encode()</span></code></a> method for <a class="reference internal" href="../api/inquanto/states.html#inquanto.states.FermionState" title="inquanto.states.FermionState"><code class="xref py py-class docutils literal notranslate"><span class="pre">FermionState</span></code></a> and <a class="reference internal" href="../api/inquanto/states.html#inquanto.states.FermionStateString" title="inquanto.states.FermionStateString"><code class="xref py py-class docutils literal notranslate"><span class="pre">FermionStateString</span></code></a>.</p></li>
+<li><p>Bug fix: The <code class="code docutils literal notranslate"><span class="pre">complex_type</span></code> arg in <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.HadamardTestDerivative" title="inquanto.protocols.HadamardTestDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">HadamardTestDerivative</span></code></a> now supports string input.</p></li>
+</ul>
+</section>
+<section id="inquanto-3-4-2">
+<h2>InQuanto 3.4.2<a class="headerlink" href="#inquanto-3-4-2" title="Permalink to this heading">¶</a></h2>
+<p><em>11 April 2024</em></p>
+<ul class="simple">
+<li><p>Update examples algorithm_vqe_varCI.py and algorithm_vqe_varCI_h3p.py to use up-to-date <a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.MultiConfigurationAnsatz" title="inquanto.ansatzes.MultiConfigurationAnsatz"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiConfigurationAnsatz</span></code></a> API</p></li>
+<li><p>Bug fixes:</p>
+<ul>
+<li><p>Corrected Qiskit API usage in <a class="reference internal" href="../api/inquanto/express.html#inquanto.express.get_noisy_backend" title="inquanto.express.get_noisy_backend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_noisy_backend()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.PMSV" title="inquanto.protocols.PMSV"><code class="xref py py-class docutils literal notranslate"><span class="pre">PMSV</span></code></a> input symmetry validation is now more robust</p></li>
+<li><p>Fixed <a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.FermionSpaceAnsatzChemicallyAwareUCCSD.symbol_substitution" title="inquanto.ansatzes.FermionSpaceAnsatzChemicallyAwareUCCSD.symbol_substitution"><code class="xref py py-meth docutils literal notranslate"><span class="pre">symbol_substitution()</span></code></a> in <a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.FermionSpaceAnsatzChemicallyAwareUCCSD" title="inquanto.ansatzes.FermionSpaceAnsatzChemicallyAwareUCCSD"><code class="xref py py-class docutils literal notranslate"><span class="pre">FermionSpaceAnsatzChemicallyAwareUCCSD</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="inquanto-3-4-1">
+<h2>InQuanto 3.4.1<a class="headerlink" href="#inquanto-3-4-1" title="Permalink to this heading">¶</a></h2>
+<p><em>08 March 2024</em></p>
+<ul class="simple">
+<li><p>Upgrade Sourcedefender dependency</p></li>
+</ul>
+</section>
+<section id="inquanto-3-4-0">
+<h2>InQuanto 3.4.0<a class="headerlink" href="#inquanto-3-4-0" title="Permalink to this heading">¶</a></h2>
+<p><em>07 March 2024</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Significant improvements to circuit depth in <a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.MultiConfigurationState" title="inquanto.ansatzes.MultiConfigurationState"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiConfigurationState</span></code></a> and <a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.MultiConfigurationAnsatz" title="inquanto.ansatzes.MultiConfigurationAnsatz"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiConfigurationAnsatz</span></code></a></p></li>
+<li><p>New ansatz <a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.MultiConfigurationStateBox" title="inquanto.ansatzes.MultiConfigurationStateBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiConfigurationStateBox</span></code></a>, uses pytket’s <code class="xref py py-class docutils literal notranslate"><span class="pre">StatePreparationBox</span></code></p></li>
+<li><p>New composite computable <a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.ExpectationValueSumComputable" title="inquanto.computables.composite.ExpectationValueSumComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpectationValueSumComputable</span></code></a></p></li>
+<li><p>New helper methods in <code class="xref py py-mod docutils literal notranslate"><span class="pre">inquanto.ansatzes</span></code>: <a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.rotate_ansatz_restricted" title="inquanto.ansatzes.rotate_ansatz_restricted"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rotate_ansatz_restricted()</span></code></a> and <a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.reference_circuit_builder" title="inquanto.ansatzes.reference_circuit_builder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reference_circuit_builder()</span></code></a></p></li>
+<li><p>New examples for <a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.MultiConfigurationStateBox" title="inquanto.ansatzes.MultiConfigurationStateBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiConfigurationStateBox</span></code></a> , <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.ChemistryRestrictedIntegralOperator.double_factorize" title="inquanto.operators.ChemistryRestrictedIntegralOperator.double_factorize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inquanto.operators.ChemistryRestrictedIntegralOperator.double_factorize()</span></code></a>, and <a class="reference external" href="../extensions/extensions_examples.html#inquanto-pyscf-drivers">using CCSD amplitudes as VQE initial parameters</a>.</p></li>
+<li><p>Note: examples are now split between <a class="reference external" href="../tutorials/examples_overview.html">inquanto examples</a> and <a class="reference external" href="../extensions/extensions_examples.html">inquanto-extension examples</a></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">disp</span></code> (display) option added for <a class="reference internal" href="../api/inquanto/minimizers.html#inquanto.minimizers.MinimizerSPSA" title="inquanto.minimizers.MinimizerSPSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">MinimizerSPSA</span></code></a></p></li>
+<li><p>Major improvements to API documentation throughout</p></li>
+<li><p>Bug fixes:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed ‘=’ operator for <code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolDict</span></code></p></li>
+<li><p>Several fixes in <a class="reference internal" href="../api/inquanto/algorithms.html#inquanto.algorithms.sceom.AlgorithmSCEOM" title="inquanto.algorithms.sceom.AlgorithmSCEOM"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmSCEOM</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.GeneralAnsatz.symbol_substitution" title="inquanto.ansatzes.GeneralAnsatz.symbol_substitution"><code class="xref py py-meth docutils literal notranslate"><span class="pre">symbol_substitution()</span></code></a> with string maps now works for all ansatzes</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="inquanto-3-3-1">
+<h2>InQuanto 3.3.1<a class="headerlink" href="#inquanto-3-3-1" title="Permalink to this heading">¶</a></h2>
+<p><em>31 January 2024</em></p>
+<ul class="simple">
+<li><p>Bug fix relating to non-symbolic computables in PauliAveraging protocol runner</p></li>
+</ul>
+</section>
+<section id="inquanto-3-3-0">
+<h2>InQuanto 3.3.0<a class="headerlink" href="#inquanto-3-3-0" title="Permalink to this heading">¶</a></h2>
+<p><em>30 January 2024</em></p>
+<ul class="simple">
+<li><p>Support for Python 3.12. Drop support for Python 3.9</p></li>
+<li><p>New method <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.PauliAveraging.dataframe_partitioning" title="inquanto.protocols.PauliAveraging.dataframe_partitioning"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dataframe_partitioning()</span></code></a> in PauliAveraging protocol for seeing relation between Pauli words and circuits.</p></li>
+<li><p>Driver for generating transverse-field Ising model hamiltonians (for example <a class="reference internal" href="../api/inquanto/express.html#inquanto.express.DriverIsing1D" title="inquanto.express.DriverIsing1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">DriverIsing1D</span></code></a>)</p></li>
+<li><p>Introducing <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.ProtocolList" title="inquanto.protocols.ProtocolList"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolList</span></code></a>. Basic support for collecting PauliAveraging protocols with different states.</p></li>
+<li><p>Bug fix relating to qubit indexing error in symmetry analysis of QubitOperators</p></li>
+<li><p>Other bug fixes and development improvements</p></li>
+</ul>
+</section>
+<section id="inquanto-pyscf-1-5-0">
+<h2>InQuanto-PySCF 1.5.0<a class="headerlink" href="#inquanto-pyscf-1-5-0" title="Permalink to this heading">¶</a></h2>
+<p><em>30 January 2024</em></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/extensions/inquanto-pyscf_api.html#inquanto.extensions.pyscf.ChemistryDriverPySCFMolecularRHF.get_double_factorized_system" title="inquanto.extensions.pyscf.ChemistryDriverPySCFMolecularRHF.get_double_factorized_system"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_double_factorized_system()</span></code></a> method added for PySCF drivers</p></li>
+<li><p>Python 3.12 support and deprecate 3.9</p></li>
+</ul>
+</section>
+<section id="inquanto-nglview-v0-7-1">
+<h2>InQuanto-NGLView v0.7.1<a class="headerlink" href="#inquanto-nglview-v0-7-1" title="Permalink to this heading">¶</a></h2>
+<p><em>30 January 2024</em></p>
+<ul class="simple">
+<li><p>Python 3.12 support and deprecate 3.9</p></li>
+<li><p>Hotfix dependency update qcelemental</p></li>
+</ul>
+</section>
+<section id="inquanto-phayes-v0-2-0">
+<h2>InQuanto-Phayes v0.2.0<a class="headerlink" href="#inquanto-phayes-v0-2-0" title="Permalink to this heading">¶</a></h2>
+<p><em>30 January 2024</em></p>
+<ul class="simple">
+<li><p>Python 3.12 support and deprecate 3.9</p></li>
+</ul>
+</section>
+<section id="inquanto-3-2-1">
+<h2>InQuanto 3.2.1<a class="headerlink" href="#inquanto-3-2-1" title="Permalink to this heading">¶</a></h2>
+<p><em>19 January 2024</em></p>
+<ul class="simple">
+<li><p>Bug fix relating to symbol substitution in PauliAveraging protocol runner</p></li>
+</ul>
+</section>
+<section id="inquanto-3-2-0">
+<h2>InQuanto 3.2.0<a class="headerlink" href="#inquanto-3-2-0" title="Permalink to this heading">¶</a></h2>
+<p><em>12 January 2024</em></p>
+<ul class="simple">
+<li><p><strong>Three new computables</strong> added</p>
+<ul>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.OverlapMatrixComputable" title="inquanto.computables.composite.OverlapMatrixComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">OverlapMatrixComputable</span></code></a> for representing the general overlap matrix between two states <span class="math notranslate nohighlight">\(S_{ij} = &lt;\Psi_i|\hat{O}|\Psi_j&gt;\)</span></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.NonOrthogonalMatricesComputable" title="inquanto.computables.composite.NonOrthogonalMatricesComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">NonOrthogonalMatricesComputable</span></code></a> for representing matrices used by the non-orthogonal quantum eigensolver method</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.SCEOMMatrixComputable" title="inquanto.computables.composite.SCEOMMatrixComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">SCEOMMatrixComputable</span></code></a> for representing the Quantum Self Consistent Equation of Motion matrix</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>New protocol added <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.ProjectiveMeasurements" title="inquanto.protocols.ProjectiveMeasurements"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProjectiveMeasurements</span></code></a> for measuring the probabilities of the basis states</p></li>
+<li><p>Added the simultaneous perturbation stochastic approximation (SPSA) minimizer <code class="xref py py-class docutils literal notranslate"><span class="pre">MinimizerSPSA</span></code></p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">trotterize_as_linear_combination()</span></code> to  support second order</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/core.html#inquanto.core.pd_safe_eigh" title="inquanto.core.pd_safe_eigh"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pd_safe_eigh()</span></code></a> utility method now available to solve generalized eigenvalue problem <span class="math notranslate nohighlight">\(HC = SCE\)</span></p></li>
+<li><p>Express files added for Purvis’ BeH2 potential energy surface (see the <a class="reference external" href="../manual/express.html">express manual page</a>)</p></li>
+<li><p>Added method to report point_group from a FermionSpace <a class="reference internal" href="../api/inquanto/spaces.html#inquanto.spaces.FermionSpace.point_group" title="inquanto.spaces.FermionSpace.point_group"><code class="xref py py-meth docutils literal notranslate"><span class="pre">point_group()</span></code></a></p></li>
+<li><p>Added Cholesky decomposition option to double factorization</p></li>
+<li><p>Added <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperator.ensure_hermitian" title="inquanto.operators.QubitOperator.ensure_hermitian"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ensure_hermitian()</span></code></a> to truncate non-hermitian matrix elements</p></li>
+<li><p>Minor fix to DMET typing</p></li>
+<li><p>Added launching and retrieving methods to QPE algorithms and protocols</p></li>
+<li><p>Improved state hashing and comparison methods</p></li>
+<li><p>Allow Pauli partitioning in HadamardTestOverlap to reduce measurement circuits (direct option)</p></li>
+<li><p>Improved symbol substitution (parameter) errors and flexibility</p></li>
+<li><p>Various other minor bug-fixes and improvements</p></li>
+</ul>
+</section>
+<section id="inquanto-pyscf-1-4-0">
+<h2>InQuanto-PySCF 1.4.0<a class="headerlink" href="#inquanto-pyscf-1-4-0" title="Permalink to this heading">¶</a></h2>
+<p><em>14 December 2023</em></p>
+<ul class="simple">
+<li><p>Functions to get RDMs and PDMs from CASCI wavefunctions (e.g. <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_casci_12rdms()</span></code> )</p></li>
+<li><p>Bug fixes</p></li>
+</ul>
+</section>
+<section id="inquanto-3-1-2">
+<h2>InQuanto 3.1.2<a class="headerlink" href="#inquanto-3-1-2" title="Permalink to this heading">¶</a></h2>
+<p><em>28 November 2023</em></p>
+<ul class="simple">
+<li><p>Hotfix for PMSV by adding stabilizer tolerances</p></li>
+<li><p>Support for error mitigation when using protocol.build_from()</p></li>
+<li><p>Clarified the qubit_operator.eigenspectrum method</p></li>
+</ul>
+</section>
+<section id="inquanto-3-1-1">
+<h2>InQuanto 3.1.1<a class="headerlink" href="#inquanto-3-1-1" title="Permalink to this heading">¶</a></h2>
+<p><em>15 November 2023</em></p>
+<ul class="simple">
+<li><p>Hotfix: added unitary check options to the <a class="reference internal" href="../api/inquanto/embeddings.html#inquanto.embeddings.dmet.DMETRHF" title="inquanto.embeddings.dmet.DMETRHF"><code class="xref py py-class docutils literal notranslate"><span class="pre">DMETRHF</span></code></a> embedding class</p></li>
+</ul>
+</section>
+<section id="inquanto-3-1-0">
+<h2>InQuanto 3.1.0<a class="headerlink" href="#inquanto-3-1-0" title="Permalink to this heading">¶</a></h2>
+<p><em>14 November 2023</em></p>
+<ul class="simple">
+<li><p>Python 3.11 support</p></li>
+<li><p>GraphColourMethod <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/partition.html#pytket._tket.partition.GraphColourMethod">https://docs.quantinuum.com/tket/api-docs/partition.html#pytket._tket.partition.GraphColourMethod</a> is now configurable in <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.PauliAveraging" title="inquanto.protocols.PauliAveraging"><code class="xref py py-class docutils literal notranslate"><span class="pre">PauliAveraging</span></code></a> protocol</p></li>
+<li><p>New protocol <a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.HadamardTestOverlap" title="inquanto.protocols.HadamardTestOverlap"><code class="xref py py-class docutils literal notranslate"><span class="pre">HadamardTestOverlap</span></code></a> for computing overlaps</p></li>
+<li><p>Various big fixes and small improvements</p></li>
+<li><p>Added compilation pass options to ansatz’s <code class="xref py py-class docutils literal notranslate"><span class="pre">to_CircuitAnsatz</span></code> method</p></li>
+</ul>
+</section>
+<section id="inquanto-3-0-2">
+<h2>InQuanto 3.0.2<a class="headerlink" href="#inquanto-3-0-2" title="Permalink to this heading">¶</a></h2>
+<p><em>17 October 2023</em></p>
+<ul class="simple">
+<li><p>Added support for pytket 1.21</p></li>
+<li><p>Updated <a class="reference internal" href="../api/inquanto/geometry.html#inquanto.geometries.GeometryMolecular" title="inquanto.geometries.GeometryMolecular"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeometryMolecular</span></code></a> to accept xyz strings</p></li>
+<li><p>Fixes for FCIDump reader</p></li>
+<li><p>Added exact diagonalization helper method to QubitOperators <code class="xref py py-meth docutils literal notranslate"><span class="pre">eigenspectrum()</span></code></p></li>
+</ul>
+</section>
+<section id="inquanto-3-0-1">
+<h2>InQuanto 3.0.1<a class="headerlink" href="#inquanto-3-0-1" title="Permalink to this heading">¶</a></h2>
+<p><em>10 October 2023</em></p>
+<ul class="simple">
+<li><p>Improved license activation workflow</p></li>
+<li><p>Improved API documentation</p></li>
+</ul>
+</section>
+<section id="inquanto-3-0-0">
+<h2>InQuanto 3.0.0<a class="headerlink" href="#inquanto-3-0-0" title="Permalink to this heading">¶</a></h2>
+<p><em>19 September 2023</em></p>
+<ul class="simple">
+<li><p><strong>Quantum phase estimation</strong> added</p>
+<ul>
+<li><p>New algorithm class <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmDeterministicQPE</span></code></p></li>
+<li><p>New protocols for phase estimation:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.CanonicalPhaseEstimation" title="inquanto.protocols.CanonicalPhaseEstimation"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanonicalPhaseEstimation</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.IterativePhaseEstimationSingleCircuit" title="inquanto.protocols.IterativePhaseEstimationSingleCircuit"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterativePhaseEstimationSingleCircuit</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.IterativePhaseEstimation" title="inquanto.protocols.IterativePhaseEstimation"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterativePhaseEstimation</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.IterativePhaseEstimationQuantinuum" title="inquanto.protocols.IterativePhaseEstimationQuantinuum"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterativePhaseEstimationQuantinuum</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.IterativePhaseEstimationStatevector" title="inquanto.protocols.IterativePhaseEstimationStatevector"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterativePhaseEstimationStatevector</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Green’s functions</strong> added</p>
+<ul>
+<li><p>Constructed and run through the use of new composite computables:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.KrylovSubspaceComputable" title="inquanto.computables.composite.KrylovSubspaceComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">KrylovSubspaceComputable</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.LanczosMatrixComputable" title="inquanto.computables.composite.LanczosMatrixComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">LanczosMatrixComputable</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.LanczosCoefficientsComputable" title="inquanto.computables.composite.LanczosCoefficientsComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">LanczosCoefficientsComputable</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.ParticleGFComputable" title="inquanto.computables.composite.ParticleGFComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParticleGFComputable</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.HoleGFComputable" title="inquanto.computables.composite.HoleGFComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoleGFComputable</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.ManyBodyGFComputable" title="inquanto.computables.composite.ManyBodyGFComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">ManyBodyGFComputable</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Added <strong>Qermit integration</strong> for quantum error mitigation: <a class="reference external" href="https://github.com/CQCL/Qermit">https://github.com/CQCL/Qermit</a></p></li>
+<li><p>Additions to the <a class="reference internal" href="../api/inquanto/express.html#module-inquanto.express" title="inquanto.express"><code class="xref py py-mod docutils literal notranslate"><span class="pre">inquanto.express</span></code></a> module</p>
+<ul>
+<li><p><a class="reference internal" href="../api/inquanto/express.html#inquanto.express.get_system" title="inquanto.express.get_system"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_system()</span></code></a> : for quickly retrieving only the hamiltonian, fermion space, and fermion state from an express datafile</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/express.html#inquanto.express.save_h5_system" title="inquanto.express.save_h5_system"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_h5_system()</span></code></a> : for saving a hamiltonian, fermion space, and fermion state to h5 file</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/express.html#inquanto.express.get_noisy_backend" title="inquanto.express.get_noisy_backend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_noisy_backend()</span></code></a> : for generating a simple, configurable, noisy quantum simulator</p></li>
+</ul>
+</li>
+<li><p>Overhaul of the <code class="xref py py-mod docutils literal notranslate"><span class="pre">inquanto.computables</span></code> module</p>
+<ul>
+<li><p>Computables no longer have responsibility for building or running circuits. They contain ingredients for computing an observable, and relations to other computables in an expression tree. Many have been renamed, and are now categorized into three submodules (* marks a new computable, and [old name if applicable]):</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#module-inquanto.computables.primitive" title="inquanto.computables.primitive"><code class="xref py py-mod docutils literal notranslate"><span class="pre">inquanto.computables.primitive</span></code></a> (primitive objects for building computable expression trees):</p>
+<ul>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.primitive.ComputableNode" title="inquanto.computables.primitive.ComputableNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableNode</span></code></a> *</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.primitive.ComputableSingleChild" title="inquanto.computables.primitive.ComputableSingleChild"><code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableSingleChild</span></code></a> *</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.primitive.ComputableFunction" title="inquanto.computables.primitive.ComputableFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableFunction</span></code></a> *</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.primitive.ComputableList" title="inquanto.computables.primitive.ComputableList"><code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableList</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.primitive.ComputableTuple" title="inquanto.computables.primitive.ComputableTuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableTuple</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">Computables</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.primitive.ComputableNDArray" title="inquanto.computables.primitive.ComputableNDArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableNDArray</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableArray</span></code>]</p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#module-inquanto.computables.atomic" title="inquanto.computables.atomic"><code class="xref py py-mod docutils literal notranslate"><span class="pre">inquanto.computables.atomic</span></code></a> (these interact directly with inquanto protocols):</p>
+<ul>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.ExpectationValue" title="inquanto.computables.atomic.ExpectationValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpectationValue</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.ExpectationValueNonHermitian" title="inquanto.computables.atomic.ExpectationValueNonHermitian"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpectationValueNonHermitian</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.ExpectationValueDerivative" title="inquanto.computables.atomic.ExpectationValueDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpectationValueDerivative</span></code></a> *</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.ExpectationValueBraDerivativeReal" title="inquanto.computables.atomic.ExpectationValueBraDerivativeReal"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpectationValueBraDerivativeReal</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.ExpectationValueBraDerivativeImag" title="inquanto.computables.atomic.ExpectationValueBraDerivativeImag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpectationValueBraDerivativeImag</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.ExpectationValueKetDerivativeReal" title="inquanto.computables.atomic.ExpectationValueKetDerivativeReal"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpectationValueKetDerivativeReal</span></code></a> *</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.ExpectationValueKetDerivativeImag" title="inquanto.computables.atomic.ExpectationValueKetDerivativeImag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpectationValueKetDerivativeImag</span></code></a> *</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.MetricTensorReal" title="inquanto.computables.atomic.MetricTensorReal"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricTensorReal</span></code></a> [ComputableMetricTensorReal] (no longer multiplied by factor of 1/4)</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.MetricTensorImag" title="inquanto.computables.atomic.MetricTensorImag"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricTensorImag</span></code></a> *</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.Overlap" title="inquanto.computables.atomic.Overlap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Overlap</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.OverlapReal" title="inquanto.computables.atomic.OverlapReal"><code class="xref py py-class docutils literal notranslate"><span class="pre">OverlapReal</span></code></a> *</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.OverlapImag" title="inquanto.computables.atomic.OverlapImag"><code class="xref py py-class docutils literal notranslate"><span class="pre">OverlapImag</span></code></a> *</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.atomic.OverlapSquared" title="inquanto.computables.atomic.OverlapSquared"><code class="xref py py-class docutils literal notranslate"><span class="pre">OverlapSquared</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#module-inquanto.computables.composite" title="inquanto.computables.composite"><code class="xref py py-mod docutils literal notranslate"><span class="pre">inquanto.computables.composite</span></code></a> (these are composed of atomic computables, and always have “Computable” appended to the end of the name):</p>
+<ul>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.RestrictedOneBodyRDMComputable" title="inquanto.computables.composite.RestrictedOneBodyRDMComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">RestrictedOneBodyRDMComputable</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableRestrictedOneBodyRDM</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.UnrestrictedOneBodyRDMComputable" title="inquanto.computables.composite.UnrestrictedOneBodyRDMComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnrestrictedOneBodyRDMComputable</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableUnrestrictedOneBodyRDM</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.RestrictedOneBodyRDMRealComputable" title="inquanto.computables.composite.RestrictedOneBodyRDMRealComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">RestrictedOneBodyRDMRealComputable</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableRestrictedOneBodyRDMReal</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.UnrestrictedOneBodyRDMRealComputable" title="inquanto.computables.composite.UnrestrictedOneBodyRDMRealComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnrestrictedOneBodyRDMRealComputable</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableUnrestrictedOneBodyRDMReal</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.SpinlessNBodyRDMArrayRealComputable" title="inquanto.computables.composite.SpinlessNBodyRDMArrayRealComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinlessNBodyRDMArrayRealComputable</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableSpinlessNBodyRDMTensorReal</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.SpinlessNBodyPDMArrayRealComputable" title="inquanto.computables.composite.SpinlessNBodyPDMArrayRealComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinlessNBodyPDMArrayRealComputable</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableSpinlessNBodyPDMTensorReal</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.RDM1234RealComputable" title="inquanto.computables.composite.RDM1234RealComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDM1234RealComputable</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableRDM1234Real</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.PDM1234RealComputable" title="inquanto.computables.composite.PDM1234RealComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">PDM1234RealComputable</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ComputablePDM1234Real</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.CommutatorComputable" title="inquanto.computables.composite.CommutatorComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommutatorComputable</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableCommutator</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/computables.html#inquanto.computables.composite.QSEMatricesComputable" title="inquanto.computables.composite.QSEMatricesComputable"><code class="xref py py-class docutils literal notranslate"><span class="pre">QSEMatricesComputable</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ComputableQSEMatrices</span></code>]</p></li>
+</ul>
+</li>
+<li><p>The following computables are no longer available:</p>
+<ul>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpectationValueDerivativeReal</span></code></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">OverlapSquaredKetDerivative</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Overhaul of the <code class="xref py py-mod docutils literal notranslate"><span class="pre">inquanto.protocols</span></code> module.</p>
+<ul>
+<li><p>Protocols now have complete responsibility for building and running observable measurement circuits.  They’ve also been renamed and refactored to be simpler to use. Many are pickle-able for easy pause-resume of experiments.</p></li>
+<li><p>New protocol names [old name]:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.PauliAveraging" title="inquanto.protocols.PauliAveraging"><code class="xref py py-class docutils literal notranslate"><span class="pre">PauliAveraging</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolDirect</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.HadamardTest" title="inquanto.protocols.HadamardTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">HadamardTest</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolIndirect</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.SwapTest" title="inquanto.protocols.SwapTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">SwapTest</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolCSP</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.DestructiveSwapTest" title="inquanto.protocols.DestructiveSwapTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">DestructiveSwapTest</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolDSP</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.ComputeUncompute" title="inquanto.protocols.ComputeUncompute"><code class="xref py py-class docutils literal notranslate"><span class="pre">ComputeUncompute</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolVacuum</span></code>]</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">PhaseShift</span></code> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolPhaseShift</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.HadamardTestDerivative" title="inquanto.protocols.HadamardTestDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">HadamardTestDerivative</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolHadamardDirectPauliY</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolHadamardIndirectPauliY</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolHadamardDirectPauliZ</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolHadamardIndirectPauliZ</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.HadamardTestDerivativeOverlap" title="inquanto.protocols.HadamardTestDerivativeOverlap"><code class="xref py py-class docutils literal notranslate"><span class="pre">HadamardTestDerivativeOverlap</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolHadamardDerivativeOverlap</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.SparseStatevectorProtocol" title="inquanto.protocols.SparseStatevectorProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">SparseStatevectorProtocol</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolStateVectorSparse</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.BackendStatevectorProtocol" title="inquanto.protocols.BackendStatevectorProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendStatevectorProtocol</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolStateVectorBackendSupport</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.SymbolicProtocol" title="inquanto.protocols.SymbolicProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolicProtocol</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolSymbolic</span></code>]</p></li>
+</ul>
+</li>
+<li><p>The following protocols are no longer available:</p>
+<ul>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolMidMeasurementGradient</span></code></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolVacuumPhaseShift</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">inquanto.protocols.supporters</span></code> submodule is no longer available.</p>
+<ul>
+<li><p>Error mitigation is performed using Qermit or with new noise mitigation classes (available from the <code class="xref py py-mod docutils literal notranslate"><span class="pre">inquanto.protocols</span></code> module):</p>
+<ul>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.PMSV" title="inquanto.protocols.PMSV"><code class="xref py py-class docutils literal notranslate"><span class="pre">PMSV</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.SPAM" title="inquanto.protocols.SPAM"><code class="xref py py-class docutils literal notranslate"><span class="pre">SPAM</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/protocols.html#inquanto.protocols.CombinedMitigation" title="inquanto.protocols.CombinedMitigation"><code class="xref py py-class docutils literal notranslate"><span class="pre">CombinedMitigation</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Changes to the <code class="xref py py-mod docutils literal notranslate"><span class="pre">inquanto.ansatzes</span></code> module</p>
+<ul>
+<li><p>Renaming of some ansatzes [old name]:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.MultiConfigurationAnsatz" title="inquanto.ansatzes.MultiConfigurationAnsatz"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiConfigurationAnsatz</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">GivensAnsatz</span></code>]</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.MultiConfigurationState" title="inquanto.ansatzes.MultiConfigurationState"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiConfigurationState</span></code></a> [<code class="xref py py-class docutils literal notranslate"><span class="pre">MultiReferenceState</span></code>]</p></li>
+</ul>
+</li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">RealBasisRotationAnsatz</span></code> is replaced by three new classes, which have improved circuit depths:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.RealGeneralizedBasisRotationAnsatz" title="inquanto.ansatzes.RealGeneralizedBasisRotationAnsatz"><code class="xref py py-class docutils literal notranslate"><span class="pre">RealGeneralizedBasisRotationAnsatz</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.RealRestrictedBasisRotationAnsatz" title="inquanto.ansatzes.RealRestrictedBasisRotationAnsatz"><code class="xref py py-class docutils literal notranslate"><span class="pre">RealRestrictedBasisRotationAnsatz</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/inquanto/ansatz.html#inquanto.ansatzes.RealUnrestrictedBasisRotationAnsatz" title="inquanto.ansatzes.RealUnrestrictedBasisRotationAnsatz"><code class="xref py py-class docutils literal notranslate"><span class="pre">RealUnrestrictedBasisRotationAnsatz</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitState</span></code>/<code class="xref py py-class docutils literal notranslate"><span class="pre">FermionState</span></code> have been restructured to make their usage more consistent with <code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperator</span></code>/<code class="xref py py-class docutils literal notranslate"><span class="pre">FermionOperator</span></code></p></li>
+<li><p>Many bug fixes</p></li>
+</ul>
+<section id="inquanto-pyscf-1-3-0">
+<h3>InQuanto-PySCF 1.3.0<a class="headerlink" href="#inquanto-pyscf-1-3-0" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Upgraded to PySCF 2.3.0</p></li>
+<li><p>Many more configurable options for drivers</p></li>
+<li><p>More memory-efficient DMET calculations with inquanto-pyscf integral operators</p></li>
+<li><p>Support for starting calculations from checkpoint files</p></li>
+<li><p>CAS-AC0 calculations via <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyscf-ac0</span></code> <a class="reference external" href="https://github.com/CQCL/pyscf-ac0">https://github.com/CQCL/pyscf-ac0</a></p></li>
+<li><p>WFT-in-DFT embedding, for molecular and periodic systems</p></li>
+<li><p>Compatibility with InQuanto 3.0</p></li>
+</ul>
+</section>
+</section>
+<section id="id2">
+<h2>2.1.1<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
+<p><em>27 April 2023</em></p>
+<ul class="simple">
+<li><p>Some performance improvements</p></li>
+<li><p>Fixed networkx dependence</p></li>
+<li><p>Fixed numpy errors due to _typing</p></li>
+<li><p>Other small fixes</p></li>
+</ul>
+<p>A PDF version of InQuanto Version 2 documentation is also available: <a class="reference download internal" download="" href="../_downloads/d505e28b3c05e5ef3239f87afb9f832a/inquanto211.pdf"><code class="xref download docutils literal notranslate"><span class="pre">InQuanto-v211-PDF</span></code></a>.</p>
+</section>
+<section id="id3">
+<h2>2.1.0<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h2>
+<p><em>27 March 2023</em></p>
+<ul class="simple">
+<li><p>Added double factorization <code class="xref py py-class docutils literal notranslate"><span class="pre">inquanto.operators.DoubleFactorizedHamiltonian</span></code></p></li>
+<li><p>Added Real Basis Rotation Ansatz <code class="xref py py-class docutils literal notranslate"><span class="pre">inquanto.ansatzes.RealBasisRotationAnsatz</span></code></p></li>
+<li><p>Addition of some C++ components and functionality (speed up compact integrals)</p></li>
+<li><p>Adding various tools for manipulating <a class="reference internal" href="../api/inquanto/operators.html#inquanto.operators.QubitOperatorList" title="inquanto.operators.QubitOperatorList"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquanto.operators.QubitOperatorList</span></code></a></p></li>
+<li><p>Qubitwise commutativity + improved tools for general commutativity</p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">inquanto.operators.OperatorList.sublist()</span></code> and some <a class="reference internal" href="../api/inquanto/algorithms.html#inquanto.algorithms.adapt.AlgorithmFermionicAdaptVQE" title="inquanto.algorithms.adapt.AlgorithmFermionicAdaptVQE"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquanto.algorithms.adapt.AlgorithmFermionicAdaptVQE</span></code></a> convenience methods.</p></li>
+<li><p>Hotfix to <a class="reference internal" href="../api/inquanto/geometry.html#inquanto.geometries.GeometryMolecular.save_xyz" title="inquanto.geometries.GeometryMolecular.save_xyz"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inquanto.geometries.GeometryMolecular.save_xyz()</span></code></a></p></li>
+<li><p>Extra <a class="reference internal" href="../api/inquanto/algorithms.html#inquanto.algorithms.time_evolution.AlgorithmVQS" title="inquanto.algorithms.time_evolution.AlgorithmVQS"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquanto.algorithms.time_evolution.AlgorithmVQS</span></code></a> examples</p></li>
+<li><p>Upgrading Python support (up to 3.11) in line with pytket</p></li>
+<li><p>Remove restriction on pytket-qiskit dependency requirement</p></li>
+<li><p><a class="reference internal" href="../api/inquanto/embeddings.html#module-inquanto.embeddings.dmet" title="inquanto.embeddings.dmet"><code class="xref py py-mod docutils literal notranslate"><span class="pre">inquanto.embeddings.dmet</span></code></a> docstrings</p></li>
+<li><p>Improved Impurity DMET exact diagonalization and VQE solver</p></li>
+<li><p>Improved API documentation</p></li>
+<li><p><strong>inquanto-pyscf</strong> : <a class="reference internal" href="../api/extensions/inquanto-pyscf_api.html#inquanto.extensions.pyscf.fmo.FMO" title="inquanto.extensions.pyscf.fmo.FMO"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquanto.extensions.pyscf.fmo.FMO</span></code></a>, NEVPT2 methods e.g. <a class="reference internal" href="../api/extensions/inquanto-pyscf_api.html#inquanto.extensions.pyscf.ChemistryDriverPySCFMolecularRHF.get_nevpt2_correction" title="inquanto.extensions.pyscf.ChemistryDriverPySCFMolecularRHF.get_nevpt2_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_nevpt2_correction()</span></code></a>, and fixes.</p></li>
+<li><p><strong>inquanto-nglview</strong>: improved API docs and fixes</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>2.0.0<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h2>
+<p><em>5 December 2022</em></p>
+<ul class="simple">
+<li><p>Re-designed ansatzes to provide more uniform interface, allow multireference calculations and easier custom ansatz development.</p></li>
+<li><p>New ansatz classes added. <code class="code docutils literal notranslate"><span class="pre">CircuitAnsatz</span></code>, <code class="code docutils literal notranslate"><span class="pre">TrotterAnsatz</span></code>, <code class="code docutils literal notranslate"><span class="pre">GivensAnsatz</span></code>, <code class="code docutils literal notranslate"><span class="pre">MultiReferenceState</span></code>, <code class="code docutils literal notranslate"><span class="pre">LayeredAnsatz</span></code>..</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ProtocolStateVectorSparse</span></code> now caches results.</p></li>
+<li><p>New <code class="code docutils literal notranslate"><span class="pre">ProtocolSymbolic</span></code> class allows for evaluation of expressions with symbolic ansatzes.</p></li>
+<li><p>Implementation of the QRDM-NEVPT2 method. Several new computables for RDM calculations.</p></li>
+<li><p>Add support for real-time evolution in AlgorithmVQS.</p></li>
+<li><p>New <code class="code docutils literal notranslate"><span class="pre">CompactTwoBodyIntegralsS8</span></code> for eight-fold symmetric compact integrals.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">Computable.cost_estimate</span></code> and <code class="code docutils literal notranslate"><span class="pre">cost_estimate_elementwise</span></code> for circuit cost estimation on Quantinuum hardware.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">kupCCGSpD</span></code> refactored to <code class="code docutils literal notranslate"><span class="pre">kUpCCGSDSinglet</span></code>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">Pyscf</span></code> refactored to <code class="code docutils literal notranslate"><span class="pre">PySCF</span></code>.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>1.3.0<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h2>
+<p><em>22 November 2022</em></p>
+<ul class="simple">
+<li><p>Fix <code class="code docutils literal notranslate"><span class="pre">FermionSpace.construct_number_alpha_operator</span></code> and <code class="code docutils literal notranslate"><span class="pre">FermionSpace.construct_number_beta_operator</span></code>.</p></li>
+<li><p>Add <code class="code docutils literal notranslate"><span class="pre">FermionOperator.to_latex</span></code> and <code class="code docutils literal notranslate"><span class="pre">QubitOperator.to_latex</span></code>.</p></li>
+<li><p>Add descriptions to files listed by <code class="code docutils literal notranslate"><span class="pre">inquanto.express.list_h5</span></code>.</p></li>
+<li><p>Fix bug where the PMSV supporter was sometimes not applied.</p></li>
+<li><p>Add <code class="code docutils literal notranslate"><span class="pre">QubitOperatorList.all_qubits</span></code> and <code class="code docutils literal notranslate"><span class="pre">QubitOperatorList.to_sparse_matrices</span></code>.</p></li>
+<li><p>Allow <code class="code docutils literal notranslate"><span class="pre">ChemistryRestrictedIntegralOperator</span></code> and <code class="code docutils literal notranslate"><span class="pre">FermionOperator</span></code> to be constructed from FCI files.</p></li>
+<li><p>Add <code class="code docutils literal notranslate"><span class="pre">QubitState.from_ndarray</span></code>.</p></li>
+<li><p>Remove <code class="code docutils literal notranslate"><span class="pre">QubitSpace.generate_qubit_trotter_operator</span></code>.</p></li>
+<li><p>Add exponentiation and Trotterization functionality to <code class="code docutils literal notranslate"><span class="pre">QubitOperator</span></code> and <code class="code docutils literal notranslate"><span class="pre">QubitOperatorList</span></code>.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2>1.2.2<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h2>
+<p><em>22 September 2022</em></p>
+<ul class="simple">
+<li><p>Fixed a typo in auxiliary expressions in ADAPT and VQS.</p></li>
+</ul>
+</section>
+<section id="id7">
+<h2>1.2.1<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h2>
+<p><em>21 September 2022</em></p>
+<ul class="simple">
+<li><p>Added import for QubitMappingParity at module level.</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2>1.2.0<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h2>
+<p><em>16 September 2022</em></p>
+<ul class="simple">
+<li><p>Added optional compiler_passes argument to <code class="code docutils literal notranslate"><span class="pre">Computable.run()</span></code>.</p></li>
+<li><p>Logger configured.</p></li>
+<li><p>Workflow to synchronize branches develop and research-develop improved.</p></li>
+<li><p>Compact 2-body integrals implemented.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ChemistryUnrestrictedIntegralOperator._freeze()</span></code> implemented.</p></li>
+<li><p>Ansatzes deep copy implemented.</p></li>
+<li><p>HVA fixed.</p></li>
+<li><p>Convenience method to convert <code class="code docutils literal notranslate"><span class="pre">FermionOperator</span></code> to integral operators implemented.</p></li>
+<li><p>Imaginary gradients sign fixed in protocols.</p></li>
+<li><p>Various <code class="code docutils literal notranslate"><span class="pre">FermionOperator</span></code> helper methods implemented (<code class="code docutils literal notranslate"><span class="pre">is_hermitian</span></code>, <code class="code docutils literal notranslate"><span class="pre">is_antihermitian</span></code>, <code class="code docutils literal notranslate"><span class="pre">is_self_inverse</span></code> etc.).</p></li>
+<li><p>Disable <code class="code docutils literal notranslate"><span class="pre">QubitOperatorString</span></code> to be constructed with two Paulis on the same qubit.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">save_h5</span></code> and <code class="code docutils literal notranslate"><span class="pre">load_h5</span></code> implemented for spaces classes.</p></li>
+<li><p>Added <code class="code docutils literal notranslate"><span class="pre">custom_prefix</span></code> for circuit names to <code class="code docutils literal notranslate"><span class="pre">Computable.run()</span></code>, <code class="code docutils literal notranslate"><span class="pre">.launch()</span></code> and <code class="code docutils literal notranslate"><span class="pre">.generate_circuits()</span></code>.</p></li>
+<li><p>Improvements to API documentation and type hints: Ansatzes, Algorithms, Mappings, Core, Geometries, Operators, Symmetry, Embeddings.</p></li>
+<li><p>Fix exponent order issue in <code class="code docutils literal notranslate"><span class="pre">FermionSpaceStateExpChemicallyAware</span></code>.</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2>1.1.0<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h2>
+<p><em>29 July 2022</em></p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">toeplitz_decomposition</span></code> added for QubitOperator.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ProtocolSymbolic</span></code> added for symbolic evaluation of expectation values and computables.</p></li>
+<li><p>Fixed a bug in <code class="code docutils literal notranslate"><span class="pre">Gradients</span></code> (State vector protocols, <code class="code docutils literal notranslate"><span class="pre">ProtocolPhaseShift()</span></code> and <code class="code docutils literal notranslate"><span class="pre">ProtocolHadamardDirectPauliY()</span></code>)</p></li>
+<li><p>Fixed triplet excitations generator (can be used in QSE now)</p></li>
+<li><p>General improvements in express module</p>
+<ul>
+<li><p><code class="code docutils literal notranslate"><span class="pre">MetricTensor</span></code> can now be used as part of <code class="code docutils literal notranslate"><span class="pre">Computables</span></code> objects</p></li>
+</ul>
+</li>
+<li><p>Padding methods added to <code class="code docutils literal notranslate"><span class="pre">QubitOperator</span></code></p></li>
+<li><p>Improved documentation</p></li>
+</ul>
+</section>
+<section id="id10">
+<h2>1.0.5<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h2>
+<p><em>04 July 2022</em></p>
+<ul class="simple">
+<li><p>Added ability for authentication by password.</p></li>
+<li><p>Enabled support for any pytket v1.x release.</p></li>
+</ul>
+</section>
+<section id="id11">
+<h2>1.0.4<a class="headerlink" href="#id11" title="Permalink to this heading">¶</a></h2>
+<p><em>15 June 2022</em></p>
+<ul class="simple">
+<li><p>Various minor bugfixes.</p></li>
+<li><p>Improved validation output.</p></li>
+<li><p>Updated sourcedefender dependency version.</p></li>
+</ul>
+</section>
+<section id="id12">
+<h2>1.0.3<a class="headerlink" href="#id12" title="Permalink to this heading">¶</a></h2>
+<p><em>10 June 2022</em></p>
+<ul class="simple">
+<li><p>Added additional tests for parameter classes.</p></li>
+<li><p>Fix for type safety in trigonometric methods.</p></li>
+<li><p>Allowed api-key to be fetched from keyring or environment variable.</p></li>
+</ul>
+</section>
+<section id="id13">
+<h2>1.0.2<a class="headerlink" href="#id13" title="Permalink to this heading">¶</a></h2>
+<p><em>01 June 2022</em></p>
+<ul class="simple">
+<li><p>Fixed bug in contracted systems symmetries.</p></li>
+<li><p>Added finite difference metric tensor tests.</p></li>
+</ul>
+</section>
+<section id="id14">
+<h2>1.0.1<a class="headerlink" href="#id14" title="Permalink to this heading">¶</a></h2>
+<p><em>25 May 2022</em></p>
+<ul class="simple">
+<li><p>Fixed bug in contracted systems symmetries.</p></li>
+<li><p>Fixed bug in AlgorithmVQE property.</p></li>
+<li><p>Fixed time-limit issue on decryption.</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="bibliography.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Bibliography</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../api/extensions/inquanto-cutensornet_api.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">inquanto-cutensornet</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+              Copyright &#169; 2024 Quantinuum Ltd. All rights reserved.
+            </div>
+            <div class="terms" style="display:flex; gap:0.5rem; align-items:center; margin: 0.25rem 0rem;">
+              <a href="https://www.quantinuum.com/privacy-statement" target="_blank">Privacy Statement</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/cookie-notice" target="_blank">Cookie Notice</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/terms-conditions" target="_blank">Terms and Conditions</a>
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Release Notes</a><ul>
+<li><a class="reference internal" href="#inquanto-4-1-0">InQuanto 4.1.0</a></li>
+<li><a class="reference internal" href="#inquanto-4-0-1">InQuanto 4.0.1</a></li>
+<li><a class="reference internal" href="#inquanto-4-0-0">InQuanto 4.0.0</a></li>
+<li><a class="reference internal" href="#inquanto-pyscf-2-0-0">InQuanto-PySCF 2.0.0</a></li>
+<li><a class="reference internal" href="#inquanto-nglview-0-8-0">InQuanto-NGLView 0.8.0</a></li>
+<li><a class="reference internal" href="#inquanto-phayes-0-3-0">InQuanto-Phayes 0.3.0</a></li>
+<li><a class="reference internal" href="#inquanto-nexus-0-1-0">InQuanto-Nexus 0.1.0</a></li>
+<li><a class="reference internal" href="#inquanto-cutensornet-0-0-0">InQuanto-cuTensorNet 0.0.0</a></li>
+<li><a class="reference internal" href="#inquanto-3-7-0">InQuanto 3.7.0</a></li>
+<li><a class="reference internal" href="#inquanto-3-6-1">InQuanto 3.6.1</a></li>
+<li><a class="reference internal" href="#inquanto-3-5-8">InQuanto 3.5.8</a></li>
+<li><a class="reference internal" href="#inquanto-3-5-7">InQuanto 3.5.7</a></li>
+<li><a class="reference internal" href="#inquanto-3-5-6">InQuanto 3.5.6</a></li>
+<li><a class="reference internal" href="#inquanto-3-5-5">InQuanto 3.5.5</a></li>
+<li><a class="reference internal" href="#inquanto-3-5-4">InQuanto 3.5.4</a></li>
+<li><a class="reference internal" href="#inquanto-3-5-3">InQuanto 3.5.3</a></li>
+<li><a class="reference internal" href="#inquanto-3-5-2">InQuanto 3.5.2</a></li>
+<li><a class="reference internal" href="#inquanto-3-5-1">InQuanto 3.5.1</a></li>
+<li><a class="reference internal" href="#inquanto-3-5-0">InQuanto 3.5.0</a></li>
+<li><a class="reference internal" href="#inquanto-3-4-2">InQuanto 3.4.2</a></li>
+<li><a class="reference internal" href="#inquanto-3-4-1">InQuanto 3.4.1</a></li>
+<li><a class="reference internal" href="#inquanto-3-4-0">InQuanto 3.4.0</a></li>
+<li><a class="reference internal" href="#inquanto-3-3-1">InQuanto 3.3.1</a></li>
+<li><a class="reference internal" href="#inquanto-3-3-0">InQuanto 3.3.0</a></li>
+<li><a class="reference internal" href="#inquanto-pyscf-1-5-0">InQuanto-PySCF 1.5.0</a></li>
+<li><a class="reference internal" href="#inquanto-nglview-v0-7-1">InQuanto-NGLView v0.7.1</a></li>
+<li><a class="reference internal" href="#inquanto-phayes-v0-2-0">InQuanto-Phayes v0.2.0</a></li>
+<li><a class="reference internal" href="#inquanto-3-2-1">InQuanto 3.2.1</a></li>
+<li><a class="reference internal" href="#inquanto-3-2-0">InQuanto 3.2.0</a></li>
+<li><a class="reference internal" href="#inquanto-pyscf-1-4-0">InQuanto-PySCF 1.4.0</a></li>
+<li><a class="reference internal" href="#inquanto-3-1-2">InQuanto 3.1.2</a></li>
+<li><a class="reference internal" href="#inquanto-3-1-1">InQuanto 3.1.1</a></li>
+<li><a class="reference internal" href="#inquanto-3-1-0">InQuanto 3.1.0</a></li>
+<li><a class="reference internal" href="#inquanto-3-0-2">InQuanto 3.0.2</a></li>
+<li><a class="reference internal" href="#inquanto-3-0-1">InQuanto 3.0.1</a></li>
+<li><a class="reference internal" href="#inquanto-3-0-0">InQuanto 3.0.0</a><ul>
+<li><a class="reference internal" href="#inquanto-pyscf-1-3-0">InQuanto-PySCF 1.3.0</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">2.1.1</a></li>
+<li><a class="reference internal" href="#id3">2.1.0</a></li>
+<li><a class="reference internal" href="#id4">2.0.0</a></li>
+<li><a class="reference internal" href="#id5">1.3.0</a></li>
+<li><a class="reference internal" href="#id6">1.2.2</a></li>
+<li><a class="reference internal" href="#id7">1.2.1</a></li>
+<li><a class="reference internal" href="#id8">1.2.0</a></li>
+<li><a class="reference internal" href="#id9">1.1.0</a></li>
+<li><a class="reference internal" href="#id10">1.0.5</a></li>
+<li><a class="reference internal" href="#id11">1.0.4</a></li>
+<li><a class="reference internal" href="#id12">1.0.3</a></li>
+<li><a class="reference internal" href="#id13">1.0.2</a></li>
+<li><a class="reference internal" href="#id14">1.0.1</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/jquery.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

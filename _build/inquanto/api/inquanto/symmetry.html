@@ -1,0 +1,866 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPQ1FTGDL3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YPQ1FTGDL3');
+    </script>
+    <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="InQuanto-Extensions API Reference" href="../inquanto-ext_api_intro.html" /><link rel="prev" title="inquanto.states" href="states.html" />
+
+    <link rel="shortcut icon" href="../../_static/quantinuum_favicon.svg"/><!-- Generated with Sphinx 6.2.1 and Furo 2024.08.06 -->
+        <title>inquanto.symmetry - InQuanto 4.1.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=04c057b233f3c8d71940eee6080f658a04e2027d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=cf727022eb7470bc603c08d2e55c3247faec75c9" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+<link rel="stylesheet" href="../../_static/tokens.css"/>
+<link rel="stylesheet" href="../../_static/styles.css"/>
+<link rel="stylesheet" href="../../_static/tailwind.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="preload"
+as="style">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>  
+  .sidebar-sticky {
+    top: calc(3.5rem - 0px);
+    height: calc(100vh - 3.5rem);
+  }
+  
+  @media (min-width: 97em) {
+    html {
+      font-size: 100% !important;
+    }
+  }
+  
+</style>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+<!-- <script type="text/javascript" src="../../_static/syncTheme.global.js" ></script> -->
+ <!--Force light mode -->
+ <script>document.body.setAttribute('data-theme','light')</script>
+<nav style="position:fixed;top:0;z-index:1021;width:100%;">
+    <div class="nexus-nav"></div>
+</nav>
+<script type="text/javascript" src="../../_static/injectNav.global.js"></script>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">InQuanto 4.1.0</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/inquanto_short_logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">InQuanto 4.1.0</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/overview.html">What is InQuanto?</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../introduction/installation.html">Installation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Installation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/quickstart.html">Quick-start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/howto.html">How to use InQuanto</a></li>
+</ul>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../manual/algorithms_overview.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../manual/algorithms/variational_overview.html">Variational Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Variational Algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/algorithms/algorithms_vqe.html">Variational Quantum Eigensolver <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmVQE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/algorithms/algorithms_vqd.html">Variational Quantum Deflation <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmVQD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/algorithms/algorithms_adapt.html">ADAPT-VQE</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../manual/algorithms/non_variational_overview.html">Non-variational and Phase Estimation algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Non-variational and Phase Estimation algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/algorithms/algorithms_qse.html">Quantum Subspace Expansion <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmQSE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/algorithms/algorithms_sceom.html">Quantum Self Consistent Equation of Motion <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmSCEOM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/algorithms/qpe_canonical.html">Canonical Quantum Phase Estimation <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmDeterministicQPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/algorithms/qpe_iterative.html">Iterative Phase Estimation Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../manual/algorithms/time_evolution_overview.html">Time evolution algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Time evolution algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/algorithms/te_vqs.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmVQS</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmMcLachlanRealTime</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmMcLachlanImagTime</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../manual/computables_overview.html">Computables</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Computables</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/computables/basic_usage.html">Basic Usage and Composability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/computables/evaluating_w_protocols.html">Evaluating Computables with Protocols</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../manual/computables/composite_computables.html">Composite Computables</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Composite Computables</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/computables/greens_function.html">Krylov subspace &amp; Green’s functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/computables/rdms.html">Reduced Density Matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/computables/overlap_matrix.html">Overlap Matrices &amp; Non-Orthogonal Subspaces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/computables/primitives.html">Primitive Computables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/computables/custom_computables.html">Custom Computables &amp; Partial Evaluations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../manual/protocols_overview.html">Protocols</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Protocols</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/protocols/expval.html">Protocols for expectation values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/protocols/overlap_squared.html">Protocols for overlap squared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/protocols/overlap.html">Protocols for overlaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/protocols/derivative.html">Protocols for derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/protocols/other.html">Other averaging protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/protocols/phase_est.html">Protocols for Phase Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/protocols/resource_estimation.html">Resource estimation</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/errmit.html">Noise mitigation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/spaces.html">Spaces, Operators, and States</a></li>
+</ul>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../manual/ansatzae_overview.html">Ansatzes</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Ansatzes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/ansatze/ucc_family.html">The UCC Family</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/ansatze/chemically_aware.html">Chemically Aware Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/ansatze/trotter_ansatz.html">Trotter Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/ansatze/fermion_state_exp.html">Fermionic Exponentiated Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/ansatze/circuit_ansatz.html">Circuit Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/ansatze/composed_ansatz.html">Composed Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/ansatze/hea.html">Hardware Efficient Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/ansatze/multi_configurational.html">Multiconfiguration States Using Givens Rotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/ansatze/basis_rotation.html">Real Basis Rotation Ansatzes</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/symmetry.html">Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/geometry.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/minimizers.html">Classical Minimizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/dmet.html">Density Matrix Embedding Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/express.html">Express</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials &amp; Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial_overview.html">Tutorials</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/tutorial_overview.html#core-tutorials">Core Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Core Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_tut_vqe_1.html">A basic VQE simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_tut_vqe_2.html">Extended VQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_tut_vqd.html">Variational Quantum Deflation for excited states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_tut_viz.html">Visualization with inquanto-nglview</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/tutorial_overview.html#backend-tutorials">Backend Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Backend Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_tut_Nexus_1.html"><b>Tutorial: InQuanto + qnexus</b></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_htut_Aer_H2.html">Running on the Aer simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_htut_Hser_H2.html">Running on Quantinuum H-Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_htut_Hser_l%2Br.html">Quantinuum H-Series -  Launching circuits and retrieving results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_htut_Hser_qse.html">Quantinuum H-Series -  Quantum Subspace Expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/quantinuum_hardware.html">Quantinuum H-Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/setup_ibm.html">IBMQ Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/tutorial_overview.html#case-study-tutorials-fe4n2">Case Study Tutorials - Fe4N2</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of Case Study Tutorials - Fe4N2</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_tut_fe4n2_1.html">Fe4N2 - 1 - system construction with AVAS and CASSCF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_tut_fe4n2_2.html">Fe4N2 - 2 - circuit construction with ADAPT-VQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_tut_fe4n2_3.html">Fe4N2 - 3 - calculations on the H-series</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/tutorial_overview.html#fragmentation-tutorials">Fragmentation Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Fragmentation Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_tut_dmet.html">Tackling larger systems with fragmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_tut_wft_dft.html">Projection-based embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_tut_nevpt2_AC0.html">NEVPT2 and AC0 energy corrections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/InQ_tut_wft_dft_2.html">Projection-based embedding with energy corrections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/examples_overview.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../extensions/extensions-overview.html">Extensions overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extensions/inquanto-nexus.html">InQuanto-Nexus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extensions/inquanto-pyscf.html">InQuanto-PySCF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extensions/inquanto-nglview.html">InQuanto-NGLView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extensions/inquanto-phayes.html">InQuanto-Phayes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../extensions/extensions_examples.html">Extensions examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../inquanto_api_intro.html">InQuanto</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of InQuanto</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">inquanto.algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansatz.html">inquanto.ansatzes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="computables.html">inquanto.computables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html">inquanto.core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="embeddings.html">inquanto.embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="express.html">inquanto.express</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">inquanto.geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappings.html">inquanto.mappings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minimizers.html">inquanto.minimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operators.html">inquanto.operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">inquanto.protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spaces.html">inquanto.spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="states.html">inquanto.states</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">inquanto.symmetry</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../inquanto-ext_api_intro.html">InQuanto-Extensions</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of InQuanto-Extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/inquanto-nexus_api.html">InQuanto-Nexus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/inquanto-pyscf_api.html">InQuanto-PySCF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/inquanto-nglview_api.html">InQuanto-NGLView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/inquanto-phayes.html">InQuanto-Phayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/inquanto-cutensornet_api.html">InQuanto-cuTensorNet</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/changelog.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/contact.html">Contact Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/cite.html">How to cite InQuanto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/licence.html">License and Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/opensource.html">Open-source Attribution</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="module-inquanto.symmetry">
+<span id="inquanto-symmetry"></span><h1>inquanto.symmetry<a class="headerlink" href="#module-inquanto.symmetry" title="Permalink to this heading">¶</a></h1>
+<p>Module for point-group symmetry analysis.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inquanto.symmetry.PointGroup">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PointGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point_group</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.PointGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Point group class with associated symmetry processing methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>point_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The point group label as a string - e.g. <code class="code docutils literal notranslate"><span class="pre">&quot;C2v&quot;</span></code>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.PointGroup.compute_representation_components">
+<span class="sig-name descname"><span class="pre">compute_representation_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">representation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.PointGroup.compute_representation_components" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the combination of irreps which gives the provided representation.</p>
+<p>This uses the reduction formula: <span class="math notranslate nohighlight">\(n_{row} = \frac{1}{h} * (\sum_N \chi_R \chi_I)\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>representation</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>]) – Representation to be reduced.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]] – Within each <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>, the first element is the coefficient of each irrep in the input representation,
+and the second element is the irrep symbol.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.PointGroup.get_generators_symbol2irrep_dict">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_generators_symbol2irrep_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groupname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.PointGroup.get_generators_symbol2irrep_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a dictionary which maps the symbols from the provided group to characters of the group generators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>groupname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of point group of interest.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]] – Dict whose keys are irrep symbols and whose values are irrep characters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.PointGroup.get_irrep2symbol_dict">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_irrep2symbol_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.PointGroup.get_irrep2symbol_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a dictionary which maps the characters of an irrep to the symbol from the character table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of point group of interest.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>] – Dictionary whose keys are irrep characters and whose values are irrep symbols.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.PointGroup.get_supported_point_group_dict">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_supported_point_group_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.PointGroup.get_supported_point_group_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary yielding all supported point group information, with point group labels as keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]]] – A dictionary with point group labels as keys (<code class="code docutils literal notranslate"><span class="pre">&quot;C2v&quot;</span></code> etc.).  Corresponding values are dictionaries
+containing information regarding the point group (e.g. character table, symmetry element labels).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.PointGroup.get_symbol2irrep_dict">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_symbol2irrep_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groupname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.PointGroup.get_symbol2irrep_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a dictionary which maps the irrep symbols from the provided group to the characters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>groupname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of point group of interest.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]] – Dictionary whose keys are irrep symbols and whose values are irrep characters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.PointGroup.irrep_direct_product">
+<span class="sig-name descname"><span class="pre">irrep_direct_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">irreps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.PointGroup.irrep_direct_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the direct product of the irrep symbols given in irreps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>irreps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – Iterable containing irrep symbols which belong to the PointGroup object’s group.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]], <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>] – A tuple where the first element is a list of tuples containing the irrep coefficients and symbols. The
+second element is the direct product in terms of its characters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.PointGroup.mini_character_table">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mini_character_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point_group_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">irrep_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.PointGroup.mini_character_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a given point group, return a reduced form of the character table.</p>
+<p>This includes only generators of the <code class="code docutils literal notranslate"><span class="pre">point_group_label</span></code> point group and the irreps present in
+<code class="code docutils literal notranslate"><span class="pre">irrep_labels</span></code>. Generators which are redundant after removal of irreps not in irrep_labels are removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point_group_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Label of the point group.</p></li>
+<li><p><strong>irrep_labels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – List of irreducible representation labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code></a>]] – A map of irrep labels to characters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.PointGroup.print_character_table">
+<span class="sig-name descname"><span class="pre">print_character_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.PointGroup.print_character_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pretty print the underlying character table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.PointGroup.supported_groups">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">supported_groups</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.PointGroup.supported_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of point groups supported by the <a class="reference internal" href="#inquanto.symmetry.PointGroup" title="inquanto.symmetry.PointGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">PointGroup</span></code></a> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inquanto.symmetry.TapererZ2">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TapererZ2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symmetry_operators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetry_sectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_fast_find_x_operators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.TapererZ2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Performs <span class="math notranslate nohighlight">\(\mathbb{Z}_2\)</span> symmetry qubit tapering.</p>
+<p>The procedure followed is as described by Bravyi et al. (<a class="reference external" href="https://arxiv.org/abs/1701.08213">arXiv:1701.08213 [quant-ph]</a>).
+This technique uses <span class="math notranslate nohighlight">\(\mathbb{Z}_2\)</span> symmetries to reduce qubit requirements for the simulation of a given
+operator. A <a class="reference internal" href="#inquanto.symmetry.TapererZ2" title="inquanto.symmetry.TapererZ2"><code class="xref py py-class docutils literal notranslate"><span class="pre">TapererZ2</span></code></a> object is instantiated by specifying Pauli symmetry operators as a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of
+<code class="xref py py-class docutils literal notranslate"><span class="pre">SymmetryOperatorPauli</span></code>s and a symmetry sector as a list of scalars.
+Key methods here are <a class="reference internal" href="#inquanto.symmetry.TapererZ2.tapered_operator" title="inquanto.symmetry.TapererZ2.tapered_operator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tapered_operator()</span></code></a> which tapers an operator for a provided set of symmetry operators and
+sectors, and <a class="reference internal" href="#inquanto.symmetry.TapererZ2.tapered_state" title="inquanto.symmetry.TapererZ2.tapered_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tapered_state()</span></code></a> which finds a state within the tapered space corresponding to an input state.
+Note that tapering unitaries and <span class="math notranslate nohighlight">\(X\)</span> operators are generated upon instantiation and cached. For advanced
+usage, these may be manually regenerated with <a class="reference internal" href="#inquanto.symmetry.TapererZ2.find_x_operators" title="inquanto.symmetry.TapererZ2.find_x_operators"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_x_operators()</span></code></a> and <a class="reference internal" href="#inquanto.symmetry.TapererZ2.tapering_unitary" title="inquanto.symmetry.TapererZ2.tapering_unitary"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tapering_unitary()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symmetry_operators</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>[<a class="reference internal" href="operators.html#inquanto.operators.SymmetryOperatorPauli" title="inquanto.operators._symmetry_operator_pauli.SymmetryOperatorPauli"><code class="xref py py-class docutils literal notranslate"><span class="pre">SymmetryOperatorPauli</span></code></a>]) – A list of <span class="math notranslate nohighlight">\(\mathbb{Z}_2\)</span> symmetry operators. Validity is not checked.</p></li>
+<li><p><strong>symmetry_sectors</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]]) – Expectation values of each provided symmetry operator for some reference state.</p></li>
+<li><p><strong>skip_fast_find_x_operators</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – In advanced usage, set to <code class="code docutils literal notranslate"><span class="pre">True</span></code> to skip attempting to find single qubit
+<span class="math notranslate nohighlight">\(X\)</span> operators. Defaults to <code class="code docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inquanto.symmetry.TapererZ2.symmetry_operators">
+<span class="sig-name descname"><span class="pre">symmetry_operators</span></span><a class="headerlink" href="#inquanto.symmetry.TapererZ2.symmetry_operators" title="Permalink to this definition">¶</a></dt>
+<dd><p><span class="math notranslate nohighlight">\(\mathbb{Z}_2\)</span> symmetry operators for which to use tapering.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inquanto.symmetry.TapererZ2.symmetry_sectors">
+<span class="sig-name descname"><span class="pre">symmetry_sectors</span></span><a class="headerlink" href="#inquanto.symmetry.TapererZ2.symmetry_sectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Symmetry sectors for which to use tapering.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inquanto.symmetry.TapererZ2.taperable_qubits">
+<span class="sig-name descname"><span class="pre">taperable_qubits</span></span><a class="headerlink" href="#inquanto.symmetry.TapererZ2.taperable_qubits" title="Permalink to this definition">¶</a></dt>
+<dd><p>The qubits which can be removed when tapering an operator or state.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="inquanto.symmetry.TapererZ2.XOperatorMinimalError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">XOperatorMinimalError</span></span><a class="headerlink" href="#inquanto.symmetry.TapererZ2.XOperatorMinimalError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<p>Raised if a valid set of single qubit <span class="math notranslate nohighlight">\(X\)</span> operators is requested, but cannot be found.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.TapererZ2.find_x_operators">
+<span class="sig-name descname"><span class="pre">find_x_operators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip_minimal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regenerate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_on_regenerate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.TapererZ2.find_x_operators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a list of <span class="math notranslate nohighlight">\(X\)</span> operators for generating tapering unitaries.</p>
+<p>The key equation in this procedure is <a class="reference external" href="https://arxiv.org/abs/1701.08213">arXiv:1701.08213 [quant-ph]</a> eq. 61.
+Generated operators include exclusively <span class="math notranslate nohighlight">\(X\)</span> or <span class="math notranslate nohighlight">\(I\)</span>. The
+<a class="reference internal" href="operators.html#inquanto.operators.QubitOperatorString" title="inquanto.operators.QubitOperatorString"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperatorString</span></code></a> with index
+<code class="code docutils literal notranslate"><span class="pre">i</span></code> in the returned list will anticommute with the symmetry operator of index <code class="code docutils literal notranslate"><span class="pre">i</span></code> contained in this
+instance, and will commute with all other symmetry operators. For efficiency, generated <span class="math notranslate nohighlight">\(X\)</span> operators are
+cached in the <a class="reference internal" href="#inquanto.symmetry.TapererZ2" title="inquanto.symmetry.TapererZ2"><code class="xref py py-class docutils literal notranslate"><span class="pre">TapererZ2</span></code></a> object. With default parameters, this will retrieve the cached operators if
+possible.</p>
+<p>If possible, this method will attempt to find single qubit <span class="math notranslate nohighlight">\(X\)</span> operators that fulfill the above criteria.
+This should work with minimal symmetry operators e.g. from <code class="xref py py-class docutils literal notranslate"><span class="pre">SymmetryZ2Qubit</span></code>, but not necessarily in all
+cases e.g. if derived from fermionic symmetries. If this fails, it currently resorts to brute force, which will
+be exponentially expensive in the number of symmetry operators. Brute force search can be forced by setting
+<code class="code docutils literal notranslate"><span class="pre">skip_minimal=True</span></code>. To fail in case of failure of the first method, catch
+<code class="xref py py-class docutils literal notranslate"><span class="pre">BruteForcingXOperatorWarning</span></code> and except.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>skip_minimal</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – Set to <code class="code docutils literal notranslate"><span class="pre">True</span></code> to skip attempting to find single qubit <span class="math notranslate nohighlight">\(X\)</span> operators.</p></li>
+<li><p><strong>regenerate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – Set to <code class="code docutils literal notranslate"><span class="pre">True</span></code> to ignore cached x operators and recalculate. Note that if stored <span class="math notranslate nohighlight">\(X\)</span>
+operators are derived from a different setting of <code class="code docutils literal notranslate"><span class="pre">skip_minimal</span></code>, operators will be regenerated
+regardless of this setting.</p></li>
+<li><p><strong>cache_on_regenerate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – If set, cached <code class="code docutils literal notranslate"><span class="pre">X</span></code> operators will be overwritten if <code class="code docutils literal notranslate"><span class="pre">X</span></code> operators are
+regenerated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>[<a class="reference internal" href="operators.html#inquanto.operators.QubitOperatorString" title="inquanto.operators._qubit_operator.QubitOperatorString"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperatorString</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>] – Operators including only <span class="math notranslate nohighlight">\(X\)</span> operators used to form the tapering unitary and
+a boolean, indicating whether single qubit <span class="math notranslate nohighlight">\(X\)</span> operators were calculated.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.TapererZ2.tapered_operator">
+<span class="sig-name descname"><span class="pre">tapered_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit_operator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relabel_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taperable_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.TapererZ2.tapered_operator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a <code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperator</span></code>, find its tapered form.</p>
+<p>The tapered operator is as described by Bravyi, Gambetta, Mezzacapo &amp; Temme
+(<a class="reference external" href="https://arxiv.org/abs/1701.08213">arXiv:1701.08213 [quant-ph]</a>), with the strings of Pauli <span class="math notranslate nohighlight">\(X\)</span>
+operators on the taperable qubits replaced by calculated known expectation values. For <span class="math notranslate nohighlight">\(N\)</span> independent
+symmetries (and expectation values) provided, <span class="math notranslate nohighlight">\(N\)</span> qubits should be removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubit_operator</strong> (<a class="reference internal" href="operators.html#inquanto.operators.QubitOperator" title="inquanto.operators._qubit_operator.QubitOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperator</span></code></a>) – The operator to be tapered.</p></li>
+<li><p><strong>relabel_qubits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – If <code class="code docutils literal notranslate"><span class="pre">True</span></code>, qubits will be relabelled according to indices of the
+tapered qubits (e.g. if qubit 1 is tapered, qubit 2 goes to qubit 1, qubit 3 to qubit 2 and so on).</p></li>
+<li><p><strong>taperable_qubits</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Qubit</span></code>]], default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – For advanced usage - specify an explicit iterable of qubits to be tapered rather than
+using cached taperable qubits determined from the symmetry operators. Validity is not checked - this may
+lead to unexpected results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="operators.html#inquanto.operators.QubitOperator" title="inquanto.operators._qubit_operator.QubitOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperator</span></code></a> – The tapered operator.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.TapererZ2.tapered_state">
+<span class="sig-name descname"><span class="pre">tapered_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relabel_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.TapererZ2.tapered_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a <code class="xref py py-class docutils literal notranslate"><span class="pre">QubitState</span></code>, find the equivalent <code class="xref py py-class docutils literal notranslate"><span class="pre">QubitState</span></code> within the tapered space.</p>
+<p>This is performed by transforming the state with the tapering unitary and then contracting over the
+tapered qubits. For <span class="math notranslate nohighlight">\(N\)</span> independent symmetries (and expectation values) provided, <span class="math notranslate nohighlight">\(N\)</span> qubits should
+be removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="states.html#inquanto.states.QubitState" title="inquanto.states._qubit_state.QubitState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitState</span></code></a>) – The original state in the untapered space.</p></li>
+<li><p><strong>relabel_qubits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – Set to <code class="code docutils literal notranslate"><span class="pre">True</span></code> to relabel all qubits by decreasing index according to number of qubits
+removed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="states.html#inquanto.states.QubitState" title="inquanto.states._qubit_state.QubitState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitState</span></code></a> – The tapered state.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inquanto.symmetry.TapererZ2.tapering_unitary">
+<span class="sig-name descname"><span class="pre">tapering_unitary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regenerate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_on_regenerate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_fast_find_x_operators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_operators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inquanto.symmetry.TapererZ2.tapering_unitary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the unitary <span class="math notranslate nohighlight">\(U\)</span> which transforms an operator to perform qubit tapering.</p>
+<p>For an operator with <span class="math notranslate nohighlight">\(N\)</span> independent <span class="math notranslate nohighlight">\(\mathbb{Z}_2\)</span> symmetries, this transforms the operator to an
+operator with only Pauli <span class="math notranslate nohighlight">\(X\)</span> or <span class="math notranslate nohighlight">\(I\)</span> acting on a set of <span class="math notranslate nohighlight">\(N\)</span>
+qubits - i.e. <span class="math notranslate nohighlight">\(U\)</span> in section VIII of <a class="reference external" href="https://arxiv.org/abs/1701.08213">arXiv:1701.08213 [quant-ph]</a>.
+By default settings, this will be returned from cache - but this behavior can be controlled with the
+<code class="code docutils literal notranslate"><span class="pre">regenerate</span></code> and <code class="code docutils literal notranslate"><span class="pre">cache_on_regenerate</span></code> parameters. The optional <code class="code docutils literal notranslate"><span class="pre">x_operators</span></code> is a
+<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference internal" href="operators.html#inquanto.operators.QubitOperatorString" title="inquanto.operators.QubitOperatorString"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperatorString</span></code></a> objects including only <span class="math notranslate nohighlight">\(X\)</span> or <span class="math notranslate nohighlight">\(I\)</span>,
+in which the element with index <code class="code docutils literal notranslate"><span class="pre">i</span></code> will anticommute with the symmetry operator of index <code class="code docutils literal notranslate"><span class="pre">i</span></code>
+contained in this instance, and will commute with all other symmetry operators. By default, this is also
+retrieved from the cache.</p>
+<p>Note that <span class="math notranslate nohighlight">\(U\)</span> is Clifford but may not be returned in an efficiently described form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>regenerate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – Set to <code class="code docutils literal notranslate"><span class="pre">True</span></code> to ignore cached unitary and recalculate.</p></li>
+<li><p><strong>cache_on_regenerate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – If set, cached unitary will be overwritten if unitary is regenerated.</p></li>
+<li><p><strong>skip_fast_find_x_operators</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – Set to <code class="code docutils literal notranslate"><span class="pre">True</span></code> to skip attempting to find single qubit X operators.
+Defaults to <code class="code docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>x_operators</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>[<a class="reference internal" href="operators.html#inquanto.operators.QubitOperatorString" title="inquanto.operators._qubit_operator.QubitOperatorString"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperatorString</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>[<a class="reference internal" href="operators.html#inquanto.operators.SymmetryOperatorPauli" title="inquanto.operators._symmetry_operator_pauli.SymmetryOperatorPauli"><code class="xref py py-class docutils literal notranslate"><span class="pre">SymmetryOperatorPauli</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>], default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – For advanced usage, a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of operators including only <span class="math notranslate nohighlight">\(X\)</span> operators used to
+form the tapering unitary may be provided. If <code class="code docutils literal notranslate"><span class="pre">None</span></code> (the default), cached <span class="math notranslate nohighlight">\(X\)</span> operators
+will be used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="operators.html#inquanto.operators.QubitOperator" title="inquanto.operators._qubit_operator.QubitOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">QubitOperator</span></code></a> – The Clifford tapering unitary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../inquanto-ext_api_intro.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">InQuanto-Extensions API Reference</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="states.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">inquanto.states</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+              Copyright &#169; 2024 Quantinuum Ltd. All rights reserved.
+            </div>
+            <div class="terms" style="display:flex; gap:0.5rem; align-items:center; margin: 0.25rem 0rem;">
+              <a href="https://www.quantinuum.com/privacy-statement" target="_blank">Privacy Statement</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/cookie-notice" target="_blank">Cookie Notice</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/terms-conditions" target="_blank">Terms and Conditions</a>
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">inquanto.symmetry</a><ul>
+<li><a class="reference internal" href="#inquanto.symmetry.PointGroup"><code class="docutils literal notranslate"><span class="pre">PointGroup</span></code></a><ul>
+<li><a class="reference internal" href="#inquanto.symmetry.PointGroup.compute_representation_components"><code class="docutils literal notranslate"><span class="pre">PointGroup.compute_representation_components()</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.PointGroup.get_generators_symbol2irrep_dict"><code class="docutils literal notranslate"><span class="pre">PointGroup.get_generators_symbol2irrep_dict()</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.PointGroup.get_irrep2symbol_dict"><code class="docutils literal notranslate"><span class="pre">PointGroup.get_irrep2symbol_dict()</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.PointGroup.get_supported_point_group_dict"><code class="docutils literal notranslate"><span class="pre">PointGroup.get_supported_point_group_dict()</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.PointGroup.get_symbol2irrep_dict"><code class="docutils literal notranslate"><span class="pre">PointGroup.get_symbol2irrep_dict()</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.PointGroup.irrep_direct_product"><code class="docutils literal notranslate"><span class="pre">PointGroup.irrep_direct_product()</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.PointGroup.mini_character_table"><code class="docutils literal notranslate"><span class="pre">PointGroup.mini_character_table()</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.PointGroup.print_character_table"><code class="docutils literal notranslate"><span class="pre">PointGroup.print_character_table()</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.PointGroup.supported_groups"><code class="docutils literal notranslate"><span class="pre">PointGroup.supported_groups()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inquanto.symmetry.TapererZ2"><code class="docutils literal notranslate"><span class="pre">TapererZ2</span></code></a><ul>
+<li><a class="reference internal" href="#inquanto.symmetry.TapererZ2.symmetry_operators"><code class="docutils literal notranslate"><span class="pre">TapererZ2.symmetry_operators</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.TapererZ2.symmetry_sectors"><code class="docutils literal notranslate"><span class="pre">TapererZ2.symmetry_sectors</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.TapererZ2.taperable_qubits"><code class="docutils literal notranslate"><span class="pre">TapererZ2.taperable_qubits</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.TapererZ2.XOperatorMinimalError"><code class="docutils literal notranslate"><span class="pre">TapererZ2.XOperatorMinimalError</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.TapererZ2.find_x_operators"><code class="docutils literal notranslate"><span class="pre">TapererZ2.find_x_operators()</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.TapererZ2.tapered_operator"><code class="docutils literal notranslate"><span class="pre">TapererZ2.tapered_operator()</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.TapererZ2.tapered_state"><code class="docutils literal notranslate"><span class="pre">TapererZ2.tapered_state()</span></code></a></li>
+<li><a class="reference internal" href="#inquanto.symmetry.TapererZ2.tapering_unitary"><code class="docutils literal notranslate"><span class="pre">TapererZ2.tapering_unitary()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/jquery.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

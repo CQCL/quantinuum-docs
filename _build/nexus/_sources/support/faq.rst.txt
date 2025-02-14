@@ -1,0 +1,67 @@
+Frequently Asked Questions
+===========================
+
+**How does queueing work with Nexus and H-Series?**
+
+Nexus operates a first-in-first-out (FIFO) queue. Jobs are submitted by users to the FIFO queue. Nexus submits these jobs to the H-Series Fair Share queue in order of submission date.
+
+
+**How can I see the operational calendar for H-Series?**
+
+The devices page for all H-Series targets displays a calendar 
+with all scheduled times the device or emulator will be active. The H-Series emulator in the H-Series stack and within Nexus are available for use 24/7.
+
+
+**What is the difference between H-Series emulators with the `E` suffix, the `LE` suffix and the `Emulator` suffix?**
+
+Emulators with the `E` suffix are available in the H-Series stack. Emulators with the `LE` suffix are noisless and hosted in Nexus. Both of these types of emulator targets have a 1-1 to correspondence to a H-Series device. Emulators with the `Emulator` suffix correspond to a machine generation, rather than a specific device, and are hosted in Nexus. `Emulator`-suffixed targets scale in the number of instances in proportion to the number of users requesting access.
+
+
+**Can I access devices and simulators other than H-Series?**
+
+Yes, devices available through IBM or AWS Braket are available for use via Nexus, however you must supply your own credentials for these systems.
+
+
+**My temporary password has expired. How do I reset it?**
+
+If your temporary password has expired, you will have to contact your organization administrator to reset it for you. They can do this by navigating to the organization page and selecting "Reset password" in the user action menu.
+
+
+**Can I batch upload circuits?**
+
+Not currently, circuits must be uploaded one at a time.
+
+
+**Why does my Nexus Lab server shut down or become unresponsive?**
+
+The Nexus Lab is configured to shut down after 1 hour of inactivity, however if you find it frequently shuts down while using it please get in touch.
+
+
+**How can I get hardware access?**
+
+Please view the `Quantinuum website <https://www.quantinuum.com>`_ for more information on hardware access.
+
+
+**What is the data retention policy in Nexus?**
+
+Data is stored indefinitely, with options to manage or delete unwanted data.
+
+
+**Is the status of my Job correct?**
+
+If you believe the status of your job is incorrect, please view our :ref:`job management guide <user_guide_jobs>` to view options for retrying jobs.
+
+Please note that on H-series hardware, jobs are run in 'chunks' as part of our fair-share queuing. This means that a job may be in a 'running' state for a long time, 
+but this does not mean it is actively running on the hardware for the entirity of that time. If you have any concerns about the status of your job, please contact us.
+
+
+**Where can I view my quota information?**
+
+You can view your personal quota usage information here: `https://nexus.quantinuum.com/settings/organization <https://nexus.quantinuum.com/settings/organization>`_.
+Where you can also see your user groups and H-series quota information. If you do not have a personal quota set by an organization admin, you'll just see your 
+historical usage. Your quota will be the same as that for your user_groups, or the overall quota cap for your Nexus organisation.
+
+**What is pytket-nexus?**
+
+`pytket-nexus` is the legacy Python client package for Nexus, which has been replaced by `qnexus`. It is no longer maintained or supported, 
+and users are encouraged to migrate to `qnexus` for the latest features and support.

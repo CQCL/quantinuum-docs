@@ -1,0 +1,9 @@
+Signing Up
+==========
+
+Quantinuum Nexus is currently available as a beta product in a preview window. During the preview window the product is not generally available, but you can request access by going 
+to https://nexus.quantinuum.com/signup and filling out the form there.
+
+Unfortunately, not everyone will be able to access Nexus during this preview period, but everyone who registers their interest will be kept informed as the product moves towards release.
+
+The preview window is expected to last for 2 months and for the duration Quantinuum Nexus is provided free of charge.

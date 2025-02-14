@@ -1,0 +1,51 @@
+.. _user_guide_jobs:
+
+Managing Submitted Jobs
+========================
+
+See details on Nexus Jobs :ref:`here <jobs>`.
+
+As all jobs are contained within a project, job management is done from the top level view inside a project.
+
+.. image:: job_management.png
+    :alt: Screenshot of the job management menu
+
+
+Rerun a job under a new name
+----------------------------
+
+Nexus offers support for taking the definition of a job and running it again with a new identifier as part of the same project.
+
+In the UI this can be done by selecting 'Rerun as New Job' from the menu for a job & selecting a new name.
+
+This creates a new job with the same definition as the original, running on/against the same target. 
+
+- This works for compile jobs and execute jobs
+- The job to rerun does not need to be Completed, it does not even need to be in a final state
+
+Options to retry jobs
+-----------------------
+
+There are multiple options for retrying jobs in the Nexus user interface: simply select the 'Retry' button next to the job to view the options.
+Options include the ability to retry certain Job item statuses, or to fully resubmit the job. Please note that some of these options may result
+in consumption of quotas or duplicated submissions, so please be careful and double check the option is appropriate for the state of your workflow.
+
+Retry a job which has failed
+----------------------------
+
+Retrying a job means taking the definition of a job and running it again under the same name
+
+- You can only retry Compile jobs which are in the Error state
+- Your organisation admins and Quantinuum admins might have additional options to retry other kinds of jobs which fail, reach out on the usual support channels to learn more about these options
+
+
+Cancel a running job
+--------------------
+
+Jobs in the running state can be cancelled, cancelling a job attempts to stop it ASAP, but there's no guarantee that cancelling a job will stop it executing in the event that it's already started.
+Cancellation works differently depending on the state of the job item:
+
+- Job items in a final state (Error, Completed or Cancelled) cannot be cancelled
+- Job items which are in a queuing state local to Nexus will be stopped from entering a running state
+- Compile job items which have already started will not be interrupted
+- Process job items which have already been submitted to a remote backend will be sent a cancellation request, exactly how it is handled upon reciept will vary by remote backend

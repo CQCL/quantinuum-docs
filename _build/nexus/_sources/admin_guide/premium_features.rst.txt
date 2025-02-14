@@ -1,0 +1,16 @@
+.. _premium_feature:
+
+Premium Features
+================
+
+Premium features gives your organization access to additional features in Nexus.
+Features include access to premium devices, software and tools.
+
+Once a feature is enabled for your organization, you will be able to see your access to the feature in the "Software" section in the "Access" tab on your organization's admin page.
+Features enabled for your organization will be available to all users in your organization.
+
+How do I access a premium feature?
+-----------------------------------
+Premium features are enabled by your organization's Nexus administrators.
+You can contact us to upgrade your access to additional features.
+Send an email to Nexus support at nexus_support@quantinuum.com, to inquire about upgrading your organization's access.

@@ -1,0 +1,137 @@
+.. _backend_concepts:
+
+Backends and Batching
+=====================
+
+"Backend" is the term used in Nexus to mean the provider of quantum (or
+simulation/emulation) compute power.
+
+Backends act as an interface for submitting circuits and provide a way for
+quantum software to be platform independent: the compilation and execution steps
+accept an instance of a backend class as an argument. That means that with
+little alteration, quantum programs can be edited to run against alternative
+providers, whether simulators, emulators or real quantum hardware.
+
+Represented in Python code, a backend is an instance of a class called
+``SomethingConfig`` - for example, ``QuantinuumConfig`` - and each provider
+class will accept or require different parameters.  Also, one backend can
+encompass multiple quantum devices. For example, the ``QuantinuumConfig``
+backend accepts a ``device_name`` parameter which allows the calling code to
+choose between the available hardware devices, syntax checkers and emulators.
+
+Job Queues in Nexus
+-------------------
+
+Nexus operates a *First-In First-Out* (FIFO) queue for all compilation jobs,
+in addition to execution jobs submitted to nexus-hosted emulators and simulators.
+
+Execute jobs submitted for H-series or third-party backends are passed by Nexus
+to the appropriate queue for that backend as soon as the job is submitted to Nexus.
+
+Supported backends
+------------------
+
+The following backends are supported:
+
+* `Aer <https://qiskit.github.io/qiskit-aer/>`_ - a Nexus-hosted simulator
+  running Qiskit's Aer engine (AerState and AerUnitary are also supported).
+
+* `Braket <https://docs.aws.amazon.com/braket/>`_ - hosted on Amazon Web
+  Services (AWS), Braket offers access to multiple quantum computers from IonQ,
+  IQM and Rigetti. Will require you to share your :ref:`credentials
+  <credentials>` into Nexus.
+
+* `Quantinuum <https://docs.quantinuum.com/h-series/>`_ - access to H-Series
+  quantum computers, simulators and emulators. When you use these options
+  through Nexus, your Nexus login is automatically used to interact with
+  H-Series, where necessary. Your account may have access to any or all of
+  ``H1``, ``H2``, syntax checkers, simulators and emulators with advanced noise
+  models.
+  
+  Emulators may be hosted by Nexus or by Quantinuum. In this context, "Hosted by
+  Nexus" means that use will be via your Nexus quota and Nexus's internal job
+  queue, whereas "Hosted by Quantinuum" means that use will be via your H-System
+  Quantum Credits (HQS) and subject to the queuing explained in the H-Series
+  documentation.
+
+* `IBMQ <https://quantum.ibm.com/>`_ - access to hardware hosted by IBM on the
+  IBM Quantum Platform . Will require you to share your :ref:`credentials
+  <credentials>` into Nexus.
+
+* IBMQEmulator - runs circuits on a Nexus-hosted simulator which uses the noise
+  model of a specific IBM quantum device.
+
+* `ProjectQ <https://projectq.readthedocs.io/en/latest/>`_ - a Nexus-hosted
+  simulator running the ProjectQ engine.
+
+* `Qulacs <https://docs.qulacs.org/en/latest/>`_ - a Nexus-hosted simulator
+  running the Qulacs engine.
+
+Find out more about the backends available through Nexus from the "Backends"
+link in the main menu.
+
+For full details about backends, refer to ``pytket`` documentation section on
+:ref:`backends <tket_user_guide:manual/manual_backend:running on backends>`. Nexus
+uses ``pytket`` to convert circuits to run on different providers, so Nexus
+backends correspond to ``pytket`` backends.
+
+Backend Availability
+---------------------
+
+Backend availability can be checked on the backends page in the Nexus website. For Quantinuum
+Systems a calender view (showing machine availability in a calender month) is available on the 
+page for the specific backend. For third-party backends (Braket and IBMQ) Nexus will try and fetch
+the status of the device from the provider.
+
+Batching behavior
+------------------
+
+Quantinuum backends
+~~~~~~~~~~~~~~~~~~~
+
+If you expect to run multiple circuits, or several circuits in succession (such
+as during a variational project), you can request that the H-series submission
+queue batches your circuits together so they avoid queueing separately. Circuits
+submitted to an existing batch will run immediately, provided they are submitted
+within 60 seconds of the completion of the last circuit you submitted to the
+batch.
+
+You can request that Nexus attempts to batch your circuits by setting the
+``attempt_batching`` flag to ``True`` when using ``QuantinuumConfig``.
+
+Batching will only work when you have ``attempt_batching=True`` and you are:
+
+* executing a circuit - this will initiate a batch.
+* executing a list of circuits - this will initiate a batch and submit all the
+  circuits to that batch.
+* executing circuit(s) in the 60 second window after the completion of the most
+  recent circuit in an existing batch (we try to keep Nexus fast, but please
+  account for some network latency).
+
+If your batch has expired, a new batch will be created but the first job will
+have to wait in the H-series queue until it is selected.
+
+Batching will take place up to the ``max_batch_cost`` limit that you can specify
+in the ``QuantinuumConfig``. The default limit is 2000 Quantinuum Credits (HQC).
+
+IBMQ backends
+~~~~~~~~~~~~~
+
+If you submit circuits in one :ref:`Nexus job<jobs>` then, because Nexus uses
+`pytket-qiskit <https://tket.quantinuum.com/extensions/pytket-qiskit/>`_
+internally, it will attempt to take advantage of IBM's `"batch" execution mode
+<https://docs.quantum.ibm.com/guides/run-jobs-batch#run-jobs-in-a-batch>`_. Your
+job's circuits are first grouped according to ``n_shots`` and then the groups
+are invoked on IBMQ in batches.
+
+Other backends
+~~~~~~~~~~~~~~
+
+Automatic batching through :ref:`Nexus jobs<jobs>` is not currently supported
+for other backends.
+
+About credentials
+-----------------
+
+To use any of the backends other than H-Series, you must provide your own
+:ref:`credentials <credentials>` from that service.

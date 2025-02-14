@@ -1,0 +1,1421 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPQ1FTGDL3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YPQ1FTGDL3');
+    </script>
+    <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+
+    <link rel="shortcut icon" href="../../../../_static/quantinuum_favicon.svg"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>QEC Decoder Toolkit - H-Series</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=2d233a06" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+<link rel="stylesheet" href="../../../../_static/tokens.css"/>
+<link rel="stylesheet" href="../../../../_static/styles.css"/>
+<link rel="stylesheet" href="../../../../_static/tailwind.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="preload"
+as="style">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>  
+  .sidebar-sticky {
+    top: calc(3.5rem - 0px);
+    height: calc(100vh - 3.5rem);
+  }
+  
+  @media (min-width: 97em) {
+    html {
+      font-size: 100% !important;
+    }
+  }
+  
+</style>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+<!-- <script type="text/javascript" src="../../../../_static/syncTheme.global.js" ></script> -->
+ <!--Force light mode -->
+ <script>document.body.setAttribute('data-theme','light')</script>
+<nav style="position:fixed;top:0;z-index:1021;width:100%;">
+    <div class="nexus-nav"></div>
+</nav>
+<script type="text/javascript" src="../../../../_static/injectNav.global.js"></script>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../../index.html"><div class="brand">H-Series</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../../../_static/h-series.svg" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../user_guide/hardware_user_guide/access.html">Hardware User Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Hardware User Guide</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../user_guide/hardware_user_guide/access.html">H-Series Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../user_guide/hardware_user_guide/system_operation.html">System Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../user_guide/hardware_user_guide/workflow.html">H-Series Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../user_guide/hardware_user_guide/fair_queue.html">Fair Queue</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../user_guide/emulator_user_guide/introduction.html">Emulator User Guide</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Emulator User Guide</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../user_guide/emulator_user_guide/introduction.html">Quantinuum Emulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../user_guide/emulator_user_guide/noise_model.html">Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../user_guide/emulator_user_guide/emulators/h1_emulators.html">H1 Emulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../user_guide/emulator_user_guide/emulators/h2_emulators.html">H2 Emulators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.quantinuum.com/nexus/user_guide/user_guide.html">Nexus User Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.quantinuum.com/nexus/admin_guide/admin_guide.html">Nexus Admin Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Trainings</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../getting_started_index.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Getting Started</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started_index.html">Unique Capabilities</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/nexus/trainings/getting_started.html">Quantinuum Nexus</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/user-guide/index.html">TKET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emulators.html">Quantinuum Emulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mcmr.html">Mid-Circuit Measurement &amp; Reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arbitrary_angle_2_qubit_gates.html">Native Arbitrary Angle Hardware Gates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../conditional_operations_and_classical_logic.html">Conditional Operations &amp; Classical Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../batch_jobs.html">Batch Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api_options.html">Quantinuum Systems API Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../access_systems_with_qiskit.html">Using Qiskit with Quantinuum Devices</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../qec_decoder_toolkit/qec_decoder_toolkit.html">QEC Decoder Toolkit</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of QEC Decoder Toolkit</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../qec_decoder_toolkit/qec_decoder_toolkit.html">QEC Decoder Toolkit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qec_decoder_toolkit/repeat_until_success/rus_index.html">Repeat Until Success</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qec_decoder_toolkit/repetition_code/repetition_code_index.html">Repetition Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qec_decoder_toolkit/surface_code/surface_code_index.html">Surface Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pytket_quantinuum.html"><code class="docutils literal notranslate"><span class="pre">pytket-quantinuum</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../knowledge_articles/ka_index.html">Knowledge Articles</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Knowledge Articles</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../knowledge_articles/Quantinuum_chemistry_chemically_aware_ucc.html">Quantum Chemistry Calculations with Arbitrary Angle 2-Qubit Gates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../knowledge_articles/Quantinuum_high_energy_physics_experiment.html">High Energy Physics: Implementing <span class="math notranslate nohighlight">\(SU(2)\)</span> Lattice Gauge Theory Trotter Circuits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../knowledge_articles/Quantinuum_leakage_detection.html">Automatic Leakage Error Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../knowledge_articles/Quantinuum_toric_code.html">Topological Order from Measurements and Feed-Forward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../knowledge_articles/Quantinuum_variational_experiment_with_batching.html">Variational Experiment with Batching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../knowledge_articles/Quantinuum_n56_ghz_state_fidelity.html">GHZ State Fidelity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../knowledge_articles/circuit_stitching.html">Circuit Stitching</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../support/product_change_notifications.html">Product Change Notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../support/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../support/faqs.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../support/hseries_citations.html">How to Cite H-Series</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="qec-decoder-toolkit">
+<h1>QEC Decoder Toolkit<a class="headerlink" href="#qec-decoder-toolkit" title="Link to this heading">¶</a></h1>
+<p>Quantinuum offers a real-time hybrid compute capability for Quantum Error Correction (QEC) workflows. This capability executes <a class="reference external" href="https://webassembly.org/">Web Assembly (Wasm)</a> in the H-Series stack and enables use of libraries (e.g. linear algebra and graph algorithms) and complex datastructures (e.g. vectors and graphs) during real-time execution of a quantum circuit. This environment is hereby referred to as WebAssembly Virtual Machine (WAVM). Unlocking experimentation of basic QEC workflows is an important milestone, as Quantinuum plans to upgrade H-Series hardware and deploy practical QEC protocols at scale. The QEC workflow presented here has been used in the following quantum error correction results: [<a class="reference external" href="https://arxiv.org/abs/2208.01863">arxiv.2208.01863</a>, <a class="reference external" href="https://arxiv.org/abs/2305.03828">arxiv.2305.03828</a>].</p>
+<p>Wasm is an industry standard for sandboxed computing. To compile Wasm binaries, a low-level programming language, such as Rust or C, are used to compose desired classical functions before compilation. The quantum computing workflow will then contain a call to Wasm. Wasm is used because it is fast, safe, expressive, and easy to compile with familiar programming languages. Measurement results are processed on WAVM, where a decoding algorithm is used to determine recovery operations and update quantum circuits in real-time. Once generated, the Wasm binary can be injected into a TKET workflow. “Async” Wasm calls involve execution of a void (no output) Wasm function during the TKET circuit execution. The Wasm result is polled until a non-void (one integer output) Wasm function is used to access the Wasm result. This is an important feature that helps reduce qubit idling time and ultimately minimizes the impact of memory error in TKET + Wasm programs.</p>
+<a class="reference internal image-reference" href="../../../../_images/qec_workflow_schematic.png"><img alt="QEC Decoder Workflow with Real-time WAVM" class="align-center" src="../../../../_images/qec_workflow_schematic.png" style="width: 1000px;" />
+</a>
+<p>This article is presented in two sections. The first section, <em>WebAssembly in the H-Series Stack</em>, discusses steps to generate a Wasm compilation project using Rust or C. In addition, guidance is presented on using Wasm with TKET and use cases that may lead to job failure. The second section presents two QEC use cases and one repeat-until-success demonstration. The Mid-circuit Measurement and Reset (MCMR) and Qubit Reuse features are used in the QEC use cases, which is also showcased  here: <a class="reference internal" href="#../Quantinuum_mid_circuit_measurement.ipynb"><span class="xref myst">Mid-Circuit Measurement</span></a>. An explanation of the H-Series submission workflow is found here: <a class="reference internal" href="#../Quantinuum_circuit_submissions.ipynb"><span class="xref myst">Job Submissions</span></a>. The Wasm module is imported from TKET alongside several optional conditional operators. More information on the conditional operations available can be found in the TKET user manual (<a class="reference external" href="https://tket.quantinuum.com/user-manual/manual_circuit.html#classical-and-conditional-operations">Classical and Conditional Operations</a>).</p>
+<section id="webassembly-in-the-h-series-stack">
+<h2>WebAssembly in the H-Series Stack<a class="headerlink" href="#webassembly-in-the-h-series-stack" title="Link to this heading">¶</a></h2>
+<p>Wasm is an industry standard for sandboxed computing. It offers efficient execution of classical programs and Just-in-Time (JIT) from Wasm to x64/ arm64 is extremely efficient. A WebAssembly Virtual Machine (WAVM) requires as little as tens of microseconds to start or shutdown. Wasm can be generated by composing Rust and C code, followed by a compilation step with the Rust compiler or LLVM toolchain (Clang compiler). Once generated, the Wasm binary can be injected into the TKET workflow. The main benefit is to enable classical compute in the H-Series stack during real-time execution of the quantum circuit.</p>
+<p>The primary purpose of WAVM is to provide a real-time classical compute environment for QEC decoding. Wasm programs that are submitted to H-Series usually contain functions accepting integer arguments  (measurement results as binary outcomes converted to decimal) and functions returning integer values that map to a conditional prescribed action to correct for errors in QEC programs. These functions can be computationally complex (NP-Complete). Usually, the function attempts to determine the most likely error or errors based on the inputted measurement results. Conditionally prescribed actions are applied once the Wasm processing on the measurement result is complete. These actions are usually fixed-angle 1-qubit operations, such as Pauli-<span class="math notranslate nohighlight">\(\hat{X}\)</span>, Pauli-<span class="math notranslate nohighlight">\(\hat{Y}\)</span> or Pauli-<span class="math notranslate nohighlight">\(\hat{Z}\)</span>, and need to be compiled into a H-Series consumable gate with TKET.</p>
+<a class="reference internal image-reference" href="../../../../_images/WAVM.png"><img alt="WebAssembly Virtual Machine" class="align-center" src="../../../../_images/WAVM.png" style="width: 612px;" />
+</a>
+<p>The end user is responsible for generating a Wasm binary from a source file (usually written in C or Rust) and a TKET circuit with operations defined in the Wasm binary. Both the TKET circuit and the Wasm binary are submitted to the H-Series device. The Wasm binary is loaded into WAVM, co-located with H-Series hardware. The TKET circuit is executed on the hardware. For Wasm operations on the TKET circuit, network calls are made to WAVM to execute the Wasm binary. “Asynchronous” (async) Wasm calls involve execution of a void (no output) Wasm function during the TKET circuit execution. The Wasm result is polled until a non-void (one integer output) Wasm function is used to access the Wasm result.</p>
+<section id="wasm-lifecyle">
+<h3>Wasm Lifecyle<a class="headerlink" href="#wasm-lifecyle" title="Link to this heading">¶</a></h3>
+<p>Decoders must be implemented in low langauges and compiled to Wasm binaries. The Wasm program lifecycle is shown below.</p>
+<a class="reference internal image-reference" href="../../../../_images/wasm_lifecycle.png"><img alt="Wasm_Lifecycle" class="align-center" src="../../../../_images/wasm_lifecycle.png" style="width: 800px;" />
+</a>
+<p>The following subsections will go over:</p>
+<ol class="arabic simple">
+<li><p>Installation of Rust and C</p></li>
+<li><p>Project Setup</p></li>
+<li><p>Unit Testing Wasm and C</p></li>
+<li><p>Compilation from Rust or C to Wasm</p></li>
+</ol>
+<p>It is recommended to use either Rust or C for the compilation language to Wasm. The languages have functionality that easily compiles to Wasm. For other language options see <a class="reference external" href="https://webassembly.org/getting-started/developers-guide/">Wasm Getting Started Developer’s page</a>.</p>
+<a class="reference internal image-reference" href="../../../../_images/hybrid_compute_fig1.png"><img alt="../../../../_images/hybrid_compute_fig1.png" class="align-center" src="../../../../_images/hybrid_compute_fig1.png" style="width: 500px;" />
+</a>
+<p>The following software is required to define and test decoders, and to compile Wasm binaries.</p>
+<ul class="simple">
+<li><p>CMake v3.13</p></li>
+<li><p>Clang v17.0.3</p></li>
+<li><p>Cargo v1.77.2</p></li>
+<li><p>Pytket v1.32.0</p></li>
+<li><p>Pytket-Quantinuum v0.37.0</p></li>
+</ul>
+<style>
+table, th, td, tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+tr {
+    vertical-align: text-top;
+}
+</style>
+<table>
+<tr style="background-color: #D3D3D3;">
+    <th></th>
+    <th style="text-align: center;">Rust</th>
+    <th style="text-align: center;">C with Clang Toolchain</th>
+</tr>
+<tr style="vertical-align: text-top;">
+    <td>1. Installation</td>
+    <td>Install Rust using the <a href="https://www.rust-lang.org/tools/install">Rust Installer</a>. <br><br><b>Windows Users:</b> Before running the installer, you'll need to install the <a href="https://visualstudio.microsoft.com/visual-cpp-build-tools/">Microsoft Build Tools</a>.<br><br>If you're new to Rust, see the <a href="https://doc.rust-lang.org/book/title-page.html">The Rust Programming Language</a> book. Note that Cargo is the Rust package manager. For more info on Cargo, see <a href="https://doc.rust-lang.org/cargo/guide/">The Cargo Book</a>.<br><br>If using Visual Studio code, you can also install the `rust-analyzer` extension in the Extensions tab.</td>
+    <td>For Windows 10/11 users, instruction should be followed <a href="https://learn.microsoft.com/en-us/cpp/build/clang-support-msbuild?view=msvc-170">here</a> to install clang.<br><br>For Ubuntu 20.04 users, the development tools group needs to be installed with Aptitude. The LLVM and Clang compilers need to be installed separately.<br><code>sudo apt-get install build-essential<br>sudo apt-get install clang<br>sudo apt install lld-14<br></code><br>MacOS users must install XCode command line tools to enable clang usage.<br><code>xcode-select --install</code><br><br>LLVM is also available via HomeBrew.<br><br>CMake also needs to be installed to invoke the C compilation. Windows users can use the Visual Studio installer. CMake is available through both Ubuntu and macOS (brew). Downloads for CMake are <a href="https://cmake.org/download/">here</a>.</td>
+</tr>
+<tr style="vertical-align: text-top;">
+    <td>2. Project Setup</td>
+    <td><ol><li>Run the following command to create a new rust project called <i>project</i>. The project name can be modified by the user.<br><code>cargo new --lib project</code><br>This creates a new library in a subdirectory with the project name you used with the required files.<ul><li>The <i>src/lib.rs</i> file will contain user-defined functions that will be compiled into Wasm.</li><li>Inside this subdirectory is a file called <i>cargo.toml</i>. This file will be used to configure rust compilation procedure to generate Wasm.</li></ul></li><li>Navigate to your Rust project directory from the command line.</li><li>Run: <code>cargo build</code>.<ul><li>If successful, a <i>target</i> folder and <i>cargo.lock</i> file will be created, alongside the output of the command displaying <i>Finished</i>.</li><li>If failed, Cargo will output a messaging related to the reason.</li></ul><li>Run: <code>rustup target add wasm32-unknown-unknown</code><br>This allows Rust to used Wasm as a compilation target. This only needs to be run once. </li></ol></td>
+    <td>Create a project directory: <code>mkdir project</code>. The project directory should contain the following subdirectories and files:<ul><li><i>src</i> directory containing *.c source files containing user-defined functions.</li><li><i>tests</i> containing *.cc files testing the *.c files in src with the GoogleTests framework. The tests directory also contains a CMakeFiles.txt to build the gtest executable.</li></ul></td>
+</tr>
+<tr style="vertical-align: text-top;">
+    <td>3. Function Implementation</td>
+    <td>Examples of the types of functions that can be put in Rust source code are provided in the respective folders within each of the example folders. Define the classical functions you plan to use in your hybrid compute program. These will be the classical functions that your quantum program will run during execution. In Rust, edit the <i>src/lib.rs</i> file.<br><br><code>#[no_mangle]</code>: Ensures the function name isn’t changed by Rust’s name mangling, making it accessible from other languages or tools.</td>
+    <td>Examples of the types of functions that can be put in C source code are provided in the respective folders within each of the example folders. Define the classical functions you plan to use in your hybrid compute program. These will be the classical functions that your quantum program will run during execution. For C, edit the src/lib.c file. The standard C library cannot be used in a program that is intended to be compiled to Wasm.</li></ul> </td>
+</tr>
+<tr style="vertical-align: text-top;">
+    <td>4. Unit Tests</td>
+    <td>The Cargo Tests module can be used to test the rust source <a href="https://doc.rust-lang.org/cargo/guide/tests.html">link</a>. Instructions on writing tests can be found <a href="https://doc.rust-lang.org/book/ch11-03-test-organization.html">here</a>. All tests are defined under the code block with the annotation <code>#[cfg(test)]</code>. This tells the cargo to only run tests when the following command is used: <code>cargo test</code>. Also that annotation prevents the test being included in the compiled Wasm binary<br><br>The test module’s parent’s items are brought into scope within the test code-block with <code>use super::*</code>. Within the code-block annotated by <code>#[cfg(test)]</code>, each unit test is annotated with <code>#[test]</code>.<br><br>For each rust project, first navigating into to the same level as the cargo.toml file, and then running, <code>cargo test</code> will run all the tests to verify correctness of the rust source code.</td>
+    <td>Each <i>C</i> directory contains a <i>CMakeLists.txt</i> and a <i>test_lib.cc</i> file. These file use GoogleTest to unit test the methods defined in <i>src/lib.c</i>. GoogleTest cannot be used with the MSCV clang compiler on Windows 10/ 11. Mingw32 clang or the MSVC toolchain need to be specified instead. <i>test_lib.cc</i> contains an implementation for each test. Two header files are needed:<ul><li><code>#include &lt;gtest/gtest.h&gt;</code></li><li><code>#include "../src/lib.c"</code></li></ul>GoogleTest provides the <code>TEST</code> macro for writing tests. The following code defines an individual test named <code>TestName</code> in the test suite <code>TestSuite</code>.<br><pre><code>
+TEST(TestSuite, TestName) {
+    // statements 
+}</code></pre><br>The following commands need to be called within the tests subdirectory:<ul><li>Generate MakeFiles using CMake and output in a new subdirectory called <i>build</i>:<br><code>cmake -S . -B build</code></li><li>Build the executables needed for testing src/lib.c<br><code>cmake --build build</code></li><li>change directory into the build directory and call the <code>ctest</code> executable to run the unit tests.<br><code>cd build && ctest</code></li></ul></td>
+    <td></td>
+</tr>
+<tr style="vertical-align: text-top;">
+    <td>5. Wasm Compilation</td>
+    <td>Run: <code>cargo build --release --target wasm32-unknown-unknown</code>. This compiles your Rust code to Wasm. The Wasm binary can be found in the <i>./target/wasm32-unknown-unknown/release/</i> directory.<br><br>Adding <code>#![no_std]</code> into src/lib.rs will disable the use of the standard library when compiling to Wasm.</td>
+    <td>The C compilation uses the LLVM toolchain and requires that no standard headers be used within the program. The compilation can be invoked with the clang compiler with specific options to compile <i>lib.c</i> into a Wasm binary, <i>lib.wasm</i>:<br><code>clang --target=wasm32 --no-standard-libraries -Wl,--no-entry -Wl,--export-all -o lib.wasm lib.c</code><br><br>The following compiler options are used upon Clang invocation:<ul><li><code>--target=wasm32</code>: Specify the target output as 32-bit Wasm binary.</li><li><code>--no-standard-libraries</code>: A compiler option to prevent usage of <i>libc</i>.</li><li><code>-Wl,--no-entry</code>: A linker option that disables the check for a main function in the c source.</li><li><code>-Wl,--export-all</code>:</li></ul><br>The Wasm is generated in the directory specified when calling the clang compiler.<br><br>CMakeFiles.txt are also provided for each example. The CMake enables Wasm compilatin and automatically uses the compiler and linker flags when clang is invoked. CMake must be called in the root location of each project (at the same directory level as CMakeLists.txt).<br>For compilation on Windows with the MSVC clang toolchain:<br><code>cmake -G "Ninja" -B build -DCMAKE_TOOLCHAIN_FILE=wasm-toolchain.cmake</code><br><br>For Linux and macOS:<br><code>cmake -G "Unix Makefiles" -B build -DCMAKE_TOOLCHAIN_FILE=wasm-toolchain.cmake</code><br><br>Once the CMake configurations are built, the following command will trigger compilation of the Wasm binary:<br><code>cmake --build build</code></td>
+</tr>
+</table></section>
+<section id="injecting-wasm-into-tket">
+<h3>Injecting Wasm into TKET<a class="headerlink" href="#injecting-wasm-into-tket" title="Link to this heading">¶</a></h3>
+<p>To inject Wasm into a TKET program and enable processing on the H-Series devices or emulators, three components must be incorporated in the workflow.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://tket.quantinuum.com/api-docs/wasm.html#pytket.wasm.WasmFileHandler">pytket.wasm.WasmFileHandler</a>: Enables addition of the Wasm module you create to the TKET program. Additionally, checks Wasm binary is compatible with Wasm standards (number of input parameters and input/ output parameter types) via a boolean kwarg, <code class="docutils literal notranslate"><span class="pre">check_file</span></code>.</p></li>
+<li><p><a class="reference external" href="https://tket.quantinuum.com/api-docs/circuit_class.html#pytket.circuit.Circuit.add_wasm_to_reg">pytket.circuit.Circuit.add_wasm_to_reg</a>: Adds the linked Wasm to the TKET program as a classical operation to act across specified registers.</p></li>
+<li><p><a class="reference external" href="https://tket.quantinuum.com/api-docs/circuit_class.html#pytket.circuit.Circuit.add_wasm">pytket.circuit.Circuit.add_wasm</a>: Adds the linked Wasm to the TKET program as a classical operation to act on specific bits.</p></li>
+<li><p><a class="reference external" href="https://tket.quantinuum.com/extensions/pytket-quantinuum/api.html#pytket.extensions.quantinuum.QuantinuumBackend.process_circuits">wasm_file_handler</a> kwarg on <code class="docutils literal notranslate"><span class="pre">QuantinuumBackend.process_circuits</span></code>: The linked Wasm module must be specified during job submission to H-Series.</p></li>
+</ol>
+</section>
+<section id="program-requirements">
+<h3>Program Requirements<a class="headerlink" href="#program-requirements" title="Link to this heading">¶</a></h3>
+<p>There are specific constraints that must be satisfied before Wasm binaries can be submitted for execution to the real-time hybrid-compute environment. The table below specifies these constraints in more detail.</p>
+<table>
+<tr style="background-color: #D3D3D3;">
+    <th style="text-align: left;">Requirements</th>
+    <th style="text-align: left;">Description</th>
+</tr>
+<tr style="vertical-align: text-top;">
+    <td>Program Size</td>
+    <td>The combined TKET + Wasm program should be of size  ~1.3 MBs or less. There is a hard limit of 6 MBs for programs submitted to H-Series. </td>
+</tr>
+<tr>
+    <td>C Source</td>
+    <td>Standard C library not supported (WASI breaks WAVM).</td>
+</tr>
+<tr>
+    <td>Rust Source</td>
+    <td>Rust standard library is supported.</td>
+</tr>
+<tr>
+    <td>Input Arguments</td>
+    <td><ul><li>multiple 32-bit integers</li><li>No arguments</li></ul></td>
+</tr>
+<tr>
+    <td>Method Signatures</td>
+    <td><ul><li>integer function (one 32-bit integer)</li><li>void function</li></ul></td>
+</tr>
+<tr>
+    <td>Mandatory Functions</td>
+    <td><ul><li>A void function, named <code>init</code>, with zero input arguments is required to initialize WAVM environment.</li><li>A reset function to reset in-memory Wasm variables. This function cannot be called <code>reset</code> to avoid overriding the existing <code>reset</code> function on the H-System chip. It is recommended to add a suffix to the Wasm reset function, <code>reset_{variable_name}</code> or <code>reset_variables</code>, where <code>{variable_name}</code> is the name of the in-memory Wasm variable.</li></ul></td>
+</tr>
+<tr>
+    <td>TKET Restrictions</td>
+    <td><ul><li>Wasm operations cannot be encapsulated within <code>pytket.circuit.CircBox</code>. Each Wasm operation must be directly added to the main <code>pytket.circuit.Circuit</code> instance </li><li>Only one Wasm binary can be used with a <code>pytket.circuit.Circuit</code> instance. </li><li>Multiple Wasm binaries cannot be used across multiple TKET circuits.</li><li>A circuit in a list circuits with a different Wasm binary must be submitted separately from the remaining list of circuits.</li></ul></td>
+</tr>
+<tr>
+    <td>Other Restrictions</td>
+    <td><ul><li>RNGs, File I/O, and Exception handling not supported.</li><li>Timing restrictions (~2 milliseconds).</li></ul></td>
+</tr>
+</table></section>
+<section id="estimating-program-size">
+<h3>Estimating Program Size<a class="headerlink" href="#estimating-program-size" title="Link to this heading">¶</a></h3>
+<p>The guidance provided by Quantinuum is to limit program size to c1.3 MBs. The hard limit on program size is 6 MBs, otherwise the job will fail. For real-time hybrid compute jobs involving both quantum circuits and Wasm binaries, the program size must be estimated using the methods defined below.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">estimate_wasm_size</span></code> method accepts a <code class="docutils literal notranslate"><span class="pre">pathlib.Path</span></code> object to the Wasm binary on local disk. The <code class="docutils literal notranslate"><span class="pre">os</span></code> module is used to estimate the size of the Wasm binary in MBs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+
+<span class="n">wasm_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;surface_code/c/surface_code.wasm&quot;</span><span class="p">)</span>
+<span class="n">wasm_path</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_wasm_size</span><span class="p">(</span>
+    <span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the size of the inputted file in MBs.</span>
+<span class="sd">    </span>
+<span class="sd">    :param path: path to Wasm binary on local disk</span>
+<span class="sd">    :param_type: pathlib.Path</span>
+<span class="sd">    :returns: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1024</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To estimate the size of a TKET circuit, the <code class="docutils literal notranslate"><span class="pre">circuit_to_qasm_str</span></code> must be used to convert the circuit into a qasm string. The <code class="docutils literal notranslate"><span class="pre">sys</span></code> module can be used to estimate the size of the of the QASM string in MBs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pytket.circuit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pytket.qasm</span><span class="w"> </span><span class="kn">import</span> <span class="n">circuit_to_qasm_str</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_circuit_size</span><span class="p">(</span>
+    <span class="n">circuit</span><span class="p">:</span> <span class="n">Circuit</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">qasm_str</span> <span class="o">=</span> <span class="n">circuit_to_qasm_str</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s2">&quot;hqslib1&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">qasm_str</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1024</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="asynchronous-wasm">
+<h3>Asynchronous Wasm<a class="headerlink" href="#asynchronous-wasm" title="Link to this heading">¶</a></h3>
+<p>Asynchronous (asnc) Wasm can help minimize qubit idle-time. Async Wasm involves void calls during job execution and integer call when quantum correction is required. The schematic below shows four circuit primitives: <em>Initialization</em>, 2 <em>Syndrome Extraction blocks</em> and <em>Actions dependent on Wasm result</em>. Void Wasm calls are non-blocking, they call a Wasm function without blocking execution of the quantum circuit. Each void call updates an in-memory Wasm variable. This can also be referred to as a Wasm register. Successive void calls update the value of the in-memory Wasm variable. when corrections are required, an integer Wasm function is called to write the in-memory Wasm variable to a classical register on the TKET circuit. The TKET classical register is then used to conditionally perform gate operations on the qubit registers. It is best practice to reset the in-memory Wasm variable on a per-shot basis. During implementation of decoder, the in-memory Wasm variables are defined as global variables in C or Rust source.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In-memory Wasm variables are automatically reset on a per-chunk basis. Users are advised to reset on a per-shot basis by using a void Wasm call at the end of a circuit.</p>
+</div>
+<a class="reference internal image-reference" href="../../../../_images/async.png"><img alt="Asynchronous_Wasm" class="align-center" src="../../../../_images/async.png" style="width: 800px;" />
+</a>
+</section>
+<section id="faqs">
+<h3>FAQS<a class="headerlink" href="#faqs" title="Link to this heading">¶</a></h3>
+<p><strong>Is this a library of blackbox QEC decoders?</strong></p>
+<p>No, this is a server-side capability that runs user-defined classical decoders during real-time execution of a quantum circuit. The user is responsible for defining decoders and their workflow.</p>
+<p><strong>Why is Wasm useful for my use case?</strong></p>
+<p>WebAssembly enables the execution of classical logic during the real-time execution of a quantum circuit. This is useful for QEC workflows with look-up and algorithmic decoders. The quantum circuit can apply Wasm on a specific classical register to perform processing on the register value. The output of the Wasm function can be stored in the same register, or passed to new register.</p>
+<p><strong>Why is this release relevant as Quantinuum upgrades its hardware?</strong></p>
+<p>Practical QEC schemes require real-time hybrid computation. This new capability is the first step to achieving this on H-Series hardware.</p>
+<p><strong>Why can I not use a higher-level programming language, such as Julia?</strong></p>
+<p>There are two requirement: (1) the higher-level language is has support for Wasm compilation, and (2) the compiled Wasm must be fast and execute in ~2 milliseconds. This is best achieved with low-level languages like C and Rust. The main issue with Julia, Python, etc. is that they are either interpreted or have garbage collection. Neither is suitable for fast, deterministic execution within qubit coherence time.</p>
+<p><strong>Is it possible for me to submit arbitrary Wasm to H-Series?</strong></p>
+<p>No, it is not possible to submit arbitrary Wasm to H-Series. Each Wasm function must satisfy a Wasm standard. Each function is either a void function or a 32-bit integer function. For 32-bit integer Wasm function, the function must return only one 32-bit integer. The Wasm function can only accept (multiple) 32-bit integer arguments, or no arguments.</p>
+<p>WAVM is an isolated memory-safe environment and communicates via network calls with the H-Series chip. This help alleviate the danger of end users submitting customized Wasm binaries.</p>
+<p><strong>How do I prevent qubits from idling and protect my program from memory error when using Wasm?</strong></p>
+<p>For Wasm calls during circuit execution, it is recommended to use <em>async</em> Wasm calls. This is the use of void Wasm call to process the value of a register and to store some desired value as an in-memory Wasm variable. After the circuit, or subcircuit, has completed execution, the in-memory Wasm variable is retrieved using an integer function and applied to the specified classical register. For in-memory Wasm variables, a Wasm call is required at the end of each shot to restore the in-memory Wasm variable to a <em>null</em> value.</p>
+<p><strong>Can I also use Wasm with the H-Series emulator?</strong></p>
+<p>Yes, Wasm is available for use on both the H-Series hardware and emulator.</p>
+<p><strong>Can I use parallelization in the WAVM?</strong></p>
+<p>No, parallelization on a single core and across multiple cores is not supported.</p>
+<!-- **Can I use C++ to compile Wasm?**
+
+No, clang++ cannot be used to compile C++ source into a Wasm binary, since the `init` function to warm the Wasm environment is not recognized in the Wasm binary, after compilation. --></section>
+<section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h3>
+<p>There are known issues that cause failure during execution of the submitted Wasm binary. These issues are detailed below with the cause of failure, potential resolutions and the error code/ message.</p>
+<ol class="arabic simple">
+<li><p>Wasm program timeout</p>
+<ul class="simple">
+<li><p><strong>Use Case</strong>: A user’s QASM program has many void Wasm calls (no output expected) eventually followed by a non-void Wasm call (one output expected).</p></li>
+<li><p><strong>Failure</strong>: If multiple void requests are made in a short interval and then a non-void request is made, the summation of execution time for all the voids + non-void could exceed the RTE timeout of 250ms. The RTE is waiting for a response from the non-void request.
+An error of type <code class="docutils literal notranslate"><span class="pre">Response</span> <span class="pre">0:</span> <span class="pre">error:</span> <span class="pre">0xFFFFFFE6</span> <span class="pre">CCE</span> <span class="pre">receive</span> <span class="pre">timed</span> <span class="pre">out</span> <span class="pre">-</span> <span class="pre">file:</span> <span class="pre">rtexec.c</span> <span class="pre">line:</span> <span class="pre">xxxx</span></code>, can send the system into maintenance mode without failing the job, requiring the job to be manually paused by operators.</p></li>
+<li><p><strong>Resolution</strong>: Run the QASM on a simulator or try to determine the number of Wasm function calls from the QASM and adjust the order is possible.</p></li>
+<li><p><strong>Error Code</strong>: 3002</p>
+<ul>
+<li><p><strong>Error Message</strong>: <code class="docutils literal notranslate"><span class="pre">WASM</span> <span class="pre">error:</span> <span class="pre">WASM</span> <span class="pre">failed</span> <span class="pre">during</span> <span class="pre">run-time.</span> <span class="pre">Execution</span> <span class="pre">time</span> <span class="pre">of</span> <span class="pre">function</span> <span class="pre">'&lt;function</span> <span class="pre">name&gt;'</span> <span class="pre">exceeded</span> <span class="pre">maximum</span> <span class="pre">&lt;timeout</span> <span class="pre">value&gt;</span> <span class="pre">msec</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Large Wasm binary with large number of exported functions.</p>
+<ul class="simple">
+<li><p><strong>Use Case</strong>: A user codes a source program to be converted to Wasm. Source could be any high-level language that supports Wasm output. The source program contains every possible Wasm function the user creates, whether or not used by a TKET program and marks all the functions to be exported.  Any of the User’s TKET programs use this single Wasm binary.</p></li>
+<li><p><strong>Failure</strong>: If the time taken to load the large Wasm binary into memory exceeds a threshold, then a Wasm LOAD FAILURE will be reported. Loading Wasm into memory requires many steps, but the time consuming step is to compile each exported Wasm function. Note: The number of exported functions in a Wasm binary is not necessarily the cause of the LOAD timeout, but rather the time it takes to compile all exported functions. 1000 exported functions could compile within the timeout whereas 10 very large exported functions could exceed the timeout.</p></li>
+<li><p><strong>Resolution</strong>: Keep Wasm binaries to a small size with only the required Wasm functions needed for a particular TKET program.</p></li>
+<li><p><strong>Error Code</strong>: 3002</p></li>
+<li><p><strong>Error Message</strong>: <code class="docutils literal notranslate"><span class="pre">WASM</span> <span class="pre">error:</span> <span class="pre">WASM</span> <span class="pre">failed</span> <span class="pre">during</span> <span class="pre">binary</span> <span class="pre">load.</span> <span class="pre">&lt;appended</span> <span class="pre">CCE</span> <span class="pre">message&gt;</span></code></p>
+<ul>
+<li><p>A list of the possible “messages” that could be substituted in for <appended message>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">load</span> <span class="pre">wasm</span> <span class="pre">binary</span> <span class="pre">to</span> <span class="pre">module</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Wasm</span> <span class="pre">binary</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">export</span> <span class="pre">function:</span> <span class="pre">&lt;function</span> <span class="pre">name&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">wasm</span> <span class="pre">functions</span> <span class="pre">are</span> <span class="pre">exported</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Failed</span> <span class="pre">wasm_request</span> <span class="pre">for</span> <span class="pre">init()</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>WASM function causes WAVM Exception.</p>
+<ul class="simple">
+<li><p><strong>Use Case</strong>: A user codes a high level source program and converts to Wasm. A source function does memory management (alloc, free, etc).  The program may not have been unit tested.</p></li>
+<li><p><strong>Failure</strong>: A Wasm function uses a pthread as opposed to a main thread. When this function is executed, it may pass the first time and then fail the next time. In these cases, the TKET+Wasm job is either Paused or Failed. This failure can be seen in two ways:</p>
+<ul>
+<li><p>either a WAVM Exception is caught (e.g. Div/0);</p></li>
+<li><p>SEGV (Segmentation Violation) occurs in the pthread executing the Wasm function.</p></li>
+</ul>
+</li>
+<li><p><strong>Resolution</strong>: User must unit test their Wasm functions as much as possible. Quantinuum can also provide debugging by obtaining the TKET and Wasm from the submitted job. Note: C with pthreads have known issues with Exception handling when using 3rd party libraries (e.g. WAVM Lib). As from above, some WAVM Exceptions can be caught by the pthread while others are not, but the SEGV can be caught.</p></li>
+<li><p><strong>Error Code</strong>: 3002</p>
+<ul>
+<li><p><strong>Error Message</strong>: <code class="docutils literal notranslate"><span class="pre">WASM</span> <span class="pre">error:</span> <span class="pre">WASM</span> <span class="pre">failed</span> <span class="pre">during</span> <span class="pre">run-time.</span> <span class="pre">Execution</span> <span class="pre">time</span> <span class="pre">of</span> <span class="pre">function</span> <span class="pre">'&lt;function</span> <span class="pre">name&gt;'</span> <span class="pre">exceeded</span> <span class="pre">maximum</span> <span class="pre">&lt;timeout</span> <span class="pre">value&gt;</span> <span class="pre">msec</span></code></p></li>
+<li><p>A list of the possible WAVM exceptions that can be caught:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.outOfBoundsMemoryAccess</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.outOfBoundsTableAccess</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.outOfBoundsDataSegmentAccess</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.stackOverflow</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.integerDivideByZeroOrOverflow</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.invalidFloatOperation</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.invokeSignatureMismatch</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.reachedUnreachable</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.indirectCallSignatureMismatch</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.uninitializedTableElement</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.calledAbort</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.calledUnimplementedIntrinsic</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.outOfMemory</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.misalignedAtomicMemoryAccess</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.waitOnUnsharedMemory</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavm.invalidArgument</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="use-cases">
+<h2>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">¶</a></h2>
+<p>Three use cases are provided to demonstrate application of the QEC Decoder Toolkit via the real-time hybrid-compute environment. Each subdirectory contains the relevant source-code to unit test and compile Wasm binaries.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="repeat_until_success/rus_index.html"><span class="std std-doc">Repeat Until Success</span></a>: Conditionally adding quantum operations to a circuit based on equality comparisons with an in-memory Wasm variable.</p></li>
+<li><p><a class="reference internal" href="repetition_code/repetition_code_index.html"><span class="std std-doc">Repetition Code</span></a>: <span class="math notranslate nohighlight">\([[3, 1, 2]]\)</span> code to encode 1 logical qubit into 3 physical qubits with code distance 2.</p></li>
+<li><p><a class="reference internal" href="surface_code/surface_code_index.html"><span class="std std-doc">Surface Code</span></a>: <span class="math notranslate nohighlight">\([[9, 1, 3]]\)</span> code to encode 1 logical qubit into 9 physical qubits with code distance 3.</p></li>
+</ul>
+<section id="repeat-until-success">
+<h3>Repeat Until Success<a class="headerlink" href="#repeat-until-success" title="Link to this heading">¶</a></h3>
+<p>This use case conditionally adds quantum operations to a circuit based on equality comparisons with an in-memory Wasm variable. Only integer Wasm calls are used. The C and Rust source, in addition to build scripts, can be found <a class="reference internal" href="repeat_until_success/rus_index.html"><span class="std std-doc">here</span></a>.</p>
+<p>A 2-qubit circuit is initialized. Subsequently, the <code class="docutils literal notranslate"><span class="pre">add_c_register</span></code> is used to add 4 classical registers. The first argument defines the name of the classical register. The second argument defines the size of the classical register. The following classical registers are added manually:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">creg0</span></code> with 1 bit</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">creg1</span></code> with 1 bit</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cond</span></code> with 32 bits</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">count</span></code> with 32 bits</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytket.circuit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">Qubit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pytket.circuit.logic_exp</span><span class="w"> </span><span class="kn">import</span> <span class="n">reg_lt</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;RUS Circuit&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add classical registers</span>
+<span class="n">creg0</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;creg0&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">creg1</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;creg1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">cond</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;cond&quot;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">pytket.wasm.WasmFileHandler</span></code> instance is used to link to the Wasm module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pytket.wasm</span><span class="w"> </span><span class="kn">import</span> <span class="n">WasmFileHandler</span>
+
+<span class="n">wasm_file_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;repeat_until_success/c/rus.wasm&quot;</span><span class="p">)</span>
+<span class="n">wfh</span> <span class="o">=</span> <span class="n">WasmFileHandler</span><span class="p">(</span><span class="n">wasm_file_path</span><span class="p">,</span> <span class="n">check_file</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">wfh</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The linked Wasm module is added to <code class="docutils literal notranslate"><span class="pre">pytket.circuit.Circuit</span></code> instance using <code class="docutils literal notranslate"><span class="pre">add_wasm_to_reg</span></code>. The Wasm method <code class="docutils literal notranslate"><span class="pre">add_count</span></code> is called and the bit registers <code class="docutils literal notranslate"><span class="pre">creg1</span></code> and <code class="docutils literal notranslate"><span class="pre">count</span></code> are supplied. The output of <code class="docutils literal notranslate"><span class="pre">add_count</span></code> is written to <code class="docutils literal notranslate"><span class="pre">cond</span></code>. All the operations in this block are conditional operations on the decimal value of the  bit register <code class="docutils literal notranslate"><span class="pre">cond</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_repetitions</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">cond_execute</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="k">for</span> <span class="n">loop_iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_repetitions</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">reg_lt</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">cond_execute</span><span class="p">))</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">reg_lt</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">cond_execute</span><span class="p">))</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">Qubit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">creg1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">condition</span><span class="o">=</span><span class="n">reg_lt</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">cond_execute</span><span class="p">))</span>
+
+    <span class="c1"># Call Wasm</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_wasm_to_reg</span><span class="p">(</span>
+        <span class="s2">&quot;add_count&quot;</span><span class="p">,</span> <span class="n">wfh</span><span class="p">,</span> <span class="p">[</span><span class="n">creg1</span><span class="p">,</span> <span class="n">count</span><span class="p">],</span> <span class="p">[</span><span class="n">cond</span><span class="p">],</span> <span class="n">condition</span><span class="o">=</span><span class="n">reg_lt</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">cond_execute</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_setreg</span><span class="p">(</span><span class="n">loop_iter</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">reg_lt</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">cond_execute</span><span class="p">))</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Reset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">reg_lt</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">cond_execute</span><span class="p">))</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">Qubit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">creg0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">Qubit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">creg1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">QuantinuumBackend</span></code> instance is instantiated with the backend target specified as a H-Series emulator, <code class="docutils literal notranslate"><span class="pre">H2-1E</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytket.extensions.quantinuum</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantinuumBackend</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">QuantinuumBackend</span><span class="p">(</span><span class="s2">&quot;H2-1E&quot;</span><span class="p">)</span>
+<span class="n">backend</span><span class="o">.</span><span class="n">login</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The RUS circuit is compiled to the H-Series gate set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compiled_circuit</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">optimisation_level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytket.circuit.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">render_circuit_jupyter</span>
+
+<span class="n">render_circuit_jupyter</span><span class="p">(</span><span class="n">compiled_circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The combined program size can be estimated below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">program_size</span> <span class="o">=</span> <span class="n">estimate_circuit_size</span><span class="p">(</span><span class="n">compiled_circuit</span><span class="p">)</span> <span class="o">+</span> <span class="n">estimate_wasm_size</span><span class="p">(</span><span class="n">wasm_file_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">program_size</span><span class="si">}</span><span class="s2"> MBs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The RUS circuit is submitted to the H-Series emulator using <code class="docutils literal notranslate"><span class="pre">process_circuits</span></code>. The <code class="docutils literal notranslate"><span class="pre">wasm_file_handler</span></code> keyword argument is used to submit the linked Wasm module to H-Series as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">compiled_circuit</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">wasm_file_handler</span><span class="o">=</span><span class="n">wfh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The status of the circuit can be queried with the <code class="docutils literal notranslate"><span class="pre">circuit_status</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">status</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">circuit_status</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once the job result is ready <code class="docutils literal notranslate"><span class="pre">get_result</span></code> can be used to retrieve the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distribution</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(</span><span class="n">creg1</span><span class="p">)</span>
+<span class="n">logical_fidelity</span> <span class="o">=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">0</span><span class="p">,))</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">distribution</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">logical_fidelity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="repetition-code">
+<h3>Repetition Code<a class="headerlink" href="#repetition-code" title="Link to this heading">¶</a></h3>
+<p><span class="math notranslate nohighlight">\([[3, 1, 2]]\)</span> code to encode 1 logical qubit into 3 physical qubits with code distance 2. Integer Wasm calls are used to perform decoding via a look-up table. Void Wasm calls are not in this use case. The C and Rust source, in addition to the build scripts, can be found <a class="reference internal" href="repetition_code/repetition_code_index.html"><span class="std std-doc">here</span></a>.</p>
+<p>First, the physical qubit register is initialized in the <span class="math notranslate nohighlight">\(|000\rangle\)</span> state encoding the logical <span class="math notranslate nohighlight">\(|0\rangle\)</span> state. One ancilla qubit is used to perform two syndrome measurements:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{Z}_{q[0]} \hat{Z}_{q[1]} \hat{I}_{q[2]}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{I}_{q[0]} \hat{Z}_{q[1]} \hat{Z}_{q[2]}\)</span></p></li>
+</ol>
+<p>Subsequently, classically-conditioned operations are used to correct any errors on the physical qubits using the syndrome measurement results. Finally, direct measurements on the physical qubits are performed to verify the final state of the logical qubit is <span class="math notranslate nohighlight">\(|0\rangle\)</span>. After each syndrome extraction, Wasm functions are used to determine which qubits are to be corrected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pytket.wasm</span><span class="w"> </span><span class="kn">import</span> <span class="n">WasmFileHandler</span>
+
+<span class="n">wasm_file_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;repetition_code&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;c&quot;</span> <span class="o">/</span> <span class="s2">&quot;repetition_code.wasm&quot;</span>
+<span class="n">wasm_file_handler</span> <span class="o">=</span> <span class="n">WasmFileHandler</span><span class="p">(</span><span class="n">wasm_file_path</span><span class="p">,</span> <span class="n">check_file</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wasm_file_handler</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytket.circuit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">CircBox</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_syndrome_extraction_box</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">CircBox</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;This generates a syndrome extraction</span>
+<span class="sd">    primitive with two data qubits and one</span>
+<span class="sd">    ancilla qubit. The first qubit, q[0],</span>
+<span class="sd">    is the ancilla qubit. q[1] and q[2] are</span>
+<span class="sd">    data qubits.</span>
+<span class="sd">    :returns: CircBox</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;syndrome_extraction&quot;</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Reset</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CircBox</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+
+
+<span class="n">syndrome_extraction</span> <span class="o">=</span> <span class="n">get_syndrome_extraction_box</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Pauli-<span class="math notranslate nohighlight">\(X\)</span> gate is applied on the circuit based on the value of a classical register. This value is computed by a Wasm function. This <code class="docutils literal notranslate"><span class="pre">CircBox</span></code> primitive does not contain any Wasm operations, since Wasm operations must be added directly to the main circuit. Only the correction to the qubits is defined below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_feedforward_box</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">CircBox</span><span class="p">:</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Conditional Not&quot;</span>
+    <span class="n">creg</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;creg&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">circuit</span><span class="o">.</span><span class="n">qubits</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">condition_bits</span><span class="o">=</span><span class="p">[</span><span class="n">creg</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">condition_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CircBox</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+
+
+<span class="n">feedforward_box</span> <span class="o">=</span> <span class="n">get_feedforward_box</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Classical expressions can be applied to classical bits using the <code class="docutils literal notranslate"><span class="pre">pytket.circuit.logic_exp</span></code> submodule. These expressions perform boolean operations on classical bit registers.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">QubitRegister</span></code> and <code class="docutils literal notranslate"><span class="pre">BitRegister</span></code> objects are used to allocate qubits and bits to the <code class="docutils literal notranslate"><span class="pre">pytket.circuit.Circuit</span></code> instance. The circuit contains two quantum registers, <code class="docutils literal notranslate"><span class="pre">q</span></code> and <code class="docutils literal notranslate"><span class="pre">a</span></code>, and three classical registers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pfu</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">syn</span></code></p></li>
+</ul>
+<p>The cell below adds the necessary operations to measure the stabilizers <span class="math notranslate nohighlight">\(\hat{Z}_0 \hat{Z}_1\)</span> and <span class="math notranslate nohighlight">\(\hat{Z}_1 \hat{Z}_2\)</span>. Three measurement operations are applied to qubits within <code class="docutils literal notranslate"><span class="pre">qreg</span></code>. The outcome of the measurements is stored in the corresponding bits within <code class="docutils literal notranslate"><span class="pre">creg</span></code>, i.e. a measurement on <code class="docutils literal notranslate"><span class="pre">qreg[0]</span></code> will have a measurement outcome stored in <code class="docutils literal notranslate"><span class="pre">creg[0]</span></code>. Three Measurement operations are added to each qubit in <code class="docutils literal notranslate"><span class="pre">qreg</span></code> and the corresponding bit in <code class="docutils literal notranslate"><span class="pre">creg</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytket.circuit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">QubitRegister</span><span class="p">,</span> <span class="n">BitRegister</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;repetition-code&quot;</span>
+
+<span class="n">qreg</span> <span class="o">=</span> <span class="n">QubitRegister</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_q_register</span><span class="p">(</span><span class="n">qreg</span><span class="p">)</span>
+
+<span class="n">areg</span> <span class="o">=</span> <span class="n">QubitRegister</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_q_register</span><span class="p">(</span><span class="n">areg</span><span class="p">)</span>
+
+<span class="n">creg</span> <span class="o">=</span> <span class="n">BitRegister</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="n">creg</span><span class="p">)</span>
+
+<span class="n">pfu</span> <span class="o">=</span> <span class="n">BitRegister</span><span class="p">(</span><span class="s2">&quot;pfu&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="n">pfu</span><span class="p">)</span>
+
+<span class="n">syn</span> <span class="o">=</span> <span class="n">BitRegister</span><span class="p">(</span><span class="s2">&quot;syn&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="n">syn</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">syndrome_extraction</span><span class="p">,</span> <span class="p">[</span><span class="n">areg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">qreg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">qreg</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">syn</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">syndrome_extraction</span><span class="p">,</span> <span class="p">[</span><span class="n">areg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">qreg</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">qreg</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">syn</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_wasm_to_reg</span><span class="p">(</span><span class="s2">&quot;decode3&quot;</span><span class="p">,</span> <span class="n">wasm_file_handler</span><span class="p">,</span> <span class="p">[</span><span class="n">syn</span><span class="p">],</span> <span class="p">[</span><span class="n">pfu</span><span class="p">])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">feedforward_box</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">qreg</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">pfu</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">syndrome_extraction</span><span class="p">,</span> <span class="p">[</span><span class="n">areg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">qreg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">qreg</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">syn</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">syndrome_extraction</span><span class="p">,</span> <span class="p">[</span><span class="n">areg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">qreg</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">qreg</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">syn</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_wasm_to_reg</span><span class="p">(</span><span class="s2">&quot;decode3&quot;</span><span class="p">,</span> <span class="n">wasm_file_handler</span><span class="p">,</span> <span class="p">[</span><span class="n">syn</span><span class="p">],</span> <span class="p">[</span><span class="n">pfu</span><span class="p">])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">feedforward_box</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">qreg</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">pfu</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">qreg</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">creg</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_wasm_to_reg</span><span class="p">(</span><span class="s2">&quot;reset_syn_old&quot;</span><span class="p">,</span> <span class="n">wasm_file_handler</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytket.circuit.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">render_circuit_jupyter</span>
+
+<span class="n">render_circuit_jupyter</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The repetition code circuit with the Wasm operation can be submitted to the <code class="docutils literal notranslate"><span class="pre">H1-1E</span></code> emulator using the usual workflow: compilation, costing, submission, status check and, finally, job retrieval. The linked Wasm module must be specified during job submission.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytket.extensions.quantinuum</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantinuumBackend</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">QuantinuumBackend</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="s2">&quot;H1-1E&quot;</span><span class="p">)</span>
+<span class="n">backend</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compiled_circuit</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">optimisation_level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">render_circuit_jupyter</span><span class="p">(</span><span class="n">compiled_circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The combined size of the TKET + Wasm program is estimated below in MBs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">program_size</span> <span class="o">=</span> <span class="n">estimate_circuit_size</span><span class="p">(</span><span class="n">compiled_circuit</span><span class="p">)</span> <span class="o">+</span> <span class="n">estimate_wasm_size</span><span class="p">(</span><span class="n">wasm_file_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">program_size</span><span class="si">}</span><span class="s2"> MBs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_shots</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span>
+    <span class="n">compiled_circuit</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="n">n_shots</span><span class="p">,</span> <span class="n">wasm_file_handler</span><span class="o">=</span><span class="n">wasm_file_handler</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">backend</span><span class="o">.</span><span class="n">circuit_status</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">get_distribution</span><span class="p">(</span><span class="n">creg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The logical outcome is the parity of the data qubits after measurement and correction. For example, if the register <code class="docutils literal notranslate"><span class="pre">creg</span></code> is 111, then the raw outcome is 1^1^1 = 1.</p>
+<ol class="arabic simple">
+<li><p>If the correction is 000 (000^111 = 111), after correction the logical outcome is 1^1^1 = 1</p></li>
+<li><p>If the correction is 010 (010^111 =  101), after correction the logical outcome is 1^0^1 = 0</p></li>
+</ol>
+<p>If a logical zero state is prepared, then in the example above, the raw outcome is incorrect and the first corrected outcome is also incorrect (logical failure). The second corrected outcome is correct.</p>
+<p>My logical fidelity is, <span class="math notranslate nohighlight">\(\frac{N_{success}}{N_{shots}}\)</span>, where <span class="math notranslate nohighlight">\(N_{success}\)</span> is the number of successfully corrected outcomes and <span class="math notranslate nohighlight">\(N_{shots}\)</span> is the number of shots total.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pytket.backends.backendresult</span><span class="w"> </span><span class="kn">import</span> <span class="n">BackendResult</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pytket.circuit</span><span class="w"> </span><span class="kn">import</span> <span class="n">BitRegister</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">logical_error</span><span class="p">(</span>
+    <span class="n">result</span><span class="p">:</span> <span class="n">BackendResult</span><span class="p">,</span>
+    <span class="n">n_shots</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">classical_register</span><span class="p">:</span> <span class="n">BitRegister</span><span class="p">,</span>
+    <span class="n">pauli_frame_register</span><span class="p">:</span> <span class="n">BitRegister</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">raw0_tot</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">cor0_tot</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">raw1_tot</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">cor1_tot</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">raw_meas</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_shots</span><span class="p">(</span><span class="n">creg</span><span class="p">)</span>
+    <span class="n">corrs</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_shots</span><span class="p">(</span><span class="n">pfu</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_meas</span><span class="p">)):</span>
+        <span class="n">raw_log</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">raw_meas</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">%</span> <span class="mi">2</span>
+        <span class="n">corr_log</span> <span class="o">=</span> <span class="p">(</span><span class="n">raw_log</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">corrs</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="o">%</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">raw_log</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">raw0_tot</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">raw_log</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">raw1_tot</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">corr_log</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">cor0_tot</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">corr_log</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">cor1_tot</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">raw0_tot</span> <span class="o">=</span> <span class="n">raw0_tot</span> <span class="o">/</span> <span class="n">n_shots</span>
+    <span class="n">raw1_tot</span> <span class="o">=</span> <span class="n">raw1_tot</span> <span class="o">/</span> <span class="n">n_shots</span>
+    <span class="n">cor0_tot</span> <span class="o">=</span> <span class="n">cor0_tot</span> <span class="o">/</span> <span class="n">n_shots</span>
+    <span class="n">cor1_tot</span> <span class="o">=</span> <span class="n">cor1_tot</span> <span class="o">/</span> <span class="n">n_shots</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;Raw Zeros&quot;</span><span class="p">,</span> <span class="n">raw0_tot</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;Raw Ones&quot;</span><span class="p">,</span> <span class="n">raw1_tot</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;Corrected Zeros&quot;</span><span class="p">,</span> <span class="n">cor0_tot</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;Corrected Ones&quot;</span><span class="p">,</span> <span class="n">cor1_tot</span><span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logical_error</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">n_shots</span><span class="p">,</span> <span class="n">creg</span><span class="p">,</span> <span class="n">pfu</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="surface-17-code">
+<h3>Surface-17 Code<a class="headerlink" href="#surface-17-code" title="Link to this heading">¶</a></h3>
+<p>This use case demonstrates asynchronous (async) Wasm calls for a 9-qubit surface-code problem with 8 ancillary qubits, the surface-17 code. This is a [[9, 1, 3]] code, which can correct any single qubit error fault-toralantly. In the schematic below, each edge in the graph is a qubit, and each plaquette is a stabilizer with neighbouring nodes as support qubits. A blue plaquette is a Pauli-<span class="math notranslate nohighlight">\(\hat{X}\)</span> stabilizer and a red plaquette Pauli-<span class="math notranslate nohighlight">\(\hat{Z}\)</span> stabilizer. Plaquettes defined at the boundary have weight-2 stabilizers, but otherwise are weight-4. A stabilizer defined at each plaquette must have even commutativity with stabilizers defined by neighboring plaquettes. The C and Rust source, in addition to the build scripts, can be found <a class="reference internal" href="surface_code/surface_code_index.html"><span class="std std-doc">here</span></a>.</p>
+<a class="reference internal image-reference" href="../../../../_images/surface-17-definition.png"><img alt="surface-17-definition" class="align-center" src="../../../../_images/surface-17-definition.png" style="width: 400px;" />
+</a>
+<p>During execution of the circuit, a Wasm call uses the syndrome measurements to define an in-memory Wasm variable, <code class="docutils literal notranslate"><span class="pre">PFU</span></code> (Pauli Frame Update), via a decoder look-up table. Towards the end of a circuit, an integer Wasm function is used to retrieve the in-memory Wasm variable and perform conditional Pauli-<span class="math notranslate nohighlight">\(Z\)</span> operations select qubits. The benefit of async calls is ability to accumulate Wasm results until they are needed for conditional operations, which helps minimize the impact of noise on a job during machine operation.</p>
+<p>Below, the <span class="math notranslate nohighlight">\(Z\)</span>-syndrome is extracted. The circuit to perform this is defined over 9-qubits and encapsulated within a <code class="docutils literal notranslate"><span class="pre">pytket.circuit.CircBox</span></code>. The <code class="docutils literal notranslate"><span class="pre">CircBox</span></code> will perform the following <span class="math notranslate nohighlight">\(\hat{Z}\)</span> syndrome measurements:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{Z}_0 \hat{Z}_1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{Z}_1 \hat{Z}_2 \hat{Z}_4 \hat{Z}_5\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{Z}_3 \hat{Z}_4 \hat{Z}_6 \hat{Z}_7\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{Z}_7 \hat{Z}_8\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytket.circuit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">CircBox</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_z_syndrome</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">CircBox</span><span class="p">:</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_q_register</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_q_register</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_barrier</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">]])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_barrier</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">]])</span>
+
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_barrier</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">6</span><span class="p">]])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_barrier</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">6</span><span class="p">]])</span>
+
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">CircBox</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, the <span class="math notranslate nohighlight">\(X\)</span>-syndrome is extracted. The circuit to perform this is defined over 9-qubits and encapsulated within a <code class="docutils literal notranslate"><span class="pre">pytket.circuit.CircBox</span></code>.  The <code class="docutils literal notranslate"><span class="pre">CircBox</span></code> will perform the following <span class="math notranslate nohighlight">\(\hat{X}\)</span>-syndrome measurements:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{X}_2 \hat{X}_5\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{X}_4 \hat{X}_5 \hat{X}_7 \hat{X}_8\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{X}_0 \hat{X}_1 \hat{X}_3 \hat{X}_4\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{X}_3 \hat{X}_6\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extract_x_syndrome</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">CircBox</span><span class="p">:</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_q_register</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_q_register</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+        <span class="n">circuit</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_barrier</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">7</span><span class="p">]])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_barrier</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">7</span><span class="p">]])</span>
+
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_barrier</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_barrier</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">6</span><span class="p">]])</span>
+
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">CircBox</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now the Pauli-<span class="math notranslate nohighlight">\(X\)</span> destabilizers are applied to the circuit based on the value of a specified 4-bit classical register. The circuit to perform this is defined over 9-qubits and 4-bits and encapsulated within a <code class="docutils literal notranslate"><span class="pre">pytket.circuit.CircBox</span></code>. Each qubit is prepared in the <span class="math notranslate nohighlight">\(| + \rangle\)</span> state. The <span class="math notranslate nohighlight">\(\hat{Z}\)</span>-syndromes are used to conditionally apply a Pauli-<span class="math notranslate nohighlight">\(\hat{X}\)</span> operator where the syndrome result is -1 (bit value 1). This operation is known as the <span class="math notranslate nohighlight">\(\hat{X}\)</span> destabilizer and the <span class="math notranslate nohighlight">\(\hat{Z}\)</span>-syndromes are now valued at 0. This ensures the logical state is fixed by the <span class="math notranslate nohighlight">\(\hat{Z}\)</span>-stabilizers, in addition to the <span class="math notranslate nohighlight">\(\hat{X}\)</span>-stabilizers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">apply_x_destabillizers</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">CircBox</span><span class="p">:</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_q_register</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+    <span class="n">syn</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;syn&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">condition_bits</span><span class="o">=</span><span class="p">[</span><span class="n">syn</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">condition_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">condition_bits</span><span class="o">=</span><span class="p">[</span><span class="n">syn</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">condition_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">condition_bits</span><span class="o">=</span><span class="p">[</span><span class="n">syn</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">condition_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">condition_bits</span><span class="o">=</span><span class="p">[</span><span class="n">syn</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="n">condition_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">condition_bits</span><span class="o">=</span><span class="p">[</span><span class="n">syn</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="n">condition_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">condition_bits</span><span class="o">=</span><span class="p">[</span><span class="n">syn</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span> <span class="n">condition_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CircBox</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">reset_operations</span></code> function returns an <span class="math notranslate nohighlight">\(N\)</span>-qubit <code class="docutils literal notranslate"><span class="pre">CircBox</span></code> instance that applies the <code class="docutils literal notranslate"><span class="pre">OpType.Reset</span></code> operation to a specified number of qubits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">reset_operations</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CircBox</span><span class="p">:</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">qubits</span><span class="p">:</span>
+        <span class="n">circuit</span><span class="o">.</span><span class="n">Reset</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CircBox</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">hadamard_operations</span></code> function returns an <span class="math notranslate nohighlight">\(N\)</span>-qubit <code class="docutils literal notranslate"><span class="pre">CircBox</span></code> instance that applies the <code class="docutils literal notranslate"><span class="pre">Optype.H</span></code> gate to a specified number of qubits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hadamard_operations</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CircBox</span><span class="p">:</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">qubits</span><span class="p">:</span>
+        <span class="n">circuit</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CircBox</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The method below generates a <code class="docutils literal notranslate"><span class="pre">CircBox</span></code> instance that applies conditional Pauli-<span class="math notranslate nohighlight">\(Z\)</span> operations. The input parameter, <code class="docutils literal notranslate"><span class="pre">n_bits</span></code>, is used to control three registers:</p>
+<ul class="simple">
+<li><p>the size of the qubit register</p></li>
+<li><p>the size of a first classical register</p></li>
+<li><p>the size of a second classical register</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">apply_x_correction</span><span class="p">(</span><span class="n">n_bits</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CircBox</span><span class="p">:</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_q_register</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="n">n_bits</span><span class="p">)</span>
+    <span class="n">bits0</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;bits0&quot;</span><span class="p">,</span> <span class="n">n_bits</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">bits0</span><span class="p">)):</span>
+        <span class="n">circuit</span><span class="o">.</span><span class="n">Z</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">condition_bits</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="n">condition_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CircBox</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">CircBox</span></code> instances are instantiated below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">extract_z_syndrome_box</span> <span class="o">=</span> <span class="n">extract_z_syndrome</span><span class="p">()</span>
+<span class="n">extract_x_syndrome_box</span> <span class="o">=</span> <span class="n">extract_x_syndrome</span><span class="p">()</span>
+<span class="n">apply_x_destabillizers_box</span> <span class="o">=</span> <span class="n">apply_x_destabillizers</span><span class="p">()</span>
+<span class="n">hadamard_operation_box</span> <span class="o">=</span> <span class="n">hadamard_operations</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">reset_operation_box</span> <span class="o">=</span> <span class="n">reset_operations</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">apply_x_correction_box</span> <span class="o">=</span> <span class="n">apply_x_correction</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The wasm binary is loaded below using <code class="docutils literal notranslate"><span class="pre">WasmFileHandler</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pytket.wasm</span><span class="w"> </span><span class="kn">import</span> <span class="n">WasmFileHandler</span>
+
+<span class="n">wasm_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;surface_code/c/surface_code.wasm&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">wasm_path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+    <span class="n">wasm_file_handler</span> <span class="o">=</span> <span class="n">WasmFileHandler</span><span class="p">(</span><span class="n">wasm_path</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">wasm_path</span><span class="si">}</span><span class="s2"> not found&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">WasmFileHandler</span></code> prints all the methods available for use in the TKET circuit. The <code class="docutils literal notranslate"><span class="pre">init</span></code> method does not need to be used by the TKET circuit, and is instead required to start WAVM.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wasm_file_handler</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The circuit is constructed by adding the <code class="docutils literal notranslate"><span class="pre">CircBox</span></code> instances, as shown below. The circuit prepares each qubit in the <span class="math notranslate nohighlight">\(| + \rangle\)</span> state. Initially, there is a <span class="math notranslate nohighlight">\(Z\)</span>-syndrome extraction and <span class="math notranslate nohighlight">\(X\)</span>-destabilizer operation to ensure the circuit is in the code space of the surface code. After each syndrome extraction, the <code class="docutils literal notranslate"><span class="pre">OpType.Reset</span></code> operation needs to be used on the ancilla registers, <code class="docutils literal notranslate"><span class="pre">az</span></code> and <code class="docutils literal notranslate"><span class="pre">ax</span></code>.</p>
+<a class="reference internal image-reference" href="../../../../_images/surface_code_problem.png"><img alt="surface_code_problem" class="align-center" src="../../../../_images/surface_code_problem.png" style="width: 800px;" />
+</a>
+<p>A 1-Dimensional minimum matching problem is solved to guess the <span class="math notranslate nohighlight">\(\hat{Z}\)</span> error. A look-up style decoder is used to store the Pauli-Frame update as in-memory Wasm variable. Void calls are used to update this variable so the circuit can continue execution without waiting for decoding to finish. This helps prevent qubit idling and memory error affecting the circuit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytket.circuit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_q_register</span><span class="p">(</span><span class="s2">&quot;ax&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">az</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_q_register</span><span class="p">(</span><span class="s2">&quot;az&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_q_register</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">syn_x</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;syn_x&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">syn_z</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;syn_z&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">pfu</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;pfu&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">creg</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;creg&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">hadamard_operation_box</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">extract_z_syndrome_box</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">az</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">syn_z</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">reset_operation_box</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">az</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">apply_x_destabillizers_box</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">syn_z</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">extract_x_syndrome_box</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">syn_x</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_wasm_to_reg</span><span class="p">(</span><span class="s2">&quot;set_pfu_value&quot;</span><span class="p">,</span> <span class="n">wasm_file_handler</span><span class="p">,</span> <span class="p">[</span><span class="n">syn_x</span><span class="p">],</span> <span class="p">[])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">reset_operation_box</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">ax</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">extract_x_syndrome_box</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">syn_x</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_wasm_to_reg</span><span class="p">(</span><span class="s2">&quot;update_pfu&quot;</span><span class="p">,</span> <span class="n">wasm_file_handler</span><span class="p">,</span> <span class="p">[</span><span class="n">syn_x</span><span class="p">],</span> <span class="p">[])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_wasm_to_reg</span><span class="p">(</span><span class="s2">&quot;get_pfu&quot;</span><span class="p">,</span> <span class="n">wasm_file_handler</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[</span><span class="n">pfu</span><span class="p">])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">apply_x_correction_box</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">pfu</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_circbox</span><span class="p">(</span><span class="n">hadamard_operation_box</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">creg</span><span class="p">)):</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">qubit</span><span class="p">,</span> <span class="n">bit</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_wasm_to_reg</span><span class="p">(</span><span class="s2">&quot;reset_pfu&quot;</span><span class="p">,</span> <span class="n">wasm_file_handler</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytket.circuit.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">render_circuit_jupyter</span>
+
+<span class="n">render_circuit_jupyter</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">QuantinuumBackend</span></code> object is constructed and the circuit is compiled and submitted using the usual workflow. The <code class="docutils literal notranslate"><span class="pre">WasmFileHandler</span></code> instance is submitted using the <code class="docutils literal notranslate"><span class="pre">kwarg</span></code> on <code class="docutils literal notranslate"><span class="pre">process_circuits</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytket.extensions.quantinuum</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantinuumBackend</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">QuantinuumBackend</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="s2">&quot;H1-1E&quot;</span><span class="p">)</span>
+<span class="n">backend</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compiled_circuit</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">optimisation_level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The combined TKET + Wasm program size is estimated below in MBs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">program_size</span> <span class="o">=</span> <span class="n">estimate_circuit_size</span><span class="p">(</span><span class="n">compiled_circuit</span><span class="p">)</span> <span class="o">+</span> <span class="n">estimate_wasm_size</span><span class="p">(</span><span class="n">wasm_file_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">program_size</span><span class="si">}</span><span class="s2"> MBs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span>
+    <span class="n">compiled_circuit</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">wasm_file_handler</span><span class="o">=</span><span class="n">wasm_file_handler</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">backend</span><span class="o">.</span><span class="n">circuit_status</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The shots table for the <code class="docutils literal notranslate"><span class="pre">creg</span></code> registers is retrieved below. The post-processing should show all syndrome measurements are zero after correction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shot_table</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_shots</span><span class="p">(</span><span class="n">creg</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">shot_table</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span> <span class="o">%</span> <span class="mi">2</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">%</span> <span class="mi">2</span>
+    <span class="n">s3</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">8</span> <span class="o">-</span> <span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">8</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">8</span> <span class="o">-</span> <span class="mi">3</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">8</span> <span class="o">-</span> <span class="mi">4</span><span class="p">]))</span> <span class="o">%</span> <span class="mi">2</span>
+    <span class="n">s4</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span> <span class="o">%</span> <span class="mi">2</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">6</span><span class="p">]))</span> <span class="o">%</span> <span class="mi">2</span>
+    <span class="n">outcome</span> <span class="o">=</span> <span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">,</span> <span class="n">s4</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">outcome</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+              Copyright &#169; 2024 Quantinuum Ltd. All rights reserved.
+            </div>
+            <div class="terms" style="display:flex; gap:0.5rem; align-items:center; margin: 0.25rem 0rem;">
+              <a href="https://www.quantinuum.com/privacy-statement" target="_blank">Privacy Statement</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/cookie-notice" target="_blank">Cookie Notice</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/terms-conditions" target="_blank">Terms and Conditions</a>
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">QEC Decoder Toolkit</a><ul>
+<li><a class="reference internal" href="#webassembly-in-the-h-series-stack">WebAssembly in the H-Series Stack</a><ul>
+<li><a class="reference internal" href="#wasm-lifecyle">Wasm Lifecyle</a></li>
+<li><a class="reference internal" href="#injecting-wasm-into-tket">Injecting Wasm into TKET</a></li>
+<li><a class="reference internal" href="#program-requirements">Program Requirements</a></li>
+<li><a class="reference internal" href="#estimating-program-size">Estimating Program Size</a></li>
+<li><a class="reference internal" href="#asynchronous-wasm">Asynchronous Wasm</a></li>
+<li><a class="reference internal" href="#faqs">FAQS</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use-cases">Use Cases</a><ul>
+<li><a class="reference internal" href="#repeat-until-success">Repeat Until Success</a></li>
+<li><a class="reference internal" href="#repetition-code">Repetition Code</a></li>
+<li><a class="reference internal" href="#surface-17-code">Surface-17 Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../../_static/documentation_options.js?v=17c178fb"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

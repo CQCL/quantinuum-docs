@@ -1,0 +1,30 @@
+Collaboration
+=============
+
+Projects in Nexus can be shared with collaborators with varying levels of access.
+
+.. image:: access_control.png
+    :alt: Access control page for a project
+
+You can provide access to a project on an individual, or team level. To learn more about teams, :ref:`start here <teams>`.
+
+When you add collaborators to a project you can choose their level of access.
+
+.. list-table:: Quantinuum Nexus Collaboration Roles
+    :widths: 25 50
+    :header-rows: 1
+
+    * - Role Name
+      - Role Description
+    * - Administrator
+      - Can delete, create, update and view a resource or resources within a project. Can also manage role assignments on a resource or project.
+    * - Maintainer
+      - Can delete, create, update and view a resource or resources within a project.
+    * - Contributor
+      - Can create, update and view a resource or resources within a project.
+    * - Reader
+      - Can view a resource or resources within a project.
+
+- When a project is deleted, it is deleted for everyone, so be very careful when providing delete powers to a collaborator
+- When contributing to a project you will still consume your own database quota
+- These roles also apply to programatic access

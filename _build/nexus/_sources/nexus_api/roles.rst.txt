@@ -1,0 +1,12 @@
+
+roles
+=============================================
+
+.. automodule:: qnexus.client.roles
+   :members:
+
+.. autoclass:: qnexus.roles.Role
+   :members: df
+
+.. autoclass:: qnexus.roles.RoleInfo
+   :members: df

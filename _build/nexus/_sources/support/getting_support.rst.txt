@@ -1,0 +1,34 @@
+Obtaining Support
+=================
+
+Here are some resources you can use if you have questions about Nexus, or issues
+with the service.
+
+1. Your Nexus administrator
+---------------------------
+
+There are a number of aspects of Nexus support which your Nexus administrator
+can provide for you. If your query relates to one of the areas described under
+"Admin Guide", please contact your Nexus administrator directly.
+
+2. Nexus Support
+----------------
+
+Please email nexus_support@quantinuum.com.
+
+If you're experiencing issues, please include as much detail as possible. Error
+messages, steps you have followed, or screenshots are particularly helpful.
+
+3. Nexus Status Page
+--------------------
+
+If and when the service experiences degraded performance or outages, the Nexus
+status page will be updated. If you're receiving error messages, it is a good
+place to check.
+
+You are encouraged to visit and sign up for updates, because scheduled
+maintenance is announced on the status page.
+
+`Nexus Status Page <https://nexus3.statuspage.io>`_
+
+Please note temporary URL.

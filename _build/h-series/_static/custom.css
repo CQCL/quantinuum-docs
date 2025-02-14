@@ -1,0 +1,13 @@
+.deprecation-notice {
+    background-color: #30A08E;
+    color: #ffffff;
+}
+
+.deprecation-notice-link {
+    color: #a03042 !important;
+    text-decoration-color: #a03042 !important;
+}
+
+.deprecation-notice-link:hover {
+    color: lightgrey !important;
+}

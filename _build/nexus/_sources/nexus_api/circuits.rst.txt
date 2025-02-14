@@ -1,0 +1,10 @@
+
+circuits
+=============================================
+
+.. automodule:: qnexus.client.circuits
+   :members:
+   :exclude-members: Params
+
+.. autoclass:: qnexus.circuits.CircuitRef
+   :members: download_circuit, df

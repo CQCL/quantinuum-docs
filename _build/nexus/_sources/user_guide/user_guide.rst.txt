@@ -1,0 +1,18 @@
+User Guide
+=============
+
+This section contains guides on navigating the Quantinuum Nexus web UI to perform user actions.
+
+.. toctree::
+    :maxdepth: 1
+
+    concepts/concepts.rst
+    sign_up.rst
+    profile_management.rst
+    jobs.rst
+    circuits.rst
+    collaboration.rst
+    credentials.rst
+    lab.rst
+    qnexus.rst
+    inquanto.rst

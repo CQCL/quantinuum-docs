@@ -1,0 +1,26 @@
+User Profile Management
+=======================
+
+The User Profile page can be accessed by opening the menu on the user icon, and then clicking on "Settings". It can also be accessed directly via https://nexus.quantinuum.com/settings/profile 
+
+.. image:: user_menu_settings.png
+    :alt: Click on "Settings" to access the User Profile
+
+The User Profile contains four main pieces of information:
+
+1. Display Name: A non-unique identifier that is visible to users in the same organization.
+2. Username: A unique identifier that associates the user with resources (such as projects or circuits), but is human-readable.
+3. Email Address. The email address that is associated with this account. This is not visible to other users.
+4. User ID: A unique identifier that is used on the backend to associate the user with resources. This can also be used when interacting directly with the API.
+
+.. image:: user_profile_settings.png
+    :alt: User Profile
+
+The Display Name and Username fields are editable, while Email Address and User ID are not. Click "Update Profile" to save any changes that have been made.
+
+When creating a Username, the following restrictions apply:
+
+- Length must be between 3 and 53 characters long
+- Only alphanumeric characters are allowed (0-9, a-z, and A-Z)
+- Usernames must be unique (case-insensitive)
+

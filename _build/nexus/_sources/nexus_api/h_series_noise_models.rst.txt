@@ -1,0 +1,10 @@
+
+Additional H-Series configuration
+=============================================
+
+.. autoclass:: quantinuum_schemas.models.h_series_noise.UserErrorParams
+    :exclude-members:
+
+
+.. autoclass:: quantinuum_schemas.models.backend_config.QuantinuumCompilerOptions
+    :exclude-members:

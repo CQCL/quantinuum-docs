@@ -1,0 +1,55 @@
+Using the Nexus Lab
+====================
+
+A general introduction to the Nexus Lab environment can be found :ref:`here <nexus_lab>`.
+
+Setting up SSH keys for Git repositories
+----------------------------------------
+
+
+If you are unable to clone the repository using the Git GUI in the Nexus Lab sidebar due to SSH authentication, you can follow the below instructions. 
+
+1. Create an SSH Key (`useful guide can be found here <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux/>`_)
+2. Register the public part of it to your Git server:
+    - `GitHub instructions <https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account>`_
+    - `GitLab instructions <https://docs.gitlab.com/ee/user/ssh.html#add-an-ssh-key-to-your-gitlab-account>`_
+3. Make sure your git config is set up with your identity (you might need to restart the terminal to load the config):
+
+.. code-block:: bash
+
+  git config --global user.email paul@dirac.com
+
+4. Ensure SSH Agent is Running with:
+   
+.. code-block:: bash
+
+  eval "$(ssh-agent -s)"
+
+
+5. Add your SSH key to the SSH agent:
+
+.. code-block:: bash
+
+  ssh-add ~/.ssh/<your_private_key_filename>
+
+
+6. Set the correct permissions in your filesystem:
+
+.. code-block:: bash
+
+  chmod 700 ~/.ssh & chmod 600 ~/.ssh/<your_private_key_filename>
+
+
+7. Try cloning the directory in the terminal:
+
+.. code-block:: bash
+
+  git clone git@github.com:username/repository.git
+
+
+8. You should then be able to navigate into the repository directory and use the Git GUI in the sidebar.
+
+
+.. note:: When you restart your jupyterhub pod, you may need to restart the ssh agent with:
+
+    ``eval "$(ssh-agent -s)" && ssh-add ~/.ssh/<your_private_key_filename>``

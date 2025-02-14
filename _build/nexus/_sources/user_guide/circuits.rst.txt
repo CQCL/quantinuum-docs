@@ -1,0 +1,60 @@
+.. _user_guide_circuits:
+
+Visualizing Circuits
+====================
+
+For circuit documentation (reference) see the :tket_user_guide:`TKET User Guide <index.html>` (:class:`tket:pytket.circuit.Circuit`).
+
+Circuits written in code can be difficult to debug, especially once they've been compiled. The circuit visualizer provides an additional view for circuits which is
+better suited for debugging.
+
+To visualize a circuit, first locate the owning project and find the circuit either through the resources tab, or as the 'Submitted Circuit' for a job item.
+
+.. image:: single_circuit_rendering.png
+    :alt: Visualisation of a single circuit.
+
+The alternative way to view a circuit is as part of a compilation, which can also be accessed through the resources tab for the project, or as the result of 
+a compilation job item.
+
+Compilations in Nexus are stored with the original circuit, the intermediate circuits created by passes in the compilation process and the final output of the compilation process.
+When viewing the visualisation of a circuit, it is organised by pass, so the input circuit is listed as the Pass Input to the first compilation pass
+and the final, compiled circuit is the Pass Output of the final compilation pass.
+
+To learn more about how compilation passes work in pytket see :tket_user_guide:`here <examples/circuit_compilation/compilation_example.html>`.
+
+.. image:: compiled_circuit_rendering.png
+    :alt: Visualisation of the compilation of a ciruit.
+
+The visualisation of the circuit and the options available are the same if it's for a single circuit, or a compilation. The labels for each option will show on hover.
+
+
+.. list-table:: Circuit visualiser options
+    :widths: 25 50
+    :header-rows: 1
+
+    * - Option
+      - Description
+    * - Render gates using zx styles
+      - Render gates as zx-spiders where applicable.
+    * - Collapse classical registers together
+      - Display classical wires as a single wire.
+    * - Render nested circuits recursively
+      - Display nested circuits recursively where possible.
+    * - Wrap circuit to fit display 
+      - Wrap the circuit to fit your display.
+    * - Dark mode
+      - Default to dark mode if not in system theme mode.
+    * - Use system theme 
+      - Default to system theme. On by default.
+    * - Remove background
+      - Display the circuit with a transparent background.
+    * - Crop long parameters
+      - Crop long parameter names.
+
+
+Circuit visualisations can also be exported as an image using the download button on the far right of the visualisation.
+
+Visualizing circuits in code
+###############################
+
+To learn more about how to visualize your circuits for debugging, please this :tket_user_guide:`link <manual/manual_circuit.html#analysing-circuits>`.

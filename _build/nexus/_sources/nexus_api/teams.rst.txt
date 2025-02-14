@@ -1,0 +1,9 @@
+
+teams
+=============================================
+
+.. automodule:: qnexus.client.teams
+   :members:
+
+.. autoclass:: qnexus.teams.TeamRef
+   :members: df
