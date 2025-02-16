@@ -1,0 +1,7 @@
+
+auth
+=============================================
+
+.. automodule:: qnexus.client.auth
+   :members: login, login_with_credentials, logout
+   :show-inheritance:

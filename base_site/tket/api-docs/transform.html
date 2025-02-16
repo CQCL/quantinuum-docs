@@ -1,0 +1,921 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPQ1FTGDL3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YPQ1FTGDL3');
+    </script>
+    <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="pytket.tailoring" href="tailoring.html" /><link rel="prev" title="pytket.tableau" href="tableau.html" />
+
+    <link rel="shortcut icon" href="_static/quantinuum_favicon.svg"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.07.18 -->
+        <title>pytket.transform - pytket API documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+<link rel="stylesheet" href="_static/tokens.css"/>
+<link rel="stylesheet" href="_static/styles.css"/>
+<link rel="stylesheet" href="_static/tailwind.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="preload"
+as="style">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>  
+  .sidebar-sticky {
+    top: calc(3.5rem - 0px);
+    height: calc(100vh - 3.5rem);
+  }
+  
+  @media (min-width: 97em) {
+    html {
+      font-size: 100% !important;
+    }
+  }
+  
+</style>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+<!-- <script type="text/javascript" src="_static/syncTheme.global.js" ></script> -->
+ <!--Force light mode -->
+ <script>document.body.setAttribute('data-theme','light')</script>
+<nav style="position:fixed;top:0;z-index:1021;width:100%;">
+    <div class="nexus-nav"></div>
+</nav>
+<script type="text/javascript" src="_static/injectNav.global.js"></script>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">pytket  API documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">pytket  API documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Overview:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faqs.html">TKET FAQs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">pytket extensions:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="extensions.html">Extension packages</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Extension packages</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference external" href="https://cqcl.github.io/pytket-aqt/api/index.html">pytket-aqt</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-azure">pytket-azure</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-braket">pytket-braket</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-cirq">pytket-cirq</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-iqm">pytket-iqm</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-pennylane">pytket-pennylane</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-projectq">pytket-projectq</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-pyquil">pytket-pyquil</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-pysimplex">pytket-pysimplex</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-pyzx">pytket-pyzx</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-qir">pytket-qir</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-qiskit">pytket-qiskit</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-quantinuum">pytket-quantinuum</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-quest">pytket-quest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-cutensornet">pytket-cutensornet</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-qulacs">pytket-qulacs</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-qujax">pytket-qujax</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-stim">pytket-stim</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="backends.html">pytket.backends</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="circuit.html">pytket.circuit</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of pytket.circuit</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="circuit_class.html">pytket.circuit.Circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optype.html">pytket.circuit.OpType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classical.html">pytket.circuit.logic_exp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="display.html">pytket.circuit.display</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unit_id.html">pytket.unit_id</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pauli.html">pytket.pauli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="passes.html">pytket.passes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="predicates.html">pytket.predicates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="partition.html">pytket.partition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qasm.html">pytket.qasm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quipper.html">pytket.quipper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">pytket.architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="placement.html">pytket.placement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mapping.html">pytket.mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tableau.html">pytket.tableau</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">pytket.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tailoring.html">pytket.tailoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wasm.html">pytket.wasm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zx.html">pytket.zx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">pytket.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">pytket.logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">pytket.config</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/transform.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="module-pytket.transform">
+<span id="pytket-transform"></span><h1>pytket.transform<a class="headerlink" href="#module-pytket.transform" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytket.transform.PauliSynthStrat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytket.transform.</span></span><span class="sig-name descname"><span class="pre">PauliSynthStrat</span></span><a class="headerlink" href="#pytket.transform.PauliSynthStrat" title="Link to this definition">¶</a></dt>
+<dd><p>Enum for available strategies to synthesise Pauli gadgets</p>
+<p>Members:</p>
+<blockquote>
+<div><p>Individual : Synthesise gadgets individually</p>
+<p>Pairwise : Synthesise gadgets using an efficient pairwise strategy from Cowtan et al (<a class="reference external" href="https://arxiv.org/abs/1906.01734">https://arxiv.org/abs/1906.01734</a>)</p>
+<p>Sets : Synthesise gadgets in commuting sets</p>
+<p>Greedy : Synthesise gadgets using a greedy algorithm adapted from arxiv.org/abs/2103.08602. This strategy is currently only accepted by <cite>TermSequenceBox</cite>. For synthesising general circuits try using <cite>GreedyPauliSimp</cite>.</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.PauliSynthStrat.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.transform.PauliSynthStrat" title="pytket.transform.PauliSynthStrat"><span class="pre">pytket.transform.PauliSynthStrat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#pytket.transform.PauliSynthStrat.__init__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pytket.transform.PauliSynthStrat.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#pytket.transform.PauliSynthStrat.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pytket.transform.Transform">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytket.transform.</span></span><span class="sig-name descname"><span class="pre">Transform</span></span><a class="headerlink" href="#pytket.transform.Transform" title="Link to this definition">¶</a></dt>
+<dd><p>An in-place transformation of a <code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.CnXPairwiseDecomposition">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CnXPairwiseDecomposition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.CnXPairwiseDecomposition" title="Link to this definition">¶</a></dt>
+<dd><p>Decompose CnX gates to 2-qubit gates and single qubit gates. For every two CnX gates, reorder their control qubits to improve the chance of gate cancellation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.CommuteSQThroughSWAP">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CommuteSQThroughSWAP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytket.transform.Transform.CommuteSQThroughSWAP" title="Link to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>CommuteSQThroughSWAP(avg_node_errors: dict[pytket.unit_id.Node, float]) -&gt; pytket.transform.Transform</p></li>
+</ol>
+<p>Commutes single qubit gates through SWAP gates, leaving them on the physical qubit with best fidelity for given gate type. Assumes the circuit is already mapped onto the architecture.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>avg_node_errors</strong> – a dict mapping Nodes to average single-qubit gate errors</p>
+</dd>
+</dl>
+<ol class="arabic simple" start="2">
+<li><p>CommuteSQThroughSWAP(op_node_errors: dict[pytket.unit_id.Node, dict[pytket.circuit.OpType, float]]) -&gt; pytket.transform.Transform</p></li>
+</ol>
+<p>Commutes single qubit gates through SWAP gates, leaving them on the physical qubit with best fidelity for given gate type. Assumes the circuit is already mapped onto the architecture.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>avg_node_errors</strong> – a dict of dicts, mapping Nodes to dicts of OpType to single-qubit gate error maps</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.CommuteThroughMultis">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CommuteThroughMultis</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.CommuteThroughMultis" title="Link to this definition">¶</a></dt>
+<dd><p>Applies a collection of commutation rules to move single qubit operations past multiqubit operations they commute with, towards the front of the circuit.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.DecomposeBRIDGE">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DecomposeBRIDGE</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.DecomposeBRIDGE" title="Link to this definition">¶</a></dt>
+<dd><p>Decomposes all BRIDGE gates into CX gates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.DecomposeBoxes">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DecomposeBoxes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">excluded_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.13)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="optype.html#pytket.circuit.OpType" title="pytket.circuit.OpType"><span class="pre">pytket.circuit.OpType</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_opgroups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.13)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">set()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.DecomposeBoxes" title="Link to this definition">¶</a></dt>
+<dd><p>Recursively replaces all boxes by their decomposition into circuits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>excluded_types</strong> – box <a href="#id1"><span class="problematic" id="id2">`</span></a>OpType`s excluded from decomposition</p></li>
+<li><p><strong>excluded_opgroups</strong> – opgroups excluded from decomposition</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.DecomposeCCX">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DecomposeCCX</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.DecomposeCCX" title="Link to this definition">¶</a></dt>
+<dd><p>Decomposes all 3-qubit Toffoli (CCX) gates into Clifford+T gates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.DecomposeCXDirected">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DecomposeCXDirected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="architecture.html#pytket.architecture.Architecture" title="pytket.architecture.Architecture"><span class="pre">pytket.architecture.Architecture</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.DecomposeCXDirected" title="Link to this definition">¶</a></dt>
+<dd><p>Decompose CX gates to H+CX to match the direction of the CXs to edges of the <code class="xref py py-class docutils literal notranslate"><span class="pre">Architecture</span></code> <cite>arc</cite>. Assumes the circuit already satisfies the connectivity of <cite>arc</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arc</strong> – The architecture for which CXs should be redirected</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.DecomposeControlledRys">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DecomposeControlledRys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.DecomposeControlledRys" title="Link to this definition">¶</a></dt>
+<dd><p>Decomposes all arbitrarily-quantum-controlled Rys into CX and Ry gates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.DecomposeNPhasedX">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DecomposeNPhasedX</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.DecomposeNPhasedX" title="Link to this definition">¶</a></dt>
+<dd><p>Decompose NPhasedX gates into single-qubit PhasedX gates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.DecomposeSWAP">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DecomposeSWAP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="circuit_class.html#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><span class="pre">pytket.circuit.Circuit</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.DecomposeSWAP" title="Link to this definition">¶</a></dt>
+<dd><p>Decomposes all SWAP gates to provided replacement circuit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>circuit</strong> – A circuit that is logically equivalent to a SWAP operation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.DecomposeSWAPtoCX">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DecomposeSWAPtoCX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="architecture.html#pytket.architecture.Architecture" title="pytket.architecture.Architecture"><span class="pre">pytket.architecture.Architecture</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.DecomposeSWAPtoCX" title="Link to this definition">¶</a></dt>
+<dd><p>Decomposes all SWAP gates into triples of CX gates. If the SWAP is adjacent to a CX, it will prefer to insert in the direction that allows for gate cancellation. If an <code class="xref py py-class docutils literal notranslate"><span class="pre">Architecture</span></code> is provided, this will prefer to insert the CXs such that fewer need redirecting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arc</strong> – Device architecture used to specify a preference for CX direction</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.DecomposeTK2">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DecomposeTK2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allow_swaps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.DecomposeTK2" title="Link to this definition">¶</a></dt>
+<dd><p>Decompose each TK2 gate into two-qubit gates.</p>
+<p>We currently support CX, ZZMax and ZZPhase.</p>
+<p>If one or more gate fidelities are provided, the two-qubit gate type achieving the highest fidelity will be chosen for the decomposition, as measured using squared trace fidelity. If no fidelities are provided, the TK2 gates will be decomposed exactly using CX gates. For equal fidelities, ZZPhase will be prefered over ZZMax and CX if the decomposition results in fewer two-qubit gates.</p>
+<p>All TK2 gate parameters must be normalised, i.e. they must satisfy <cite>NormalisedTK2Predicate</cite>.</p>
+<p>Gate fidelities are passed as keyword arguments to perform noise-aware decompositions. We currently support <cite>CX_fidelity</cite>, <cite>ZZMax_fidelity</cite> and <cite>ZZPhase_fidelity</cite>. If provided, the <cite>CX</cite> and <cite>ZZMax</cite> fidelities must be given by a single floating point fidelity. The <cite>ZZPhase</cite> fidelity is given as a lambda float -&gt; float, mapping a ZZPhase angle parameter to its fidelity, or by a single float. These parameters will be used to return the optimal decomposition of each TK2 gate, taking noise into consideration.</p>
+<p>Using the <cite>allow_swaps=True</cite> (default) option, qubits will be swapped when convenient to reduce the two-qubit gate count of the decomposed TK2.</p>
+<p>If the TK2 angles are symbolic values, the decomposition will be exact (i.e. not noise-aware). It is not possible in general to obtain optimal decompositions for arbitrary symbolic parameters, so consider substituting for concrete values if possible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>allow_swaps</strong> – Whether to allow implicit wire swaps.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.GlobalisePhasedX">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GlobalisePhasedX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">squash</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.GlobalisePhasedX" title="Link to this definition">¶</a></dt>
+<dd><p>Turns all PhasedX and NPhasedX gates into global gates</p>
+<p>Replaces any PhasedX gates with global NPhasedX gates. By default, this transform will squash all single-qubit gates to PhasedX and Rz gates before proceeding further. Existing non-global NPhasedX will not be preserved. This is the recommended setting for best performance. If squashing is disabled, each non-global PhasedX gate will be replaced with two global NPhasedX, but any other gates will be left untouched.</p>
+<p>DEPRECATED: This transform will be removed no earlier than three months after the pytket 1.35 release.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>squash</strong> – Whether to squash the circuit in pre-processing (default: true).</p>
+</dd>
+</dl>
+<p>If squash=true (default), the <cite>GlobalisePhasedX</cite> transform’s <cite>apply</cite> method will always return true. For squash=false, <cite>apply()</cite> will return true if the circuit was changed and false otherwise.</p>
+<p>It is not recommended to use this transformation with symbolic expressions, as in certain cases a blow-up in symbolic expression sizes may occur.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.GreedyPauliSimp">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GreedyPauliSimp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discount_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_tqe_candidates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_lookahead</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_zzphase</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trials</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.GreedyPauliSimp" title="Link to this definition">¶</a></dt>
+<dd><p>Convert a circuit into a graph of Pauli gadgets to account for commutation and phase folding, and resynthesises them using a greedy algorithm adapted from arxiv.org/abs/2103.08602. The method for synthesising the final Clifford operator is adapted from arxiv.org/abs/2305.10966.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>discount_rate</strong> – Rate used to discount the cost impact from gadgets that are further away. Default to 0.7.</p></li>
+<li><p><strong>depth_weight</strong> – Degree of depth optimisation. Default to 0.3.</p></li>
+<li><p><strong>max_tqe_candidates</strong> – Maximum number of 2-qubit Clifford gate candidates to evaluate at each step. Default to 500.</p></li>
+<li><p><strong>max_lookahead</strong> – Maximum lookahead when evaluating each Clifford gate candidate. Default to 500.</p></li>
+<li><p><strong>seed</strong> – Unsigned integer seed used for sampling candidates and tie breaking. Default to 0.</p></li>
+<li><p><strong>allow_zzphase</strong> – If set to True, allows the algorithm to implement 2-qubit rotations using ZZPhase gates when deemed optimal. Defaults to False.</p></li>
+<li><p><strong>thread_timeout</strong> – Sets maximum out of time spent finding a single solution in one thread.</p></li>
+<li><p><strong>trials</strong> – Sets maximum number of found solutions. The smallest circuit is returned, prioritising the number of 2qb-gates, then the number of gates, then the depth.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a pass to perform the simplification</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.KAKDecomposition">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">KAKDecomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytket.transform.Transform.KAKDecomposition" title="Link to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>KAKDecomposition(target_2qb_gate: pytket.circuit.OpType = &lt;OpType.CX: 45&gt;, cx_fidelity: float = 1.0, allow_swaps: bool = True) -&gt; pytket.transform.Transform</p></li>
+</ol>
+<p>Squash sequences of two-qubit operations into minimal form.</p>
+<p>Squash together sequences of single- and two-qubit gates into minimal form. Can decompose to TK2 or CX gates.</p>
+<p>Two-qubit operations can always be expressed in a minimal form of maximum three CXs, or as a single TK2 gate (a result also known as the KAK or Cartan decomposition).</p>
+<p>It is in general recommended to squash to TK2 gates, and to then use the <cite>DecomposeTK2</cite> pass for noise-aware decompositions to other gatesets. For backward compatibility, decompositions to CX are also supported. In this case, <cite>cx_fidelity</cite> can be provided to perform approximate decompositions to CX gates.</p>
+<p>When decomposing to TK2 gates, any sequence of two or more two-qubit gates on the same set of qubits is replaced by a single TK2 gate. When decomposing to CX, the substitution is only performed if it results in a reduction of the number of CX gates, or if at least one of the two-qubit passes is not a CX.</p>
+<p>Using the <cite>allow_swaps=True</cite> (default) option, qubits will be swapped when convenient to further reduce the two-qubit gate count. (only applicable when decomposing to CX gates).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_2qb_gate</strong> – OpType to decompose to. Either TK2 or CX.</p></li>
+<li><p><strong>cx_fidelity</strong> – Estimated CX gate fidelity, used when target_2qb_gate=CX.</p></li>
+<li><p><strong>allow_swaps</strong> – Whether to allow implicit wire swaps.</p></li>
+</ul>
+</dd>
+</dl>
+<ol class="arabic simple" start="2">
+<li><p>KAKDecomposition(cx_fidelity: float) -&gt; pytket.transform.Transform</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.NormaliseTK2">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NormaliseTK2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.NormaliseTK2" title="Link to this definition">¶</a></dt>
+<dd><p>Normalises all TK2 gates.</p>
+<p>TK2 gates have three angles in the interval [0, 4], but these can always be normalised to be within the so-called Weyl chamber by adding single-qubit gates.</p>
+<dl class="simple">
+<dt>More precisely, the three angles a, b, c of TK2(a, b, c) are normalised exactly when the two following conditions are met:</dt><dd><ul class="simple">
+<li><p>numerical values must be in the Weyl chamber, ie <cite>1/2 &gt;= a &gt;= b &gt;= |c|</cite>,</p></li>
+<li><p>symbolic values must come before any numerical value in the array.</p></li>
+</ul>
+</dd>
+</dl>
+<p>After this transform, all TK2 angles will be normalised and the circuit will satisfy <cite>NormalisedTK2Predicate</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.OptimiseCliffords">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OptimiseCliffords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allow_swaps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.OptimiseCliffords" title="Link to this definition">¶</a></dt>
+<dd><p>An optimisation pass that performs a number of rewrite rules for simplifying Clifford gate sequences, similar to Duncan &amp; Fagan (<a class="reference external" href="https://arxiv.org/abs/1901.10114">https://arxiv.org/abs/1901.10114</a>). Given a circuit with CXs and any single-qubit gates, produces a circuit with Z, X, S, V, U1, U2, U3, CX gates. This will not preserve CX placement or orientation and may introduce implicit wire swaps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>allow_swaps</strong> – dictates whether the rewriting will disregard CX placement or orientation and introduce wire swaps.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.OptimisePauliGadgets">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OptimisePauliGadgets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cx_config:</span> <span class="pre">pytket.circuit.CXConfigType</span> <span class="pre">=</span> <span class="pre">&lt;CXConfigType.Snake:</span> <span class="pre">0&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.OptimisePauliGadgets" title="Link to this definition">¶</a></dt>
+<dd><p>An optimisation pass that identifies the Pauli gadgets corresponding to any non-Clifford rotations and synthesises them pairwise (see Cowtan, Duncan, Dilkes, Simmons, &amp; Sivarajah <a class="reference external" href="https://arxiv.org/abs/1906.01734">https://arxiv.org/abs/1906.01734</a>). Results use TK1, CX gates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.OptimisePhaseGadgets">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OptimisePhaseGadgets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cx_config:</span> <span class="pre">pytket.circuit.CXConfigType</span> <span class="pre">=</span> <span class="pre">&lt;CXConfigType.Snake:</span> <span class="pre">0&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.OptimisePhaseGadgets" title="Link to this definition">¶</a></dt>
+<dd><p>An optimisation pass that starts by identifying subcircuits corresponding to phase gadgets (see Cowtan, Duncan, Dilkes, Simmons, &amp; Sivarajah <a class="reference external" href="https://arxiv.org/abs/1906.01734">https://arxiv.org/abs/1906.01734</a>) and resynthesises them in a balanced-tree form, followed by applying OptimisePostRouting. Results use TK1 and CX gates. This will not preserve CX placement or orientation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.OptimisePostRouting">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OptimisePostRouting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.OptimisePostRouting" title="Link to this definition">¶</a></dt>
+<dd><p>Fast optimisation pass, performing basic simplifications. Works on any circuit, giving the result in TK1 and CX gates. If all multi-qubit gates are CXs, then this preserves their placement and orientation, so it is safe to perform after routing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.OptimiseStandard">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OptimiseStandard</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.OptimiseStandard" title="Link to this definition">¶</a></dt>
+<dd><p>Fast optimisation pass, performing basic simplifications. Works on any circuit, giving the result in TK1 and TK2 gates. Preserves connectivity of circuit.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.PushCliffordsThroughMeasures">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PushCliffordsThroughMeasures</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.PushCliffordsThroughMeasures" title="Link to this definition">¶</a></dt>
+<dd><p>Derives a new set of end-of-Circuit measurement operators by acting on end-of-Circuit measurements with a Clifford subcircuit. The new set of measurement operators is necessarily commuting and is implemented by adding a new mutual diagonalisation Clifford subcirciuit to the end of the Circuit and implementing the remaining diagonal measurement operators by measuring and permuting the output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.RebaseToCirq">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RebaseToCirq</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.RebaseToCirq" title="Link to this definition">¶</a></dt>
+<dd><p>Rebase from any gate set into PhasedX, Rz, CZ.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.RebaseToCliffordSingles">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RebaseToCliffordSingles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.RebaseToCliffordSingles" title="Link to this definition">¶</a></dt>
+<dd><p>Replace all single-qubit unitary gates outside the set {Z, X, S, V} that are recognized as Clifford operations with an equivalent sequence of gates from that set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.RebaseToIonQ">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RebaseToIonQ</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.RebaseToIonQ" title="Link to this definition">¶</a></dt>
+<dd><p>Rebase from any gate set into the gate set supported by IonQ (GPI, GPI2, AAMS).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.RebaseToProjectQ">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RebaseToProjectQ</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.RebaseToProjectQ" title="Link to this definition">¶</a></dt>
+<dd><p>Rebase from any gate set into the gate set supported by ProjectQ (Rx, Ry, Rz, X, Y, Z, S, T, V, H, CX, CZ, CRz, SWAP).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.RebaseToPyZX">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RebaseToPyZX</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.RebaseToPyZX" title="Link to this definition">¶</a></dt>
+<dd><p>Rebase from any gate set into the gate set supported by PyZX (Rx, Rz, X, Z, S, T, H, CX, CZ, SWAP).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.RebaseToQuil">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RebaseToQuil</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.RebaseToQuil" title="Link to this definition">¶</a></dt>
+<dd><p>Rebase from any gate set into Rx, Rz, CZ.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.RebaseToRzRx">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RebaseToRzRx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.RebaseToRzRx" title="Link to this definition">¶</a></dt>
+<dd><p>Rebase single qubit gates into Rz, Rx.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.RebaseToTket">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RebaseToTket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.RebaseToTket" title="Link to this definition">¶</a></dt>
+<dd><p>Rebase from any gate set into TK1, CX.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.ReduceSingles">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ReduceSingles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.ReduceSingles" title="Link to this definition">¶</a></dt>
+<dd><p>Reduces each sequence of single-qubit rotations into a single TK1.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.RemoveRedundancies">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveRedundancies</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.RemoveRedundancies" title="Link to this definition">¶</a></dt>
+<dd><p>Applies a collection of simple optimisations, such as removing gate-inverse pairs, merging similar rotation gates, and removing identity gates. Preserves the gate set and any placement/orientation of multi-qubit gates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.SynthesisePauliGraph">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SynthesisePauliGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synth_strat:</span> <span class="pre">pytket.transform.PauliSynthStrat</span> <span class="pre">=</span> <span class="pre">&lt;PauliSynthStrat.Sets:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cx_config:</span> <span class="pre">pytket.circuit.CXConfigType</span> <span class="pre">=</span> <span class="pre">&lt;CXConfigType.Snake:</span> <span class="pre">0&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.SynthesisePauliGraph" title="Link to this definition">¶</a></dt>
+<dd><p>Synthesises Pauli Graphs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.ThreeQubitSquash">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ThreeQubitSquash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_2qb_gate:</span> <span class="pre">pytket.circuit.OpType</span> <span class="pre">=</span> <span class="pre">&lt;OpType.CX:</span> <span class="pre">45&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.ThreeQubitSquash" title="Link to this definition">¶</a></dt>
+<dd><p>Squash three-qubit subcircuits into subcircuits having fewer 2-qubit gates of the target type, when possible. The supported target types are CX (default) and TK2.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.UCCSynthesis">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UCCSynthesis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synth_strat:</span> <span class="pre">pytket.transform.PauliSynthStrat</span> <span class="pre">=</span> <span class="pre">&lt;PauliSynthStrat.Sets:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cx_config:</span> <span class="pre">pytket.circuit.CXConfigType</span> <span class="pre">=</span> <span class="pre">&lt;CXConfigType.Snake:</span> <span class="pre">0&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.UCCSynthesis" title="Link to this definition">¶</a></dt>
+<dd><p>Synthesises UCC circuits in the form that Term Sequencing provides them.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.ZZPhaseToRz">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ZZPhaseToRz</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.ZZPhaseToRz" title="Link to this definition">¶</a></dt>
+<dd><p>Fixes all ZZPhase gate angles to [-1, 1) half turns.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="circuit_class.html#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><span class="pre">pytket.circuit.Circuit</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.__init__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="circuit_class.html#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><span class="pre">pytket.circuit.Circuit</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.apply" title="Link to this definition">¶</a></dt>
+<dd><p>Performs the transformation on the circuit in place.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>circuit</strong> – The circuit to be transformed</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if any changes were made, else False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.repeat">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">repeat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.repeat" title="Link to this definition">¶</a></dt>
+<dd><p>Applies a given Transform repeatedly to a circuit until no further changes are made (i.e. it no longer returns <code class="docutils literal notranslate"><span class="pre">True</span></code>). <a class="reference internal" href="#pytket.transform.Transform.apply" title="pytket.transform.Transform.apply"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply()</span></code></a> will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if at least one run returned <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>transform</strong> – The Transform to be applied repeatedly</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a new Transform representing the iteration</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.round_angles">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">round_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_zeros</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.round_angles" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>only_zeros</strong> – if True, only round angles less than <span class="math notranslate nohighlight">\(\pi / 2^{n+1}\)</span> to zero, leave other angles alone (default False)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.sequence">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.sequence" title="Link to this definition">¶</a></dt>
+<dd><p>Composes a list of Transforms together in sequence. The <a class="reference internal" href="#pytket.transform.Transform.apply" title="pytket.transform.Transform.apply"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply()</span></code></a> method will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if ANY of the individual Transforms returned <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sequence</strong> – The list of Transforms to be composed</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the combined Transform</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytket.transform.Transform.while_repeat">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">while_repeat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.transform.Transform" title="pytket.transform.Transform"><span class="pre">pytket.transform.Transform</span></a></span></span><a class="headerlink" href="#pytket.transform.Transform.while_repeat" title="Link to this definition">¶</a></dt>
+<dd><p>Repeatedly applies the <cite>condition</cite> Transform until it returns <code class="docutils literal notranslate"><span class="pre">False</span></code>, running <cite>body</cite> in between each <cite>condition</cite> application. Intuitively, this corresponds to “WHILE <cite>condition</cite> DO <cite>body</cite>”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>condition</strong> – The Transform to be applied repeatedly as the condition of a loop</p></li>
+<li><p><strong>body</strong> – The Transform to be applied after each successful test of the condition</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a new Transform representing the iteration</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pytket.transform.separate_classical">
+<span class="sig-prename descclassname"><span class="pre">pytket.transform.</span></span><span class="sig-name descname"><span class="pre">separate_classical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circ</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="circuit_class.html#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><span class="pre">pytket.circuit.Circuit</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="circuit_class.html#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><span class="pre">pytket.circuit.Circuit</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="circuit_class.html#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><span class="pre">pytket.circuit.Circuit</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pytket.transform.separate_classical" title="Link to this definition">¶</a></dt>
+<dd><p>Separate the input circuit into a ‘main’ circuit and a classical ‘post-processing’ circuit, which are equivalent to the original when composed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>circ</strong> – circuit to be separated</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="tailoring.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">pytket.tailoring</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="tableau.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">pytket.tableau</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+              Copyright &#169; 2024 Quantinuum Ltd. All rights reserved.
+            </div>
+            <div class="terms" style="display:flex; gap:0.5rem; align-items:center; margin: 0.25rem 0rem;">
+              <a href="https://www.quantinuum.com/privacy-statement" target="_blank">Privacy Statement</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/cookie-notice" target="_blank">Cookie Notice</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/terms-conditions" target="_blank">Terms and Conditions</a>
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">pytket.transform</a><ul>
+<li><a class="reference internal" href="#pytket.transform.PauliSynthStrat"><code class="docutils literal notranslate"><span class="pre">PauliSynthStrat</span></code></a><ul>
+<li><a class="reference internal" href="#pytket.transform.PauliSynthStrat.__init__"><code class="docutils literal notranslate"><span class="pre">PauliSynthStrat.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.PauliSynthStrat.name"><code class="docutils literal notranslate"><span class="pre">PauliSynthStrat.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pytket.transform.Transform"><code class="docutils literal notranslate"><span class="pre">Transform</span></code></a><ul>
+<li><a class="reference internal" href="#pytket.transform.Transform.CnXPairwiseDecomposition"><code class="docutils literal notranslate"><span class="pre">Transform.CnXPairwiseDecomposition()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.CommuteSQThroughSWAP"><code class="docutils literal notranslate"><span class="pre">Transform.CommuteSQThroughSWAP()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.CommuteThroughMultis"><code class="docutils literal notranslate"><span class="pre">Transform.CommuteThroughMultis()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.DecomposeBRIDGE"><code class="docutils literal notranslate"><span class="pre">Transform.DecomposeBRIDGE()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.DecomposeBoxes"><code class="docutils literal notranslate"><span class="pre">Transform.DecomposeBoxes()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.DecomposeCCX"><code class="docutils literal notranslate"><span class="pre">Transform.DecomposeCCX()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.DecomposeCXDirected"><code class="docutils literal notranslate"><span class="pre">Transform.DecomposeCXDirected()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.DecomposeControlledRys"><code class="docutils literal notranslate"><span class="pre">Transform.DecomposeControlledRys()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.DecomposeNPhasedX"><code class="docutils literal notranslate"><span class="pre">Transform.DecomposeNPhasedX()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.DecomposeSWAP"><code class="docutils literal notranslate"><span class="pre">Transform.DecomposeSWAP()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.DecomposeSWAPtoCX"><code class="docutils literal notranslate"><span class="pre">Transform.DecomposeSWAPtoCX()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.DecomposeTK2"><code class="docutils literal notranslate"><span class="pre">Transform.DecomposeTK2()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.GlobalisePhasedX"><code class="docutils literal notranslate"><span class="pre">Transform.GlobalisePhasedX()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.GreedyPauliSimp"><code class="docutils literal notranslate"><span class="pre">Transform.GreedyPauliSimp()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.KAKDecomposition"><code class="docutils literal notranslate"><span class="pre">Transform.KAKDecomposition()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.NormaliseTK2"><code class="docutils literal notranslate"><span class="pre">Transform.NormaliseTK2()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.OptimiseCliffords"><code class="docutils literal notranslate"><span class="pre">Transform.OptimiseCliffords()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.OptimisePauliGadgets"><code class="docutils literal notranslate"><span class="pre">Transform.OptimisePauliGadgets()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.OptimisePhaseGadgets"><code class="docutils literal notranslate"><span class="pre">Transform.OptimisePhaseGadgets()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.OptimisePostRouting"><code class="docutils literal notranslate"><span class="pre">Transform.OptimisePostRouting()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.OptimiseStandard"><code class="docutils literal notranslate"><span class="pre">Transform.OptimiseStandard()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.PushCliffordsThroughMeasures"><code class="docutils literal notranslate"><span class="pre">Transform.PushCliffordsThroughMeasures()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.RebaseToCirq"><code class="docutils literal notranslate"><span class="pre">Transform.RebaseToCirq()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.RebaseToCliffordSingles"><code class="docutils literal notranslate"><span class="pre">Transform.RebaseToCliffordSingles()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.RebaseToIonQ"><code class="docutils literal notranslate"><span class="pre">Transform.RebaseToIonQ()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.RebaseToProjectQ"><code class="docutils literal notranslate"><span class="pre">Transform.RebaseToProjectQ()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.RebaseToPyZX"><code class="docutils literal notranslate"><span class="pre">Transform.RebaseToPyZX()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.RebaseToQuil"><code class="docutils literal notranslate"><span class="pre">Transform.RebaseToQuil()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.RebaseToRzRx"><code class="docutils literal notranslate"><span class="pre">Transform.RebaseToRzRx()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.RebaseToTket"><code class="docutils literal notranslate"><span class="pre">Transform.RebaseToTket()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.ReduceSingles"><code class="docutils literal notranslate"><span class="pre">Transform.ReduceSingles()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.RemoveRedundancies"><code class="docutils literal notranslate"><span class="pre">Transform.RemoveRedundancies()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.SynthesisePauliGraph"><code class="docutils literal notranslate"><span class="pre">Transform.SynthesisePauliGraph()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.ThreeQubitSquash"><code class="docutils literal notranslate"><span class="pre">Transform.ThreeQubitSquash()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.UCCSynthesis"><code class="docutils literal notranslate"><span class="pre">Transform.UCCSynthesis()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.ZZPhaseToRz"><code class="docutils literal notranslate"><span class="pre">Transform.ZZPhaseToRz()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.__init__"><code class="docutils literal notranslate"><span class="pre">Transform.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.apply"><code class="docutils literal notranslate"><span class="pre">Transform.apply()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.repeat"><code class="docutils literal notranslate"><span class="pre">Transform.repeat()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.round_angles"><code class="docutils literal notranslate"><span class="pre">Transform.round_angles()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.sequence"><code class="docutils literal notranslate"><span class="pre">Transform.sequence()</span></code></a></li>
+<li><a class="reference internal" href="#pytket.transform.Transform.while_repeat"><code class="docutils literal notranslate"><span class="pre">Transform.while_repeat()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pytket.transform.separate_classical"><code class="docutils literal notranslate"><span class="pre">separate_classical()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

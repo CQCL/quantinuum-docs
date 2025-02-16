@@ -1,0 +1,40 @@
+.. _inviting_users:
+
+Inviting users
+==============
+
+Organization administrators can invite users by clicking on the "Invite users"
+button on the Users tab of the :doc:`management page<accessing_org_page>`.
+
+.. image:: images/org_page_users_tab.png
+  :width: 800
+  :alt: Users tab of the organization details page
+
+Multiple users can be invited by entering each email separated by a space.
+An optional user group can be assigned to the invited
+users. Also, you can check the "Organization Admin" check-box to grant
+the :doc:`administrator permission<organization_admin>` to all the users that
+will be invited.
+
+.. image:: images/invite_users_dialog.png
+  :width: 600
+  :alt: Invite users dialog
+
+The users will receive an invitation email and should then follow the instructions
+to sign-up and access Quantinuum Nexus.
+
+If a user's temporary password has expired, you can reset it by selecting "Reset password" from the user action menu on the organization page.
+
+User Status
+===========
+
+Users in Nexus are in 1 of 4 states visible to admins on the platform.
+
+- Not Invited - A user who is Not Invited has access to the UMUI (at um.qapi.quantinuum.com), but cannot sign in to Nexus.
+- Invited - A user who is Invited has been sent an invitation to Nexus, but has not completed the onboarding steps, including agreeing to the terms and conditions.
+- Active - A user who is Active has accepted an invitation to Nexus and completed all onboarding steps.
+- Password Reset - A user in the Password Reset state must complete a password reset flow before being able to sign in.
+
+.. note::
+   When a user is invited to Quantinuum Nexus, they are assigned a
+   :ref:`priority <priorities>`: of 5 by default. 

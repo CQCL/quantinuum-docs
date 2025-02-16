@@ -1,0 +1,12 @@
+Knowledge Articles
+===================
+
+The knowledge articles in this section explore real world Nexus use-cases using ``qnexus``.
+
+
+.. toctree::
+    :titlesonly:
+    :maxdepth: 1
+
+    notebooks/knowledge_articles/vqe_example.ipynb
+    notebooks/knowledge_articles/labelling_workflow_data_with_properties.ipynb

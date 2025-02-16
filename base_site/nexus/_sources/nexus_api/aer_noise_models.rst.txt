@@ -1,0 +1,24 @@
+
+Qiskit Noise Models for backend configurations
+==============================================
+
+.. autoclass:: quantinuum_schemas.models.aer_noise.AerNoiseModel
+    :members: to_native
+
+.. autoclass:: quantinuum_schemas.models.aer_noise.AerQuantumError
+    :members: noise_ops
+
+.. autoclass:: quantinuum_schemas.models.aer_noise.AerReadoutError
+    :no-members:
+
+.. autoclass:: quantinuum_schemas.models.aer_noise.CrosstalkParams
+    :members: from_pytket_crosstalk_params, to_pytket_crosstalk_params
+
+.. autoclass:: quantinuum_schemas.models.aer_noise.QiskitBasicInstruction
+    :no-members:
+
+.. autoclass:: quantinuum_schemas.models.aer_noise.QiskitKrausInstruction
+    :no-members:
+
+.. autoclass:: quantinuum_schemas.models.aer_noise.QiskitPauliInstruction
+    :no-members:

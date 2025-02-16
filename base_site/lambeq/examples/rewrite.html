@@ -1,0 +1,792 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPQ1FTGDL3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YPQ1FTGDL3');
+    </script>
+    <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Circuit" href="circuit.html" /><link rel="prev" title="Tree reader" href="tree-reader.html" />
+
+    <link rel="shortcut icon" href="../_static/quantinuum_favicon.svg"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.07.18 -->
+        <title>Rewrite - λambeq 0.4.3</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/table-wrap.css?v=38dfa0aa" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/sidebar-title.css?v=6ae2c5cb" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+<link rel="stylesheet" href="../_static/tokens.css"/>
+<link rel="stylesheet" href="../_static/styles.css"/>
+<link rel="stylesheet" href="../_static/tailwind.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="preload"
+as="style">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>  
+  .sidebar-sticky {
+    top: calc(3.5rem - 0px);
+    height: calc(100vh - 3.5rem);
+  }
+  
+  @media (min-width: 97em) {
+    html {
+      font-size: 100% !important;
+    }
+  }
+  
+</style>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+<!-- <script type="text/javascript" src="../_static/syncTheme.global.js" ></script> -->
+ <!--Force light mode -->
+ <script>document.body.setAttribute('data-theme','light')</script>
+<nav style="position:fixed;top:0;z-index:1021;width:100%;">
+    <div class="nexus-nav"></div>
+</nav>
+<script type="text/javascript" src="../_static/injectNav.global.js"></script>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">λambeq 0.4.3</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">λambeq 0.4.3</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">What is lambeq?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html">Contributing to lambeq</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pipeline.html">Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../string-diagrams.html">String diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parsing.html">Syntactic parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use-cases.html">lambeq use cases</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NLP-101</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-data.html">Working with text data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-class.html">Text classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-ml.html">Machine learning best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nlp-refs.html">References for further study</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/sentence-input.html">Step 1. Sentence input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/rewrite.html">Step 2. Diagram rewriting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parameterise.html">Step 3. Parameterisation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../training.html">Step 4: Training</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Step 4: Training</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/trainer-classical.html">Training: Classical case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/trainer-quantum.html">Training: Quantum case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/trainer-hybrid.html">Training: Hybrid case</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Choosing a model</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../manual-training.html">Advanced: Manual training</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Advanced: Manual training</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/training-symbols.html">Introduction to symbols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/training-usecase.html">A complete use case</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced.html">Advanced: low-level lambeq</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Advanced: low-level lambeq</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/monoidal.html">Monoidal categories in lambeq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/discocat.html">DisCoCat in lambeq</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/extend-lambeq.html">Advanced: Extending lambeq</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../notebooks.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tokenisation.html">Tokenisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unk-words.html">Handling unknown words</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html">Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reader.html">Reader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tree-reader.html">Tree reader</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Rewrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="circuit.html">Circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rotosolve-optimizer.html">Rotosolve optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classical-pipeline.html">Classical pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum-pipeline.html">Quantum pipeline using the Quantum Trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum-pipeline-jax.html">Quantum pipeline using JAX backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pennylane.html">Training hybrid models using the Pennylane backend</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Toolkit</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../root-api.html">lambeq package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package-api.html">Subpackages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../uml-diagrams.html">Class diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Command-line interface</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://qnlp.cambridgequantum.com/downloads.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://qnlp.cambridgequantum.com/generate.html">Web demo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://discopy.readthedocs.io">DisCoPy</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/examples/rewrite.ipynb.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="rewrite">
+<h1>Rewrite<a class="headerlink" href="#rewrite" title="Link to this heading">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lambeq.backend.grammar</span> <span class="kn">import</span> <span class="n">Cup</span><span class="p">,</span> <span class="n">Diagram</span><span class="p">,</span> <span class="n">Id</span><span class="p">,</span> <span class="n">Word</span>
+<span class="kn">from</span> <span class="nn">lambeq.backend.drawing</span> <span class="kn">import</span> <span class="n">draw</span>
+
+<span class="kn">from</span> <span class="nn">lambeq</span> <span class="kn">import</span> <span class="n">AtomicType</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="n">AtomicType</span><span class="o">.</span><span class="n">NOUN</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">AtomicType</span><span class="o">.</span><span class="n">SENTENCE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lambeq</span> <span class="kn">import</span> <span class="n">Rewriter</span>
+
+<span class="n">rewriter</span> <span class="o">=</span> <span class="n">Rewriter</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="auxiliary-rule">
+<h2>Auxiliary rule<a class="headerlink" href="#auxiliary-rule" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diagram</span> <span class="o">=</span> <span class="p">((</span><span class="n">Word</span><span class="p">(</span><span class="s1">&#39;we&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;will&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">))</span> <span class="o">@</span>
+            <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">))</span> <span class="o">&gt;&gt;</span>
+           <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">r</span><span class="p">)</span> <span class="o">@</span> <span class="n">Id</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">@</span> <span class="n">Diagram</span><span class="o">.</span><span class="n">cups</span><span class="p">((</span><span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">)</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">))</span>
+
+<span class="n">draw</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ rewriting (auxiliary rule)&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">Rewriter</span><span class="p">([</span><span class="s1">&#39;auxiliary&#39;</span><span class="p">])(</span><span class="n">diagram</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ normal form&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">rewriter</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span><span class="o">.</span><span class="n">normal_form</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1f41ae0c8b7438e6fae9200916430704dea09d90e0b9aad83b84eff5a94264ff.png" src="../_images/1f41ae0c8b7438e6fae9200916430704dea09d90e0b9aad83b84eff5a94264ff.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ rewriting (auxiliary rule)
+</pre></div>
+</div>
+<img alt="../_images/6922b834415250bf74c210a6574cbd9b51faebe267f711fe0386d5960103de2f.png" src="../_images/6922b834415250bf74c210a6574cbd9b51faebe267f711fe0386d5960103de2f.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ normal form
+</pre></div>
+</div>
+<img alt="../_images/dab9079dd0e42d43355920a0aefa2cbc286fe6a4869623f0cc390c2545919037.png" src="../_images/dab9079dd0e42d43355920a0aefa2cbc286fe6a4869623f0cc390c2545919037.png" />
+</div>
+</div>
+</section>
+<section id="connector-rule">
+<h2>Connector rule<a class="headerlink" href="#connector-rule" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diagram</span> <span class="o">=</span> <span class="p">((</span><span class="n">Word</span><span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;hope&#39;</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span> <span class="o">&lt;&lt;</span> <span class="n">S</span><span class="p">)</span> <span class="o">@</span>
+            <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="n">S</span> <span class="o">&lt;&lt;</span> <span class="n">S</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">@</span>
+            <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;succeeds&#39;</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">))</span> <span class="o">&gt;&gt;</span>
+           <span class="p">(</span><span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">r</span><span class="p">)</span> <span class="o">@</span> <span class="n">Id</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">@</span> <span class="n">Cup</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span> <span class="o">@</span>
+            <span class="n">Diagram</span><span class="o">.</span><span class="n">cups</span><span class="p">((</span><span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">)</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">)))</span>
+
+<span class="n">draw</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ rewriting (connector rule)&#39;</span><span class="p">)</span>
+<span class="n">Rewriter</span><span class="p">([</span><span class="s1">&#39;connector&#39;</span><span class="p">])(</span><span class="n">diagram</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ normal form&#39;</span><span class="p">)</span>
+<span class="n">rewriter</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span><span class="o">.</span><span class="n">normal_form</span><span class="p">()</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4b04e2d6394d0cc67a99f7e9fb9a9c4b52011b5e17d7aff175ae5bc7a1ea77c1.png" src="../_images/4b04e2d6394d0cc67a99f7e9fb9a9c4b52011b5e17d7aff175ae5bc7a1ea77c1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ rewriting (connector rule)
+</pre></div>
+</div>
+<img alt="../_images/2f73cd84ffc763f2a9e2816da9f57c495129f537dc5f5bc26f9eb48f459d3651.png" src="../_images/2f73cd84ffc763f2a9e2816da9f57c495129f537dc5f5bc26f9eb48f459d3651.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ normal form
+</pre></div>
+</div>
+<img alt="../_images/7548ac32fce546569b123e818f1330b3a0e71fbe2575d4a1f289d34967968a6a.png" src="../_images/7548ac32fce546569b123e818f1330b3a0e71fbe2575d4a1f289d34967968a6a.png" />
+</div>
+</div>
+</section>
+<section id="determiner-rule">
+<h2>Determiner rule<a class="headerlink" href="#determiner-rule" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diagram</span> <span class="o">=</span> <span class="p">(</span><span class="n">Word</span><span class="p">(</span><span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="n">N</span> <span class="o">&lt;&lt;</span> <span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;book&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">&gt;&gt;</span>
+           <span class="n">Id</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+<span class="n">draw</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ rewriting (determiner rule)&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">Rewriter</span><span class="p">([</span><span class="s1">&#39;determiner&#39;</span><span class="p">])(</span><span class="n">diagram</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ normal form&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">rewriter</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span><span class="o">.</span><span class="n">normal_form</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/952409bc0d3a86bef52da967427caa7e8454932264e0fbf7a206e598381a3ba9.png" src="../_images/952409bc0d3a86bef52da967427caa7e8454932264e0fbf7a206e598381a3ba9.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ rewriting (determiner rule)
+</pre></div>
+</div>
+<img alt="../_images/b818d7a62098c61997ae37b60ffe206ff8a980016650bd34396669006dfe08cc.png" src="../_images/b818d7a62098c61997ae37b60ffe206ff8a980016650bd34396669006dfe08cc.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ normal form
+</pre></div>
+</div>
+<img alt="../_images/83ada5679c4e01f615bc1c574ff3f55a501431622c47aec517910f7e67ba1073.png" src="../_images/83ada5679c4e01f615bc1c574ff3f55a501431622c47aec517910f7e67ba1073.png" />
+</div>
+</div>
+</section>
+<section id="adverb-rules">
+<h2>Adverb rules<a class="headerlink" href="#adverb-rules" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cod</span> <span class="o">=</span> <span class="p">(</span><span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">)</span>
+<span class="n">diagram</span> <span class="o">=</span> <span class="p">(</span><span class="n">Word</span><span class="p">(</span><span class="s1">&#39;we&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;quickly&#39;</span><span class="p">,</span> <span class="n">cod</span><span class="p">)</span> <span class="o">&gt;&gt;</span>
+           <span class="n">Diagram</span><span class="o">.</span><span class="n">cups</span><span class="p">(</span><span class="n">cod</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">cod</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span> <span class="o">@</span> <span class="n">Id</span><span class="p">(</span><span class="n">S</span><span class="p">))</span>
+
+<span class="n">draw</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ rewriting (postadverb rule)&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">Rewriter</span><span class="p">([</span><span class="s1">&#39;postadverb&#39;</span><span class="p">])(</span><span class="n">diagram</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ normal form&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">rewriter</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span><span class="o">.</span><span class="n">normal_form</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9684808ad40323e492c3b2eaf5d3f581c156d6b97a058936f7e60f8275b5a974.png" src="../_images/9684808ad40323e492c3b2eaf5d3f581c156d6b97a058936f7e60f8275b5a974.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ rewriting (postadverb rule)
+</pre></div>
+</div>
+<img alt="../_images/221cbff776f8d8269a88a27f1485d88afa099773d8a5706d5fc82fc930f38e14.png" src="../_images/221cbff776f8d8269a88a27f1485d88afa099773d8a5706d5fc82fc930f38e14.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ normal form
+</pre></div>
+</div>
+<img alt="../_images/626fe51dda25a5e66fcca3b88fd165d24cdd2f799febf61c85ba2a687c282697.png" src="../_images/626fe51dda25a5e66fcca3b88fd165d24cdd2f799febf61c85ba2a687c282697.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diagram</span> <span class="o">=</span> <span class="p">((</span><span class="n">Word</span><span class="p">(</span><span class="s1">&#39;we&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;quickly&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">))</span> <span class="o">@</span>
+            <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">))</span> <span class="o">&gt;&gt;</span>
+           <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">r</span><span class="p">)</span> <span class="o">@</span> <span class="n">Id</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">@</span> <span class="n">Diagram</span><span class="o">.</span><span class="n">cups</span><span class="p">((</span><span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">)</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">))</span>
+
+<span class="n">draw</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ rewriting (preadverb rule)&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">Rewriter</span><span class="p">([</span><span class="s1">&#39;preadverb&#39;</span><span class="p">])(</span><span class="n">diagram</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ normal form&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">rewriter</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span><span class="o">.</span><span class="n">normal_form</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7dd7fadebdf2b6b5baa8429a6fb0241dd5b82d886b7ca72cfc804b859243f1dc.png" src="../_images/7dd7fadebdf2b6b5baa8429a6fb0241dd5b82d886b7ca72cfc804b859243f1dc.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ rewriting (preadverb rule)
+</pre></div>
+</div>
+<img alt="../_images/521738c63e30077b02e674566c78e401af5acf75a794f3d3ff06d6b772b00123.png" src="../_images/521738c63e30077b02e674566c78e401af5acf75a794f3d3ff06d6b772b00123.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ normal form
+</pre></div>
+</div>
+<img alt="../_images/9af972830f3ebb866e9909c9984a001f7b1718e9cd3c1b80506de340260989bd.png" src="../_images/9af972830f3ebb866e9909c9984a001f7b1718e9cd3c1b80506de340260989bd.png" />
+</div>
+</div>
+</section>
+<section id="prepositional-phrase-rule">
+<h2>Prepositional phrase rule<a class="headerlink" href="#prepositional-phrase-rule" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cod</span> <span class="o">=</span> <span class="p">(</span><span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span> <span class="o">&lt;&lt;</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">diagram</span> <span class="o">=</span> <span class="p">((</span><span class="n">Word</span><span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="n">cod</span><span class="p">)</span> <span class="o">@</span>
+            <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;bed&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span> <span class="o">&gt;&gt;</span>
+           <span class="n">Diagram</span><span class="o">.</span><span class="n">cups</span><span class="p">(</span><span class="n">cod</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">cod</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span> <span class="o">@</span> <span class="n">Id</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">@</span> <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+<span class="n">draw</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ rewriting (prepositional phrase rule)&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">Rewriter</span><span class="p">([</span><span class="s1">&#39;prepositional_phrase&#39;</span><span class="p">])(</span><span class="n">diagram</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ normal form&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">rewriter</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span><span class="o">.</span><span class="n">normal_form</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9f13ab1f687b13035ffd1f7c6aeb52b7cc47e29bf4fb29ba55904443ab6b32b6.png" src="../_images/9f13ab1f687b13035ffd1f7c6aeb52b7cc47e29bf4fb29ba55904443ab6b32b6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ rewriting (prepositional phrase rule)
+</pre></div>
+</div>
+<img alt="../_images/6281f49aacb86bfce180a4599014e5be03b86306c3fac2c40e5dfaa23f4e1629.png" src="../_images/6281f49aacb86bfce180a4599014e5be03b86306c3fac2c40e5dfaa23f4e1629.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ normal form
+</pre></div>
+</div>
+<img alt="../_images/a8724a7430e0dc214ce90c57474617a2c676a8450797851d8ec7e234c16c79b9.png" src="../_images/a8724a7430e0dc214ce90c57474617a2c676a8450797851d8ec7e234c16c79b9.png" />
+</div>
+</div>
+</section>
+<section id="relative-pronoun-rules">
+<h2>Relative Pronoun rules<a class="headerlink" href="#relative-pronoun-rules" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cows</span> <span class="o">=</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;cows&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">that_subj</span> <span class="o">=</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">r</span> <span class="o">@</span> <span class="n">N</span> <span class="o">@</span> <span class="n">S</span><span class="o">.</span><span class="n">l</span> <span class="o">@</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">that_obj</span> <span class="o">=</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">r</span> <span class="o">@</span> <span class="n">N</span> <span class="o">@</span> <span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">l</span> <span class="o">@</span> <span class="n">S</span><span class="o">.</span><span class="n">l</span><span class="p">)</span>
+<span class="n">eat</span> <span class="o">=</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;eat&#39;</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span> <span class="o">&lt;&lt;</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">grass</span> <span class="o">=</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;grass&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="n">rewriter</span> <span class="o">=</span> <span class="n">Rewriter</span><span class="p">([</span><span class="s1">&#39;subject_rel_pronoun&#39;</span><span class="p">])</span>
+
+<span class="n">diagram</span> <span class="o">=</span> <span class="n">Id</span><span class="p">()</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">cows</span><span class="p">,</span> <span class="n">that_subj</span><span class="p">,</span> <span class="n">eat</span><span class="p">,</span> <span class="n">grass</span><span class="p">)</span>
+<span class="n">diagram</span> <span class="o">&gt;&gt;=</span> <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">r</span><span class="p">)</span> <span class="o">@</span> <span class="n">Id</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Diagram</span><span class="o">.</span><span class="n">cups</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">l</span> <span class="o">@</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">r</span> <span class="o">@</span> <span class="n">S</span><span class="p">)</span> <span class="o">@</span> <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="n">draw</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ rewriting (subject relative pronoun rule)&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">Rewriter</span><span class="p">([</span><span class="s1">&#39;subject_rel_pronoun&#39;</span><span class="p">])(</span><span class="n">diagram</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a0868debe001a2e65da738af330ef77c7c1dc898fae3336c94ffa2b256ac2ccd.png" src="../_images/a0868debe001a2e65da738af330ef77c7c1dc898fae3336c94ffa2b256ac2ccd.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ rewriting (subject relative pronoun rule)
+</pre></div>
+</div>
+<img alt="../_images/e6b48fbcad898f88f1e8c6f909b6d39a43884d11cabd27416b383e9619084685.png" src="../_images/e6b48fbcad898f88f1e8c6f909b6d39a43884d11cabd27416b383e9619084685.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diagram</span> <span class="o">=</span> <span class="n">Id</span><span class="p">()</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">grass</span><span class="p">,</span> <span class="n">that_obj</span><span class="p">,</span> <span class="n">cows</span><span class="p">,</span> <span class="n">eat</span><span class="p">)</span>
+<span class="n">diagram</span> <span class="o">&gt;&gt;=</span> <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">r</span><span class="p">)</span> <span class="o">@</span> <span class="n">Id</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Id</span><span class="p">(</span><span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">l</span> <span class="o">@</span> <span class="n">S</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">@</span> <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">r</span><span class="p">)</span> <span class="o">@</span> <span class="n">Id</span><span class="p">(</span><span class="n">S</span> <span class="o">@</span> <span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="p">)</span>
+<span class="n">diagram</span> <span class="o">&gt;&gt;=</span> <span class="n">Id</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Diagram</span><span class="o">.</span><span class="n">cups</span><span class="p">(</span><span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">l</span> <span class="o">@</span> <span class="n">S</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">S</span> <span class="o">@</span> <span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="p">)</span>
+
+<span class="n">draw</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ rewriting (object relative pronoun rule)&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">Rewriter</span><span class="p">([</span><span class="s1">&#39;object_rel_pronoun&#39;</span><span class="p">])(</span><span class="n">diagram</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0b33d394caa4bc4c1266d6b464de9755d9001bf2597f069005e7fe8a628f73f0.png" src="../_images/0b33d394caa4bc4c1266d6b464de9755d9001bf2597f069005e7fe8a628f73f0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ rewriting (object relative pronoun rule)
+</pre></div>
+</div>
+<img alt="../_images/51427664385f545ed1c48fcd3b28e28a43141fbe5c2d12fd2d3d5cb525e20312.png" src="../_images/51427664385f545ed1c48fcd3b28e28a43141fbe5c2d12fd2d3d5cb525e20312.png" />
+</div>
+</div>
+</section>
+<section id="coordination">
+<h2>Coordination<a class="headerlink" href="#coordination" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diagram</span> <span class="o">=</span> <span class="p">(</span><span class="n">Word</span><span class="p">(</span><span class="s1">&#39;eggs&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">&lt;&lt;</span> <span class="n">N</span><span class="p">)</span>
+           <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;ham&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">r</span><span class="p">)</span> <span class="o">@</span> <span class="n">Id</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+<span class="n">draw</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ rewriting (coordination rule)&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">Rewriter</span><span class="p">([</span><span class="s1">&#39;coordination&#39;</span><span class="p">])(</span><span class="n">diagram</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ normal form&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">Rewriter</span><span class="p">([</span><span class="s1">&#39;coordination&#39;</span><span class="p">])(</span><span class="n">diagram</span><span class="p">)</span><span class="o">.</span><span class="n">normal_form</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8f9f9e6287a2a3b6a69e63f42d745f448036c62a5c45d607efc8fd87d5837e3b.png" src="../_images/8f9f9e6287a2a3b6a69e63f42d745f448036c62a5c45d607efc8fd87d5837e3b.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ rewriting (coordination rule)
+</pre></div>
+</div>
+<img alt="../_images/d73dc6baaf9d778176a4b082600193b8153f1d12a36df66ccc0cb7255f6e036d.png" src="../_images/d73dc6baaf9d778176a4b082600193b8153f1d12a36df66ccc0cb7255f6e036d.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ normal form
+</pre></div>
+</div>
+<img alt="../_images/f2c018a266bbf80a708bd7388232f12a01970e76c4c394710cfc1586c73542a0.png" src="../_images/f2c018a266bbf80a708bd7388232f12a01970e76c4c394710cfc1586c73542a0.png" />
+</div>
+</div>
+</section>
+<section id="remove-cups">
+<h2>Remove cups<a class="headerlink" href="#remove-cups" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lambeq</span> <span class="kn">import</span> <span class="n">RemoveCupsRewriter</span>
+
+
+<span class="n">diagram</span> <span class="o">=</span> <span class="p">(</span><span class="n">Word</span><span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;love&#39;</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span> <span class="o">&lt;&lt;</span> <span class="n">N</span><span class="p">)</span>
+           <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">r</span><span class="p">)</span> <span class="o">@</span> <span class="n">Id</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">@</span> <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+<span class="n">remove_cups</span> <span class="o">=</span> <span class="n">RemoveCupsRewriter</span><span class="p">()</span>
+
+<span class="n">draw</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ remove cups by bending wires&#39;</span><span class="p">)</span>
+<span class="n">remove_cups</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/204b486b1e83931bc3fa3f89ac3b3ab7fbd188c443d3ff772643ddc2cfce0c4e.png" src="../_images/204b486b1e83931bc3fa3f89ac3b3ab7fbd188c443d3ff772643ddc2cfce0c4e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ remove cups by bending wires
+</pre></div>
+</div>
+<img alt="../_images/099ffc68bc34dcf67b2b9ae7908ff52dc00bcdc097da5a7882a279d9156e9aa5.png" src="../_images/099ffc68bc34dcf67b2b9ae7908ff52dc00bcdc097da5a7882a279d9156e9aa5.png" />
+</div>
+</div>
+</section>
+<section id="curry-functor">
+<h2>Curry functor<a class="headerlink" href="#curry-functor" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rewriter</span> <span class="o">=</span> <span class="n">Rewriter</span><span class="p">([</span><span class="s1">&#39;curry&#39;</span><span class="p">])</span>
+
+<span class="n">diagram</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;see&#39;</span><span class="p">,</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">S</span> <span class="o">&lt;&lt;</span> <span class="n">N</span><span class="p">)</span> <span class="o">@</span>
+    <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;dead&#39;</span><span class="p">,</span> <span class="n">N</span> <span class="o">@</span> <span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">@</span> <span class="n">Word</span><span class="p">(</span><span class="s1">&#39;people&#39;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">&gt;&gt;</span>
+    <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">r</span><span class="p">)</span> <span class="o">@</span> <span class="n">Id</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">@</span> <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">@</span> <span class="n">Cup</span><span class="p">(</span><span class="n">N</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ rewrite by using the map-state duality&#39;</span><span class="p">)</span>
+<span class="n">rewriter</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;↓ normal form&#39;</span><span class="p">)</span>
+<span class="n">rewriter</span><span class="p">(</span><span class="n">diagram</span><span class="p">)</span><span class="o">.</span><span class="n">normal_form</span><span class="p">()</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1b08d912b101c16a324c25f124bb62fe0f3d64fe279b5ba1842e578ee602bd45.png" src="../_images/1b08d912b101c16a324c25f124bb62fe0f3d64fe279b5ba1842e578ee602bd45.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ rewrite by using the map-state duality
+</pre></div>
+</div>
+<img alt="../_images/6da5c34d589bedc67570f13c5239e9830582a4bd9f1f558ebf8e31fb4770be0e.png" src="../_images/6da5c34d589bedc67570f13c5239e9830582a4bd9f1f558ebf8e31fb4770be0e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>↓ normal form
+</pre></div>
+</div>
+<img alt="../_images/f7dd8b058884d1eacbcfae7375081724ab6765e466e878f12d54653308b96118.png" src="../_images/f7dd8b058884d1eacbcfae7375081724ab6765e466e878f12d54653308b96118.png" />
+</div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="circuit.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Circuit</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="tree-reader.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Tree reader</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+              Copyright &#169; 2024 Quantinuum Ltd. All rights reserved.
+            </div>
+            <div class="terms" style="display:flex; gap:0.5rem; align-items:center; margin: 0.25rem 0rem;">
+              <a href="https://www.quantinuum.com/privacy-statement" target="_blank">Privacy Statement</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/cookie-notice" target="_blank">Cookie Notice</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/terms-conditions" target="_blank">Terms and Conditions</a>
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Rewrite</a><ul>
+<li><a class="reference internal" href="#auxiliary-rule">Auxiliary rule</a></li>
+<li><a class="reference internal" href="#connector-rule">Connector rule</a></li>
+<li><a class="reference internal" href="#determiner-rule">Determiner rule</a></li>
+<li><a class="reference internal" href="#adverb-rules">Adverb rules</a></li>
+<li><a class="reference internal" href="#prepositional-phrase-rule">Prepositional phrase rule</a></li>
+<li><a class="reference internal" href="#relative-pronoun-rules">Relative Pronoun rules</a></li>
+<li><a class="reference internal" href="#coordination">Coordination</a></li>
+<li><a class="reference internal" href="#remove-cups">Remove cups</a></li>
+<li><a class="reference internal" href="#curry-functor">Curry functor</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=5bfaad31"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

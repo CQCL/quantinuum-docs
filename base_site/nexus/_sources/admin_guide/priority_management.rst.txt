@@ -1,0 +1,27 @@
+Viewing and managing priorities
+====================================
+
+Organization administrators can see and manage the :ref:`priority <priorities>`
+of users and groups from the :doc:`management page<accessing_org_page>`. User or Group priorities
+are currently only taken into account for jobs submitted to Quantinuum hardware.
+
+User priority
+-------------
+
+The priority of a user is shown in the "Priority"
+column of the Users table. To change it, click on the three-dots menu of the user
+to be updated and select the "Update priority" option.
+
+.. image:: images/org_page_users_tab_user_actions.png
+  :width: 800
+  :alt: User actions in the Users tab of the organization details page
+
+Group priority
+--------------
+
+The priority of a :ref:`group <groups>` can also be edited via the
+Groups tab of the same organization details page.
+
+.. image:: images/org_page_groups_tab_group_actions.png
+  :width: 800
+  :alt: Group actions in the Groups tab of the organization details page

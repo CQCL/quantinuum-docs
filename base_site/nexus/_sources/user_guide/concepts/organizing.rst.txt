@@ -1,0 +1,70 @@
+.. _organizations_page:
+
+Organizations, Groups and Teams
+===============================
+
+.. _organizations:
+
+Organizations
+-------------
+
+Organizations are primarily used for managing :ref:`quotas<quotas>`,
+:ref:`premium features<premium_feature>` and basic user access
+to Nexus.
+
+All users access the system through an organization. Your organization's
+administrator(s) can :ref:`invite users<inviting_users>` to join
+the organization, and when invitations are accepted, those users belong to the
+inviting organization on Nexus.
+
+Membership of an organization makes your usage of resources ultimately subject
+to that organization's quotas. Allocation of quotas to users within an
+organization is done by the organization's Nexus administrator(s).
+
+If any premium features are enabled for your organization, they are made
+available to you through your membership of the organization and the control of
+your Nexus administrators.
+
+.. _groups:
+
+Groups: manage quotas
+----------------------
+
+User Groups are primarily used for sharing quotas within an organization.
+
+A group belongs to an organization.
+
+The organization's administrators are in control of the allocation of the
+:ref:`quotas<quotas>` to users and groups. Groups are used to assign quotas and
+control usage across Quantinuum Nexus. 
+
+A user can be a member of any number of groups. For each user with group
+membership, one group is designated a default group. Your usage and activity is
+applied to your default group unless specified otherwise.
+
+To submit jobs under a User Group (for example, to use a simulation/compilation/hardware 
+quota that has been assigned by an admin), you must specify the group when you submit the job
+via the ``user_group`` parameter.
+
+You can see your available groups and set your default group on your "Settings"
+page, under "Organization".
+
+.. _teams:
+
+Teams: collaborate and share data
+----------------------------------
+
+Teams are primarily used for collaborating on Nexus resources via
+:ref:`projects<projects>`.
+
+Unlike a group, a team can be composed of users from one or many organizations.
+
+As part of Nexus's access control model, the resources in a project can be
+shared with other Nexus users individually, or with a collection of Nexus users
+called a team.
+
+In the same way that a user can be given a role within a project, a team can be
+given a role. Then all the team's members access the project with that role
+(unless they also have an individual, more powerful user role).
+
+Learn more about roles and about sharing resources under ":ref:`access_control`".

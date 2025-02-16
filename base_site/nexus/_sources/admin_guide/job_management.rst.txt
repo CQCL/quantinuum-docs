@@ -1,0 +1,52 @@
+Managing user-submitted jobs
+=============================
+
+Organization administrators can see all the :ref:`jobs <jobs>` submitted
+by the users and even retry or cancel them.
+
+Jobs list
+---------
+
+The Jobs tab in the :doc:`management page<accessing_org_page>` shows an overview of
+all the jobs submitted by the users of the organization.
+You can search, filter and sort the jobs in the table.
+
+.. note::
+   The table shows the latest 500 jobs by default. Any search or filtering is applied 
+   to all the jobs that exist in Nexus for the organization, but only the latest 500
+   results are shown.
+
+.. image:: images/org_page_jobs_tab.png
+   :width: 800
+   :alt: Organization's jobs page
+
+
+Re-running or canceling jobs
+----------------------------
+
+Clicking on a job's name takes you to the job details section of the corresponding
+:ref:`project <projects>` page. In this page you can find links to see the
+circuits submitted or the job results.
+
+.. image:: images/job_details.png
+   :width: 800
+   :alt: Job details page
+
+Another way of reaching the project page of a job is by
+clicking on the project's name link shown in the jobs overview table.
+To see this you have to scroll the table horizontally to reveal more columns.
+
+In the jobs list of the project page is where you can act on any job either to re-run
+or cancel it. This is done via the three-dots actions menu that is also revealed by
+scrolling the table horizontally, by clicking on the corresponding options.
+
+.. note::
+   A job in a final state (Completed, Cancelled, Error) cannot be cancelled.
+
+.. image:: images/job_actions.png
+   :width: 800
+   :alt: Job actions
+
+Organization administrators can also perform administrative actions on this page
+as if they were the project owners, like changing the access control, or archiving
+and deleting the project.

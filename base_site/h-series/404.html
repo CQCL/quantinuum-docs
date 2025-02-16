@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">
+        // Get the current path from the URL
+        var path = window.location.pathname;
+        // Redirect to the same path on the new site
+        window.location.href = 'https://docs.quantinuum.com/systems/' + path;
+    </script>
+    <title>Page Not Found</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        main {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .header404 {
+            font-family: 'Chango', cursive;
+            font-size: 48px;
+        }
+
+        .content404 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- <h4 class="header404">404</h4> -->
+        <h4 class="header404">
+            <img href="https://docs.quantinuum.com/systems/" src="systems.svg" type="image/svg+xml" width="512"/>
+        </h4>
+        <div class="content404">
+            <div style="margin:20px;">
+                <a href="https://docs.quantinuum.com/systems/">Link to Quantinuum Systems</a>
+                <p>Quantinuum Systems documentation @ <a href="https://docs.quantinuum.com/systems">https://docs.quantinuum.com/systems</a>. The URL <a href="https://docs.quantinuum.com/h-series">https://docs.quantinuum.com/h-series</a> should not be used.</p>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

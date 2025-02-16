@@ -1,0 +1,1124 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPQ1FTGDL3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YPQ1FTGDL3');
+    </script>
+    <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Symbolic circuits with pytket-qujax" href="pytket-qujax_qaoa.html" />
+
+    <link rel="shortcut icon" href="../../_static/quantinuum_favicon.svg"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>VQE with UCC ansatz - pytket user guide</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+<link rel="stylesheet" href="../../_static/tokens.css"/>
+<link rel="stylesheet" href="../../_static/styles.css"/>
+<link rel="stylesheet" href="../../_static/tailwind.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="preload"
+as="style">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>  
+  .sidebar-sticky {
+    top: calc(3.5rem - 0px);
+    height: calc(100vh - 3.5rem);
+  }
+  
+  @media (min-width: 97em) {
+    html {
+      font-size: 100% !important;
+    }
+  }
+  
+</style>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+<!-- <script type="text/javascript" src="../../_static/syncTheme.global.js" ></script> -->
+ <!--Force light mode -->
+ <script>document.body.setAttribute('data-theme','light')</script>
+<nav style="position:fixed;top:0;z-index:1021;width:100%;">
+    <div class="nexus-nav"></div>
+</nav>
+<script type="text/javascript" src="../../_static/injectNav.global.js"></script>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">pytket user guide</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">pytket user guide</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Manual</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/manual_intro.html">What is tket?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/manual_circuit.html">Circuit Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/manual_backend.html">Running on Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/manual_compiler.html">Compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/manual_noise.html">Noise and the Quantum Circuit Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/manual_assertion.html">Assertion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/manual_zx.html">ZX Diagrams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Example Notebooks</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../circuit_construction/circuit_analysis_example.html">Circuit analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../circuit_construction/circuit_generation_example.html">Circuit generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../circuit_construction/conditional_gate_example.html">Conditional gates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backends/backends_example.html">TKET <code class="docutils literal notranslate"><span class="pre">Backend</span></code> tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backends/comparing_simulators.html">Comparison of the simulators available through TKET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backends/creating_backends.html">How to create your own <code class="docutils literal notranslate"><span class="pre">Backend</span></code> using <code class="docutils literal notranslate"><span class="pre">pytket</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backends/qiskit_integration.html">Integrating <code class="docutils literal notranslate"><span class="pre">pytket</span></code> into Qiskit software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../circuit_compilation/compilation_example.html">Compilation passes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../circuit_compilation/contextual_optimisation.html">Contextual optimisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../circuit_compilation/mapping_example.html">Qubit mapping and routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../circuit_compilation/symbolics_example.html">Symbolic compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ansatz_sequence_example.html">Ansatz sequencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entanglement_swapping.html">Iterated entanglement swapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expectation_value_example.html">Expectation values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="measurement_reduction_example.html">Advanced expectation values and measurement reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phase_estimation.html">Quantum Phase Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pytket-qujax-classification.html">Binary classification using <code class="docutils literal notranslate"><span class="pre">pytket-qujax</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pytket-qujax_heisenberg_vqe.html">VQE example with <code class="docutils literal notranslate"><span class="pre">pytket-qujax</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pytket-qujax_qaoa.html">Symbolic circuits with <code class="docutils literal notranslate"><span class="pre">pytket-qujax</span></code></a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">VQE with UCC ansatz</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/examples/algorithms_and_protocols/ucc_vqe.ipynb.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="vqe-with-ucc-ansatz">
+<h1>VQE with UCC ansatz<a class="headerlink" href="#vqe-with-ucc-ansatz" title="Link to this heading">¶</a></h1>
+<p><strong>Download this notebook - <a class="reference download internal" download="" href="../../_downloads/81d7f81236f73d61c8f16981c4785a5f/ucc_vqe.ipynb"><code class="xref download myst-nb docutils literal notranslate"><span class="pre">ucc_vqe.ipynb</span></code></a></strong></p>
+<p>In this tutorial, we will focus on:<br></p>
+<ul class="simple">
+<li><p>building parameterised ansätze for variational algorithms;<br></p></li>
+<li><p>compilation tools for UCC-style ansätze.</p></li>
+</ul>
+<p>This example assumes the reader is familiar with the Variational Quantum Eigensolver and its application to electronic structure problems through the Unitary Coupled Cluster approach.<br>
+<br>
+To run this example, you will need <code class="docutils literal notranslate"><span class="pre">pytket</span></code> and <code class="docutils literal notranslate"><span class="pre">pytket-qiskit</span></code>, as well as <code class="docutils literal notranslate"><span class="pre">openfermion</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy</span></code>, and <code class="docutils literal notranslate"><span class="pre">sympy</span></code>.<br>
+<br>
+We will start with a basic implementation and then gradually modify it to make it faster, more general, and less noisy. The final solution is given in full at the bottom of the notebook.<br>
+<br>
+Suppose we have some electronic configuration problem, expressed via a physical Hamiltonian. (The Hamiltonian and excitations in this example were obtained using <code class="docutils literal notranslate"><span class="pre">qiskit-aqua</span></code> version 0.5.2 and <code class="docutils literal notranslate"><span class="pre">pyscf</span></code> for H2, bond length 0.75A, sto3g basis, Jordan-Wigner encoding, with no qubit reduction or orbital freezing.). We express it succinctly using the openfermion library:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">openfermion</span> <span class="k">as</span> <span class="nn">of</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hamiltonian</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">-</span><span class="mf">0.8153001706270075</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.16988452027940318</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z0&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="o">-</span><span class="mf">0.21886306781219608</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z1&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.16988452027940323</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z2&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="o">-</span><span class="mf">0.2188630678121961</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.12005143072546047</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z0 Z1&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.16821198673715723</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z0 Z2&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.16549431486978672</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z0 Z3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.16549431486978672</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z1 Z2&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.1739537877649417</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z1 Z3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.12005143072546047</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z2 Z3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.04544288414432624</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;X0 X1 X2 X3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.04544288414432624</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;X0 X1 Y2 Y3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.04544288414432624</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Y0 Y1 X2 X3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.04544288414432624</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Y0 Y1 Y2 Y3&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">nuclear_repulsion_energy</span> <span class="o">=</span> <span class="mf">0.70556961456</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We would like to define our ansatz for arbitrary parameter values. For simplicity, let’s start with a Hardware Efficient Ansatz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hardware efficient ansatz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hea</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">ansatz</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">ansatz</span><span class="o">.</span><span class="n">Ry</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">ansatz</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">ansatz</span><span class="o">.</span><span class="n">Ry</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="mi">4</span> <span class="o">+</span> <span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ansatz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use this to build the objective function for our optimisation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span>
+<span class="kn">from</span> <span class="nn">pytket.utils.expectations</span> <span class="kn">import</span> <span class="n">expectation_from_counts</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">backend</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Naive objective function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">energy</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">term</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">hamiltonian</span><span class="o">.</span><span class="n">terms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">term</span><span class="p">:</span>
+            <span class="n">energy</span> <span class="o">+=</span> <span class="n">coeff</span>
+            <span class="k">continue</span>
+        <span class="n">circ</span> <span class="o">=</span> <span class="n">hea</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">circ</span><span class="o">.</span><span class="n">add_c_register</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">term</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">pauli</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">term</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">pauli</span> <span class="o">==</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span>
+                <span class="n">circ</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">pauli</span> <span class="o">==</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span>
+                <span class="n">circ</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+            <span class="n">circ</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">compiled_circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+        <span class="n">counts</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run_circuit</span><span class="p">(</span><span class="n">compiled_circ</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">4000</span><span class="p">)</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+        <span class="n">energy</span> <span class="o">+=</span> <span class="n">coeff</span> <span class="o">*</span> <span class="n">expectation_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">energy</span> <span class="o">+</span> <span class="n">nuclear_repulsion_energy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This objective function is then run through a classical optimiser to find the set of parameter values that minimise the energy of the system. For the sake of example, we will just run this with a single parameter value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg_values</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">-</span><span class="mf">7.31158201e-02</span><span class="p">,</span>
+    <span class="o">-</span><span class="mf">1.64514836e-04</span><span class="p">,</span>
+    <span class="mf">1.12585591e-03</span><span class="p">,</span>
+    <span class="o">-</span><span class="mf">2.58367544e-03</span><span class="p">,</span>
+    <span class="mf">1.00006068e00</span><span class="p">,</span>
+    <span class="o">-</span><span class="mf">1.19551357e-03</span><span class="p">,</span>
+    <span class="mf">9.99963988e-01</span><span class="p">,</span>
+    <span class="mf">2.53283285e-03</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy</span> <span class="o">=</span> <span class="n">objective</span><span class="p">(</span><span class="n">arg_values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">energy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The HEA is designed to cram as many orthogonal degrees of freedom into a small circuit as possible to be able to explore a large region of the Hilbert space whilst the circuits themselves can be run with minimal noise. These ansätze give virtually-optimal circuits by design, but suffer from an excessive number of variational parameters making convergence slow, barren plateaus where the classical optimiser fails to make progress, and spanning a space where most states lack a physical interpretation. These drawbacks can necessitate adding penalties and may mean that the ansatz cannot actually express the true ground state.<br>
+<br>
+The UCC ansatz, on the other hand, is derived from the electronic configuration. It sacrifices efficiency of the circuit for the guarantee of physical states and the variational parameters all having some meaningful effect, which helps the classical optimisation to converge.<br>
+<br>
+This starts by defining the terms of our single and double excitations. These would usually be generated using the orbital configurations, so we will just use a hard-coded example here for the purposes of demonstration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.circuit</span> <span class="kn">import</span> <span class="n">Qubit</span>
+<span class="kn">from</span> <span class="nn">pytket.pauli</span> <span class="kn">import</span> <span class="n">Pauli</span><span class="p">,</span> <span class="n">QubitPauliString</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="n">Qubit</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="n">xyii</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">])</span>
+<span class="n">yxii</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">])</span>
+<span class="n">iixy</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">])</span>
+<span class="n">iiyx</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">])</span>
+<span class="n">xxxy</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">])</span>
+<span class="n">xxyx</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">])</span>
+<span class="n">xyxx</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">])</span>
+<span class="n">yxxx</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">])</span>
+<span class="n">yyyx</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">])</span>
+<span class="n">yyxy</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">])</span>
+<span class="n">yxyy</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">])</span>
+<span class="n">xyyy</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">singles_a</span> <span class="o">=</span> <span class="p">{</span><span class="n">xyii</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">yxii</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">}</span>
+<span class="n">singles_b</span> <span class="o">=</span> <span class="p">{</span><span class="n">iixy</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">iiyx</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">}</span>
+<span class="n">doubles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">xxxy</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+    <span class="n">xxyx</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span>
+    <span class="n">xyxx</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+    <span class="n">yxxx</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span>
+    <span class="n">yyyx</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span>
+    <span class="n">yyxy</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+    <span class="n">yxyy</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span>
+    <span class="n">xyyy</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Building the ansatz circuit itself is often done naively by defining the map from each term down to basic gates and then applying it to each term.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_operator_term</span><span class="p">(</span><span class="n">circuit</span><span class="p">:</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">term</span><span class="p">:</span> <span class="n">QubitPauliString</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+    <span class="n">qubits</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">term</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">I</span><span class="p">:</span>
+            <span class="n">qubits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">:</span>
+                <span class="n">circuit</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">p</span> <span class="o">==</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">:</span>
+                <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Rz</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)):</span>
+        <span class="n">circuit</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">term</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">:</span>
+            <span class="n">circuit</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">p</span> <span class="o">==</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">:</span>
+            <span class="n">circuit</span><span class="o">.</span><span class="n">Vdg</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unitary Coupled Cluster Singles &amp; Doubles ansatz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ucc</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">ansatz</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="c1"># Set initial reference state</span>
+    <span class="n">ansatz</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="c1"># Evolve by excitations</span>
+    <span class="k">for</span> <span class="n">term</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">singles_a</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">add_operator_term</span><span class="p">(</span><span class="n">ansatz</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">coeff</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">term</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">singles_b</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">add_operator_term</span><span class="p">(</span><span class="n">ansatz</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">coeff</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">term</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">doubles</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">add_operator_term</span><span class="p">(</span><span class="n">ansatz</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">coeff</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">ansatz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is already quite verbose, but <code class="docutils literal notranslate"><span class="pre">pytket</span></code> has a neat shorthand construction for these operator terms using the <code class="docutils literal notranslate"><span class="pre">PauliExpBox</span></code> construction. We can then decompose these into basic gates using the <code class="docutils literal notranslate"><span class="pre">DecomposeBoxes</span></code> compiler pass.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.circuit</span> <span class="kn">import</span> <span class="n">PauliExpBox</span>
+<span class="kn">from</span> <span class="nn">pytket.passes</span> <span class="kn">import</span> <span class="n">DecomposeBoxes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_excitation</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">term_dict</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">term</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">term_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">qubits</span><span class="p">,</span> <span class="n">paulis</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">term</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="n">pbox</span> <span class="o">=</span> <span class="n">PauliExpBox</span><span class="p">(</span><span class="n">paulis</span><span class="p">,</span> <span class="n">coeff</span> <span class="o">*</span> <span class="n">param</span><span class="p">)</span>
+        <span class="n">circ</span><span class="o">.</span><span class="n">add_gate</span><span class="p">(</span><span class="n">pbox</span><span class="p">,</span> <span class="n">qubits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>UCC ansatz with syntactic shortcuts:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ucc</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">ansatz</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">ansatz</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">add_excitation</span><span class="p">(</span><span class="n">ansatz</span><span class="p">,</span> <span class="n">singles_a</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">add_excitation</span><span class="p">(</span><span class="n">ansatz</span><span class="p">,</span> <span class="n">singles_b</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">add_excitation</span><span class="p">(</span><span class="n">ansatz</span><span class="p">,</span> <span class="n">doubles</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">DecomposeBoxes</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ansatz</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ansatz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The objective function can also be simplified using a utility method for constructing the measurement circuits and processing for expectation value calculations. For that, we convert the Hamiltonian to a pytket QubitPauliOperator:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.utils.operators</span> <span class="kn">import</span> <span class="n">QubitPauliOperator</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pauli_sym</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;I&quot;</span><span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">I</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Z</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">qps_from_openfermion</span><span class="p">(</span><span class="n">paulis</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert OpenFermion tensor of Paulis to pytket QubitPauliString.&quot;&quot;&quot;</span>
+    <span class="n">qlist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">plist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paulis</span><span class="p">:</span>
+        <span class="n">qlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Qubit</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+        <span class="n">plist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pauli_sym</span><span class="p">[</span><span class="n">p</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">qlist</span><span class="p">,</span> <span class="n">plist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">qpo_from_openfermion</span><span class="p">(</span><span class="n">openf_op</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert OpenFermion QubitOperator to pytket QubitPauliOperator.&quot;&quot;&quot;</span>
+    <span class="n">tk_op</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">term</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">openf_op</span><span class="o">.</span><span class="n">terms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">string</span> <span class="o">=</span> <span class="n">qps_from_openfermion</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+        <span class="n">tk_op</span><span class="p">[</span><span class="n">string</span><span class="p">]</span> <span class="o">=</span> <span class="n">coeff</span>
+    <span class="k">return</span> <span class="n">QubitPauliOperator</span><span class="p">(</span><span class="n">tk_op</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hamiltonian_op</span> <span class="o">=</span> <span class="n">qpo_from_openfermion</span><span class="p">(</span><span class="n">hamiltonian</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Simplified objective function using utilities:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.utils.expectations</span> <span class="kn">import</span> <span class="n">get_operator_expectation_value</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">circ</span> <span class="o">=</span> <span class="n">ucc</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">get_operator_expectation_value</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">hamiltonian_op</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">4000</span><span class="p">)</span>
+        <span class="o">+</span> <span class="n">nuclear_repulsion_energy</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg_values</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.79002933e-05</span><span class="p">,</span> <span class="mf">2.42964799e-05</span><span class="p">,</span> <span class="mf">4.63447157e-01</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy</span> <span class="o">=</span> <span class="n">objective</span><span class="p">(</span><span class="n">arg_values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">energy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is now the simplest form that this operation can take, but it isn’t necessarily the most effective. When we decompose the ansatz circuit into basic gates, it is still very expensive. We can employ some of the circuit simplification passes available in <code class="docutils literal notranslate"><span class="pre">pytket</span></code> to reduce its size and improve fidelity in practice.<br>
+<br>
+A good example is to decompose each <code class="docutils literal notranslate"><span class="pre">PauliExpBox</span></code> into basic gates and then apply <code class="docutils literal notranslate"><span class="pre">FullPeepholeOptimise</span></code>, which defines a compilation strategy utilising all of the simplifications in <code class="docutils literal notranslate"><span class="pre">pytket</span></code> that act locally on small regions of a circuit. We can examine the effectiveness by looking at the number of two-qubit gates before and after simplification, which tends to be a good indicator of fidelity for near-term systems where these gates are often slow and inaccurate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">OpType</span>
+<span class="kn">from</span> <span class="nn">pytket.passes</span> <span class="kn">import</span> <span class="n">FullPeepholeOptimise</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_circuit</span> <span class="o">=</span> <span class="n">ucc</span><span class="p">(</span><span class="n">arg_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CX count before&quot;</span><span class="p">,</span> <span class="n">test_circuit</span><span class="o">.</span><span class="n">n_gates_of_type</span><span class="p">(</span><span class="n">OpType</span><span class="o">.</span><span class="n">CX</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CX depth before&quot;</span><span class="p">,</span> <span class="n">test_circuit</span><span class="o">.</span><span class="n">depth_by_type</span><span class="p">(</span><span class="n">OpType</span><span class="o">.</span><span class="n">CX</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FullPeepholeOptimise</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">test_circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CX count after FPO&quot;</span><span class="p">,</span> <span class="n">test_circuit</span><span class="o">.</span><span class="n">n_gates_of_type</span><span class="p">(</span><span class="n">OpType</span><span class="o">.</span><span class="n">CX</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CX depth after FPO&quot;</span><span class="p">,</span> <span class="n">test_circuit</span><span class="o">.</span><span class="n">depth_by_type</span><span class="p">(</span><span class="n">OpType</span><span class="o">.</span><span class="n">CX</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These simplification techniques are very general and are almost always beneficial to apply to a circuit if you want to eliminate local redundancies. But UCC ansätze have extra structure that we can exploit further. They are defined entirely out of exponentiated tensors of Pauli matrices, giving the regular structure described by the <code class="docutils literal notranslate"><span class="pre">PauliExpBox</span></code>es. Under many circumstances, it is more efficient to not synthesise these constructions individually, but simultaneously in groups. The <code class="docutils literal notranslate"><span class="pre">PauliSimp</span></code> pass finds the description of a given circuit as a sequence of <code class="docutils literal notranslate"><span class="pre">PauliExpBox</span></code>es and resynthesises them (by default, in groups of commuting terms). This can cause great change in the overall structure and shape of the circuit, enabling the identification and elimination of non-local redundancy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.passes</span> <span class="kn">import</span> <span class="n">PauliSimp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_circuit</span> <span class="o">=</span> <span class="n">ucc</span><span class="p">(</span><span class="n">arg_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CX count before&quot;</span><span class="p">,</span> <span class="n">test_circuit</span><span class="o">.</span><span class="n">n_gates_of_type</span><span class="p">(</span><span class="n">OpType</span><span class="o">.</span><span class="n">CX</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CX depth before&quot;</span><span class="p">,</span> <span class="n">test_circuit</span><span class="o">.</span><span class="n">depth_by_type</span><span class="p">(</span><span class="n">OpType</span><span class="o">.</span><span class="n">CX</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PauliSimp</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">test_circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CX count after PS&quot;</span><span class="p">,</span> <span class="n">test_circuit</span><span class="o">.</span><span class="n">n_gates_of_type</span><span class="p">(</span><span class="n">OpType</span><span class="o">.</span><span class="n">CX</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CX depth after PS&quot;</span><span class="p">,</span> <span class="n">test_circuit</span><span class="o">.</span><span class="n">depth_by_type</span><span class="p">(</span><span class="n">OpType</span><span class="o">.</span><span class="n">CX</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FullPeepholeOptimise</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">test_circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CX count after PS+FPO&quot;</span><span class="p">,</span> <span class="n">test_circuit</span><span class="o">.</span><span class="n">n_gates_of_type</span><span class="p">(</span><span class="n">OpType</span><span class="o">.</span><span class="n">CX</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CX depth after PS+FPO&quot;</span><span class="p">,</span> <span class="n">test_circuit</span><span class="o">.</span><span class="n">depth_by_type</span><span class="p">(</span><span class="n">OpType</span><span class="o">.</span><span class="n">CX</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To include this into our routines, we can just add the simplification passes to the objective function. The <code class="docutils literal notranslate"><span class="pre">get_operator_expectation_value</span></code> utility handles compiling to meet the requirements of the backend, so we don’t have to worry about that here.</p>
+<p>Objective function with circuit simplification:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">circ</span> <span class="o">=</span> <span class="n">ucc</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">PauliSimp</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+    <span class="n">FullPeepholeOptimise</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">get_operator_expectation_value</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">hamiltonian_op</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">4000</span><span class="p">)</span>
+        <span class="o">+</span> <span class="n">nuclear_repulsion_energy</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These circuit simplification techniques have tried to preserve the exact unitary of the circuit, but there are ways to change the unitary whilst preserving the correctness of the algorithm as a whole.<br>
+<br>
+For example, the excitation terms are generated by trotterisation of the excitation operator, and the order of the terms does not change the unitary in the limit of many trotter steps, so in this sense we are free to sequence the terms how we like and it is sensible to do this in a way that enables efficient synthesis of the circuit. Prioritising collecting terms into commuting sets is a very beneficial heuristic for this and can be performed using the <code class="docutils literal notranslate"><span class="pre">gen_term_sequence_circuit</span></code> method to group the terms together into collections of <code class="docutils literal notranslate"><span class="pre">PauliExpBox</span></code>es and the <code class="docutils literal notranslate"><span class="pre">GuidedPauliSimp</span></code> pass to utilise these sets for synthesis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.passes</span> <span class="kn">import</span> <span class="n">GuidedPauliSimp</span>
+<span class="kn">from</span> <span class="nn">pytket.utils</span> <span class="kn">import</span> <span class="n">gen_term_sequence_circuit</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ucc</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">singles_params</span> <span class="o">=</span> <span class="p">{</span><span class="n">qps</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">coeff</span> <span class="k">for</span> <span class="n">qps</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">singles</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="n">doubles_params</span> <span class="o">=</span> <span class="p">{</span><span class="n">qps</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">coeff</span> <span class="k">for</span> <span class="n">qps</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">doubles</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="n">excitation_op</span> <span class="o">=</span> <span class="n">QubitPauliOperator</span><span class="p">({</span><span class="o">**</span><span class="n">singles_params</span><span class="p">,</span> <span class="o">**</span><span class="n">doubles_params</span><span class="p">})</span>
+    <span class="n">reference_circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ansatz</span> <span class="o">=</span> <span class="n">gen_term_sequence_circuit</span><span class="p">(</span><span class="n">excitation_op</span><span class="p">,</span> <span class="n">reference_circ</span><span class="p">)</span>
+    <span class="n">GuidedPauliSimp</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ansatz</span><span class="p">)</span>
+    <span class="n">FullPeepholeOptimise</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ansatz</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ansatz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Adding these simplification routines doesn’t come for free. Compiling and simplifying the circuit to achieve the best results possible can be a difficult task, which can take some time for the classical computer to perform.<br>
+<br>
+During a VQE run, we will call this objective function many times and run many measurement circuits within each, but the circuits that are run on the quantum computer are almost identical, having the same gate structure but with different gate parameters and measurements. We have already exploited this within the body of the objective function by simplifying the ansatz circuit before we call <code class="docutils literal notranslate"><span class="pre">get_operator_expectation_value</span></code>, so it is only done once per objective calculation rather than once per measurement circuit.<br>
+<br>
+We can go even further by simplifying it once outside of the objective function, and then instantiating the simplified ansatz with the parameter values needed. For this, we will construct the UCC ansatz circuit using symbolic (parametric) gates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Symbolic UCC ansatz generation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;p0 p1 p2&quot;</span><span class="p">)</span>
+<span class="n">singles_a_syms</span> <span class="o">=</span> <span class="p">{</span><span class="n">qps</span><span class="p">:</span> <span class="n">syms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">coeff</span> <span class="k">for</span> <span class="n">qps</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">singles_a</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">singles_b_syms</span> <span class="o">=</span> <span class="p">{</span><span class="n">qps</span><span class="p">:</span> <span class="n">syms</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">coeff</span> <span class="k">for</span> <span class="n">qps</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">singles_b</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">doubles_syms</span> <span class="o">=</span> <span class="p">{</span><span class="n">qps</span><span class="p">:</span> <span class="n">syms</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">coeff</span> <span class="k">for</span> <span class="n">qps</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">doubles</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">excitation_op</span> <span class="o">=</span> <span class="n">QubitPauliOperator</span><span class="p">({</span><span class="o">**</span><span class="n">singles_a_syms</span><span class="p">,</span> <span class="o">**</span><span class="n">singles_b_syms</span><span class="p">,</span> <span class="o">**</span><span class="n">doubles_syms</span><span class="p">})</span>
+<span class="n">ucc_ref</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ucc</span> <span class="o">=</span> <span class="n">gen_term_sequence_circuit</span><span class="p">(</span><span class="n">excitation_op</span><span class="p">,</span> <span class="n">ucc_ref</span><span class="p">)</span>
+<span class="n">GuidedPauliSimp</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ucc</span><span class="p">)</span>
+<span class="n">FullPeepholeOptimise</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ucc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Objective function using the symbolic ansatz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">circ</span> <span class="o">=</span> <span class="n">ucc</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">sym_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">syms</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+    <span class="n">circ</span><span class="o">.</span><span class="n">symbol_substitution</span><span class="p">(</span><span class="n">sym_map</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">get_operator_expectation_value</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">hamiltonian_op</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">4000</span><span class="p">)</span>
+        <span class="o">+</span> <span class="n">nuclear_repulsion_energy</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have now got some very good use of <code class="docutils literal notranslate"><span class="pre">pytket</span></code> for simplifying each individual circuit used in our experiment and for minimising the amount of time spent compiling, but there is still more we can do in terms of reducing the amount of work the quantum computer has to do. Currently, each (non-trivial) term in our measurement hamiltonian is measured by a different circuit within each expectation value calculation. Measurement reduction techniques exist for identifying when these observables commute and hence can be simultaneously measured, reducing the number of circuits required for the full expectation value calculation.<br>
+<br>
+This is built in to the <code class="docutils literal notranslate"><span class="pre">get_operator_expectation_value</span></code> method and can be applied by specifying a way to partition the measuremrnt terms. <code class="docutils literal notranslate"><span class="pre">PauliPartitionStrat.CommutingSets</span></code> can greatly reduce the number of measurement circuits by combining any number of terms that mutually commute. However, this involves potentially adding an arbitrary Clifford circuit to change the basis of the measurements which can be costly on NISQ devices, so <code class="docutils literal notranslate"><span class="pre">PauliPartitionStrat.NonConflictingSets</span></code> trades off some of the reduction in circuit number to guarantee that only single-qubit gates are introduced.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.partition</span> <span class="kn">import</span> <span class="n">PauliPartitionStrat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Objective function using measurement reduction:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">circ</span> <span class="o">=</span> <span class="n">ucc</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">sym_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">syms</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+    <span class="n">circ</span><span class="o">.</span><span class="n">symbol_substitution</span><span class="p">(</span><span class="n">sym_map</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">get_operator_expectation_value</span><span class="p">(</span>
+            <span class="n">circ</span><span class="p">,</span>
+            <span class="n">operator</span><span class="p">,</span>
+            <span class="n">backend</span><span class="p">,</span>
+            <span class="n">n_shots</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span>
+            <span class="n">partition_strat</span><span class="o">=</span><span class="n">PauliPartitionStrat</span><span class="o">.</span><span class="n">CommutingSets</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="o">+</span> <span class="n">nuclear_repulsion_energy</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At this point, we have completely transformed how our VQE objective function works, improving its resilience to noise, cutting the number of circuits run, and maintaining fast runtimes. In doing this, we have explored a number of the features <code class="docutils literal notranslate"><span class="pre">pytket</span></code> offers that are beneficial to VQE and the UCC method:<br></p>
+<ul class="simple">
+<li><p>high-level syntactic constructs for evolution operators;<br></p></li>
+<li><p>utility methods for easy expectation value calculations;<br></p></li>
+<li><p>both generic and domain-specific circuit simplification methods;<br></p></li>
+<li><p>symbolic circuit compilation;<br></p></li>
+<li><p>measurement reduction for expectation value calculations.</p></li>
+</ul>
+<p>For the sake of completeness, the following gives the full code for the final solution, including passing the objective function to a classical optimiser to find the ground state:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">openfermion</span> <span class="k">as</span> <span class="nn">of</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span>
+<span class="kn">from</span> <span class="nn">pytket.circuit</span> <span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">Qubit</span>
+<span class="kn">from</span> <span class="nn">pytket.partition</span> <span class="kn">import</span> <span class="n">PauliPartitionStrat</span>
+<span class="kn">from</span> <span class="nn">pytket.passes</span> <span class="kn">import</span> <span class="n">GuidedPauliSimp</span><span class="p">,</span> <span class="n">FullPeepholeOptimise</span>
+<span class="kn">from</span> <span class="nn">pytket.pauli</span> <span class="kn">import</span> <span class="n">Pauli</span><span class="p">,</span> <span class="n">QubitPauliString</span>
+<span class="kn">from</span> <span class="nn">pytket.utils</span> <span class="kn">import</span> <span class="n">get_operator_expectation_value</span><span class="p">,</span> <span class="n">gen_term_sequence_circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.utils.operators</span> <span class="kn">import</span> <span class="n">QubitPauliOperator</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Obtain electronic Hamiltonian:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hamiltonian</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">-</span><span class="mf">0.8153001706270075</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.16988452027940318</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z0&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="o">-</span><span class="mf">0.21886306781219608</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z1&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.16988452027940323</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z2&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="o">-</span><span class="mf">0.2188630678121961</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.12005143072546047</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z0 Z1&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.16821198673715723</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z0 Z2&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.16549431486978672</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z0 Z3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.16549431486978672</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z1 Z2&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.1739537877649417</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z1 Z3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.12005143072546047</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Z2 Z3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.04544288414432624</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;X0 X1 X2 X3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.04544288414432624</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;X0 X1 Y2 Y3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.04544288414432624</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Y0 Y1 X2 X3&quot;</span><span class="p">)</span>
+    <span class="o">+</span> <span class="mf">0.04544288414432624</span> <span class="o">*</span> <span class="n">of</span><span class="o">.</span><span class="n">QubitOperator</span><span class="p">(</span><span class="s2">&quot;Y0 Y1 Y2 Y3&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">nuclear_repulsion_energy</span> <span class="o">=</span> <span class="mf">0.70556961456</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pauli_sym</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;I&quot;</span><span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">I</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Z</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">qps_from_openfermion</span><span class="p">(</span><span class="n">paulis</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert OpenFermion tensor of Paulis to pytket QubitPauliString.&quot;&quot;&quot;</span>
+    <span class="n">qlist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">plist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paulis</span><span class="p">:</span>
+        <span class="n">qlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Qubit</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+        <span class="n">plist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pauli_sym</span><span class="p">[</span><span class="n">p</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">qlist</span><span class="p">,</span> <span class="n">plist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">qpo_from_openfermion</span><span class="p">(</span><span class="n">openf_op</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert OpenFermion QubitOperator to pytket QubitPauliOperator.&quot;&quot;&quot;</span>
+    <span class="n">tk_op</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">term</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">openf_op</span><span class="o">.</span><span class="n">terms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">string</span> <span class="o">=</span> <span class="n">qps_from_openfermion</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+        <span class="n">tk_op</span><span class="p">[</span><span class="n">string</span><span class="p">]</span> <span class="o">=</span> <span class="n">coeff</span>
+    <span class="k">return</span> <span class="n">QubitPauliOperator</span><span class="p">(</span><span class="n">tk_op</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hamiltonian_op</span> <span class="o">=</span> <span class="n">qpo_from_openfermion</span><span class="p">(</span><span class="n">hamiltonian</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Obtain terms for single and double excitations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="n">Qubit</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="n">xyii</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">])</span>
+<span class="n">yxii</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">])</span>
+<span class="n">iixy</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">])</span>
+<span class="n">iiyx</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">])</span>
+<span class="n">xxxy</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">])</span>
+<span class="n">xxyx</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">])</span>
+<span class="n">xyxx</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">])</span>
+<span class="n">yxxx</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">])</span>
+<span class="n">yyyx</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">])</span>
+<span class="n">yyxy</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">])</span>
+<span class="n">yxyy</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">])</span>
+<span class="n">xyyy</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Symbolic UCC ansatz generation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;p0 p1 p2&quot;</span><span class="p">)</span>
+<span class="n">singles_syms</span> <span class="o">=</span> <span class="p">{</span><span class="n">xyii</span><span class="p">:</span> <span class="n">syms</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yxii</span><span class="p">:</span> <span class="o">-</span><span class="n">syms</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">iixy</span><span class="p">:</span> <span class="n">syms</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iiyx</span><span class="p">:</span> <span class="o">-</span><span class="n">syms</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
+<span class="n">doubles_syms</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">xxxy</span><span class="p">:</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">syms</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+    <span class="n">xxyx</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">syms</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+    <span class="n">xyxx</span><span class="p">:</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">syms</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+    <span class="n">yxxx</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">syms</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+    <span class="n">yyyx</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">syms</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+    <span class="n">yyxy</span><span class="p">:</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">syms</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+    <span class="n">yxyy</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">syms</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+    <span class="n">xyyy</span><span class="p">:</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">syms</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">excitation_op</span> <span class="o">=</span> <span class="n">QubitPauliOperator</span><span class="p">({</span><span class="o">**</span><span class="n">singles_syms</span><span class="p">,</span> <span class="o">**</span><span class="n">doubles_syms</span><span class="p">})</span>
+<span class="n">ucc_ref</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ucc</span> <span class="o">=</span> <span class="n">gen_term_sequence_circuit</span><span class="p">(</span><span class="n">excitation_op</span><span class="p">,</span> <span class="n">ucc_ref</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Circuit simplification:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GuidedPauliSimp</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ucc</span><span class="p">)</span>
+<span class="n">FullPeepholeOptimise</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ucc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Connect to a simulator/device:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">backend</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Objective function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">circ</span> <span class="o">=</span> <span class="n">ucc</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">sym_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">syms</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+    <span class="n">circ</span><span class="o">.</span><span class="n">symbol_substitution</span><span class="p">(</span><span class="n">sym_map</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">get_operator_expectation_value</span><span class="p">(</span>
+            <span class="n">circ</span><span class="p">,</span>
+            <span class="n">hamiltonian_op</span><span class="p">,</span>
+            <span class="n">backend</span><span class="p">,</span>
+            <span class="n">n_shots</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span>
+            <span class="n">partition_strat</span><span class="o">=</span><span class="n">PauliPartitionStrat</span><span class="o">.</span><span class="n">CommutingSets</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="o">+</span> <span class="n">nuclear_repulsion_energy</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">real</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Optimise against the objective function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">initial_params</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="mf">4e-1</span><span class="p">]</span>
+<span class="c1"># #result = minimize(objective, initial_params, method=&quot;Nelder-Mead&quot;)</span>
+<span class="c1"># #print(&quot;Final parameter values&quot;, result.x)</span>
+<span class="c1"># #print(&quot;Final energy value&quot;, result.fun)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Exercises:<br></p>
+<ul class="simple">
+<li><p>Replace the <code class="docutils literal notranslate"><span class="pre">get_operator_expectation_value</span></code> call with its implementation and use this to pull the analysis for measurement reduction outside of the objective function, so our circuits can be fully determined and compiled once. This means that the <code class="docutils literal notranslate"><span class="pre">symbol_substitution</span></code> method will need to be applied to each measurement circuit instead of just the state preparation circuit.<br></p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">SpamCorrecter</span></code> class to add some mitigation of the measurement errors. Start by running the characterisation circuits first, before your main VQE loop, then apply the mitigation to each of the circuits run within the objective function.<br></p></li>
+<li><p>Change the <code class="docutils literal notranslate"><span class="pre">backend</span></code> by passing in a <code class="docutils literal notranslate"><span class="pre">Qiskit</span></code> <code class="docutils literal notranslate"><span class="pre">NoiseModel</span></code> to simulate a noisy device. Compare the accuracy of the objective function both with and without the circuit simplification. Try running a classical optimiser over the objective function and compare the convergence rates with different noise models. If you have access to a QPU, try changing the <code class="docutils literal notranslate"><span class="pre">backend</span></code> to connect to that and compare the results to the simulator.</p></li>
+</ul>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="pytket-qujax_qaoa.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Symbolic circuits with <code class="docutils literal notranslate"><span class="pre">pytket-qujax</span></code></div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+              Copyright &#169; 2024 Quantinuum Ltd. All rights reserved.
+            </div>
+            <div class="terms" style="display:flex; gap:0.5rem; align-items:center; margin: 0.25rem 0rem;">
+              <a href="https://www.quantinuum.com/privacy-statement" target="_blank">Privacy Statement</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/cookie-notice" target="_blank">Cookie Notice</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/terms-conditions" target="_blank">Terms and Conditions</a>
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

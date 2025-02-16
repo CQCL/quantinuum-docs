@@ -1,0 +1,42 @@
+Properties
+==========
+
+Properties are user defined key-value pairs used to label resources such as :class:`tket:pytket.circuit.Circuit`, :ref:`jobs<jobs>` and :class:`tket:pytket.backends.backendresult.BackendResult`. This enables users to search through their resources using this custom defined metadata. There are four property value types:
+
+.. list-table::
+   :widths: 100 100
+   :header-rows: 1
+
+   * - Property Type
+     - Description
+   * - String
+     - Text value such as "Carbon"
+   * - Boolean
+     - True or False
+   * - Float
+     - Floating point number i.e. 0.237
+   * - Int
+     - Integer value i.e. 56, 1024
+
+
+Most nexus API endpoints offer the ability to filter resources by property value.
+
+.. note::
+
+  Properties are currently scoped to :ref:`projects<projects>` and must be created before they are used. They can be created in the Nexus UI under the 'resource properties' tab within a project.
+
+
+*******************
+Auto Labelling
+*******************
+If a job creates a resource, Nexus will set the same property from the job onto the resource it creates. For example, if an execute job was created with the property :code:`parameter1: 0.5`, the result would also have it.
+
+.. image:: ./images/property_inheritance.png
+   :width: 500
+
+
+*******************
+Required Properties
+*******************
+
+Properties can be made non-optional (required) which ensures all project collaborators label their resources. If a user fails to set a value for a required property, the API will return with an error.

@@ -1,0 +1,24 @@
+.. _quotas:
+
+Organization Quotas
+===================
+Quotas in Nexus are a way to limit the amount of resources that a user can use.
+Your organization will be allocated a quota for each resource type. 
+
+There are a few different types of quotas that can be set in Nexus:
+
+:Compilation: CPU time consumed during compilation. Renews monthly.
+:Simulation: CPU time consumed during simulation. Renews monthly.
+:Storage: Disk space consumed by user generated resources.
+:Jupyterhub: time consumed on the Nexus Lab. Renews monthly.
+
+You can view your organization's quotas in the "Quantinuum Nexus Plans" section under the "Access" tab on your organization's admin page.
+From here you can view your organization's quotas and usage. Each quota section can be expanded to show detailed usage for the users in your organization.
+
+Managing user quotas
+--------------------
+You can set quotas for users in your organization in the "Users" tab on your organization's admin page.
+
+From here you can view all users in your organization and set quotas for each user, by opening on the action menu in the far right column and selecting "Manage quotas".
+This will open up a form that allows you to manage the quotas for each resource type for the selected user. 
+Once you have made your changes, click "Save quotas" to apply the new quotas.

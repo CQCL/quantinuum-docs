@@ -1,0 +1,42 @@
+Quotas in Nexus
+===============
+
+There are some limits on how much CPU time or storage space you can use in Nexus. Your :ref:`organization <organizations_page>` will have quotas
+of how much of a resource it can use, which your admin can then configure for users and :ref:`groups <organizations_page>`.
+
+Contact your organization's admin if you need an increased quota for yourself.
+
+Limits on time (such as CPU usage or Nexus Lab usage) are per calendar month, and reset at the start of each month. Limits on storage (such as database usage) do not reset.
+
+Nexus does not have quotas for running circuits outside Nexus (such as on quantum hardware or on simulators outside Nexus), but the provider of that hardware or simulator may have their own quotas.
+
+
+CPU usage when compiling circuits
+---------------------------------
+
+Amount of processing time spent compiling circuits in Nexus. Quota unit is seconds of CPU time.
+
+
+CPU usage when running circuits on hosted simulations
+-----------------------------------------------------
+
+Amount of processing time spent running circuits on simulators that are hosted in Nexus. Quota unit is seconds of CPU time.
+
+
+Nexus Lab usage
+---------------
+
+Amount of time that your Jupyter notebook server has been actively running in :ref:`Nexus Lab <nexus_lab>`. Quota unit is seconds.
+
+
+Database usage
+--------------
+
+Amount of space taken up in the Nexus database by the scientific data in your Nexus projects. Quota unit is megabytes.
+
+Scientific data that is counted towards this quota includes:
+
+* Quantum circuits
+* Circuit compilation data, including circuits created as intermediate steps in compilation
+* Results from running quantum circuits (whether on hardware, an emulator or a simulator)
+* Snapshots of the architecture and error rates for the :ref:`backend <backend_concepts>` that a circuit was run on

@@ -1,0 +1,1020 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPQ1FTGDL3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YPQ1FTGDL3');
+    </script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
+
+    <link rel="shortcut icon" href="../../../../../_static/quantinuum_favicon.svg"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
+        <title>pytket.extensions.cutensornet.structured_state.ttn_gate - pytket-cutensornet API documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+<link rel="stylesheet" href="../../../../../_static/tokens.css"/>
+<link rel="stylesheet" href="../../../../../_static/styles.css"/>
+<link rel="stylesheet" href="../../../../../_static/tailwind.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="preload"
+as="style">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>  
+  .sidebar-sticky {
+    top: calc(3.5rem - 0px);
+    height: calc(100vh - 3.5rem);
+  }
+  
+  @media (min-width: 97em) {
+    html {
+      font-size: 100% !important;
+    }
+  }
+  
+</style>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+<!-- <script type="text/javascript" src="../../../../../_static/syncTheme.global.js" ></script> -->
+ <!--Force light mode -->
+ <script>document.body.setAttribute('data-theme','light')</script>
+<nav style="position:fixed;top:0;z-index:1021;width:100%;">
+    <div class="nexus-nav"></div>
+</nav>
+<script type="text/javascript" src="../../../../../_static/injectNav.global.js"></script>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../../../index.html"><div class="brand">pytket-cutensornet API documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../../index.html">
+  
+  
+  <span class="sidebar-brand-text">pytket-cutensornet API documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../../api.html">API documentation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of API documentation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../modules/general_state.html">General state (exact) simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../modules/structured_state.html">Structured state evolution</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Example Notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples/general_state_tutorial.html"><code class="docutils literal notranslate"><span class="pre">GeneralState</span></code> Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples/mps_tutorial.html">Matrix Product State (MPS) Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples/ttn_tutorial.html">Tree Tensor Network (TTN) Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Changelog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/CQCL/pytket-cutensornet/issues">Issue tracker</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/pytket-cutensornet/">PyPi</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for pytket.extensions.cutensornet.structured_state.ttn_gate</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright Quantinuum</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">##</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">##</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>  <span class="c1"># type: ignore</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">cupy</span> <span class="k">as</span> <span class="nn">cp</span>  <span class="c1"># type: ignore</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;local settings failed to import cupy&quot;</span><span class="p">,</span> <span class="ne">ImportWarning</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">cuquantum</span> <span class="k">as</span> <span class="nn">cq</span>  <span class="c1"># type: ignore</span>
+    <span class="kn">from</span> <span class="nn">cuquantum.cutensornet</span> <span class="kn">import</span> <span class="n">tensor</span>  <span class="c1"># type: ignore</span>
+    <span class="kn">from</span> <span class="nn">cuquantum.cutensornet.experimental</span> <span class="kn">import</span> <span class="n">contract_decompose</span>  <span class="c1"># type: ignore</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;local settings failed to import cutensornet&quot;</span><span class="p">,</span> <span class="ne">ImportWarning</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">pytket.circuit</span> <span class="kn">import</span> <span class="n">Qubit</span>
+<span class="kn">from</span> <span class="nn">.ttn</span> <span class="kn">import</span> <span class="n">TTN</span><span class="p">,</span> <span class="n">DirTTN</span><span class="p">,</span> <span class="n">RootPath</span>
+
+
+<div class="viewcode-block" id="TTNxGate">
+<a class="viewcode-back" href="../../../../../modules/structured_state.html#pytket.extensions.cutensornet.structured_state.TTNxGate">[docs]</a>
+<span class="k">class</span> <span class="nc">TTNxGate</span><span class="p">(</span><span class="n">TTN</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Implements a gate-by-gate contraction algorithm to calculate the output state</span>
+<span class="sd">    of a circuit as a ``TTN``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_apply_1q_unitary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unitary</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">qubit</span><span class="p">:</span> <span class="n">Qubit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTNxGate</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies the 1-qubit gate to the TTN.</span>
+
+<span class="sd">        This does not increase the dimension of any bond.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            unitary: The unitary to be applied.</span>
+<span class="sd">            qubit: The qubit the unitary acts on.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ``self``, to allow for method chaining.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qubit_position</span><span class="p">[</span><span class="n">qubit</span><span class="p">]</span>
+        <span class="n">node_tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="o">.</span><span class="n">tensor</span>
+        <span class="n">n_qbonds</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">node_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="p">)</span>  <span class="c1"># Total number of physical bonds in this node</span>
+
+        <span class="c1"># Glossary of bond IDs</span>
+        <span class="c1"># qX -&gt; where X is the X-th physical bond (qubit) in the TTN node</span>
+        <span class="c1"># p  -&gt; the parent bond of the TTN node</span>
+        <span class="c1"># i  -&gt; the input bond of the gate</span>
+        <span class="c1"># o  -&gt; the output bond of the gate</span>
+
+        <span class="n">node_bonds</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;q</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qbonds</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">]</span>
+        <span class="n">result_bonds</span> <span class="o">=</span> <span class="n">node_bonds</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">node_bonds</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;i&quot;</span>  <span class="c1"># Target bond must match with the gate input bond</span>
+        <span class="n">result_bonds</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span>  <span class="c1"># After contraction it matches the output bond</span>
+
+        <span class="c1"># Contract</span>
+        <span class="n">new_tensor</span> <span class="o">=</span> <span class="n">cq</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span>
+            <span class="n">node_tensor</span><span class="p">,</span>
+            <span class="n">node_bonds</span><span class="p">,</span>
+            <span class="n">unitary</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;i&quot;</span><span class="p">],</span>
+            <span class="n">result_bonds</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;handle&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;device_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">device_id</span><span class="p">},</span>
+            <span class="n">optimize</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]},</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Update ``self.nodes``</span>
+        <span class="c1"># NOTE: Canonicalisation of the node does not change</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="o">.</span><span class="n">tensor</span> <span class="o">=</span> <span class="n">new_tensor</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_apply_2q_unitary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unitary</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">q0</span><span class="p">:</span> <span class="n">Qubit</span><span class="p">,</span> <span class="n">q1</span><span class="p">:</span> <span class="n">Qubit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TTNxGate</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies the 2-qubit gate to the TTN.</span>
+
+<span class="sd">        The TTN is converted to canonical and truncation is applied if necessary.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            unitary: The unitary to be applied.</span>
+<span class="sd">            q0: The first qubit in the tuple |q0&gt;|q1&gt; the unitary acts on.</span>
+<span class="sd">            q1: The second qubit in the tuple |q0&gt;|q1&gt; the unitary acts on.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ``self``, to allow for method chaining.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;handle&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;device_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">device_id</span><span class="p">}</span>
+
+        <span class="c1"># Reshape into a rank-4 tensor</span>
+        <span class="n">gate_tensor</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">unitary</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+        <span class="p">(</span><span class="n">path_q0</span><span class="p">,</span> <span class="n">bond_q0</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qubit_position</span><span class="p">[</span><span class="n">q0</span><span class="p">]</span>
+        <span class="p">(</span><span class="n">path_q1</span><span class="p">,</span> <span class="n">bond_q1</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qubit_position</span><span class="p">[</span><span class="n">q1</span><span class="p">]</span>
+
+        <span class="c1"># Glossary of bond IDs</span>
+        <span class="c1"># a -&gt; the input bond of the gate on q0</span>
+        <span class="c1"># b -&gt; the input bond of the gate on q1</span>
+        <span class="c1"># A -&gt; the output bond of the gate on q0</span>
+        <span class="c1"># B -&gt; the output bond of the gate on q1</span>
+        <span class="c1"># S -&gt; the shared bond of the gate tensor&#39;s SVD</span>
+        <span class="c1"># l -&gt; left child bond of the TTN node</span>
+        <span class="c1"># r -&gt; right child bond of the TTN node</span>
+        <span class="c1"># p -&gt; the parent bond of the TTN node</span>
+        <span class="c1"># s -&gt; the shared bond resulting from a decomposition</span>
+        <span class="c1"># chr(x) -&gt; bond of the x-th qubit in a leaf node</span>
+        <span class="n">gate_bonds</span> <span class="o">=</span> <span class="s2">&quot;ABab&quot;</span>
+
+        <span class="c1"># If the two qubits are in the same leaf node, contract the gate with it.</span>
+        <span class="c1"># No truncation is required.</span>
+        <span class="k">if</span> <span class="n">path_q0</span> <span class="o">==</span> <span class="n">path_q1</span><span class="p">:</span>
+            <span class="n">leaf_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">path_q0</span><span class="p">]</span>
+            <span class="n">n_qbonds</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">leaf_node</span><span class="o">.</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># Num of qubit bonds</span>
+            <span class="n">aux_bonds</span> <span class="o">=</span> <span class="p">[</span><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qbonds</span><span class="p">)]</span>
+            <span class="n">aux_bonds</span><span class="p">[</span><span class="n">bond_q0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+            <span class="n">aux_bonds</span><span class="p">[</span><span class="n">bond_q1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;b&quot;</span>
+            <span class="n">leaf_bonds</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aux_bonds</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;p&quot;</span>
+            <span class="n">aux_bonds</span><span class="p">[</span><span class="n">bond_q0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
+            <span class="n">aux_bonds</span><span class="p">[</span><span class="n">bond_q1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;B&quot;</span>
+            <span class="n">result_bonds</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aux_bonds</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;p&quot;</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">path_q0</span><span class="p">]</span><span class="o">.</span><span class="n">tensor</span> <span class="o">=</span> <span class="n">cq</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">leaf_bonds</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">gate_bonds</span><span class="si">}</span><span class="s2">-&gt;</span><span class="si">{</span><span class="n">result_bonds</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">leaf_node</span><span class="o">.</span><span class="n">tensor</span><span class="p">,</span>
+                <span class="n">gate_tensor</span><span class="p">,</span>
+                <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+                <span class="n">optimize</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]},</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="s2">&quot;The qubits the gate acts on are on the same group. &quot;</span>
+                <span class="s2">&quot;Gate trivially applied, no dimensions changed.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span>
+
+        <span class="c1"># Otherwise, we must include the gate in the common ancestor tensor and</span>
+        <span class="c1"># rewire the inputs and outputs. First, identify common path and direction</span>
+        <span class="n">common_dirs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">d0</span><span class="p">,</span> <span class="n">d1</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">path_q0</span><span class="p">,</span> <span class="n">path_q1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">d0</span> <span class="o">==</span> <span class="n">d1</span><span class="p">:</span>
+                <span class="n">common_dirs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d0</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="n">common_path</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">common_dirs</span><span class="p">)</span>
+
+        <span class="c1"># We begin by canonicalising to the left child bond of the common ancestor.</span>
+        <span class="c1"># This canonicalisation could be done later (just before truncation), but</span>
+        <span class="c1"># doing it now will prevent the need to recanonicalise the tensors that have</span>
+        <span class="c1"># grown (by a factor of x16) when introducing this gate.</span>
+        <span class="c1"># The choice of the left child bond is arbitrary, any bond in the TTN that</span>
+        <span class="c1"># is in the arc connecting qL to qR would have worked.</span>
+        <span class="c1">#</span>
+        <span class="c1"># NOTE: In fact, none of the tensors that are affected by the gate need to</span>
+        <span class="c1">#   be canonicalised ahead of time, but I don&#39;t expect the saving would be</span>
+        <span class="c1">#   particularly noticeable, and it&#39;d require some non-trivial refactoring</span>
+        <span class="c1">#   of `canonicalise()`.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canonicalise</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="o">*</span><span class="n">common_path</span><span class="p">,</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">LEFT</span><span class="p">))</span>
+
+        <span class="c1"># Apply SVD on the gate tensor to remove any zero singular values ASAP</span>
+        <span class="n">svd_method</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">SVDMethod</span><span class="p">(</span>
+            <span class="n">abs_cutoff</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">zero</span><span class="p">,</span>
+            <span class="n">partition</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">,</span>  <span class="c1"># Contract S directly into U</span>
+        <span class="p">)</span>
+        <span class="c1"># Apply the SVD decomposition using the configuration defined above</span>
+        <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gate_bonds</span><span class="si">}</span><span class="s2">-&gt;SAa,SBb&quot;</span><span class="p">,</span> <span class="n">gate_tensor</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">svd_method</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="n">S</span> <span class="ow">is</span> <span class="kc">None</span>  <span class="c1"># Due to &quot;partition&quot; option in SVDMethod</span>
+
+        <span class="c1"># The overall strategy is to connect the `U` tensor above with the physical bond</span>
+        <span class="c1"># for `q0` in the TTN, so that its bond `A` becomes the new physical bond and</span>
+        <span class="c1"># the bond `S` is left dangling (open). We combine this `gate_tensor` with the</span>
+        <span class="c1"># leaf node of `q0` and QR-decompose the result; where the Q tensor will be the</span>
+        <span class="c1"># new (canonicalised) leaf node and R becomes our `msg_tensor`. The latter</span>
+        <span class="c1"># contains the open bond `S` and our objective is to &quot;push&quot; this `msg_tensor`</span>
+        <span class="c1"># through the TTN towards the leaf node of `q1`. Here, &quot;push through&quot; means</span>
+        <span class="c1"># contract with the next tensor, and apply QR decomposition, so that the</span>
+        <span class="c1"># `msg_tensor` carrying `b` and `B` ends up one bond closer to `q1`.</span>
+        <span class="c1"># Once `msg_tensor` is directly connected to the leaf node containing `q1`, we</span>
+        <span class="c1"># just need to apply the `V` tensor above to `q1` and connect its `S` bond with</span>
+        <span class="c1"># that of the `msg_tensor`.</span>
+        <span class="n">bonds_to_q0</span> <span class="o">=</span> <span class="p">[</span>  <span class="c1"># Bonds in the &quot;arc&quot; from the common ancestor to `q0`</span>
+            <span class="n">path_q0</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">common_path</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">path_q0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="c1"># Sanity checks:</span>
+        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">bond_address</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">common_path</span><span class="p">)</span> <span class="k">for</span> <span class="n">bond_address</span> <span class="ow">in</span> <span class="n">bonds_to_q0</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">bonds_to_q0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">bonds_to_q0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">bonds_to_q0</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">bonds_to_q0</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">path_q0</span><span class="p">)</span>
+
+        <span class="n">bonds_to_q1</span> <span class="o">=</span> <span class="p">[</span>  <span class="c1"># Bonds in the &quot;arc&quot; from the common ancestor to `q1`</span>
+            <span class="n">path_q1</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">common_path</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">path_q1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="c1"># Sanity checks:</span>
+        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">bond_address</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">common_path</span><span class="p">)</span> <span class="k">for</span> <span class="n">bond_address</span> <span class="ow">in</span> <span class="n">bonds_to_q1</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">bonds_to_q1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">bonds_to_q1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">bonds_to_q1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">bonds_to_q1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">path_q1</span><span class="p">)</span>
+
+        <span class="c1"># The `msg_tensor` has three bonds. Our convention will be that the first bond</span>
+        <span class="c1"># always corresponds to `S`, the second bond connects the `msg_tensor`</span>
+        <span class="c1"># to the TTN in the child direction and the third connects it to the TTN</span>
+        <span class="c1"># in the `DirTTN.PARENT` direction. If we label the second bond with `l`, then</span>
+        <span class="c1"># the third bond will be labelled `L` (and vice versa). Same for `r` and `p`.</span>
+
+        <span class="c1"># We begin applying the gate to the TTN by contracting `U` into the</span>
+        <span class="c1"># leaf node containing `q0`, with the `S` bond of the former left open.</span>
+        <span class="c1"># We immediately QR-decompose the resulting tensor, so that Q becomes the new</span>
+        <span class="c1"># (canonicalised) leaf node and R becomes the `msg_tensor` that we will be</span>
+        <span class="c1"># &quot;pushing&quot; through the rest of the arc towards `q1`.</span>
+        <span class="n">leaf_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">path_q0</span><span class="p">]</span>
+        <span class="n">n_qbonds</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">leaf_node</span><span class="o">.</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># Num of qubit bonds</span>
+        <span class="n">aux_bonds</span> <span class="o">=</span> <span class="p">[</span><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qbonds</span><span class="p">)]</span>
+        <span class="n">aux_bonds</span><span class="p">[</span><span class="n">bond_q0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+        <span class="n">leaf_bonds</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aux_bonds</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;p&quot;</span>
+        <span class="n">aux_bonds</span><span class="p">[</span><span class="n">bond_q0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
+        <span class="n">Q_bonds</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aux_bonds</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;s&quot;</span>
+        <span class="n">R_bonds</span> <span class="o">=</span> <span class="s2">&quot;Ssp&quot;</span>  <span class="c1"># The `msg_tensor`</span>
+        <span class="n">U_bonds</span> <span class="o">=</span> <span class="s2">&quot;SAa&quot;</span>
+
+        <span class="c1"># Apply the contraction followed by a QR decomposition</span>
+        <span class="n">leaf_node</span><span class="o">.</span><span class="n">tensor</span><span class="p">,</span> <span class="n">msg_tensor</span> <span class="o">=</span> <span class="n">contract_decompose</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">leaf_bonds</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">U_bonds</span><span class="si">}</span><span class="s2">-&gt;</span><span class="si">{</span><span class="n">Q_bonds</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">R_bonds</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">leaf_node</span><span class="o">.</span><span class="n">tensor</span><span class="p">,</span>
+            <span class="n">U</span><span class="p">,</span>
+            <span class="n">algorithm</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;qr_method&quot;</span><span class="p">:</span> <span class="n">tensor</span><span class="o">.</span><span class="n">QRMethod</span><span class="p">()},</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="n">optimize</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]},</span>
+        <span class="p">)</span>
+        <span class="c1"># Update the canonical form of the leaf node</span>
+        <span class="n">leaf_node</span><span class="o">.</span><span class="n">canonical_form</span> <span class="o">=</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">PARENT</span>
+
+        <span class="c1"># We must push the `msg_tensor` all the way to the common ancestor</span>
+        <span class="c1"># of `q0` and `q1`.</span>
+        <span class="n">bond_addresses</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">bonds_to_q0</span><span class="p">))</span>  <span class="c1"># From `q0` to the ancestor</span>
+
+        <span class="c1"># For all of these nodes; push `msg_tensor` through to their parent bond</span>
+        <span class="k">for</span> <span class="n">child_bond</span> <span class="ow">in</span> <span class="n">bond_addresses</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># Doesn&#39;t do it on common ancestor!</span>
+            <span class="n">child_dir</span> <span class="o">=</span> <span class="n">child_bond</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">parent_bond</span> <span class="o">=</span> <span class="n">child_bond</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">parent_bond</span><span class="p">]</span>
+
+            <span class="n">node_bonds</span> <span class="o">=</span> <span class="s2">&quot;lrp&quot;</span>
+            <span class="n">msg_bonds</span> <span class="o">=</span> <span class="s2">&quot;SLl&quot;</span> <span class="k">if</span> <span class="n">child_dir</span> <span class="o">==</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">LEFT</span> <span class="k">else</span> <span class="s2">&quot;SRr&quot;</span>
+            <span class="n">Q_bonds</span> <span class="o">=</span> <span class="s2">&quot;Lrs&quot;</span> <span class="k">if</span> <span class="n">child_dir</span> <span class="o">==</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">LEFT</span> <span class="k">else</span> <span class="s2">&quot;lRs&quot;</span>
+            <span class="n">R_bonds</span> <span class="o">=</span> <span class="s2">&quot;Ssp&quot;</span>  <span class="c1"># The new `msg_tensor`</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Pushing msg_tensor (</span><span class="si">{</span><span class="n">msg_tensor</span><span class="o">.</span><span class="n">nbytes</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">2</span><span class="o">**</span><span class="mi">20</span><span class="si">}</span><span class="s2"> MiB) through node &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">tensor</span><span class="o">.</span><span class="n">nbytes</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">2</span><span class="o">**</span><span class="mi">20</span><span class="si">}</span><span class="s2"> MiB) at </span><span class="si">{</span><span class="n">parent_bond</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Apply the contraction followed by a QR decomposition</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">tensor</span><span class="p">,</span> <span class="n">msg_tensor</span> <span class="o">=</span> <span class="n">contract_decompose</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">node_bonds</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">msg_bonds</span><span class="si">}</span><span class="s2">-&gt;</span><span class="si">{</span><span class="n">Q_bonds</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">R_bonds</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">tensor</span><span class="p">,</span>
+                <span class="n">msg_tensor</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;qr_method&quot;</span><span class="p">:</span> <span class="n">tensor</span><span class="o">.</span><span class="n">QRMethod</span><span class="p">()},</span>
+                <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+                <span class="n">optimize</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]},</span>
+            <span class="p">)</span>
+            <span class="c1"># Update the canonical form of the node</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">canonical_form</span> <span class="o">=</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">PARENT</span>
+
+        <span class="c1"># The `msg_tensor` is now on a child bond of the common ancestor.</span>
+        <span class="c1"># We must push it through to the other child node.</span>
+        <span class="n">child_bond</span> <span class="o">=</span> <span class="n">bond_addresses</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># This is where msg_tensor currently is</span>
+        <span class="n">child_dir</span> <span class="o">=</span> <span class="n">child_bond</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">parent_bond</span> <span class="o">=</span> <span class="n">child_bond</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">common_ancestor_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">parent_bond</span><span class="p">]</span>
+
+        <span class="n">node_bonds</span> <span class="o">=</span> <span class="s2">&quot;lrp&quot;</span>
+        <span class="n">msg_bonds</span> <span class="o">=</span> <span class="s2">&quot;SLl&quot;</span> <span class="k">if</span> <span class="n">child_dir</span> <span class="o">==</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">LEFT</span> <span class="k">else</span> <span class="s2">&quot;SRr&quot;</span>
+        <span class="n">Q_bonds</span> <span class="o">=</span> <span class="s2">&quot;Lsp&quot;</span> <span class="k">if</span> <span class="n">child_dir</span> <span class="o">==</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">LEFT</span> <span class="k">else</span> <span class="s2">&quot;sRp&quot;</span>
+        <span class="n">R_bonds</span> <span class="o">=</span> <span class="s2">&quot;Srs&quot;</span> <span class="k">if</span> <span class="n">child_dir</span> <span class="o">==</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">LEFT</span> <span class="k">else</span> <span class="s2">&quot;Sls&quot;</span>  <span class="c1"># The new `msg_tensor`</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Pushing msg_tensor (</span><span class="si">{</span><span class="n">msg_tensor</span><span class="o">.</span><span class="n">nbytes</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">2</span><span class="o">**</span><span class="mi">20</span><span class="si">}</span><span class="s2"> MiB) through node &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">common_ancestor_node</span><span class="o">.</span><span class="n">tensor</span><span class="o">.</span><span class="n">nbytes</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">2</span><span class="o">**</span><span class="mi">20</span><span class="si">}</span><span class="s2"> MiB) at </span><span class="si">{</span><span class="n">parent_bond</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Apply the contraction followed by a QR decomposition</span>
+        <span class="n">common_ancestor_node</span><span class="o">.</span><span class="n">tensor</span><span class="p">,</span> <span class="n">msg_tensor</span> <span class="o">=</span> <span class="n">contract_decompose</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">node_bonds</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">msg_bonds</span><span class="si">}</span><span class="s2">-&gt;</span><span class="si">{</span><span class="n">Q_bonds</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">R_bonds</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">common_ancestor_node</span><span class="o">.</span><span class="n">tensor</span><span class="p">,</span>
+            <span class="n">msg_tensor</span><span class="p">,</span>
+            <span class="n">algorithm</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;qr_method&quot;</span><span class="p">:</span> <span class="n">tensor</span><span class="o">.</span><span class="n">QRMethod</span><span class="p">()},</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="n">optimize</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]},</span>
+        <span class="p">)</span>
+        <span class="c1"># Update the canonical form of the node</span>
+        <span class="k">if</span> <span class="n">child_dir</span> <span class="o">==</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">LEFT</span><span class="p">:</span>
+            <span class="n">common_ancestor_node</span><span class="o">.</span><span class="n">canonical_form</span> <span class="o">=</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">RIGHT</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">common_ancestor_node</span><span class="o">.</span><span class="n">canonical_form</span> <span class="o">=</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">LEFT</span>
+
+        <span class="c1"># We must push the `msg_tensor` from the common ancestor to the leaf node</span>
+        <span class="c1"># containing `q1`.</span>
+        <span class="n">bond_addresses</span> <span class="o">=</span> <span class="n">bonds_to_q1</span>  <span class="c1"># From ancestor to `q1`</span>
+
+        <span class="c1"># For all of these nodes; push `msg_tensor` through to their child bond</span>
+        <span class="k">for</span> <span class="n">child_bond</span> <span class="ow">in</span> <span class="n">bond_addresses</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>  <span class="c1"># Skip common ancestor: already pushed</span>
+            <span class="n">child_dir</span> <span class="o">=</span> <span class="n">child_bond</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">parent_bond</span> <span class="o">=</span> <span class="n">child_bond</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">parent_bond</span><span class="p">]</span>
+
+            <span class="n">node_bonds</span> <span class="o">=</span> <span class="s2">&quot;lrp&quot;</span>
+            <span class="n">msg_bonds</span> <span class="o">=</span> <span class="s2">&quot;SpP&quot;</span>
+            <span class="n">Q_bonds</span> <span class="o">=</span> <span class="s2">&quot;srP&quot;</span> <span class="k">if</span> <span class="n">child_dir</span> <span class="o">==</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">LEFT</span> <span class="k">else</span> <span class="s2">&quot;lsP&quot;</span>
+            <span class="n">R_bonds</span> <span class="o">=</span> <span class="s2">&quot;Sls&quot;</span> <span class="k">if</span> <span class="n">child_dir</span> <span class="o">==</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">LEFT</span> <span class="k">else</span> <span class="s2">&quot;Srs&quot;</span>  <span class="c1"># New `msg_tensor`</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Pushing msg_tensor (</span><span class="si">{</span><span class="n">msg_tensor</span><span class="o">.</span><span class="n">nbytes</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">2</span><span class="o">**</span><span class="mi">20</span><span class="si">}</span><span class="s2"> MiB) through node &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">tensor</span><span class="o">.</span><span class="n">nbytes</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">2</span><span class="o">**</span><span class="mi">20</span><span class="si">}</span><span class="s2"> MiB) at </span><span class="si">{</span><span class="n">parent_bond</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Apply the contraction followed by a QR decomposition</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">tensor</span><span class="p">,</span> <span class="n">msg_tensor</span> <span class="o">=</span> <span class="n">contract_decompose</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">node_bonds</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">msg_bonds</span><span class="si">}</span><span class="s2">-&gt;</span><span class="si">{</span><span class="n">Q_bonds</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">R_bonds</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">tensor</span><span class="p">,</span>
+                <span class="n">msg_tensor</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;qr_method&quot;</span><span class="p">:</span> <span class="n">tensor</span><span class="o">.</span><span class="n">QRMethod</span><span class="p">()},</span>
+                <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+                <span class="n">optimize</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]},</span>
+            <span class="p">)</span>
+            <span class="c1"># Update the canonical form of the node</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">canonical_form</span> <span class="o">=</span> <span class="n">child_dir</span>
+
+        <span class="c1"># Finally, the `msg_tensor` is in the parent bond of the leaf node of `q1`.</span>
+        <span class="c1"># All we need to do is contract the `msg_tensor` and `V` into the leaf.</span>
+        <span class="n">leaf_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">path_q1</span><span class="p">]</span>
+        <span class="n">n_qbonds</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">leaf_node</span><span class="o">.</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># Num of qubit bonds</span>
+        <span class="n">aux_bonds</span> <span class="o">=</span> <span class="p">[</span><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qbonds</span><span class="p">)]</span>
+        <span class="n">aux_bonds</span><span class="p">[</span><span class="n">bond_q1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;b&quot;</span>  <span class="c1"># Connect `b` to `q1`</span>
+        <span class="n">leaf_bonds</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aux_bonds</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;p&quot;</span>
+        <span class="n">msg_bonds</span> <span class="o">=</span> <span class="s2">&quot;SpP&quot;</span>
+        <span class="n">V_bonds</span> <span class="o">=</span> <span class="s2">&quot;SBb&quot;</span>
+        <span class="n">aux_bonds</span><span class="p">[</span><span class="n">bond_q1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;B&quot;</span>  <span class="c1"># `B` becomes the new physical bond `q1`</span>
+        <span class="n">result_bonds</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aux_bonds</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;P&quot;</span>
+
+        <span class="c1"># Apply the contraction</span>
+        <span class="n">leaf_node</span><span class="o">.</span><span class="n">tensor</span> <span class="o">=</span> <span class="n">cq</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">leaf_bonds</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">V_bonds</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">msg_bonds</span><span class="si">}</span><span class="s2">-&gt;</span><span class="si">{</span><span class="n">result_bonds</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">leaf_node</span><span class="o">.</span><span class="n">tensor</span><span class="p">,</span>
+            <span class="n">V</span><span class="p">,</span>
+            <span class="n">msg_tensor</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="n">optimize</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]},</span>
+        <span class="p">)</span>
+        <span class="c1"># The leaf node lost its canonical form</span>
+        <span class="n">leaf_node</span><span class="o">.</span><span class="n">canonical_form</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Truncate (if needed) bonds along the arc from `q1` to `q0`.</span>
+        <span class="c1"># We truncate in this direction to take advantage of the canonicalisation</span>
+        <span class="c1"># of the TTN we achieved while pushing the `msg_tensor` from `q0` to `q1`.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">truncation_fidelity</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># Truncate as much as possible before violating the truncation fidelity</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fidelity_bound_sequential_weighted_truncation</span><span class="p">(</span>
+                <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">bonds_to_q1</span><span class="p">)),</span> <span class="n">bonds_to_q0</span>
+            <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Truncate so that all bonds have dimension less or equal to chi</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_chi_sequential_truncation</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">bonds_to_q1</span><span class="p">)),</span> <span class="n">bonds_to_q0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_fidelity_bound_sequential_weighted_truncation</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">bonds_from_q1_to_ancestor</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RootPath</span><span class="p">],</span>
+        <span class="n">bonds_from_ancestor_to_q0</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RootPath</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Truncate as much as possible up to the truncation fidelity.</span>
+
+<span class="sd">        Our target is to assign a local truncation fidelity `f_i` to each bond `i` in</span>
+<span class="sd">        the input lists so that the lower bound of the fidelity satisfies:</span>
+
+<span class="sd">        real_fidelity &gt; self.fidelity * prod(f_i) &gt; self.fidelity * trunc_fidelity  (A)</span>
+
+<span class="sd">        Let e_i = 1 - f_i, where we refer to `e_i` as the &quot;truncation error at bond i&quot;.</span>
+<span class="sd">        We can use that when 0 &lt; e_i &lt; 1, the bound:</span>
+
+<span class="sd">            prod(1 - e_i)   &gt;   1 - sum(e_i)                                        (B)</span>
+
+<span class="sd">        is fairly tight, with an inaccuracy of an additive O(e_i^2) term. Hence, as long</span>
+<span class="sd">        as we satisfy</span>
+
+<span class="sd">            1 - sum(e_i)    &gt;    truncation_fidelity                                (C)</span>
+
+<span class="sd">        the inqualities at (A) will be satisfied for our chosen f_i. Let</span>
+
+<span class="sd">            admissible_error   =   1 - truncation_fidelity                          (D)</span>
+
+<span class="sd">        and assign each e_i = w_i * admissible_error where 0 &lt; w_i &lt; 1 is a weight</span>
+<span class="sd">        factor such that sum(w_i) = 1. With these choice, inequality (C) holds and,</span>
+<span class="sd">        consequently, so does (A).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            bonds_from_q1_to_ancestor: A list of bonds (each as their RootPath address).</span>
+<span class="sd">                These bonds will be truncated. The list must be ordered in such a way</span>
+<span class="sd">                that consecutive bonds share a common tensor and such that the first</span>
+<span class="sd">                bond in the list corresponds to the leaf node that `q0` is assigned to</span>
+<span class="sd">                and the last bond in the list corresponds to child bond of the common</span>
+<span class="sd">                ancestor between the leaves of `q0` and `q1`.</span>
+<span class="sd">            bonds_from_ancestor_q1: Same as above, but the list starts from the other</span>
+<span class="sd">                child bond of the common ancestor and ends at the leaf node that `q1`</span>
+<span class="sd">                is assigned to. Together, these two lists provide a path in the TTN</span>
+<span class="sd">                from the leaf node of `q0` to the leaf node of `q1`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Starting sequential weighted truncation (fidelity bound).&quot;</span><span class="p">)</span>
+        <span class="n">initial_fidelity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fidelity</span>
+
+        <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;handle&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;device_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">device_id</span><span class="p">}</span>
+        <span class="n">admissible_error</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">truncation_fidelity</span>
+
+        <span class="c1"># Combine the two lists of bonds, but remember at which entry the direction</span>
+        <span class="c1"># of the path is switched from going towards root to going towards leaves.</span>
+        <span class="n">truncation_bonds</span> <span class="o">=</span> <span class="n">bonds_from_q1_to_ancestor</span> <span class="o">+</span> <span class="n">bonds_from_ancestor_to_q0</span>
+        <span class="n">switch_direction_at</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bonds_from_q1_to_ancestor</span><span class="p">)</span>
+        <span class="n">towards_root</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># First half of truncation_bonds is path towards ancestor</span>
+
+        <span class="c1"># Obtain the dimension of each bond</span>
+        <span class="n">dimensions</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_dimension</span><span class="p">(</span><span class="n">bond</span><span class="p">,</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">PARENT</span><span class="p">)</span> <span class="k">for</span> <span class="n">bond</span> <span class="ow">in</span> <span class="n">truncation_bonds</span>
+        <span class="p">]</span>
+        <span class="c1"># Assign the weight `w_i` of each bond.</span>
+        <span class="c1"># NOTE: currently uses w_i = dim_i / sum(dim_i), for no other reason that it is</span>
+        <span class="c1">#   simple. Better weight functions may exist and research on this is desirable.</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">dim</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">dimensions</span><span class="p">)</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">dimensions</span><span class="p">]</span>
+        <span class="c1"># Assign a fidelity `f_i` to each bond.</span>
+        <span class="n">bond_fidelities</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span> <span class="n">w</span> <span class="o">*</span> <span class="n">admissible_error</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">]</span>
+
+        <span class="c1"># Truncate each bond as much as possible up to its assigned bond fidelity</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bond_address</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">truncation_bonds</span><span class="p">):</span>
+            <span class="n">dimension_before</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dimension</span><span class="p">(</span><span class="n">bond_address</span><span class="p">,</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">PARENT</span><span class="p">)</span>
+
+            <span class="c1"># Canonicalise to this bond (unsafely, so we must reintroduce bond_tensor)</span>
+            <span class="n">bond_tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canonicalise</span><span class="p">(</span><span class="n">bond_address</span><span class="p">,</span> <span class="n">unsafe</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="c1"># Flip ``towards_root`` if we have reached the common ancestor</span>
+            <span class="c1"># i.e. if the ``bond_tensor`` needs to go towards a child tensor rather</span>
+            <span class="c1"># than towards the parent</span>
+            <span class="k">if</span> <span class="n">switch_direction_at</span> <span class="o">==</span> <span class="n">i</span><span class="p">:</span>
+                <span class="n">towards_root</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="c1"># Apply SVD decomposition to truncate as much as possible before exceeding</span>
+            <span class="c1"># a `discarded_weight_cutoff` of `1 - f_i`. Contract S directly into U/V and</span>
+            <span class="c1"># normalise the singular values so that the sum of its squares is equal</span>
+            <span class="c1"># to one (i.e. the TTN is a normalised state after truncation).</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Truncating at </span><span class="si">{</span><span class="n">bond_address</span><span class="si">}</span><span class="s2"> to target fidelity=</span><span class="si">{</span><span class="n">bond_fidelities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+            <span class="n">svd_method</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">SVDMethod</span><span class="p">(</span>
+                <span class="n">abs_cutoff</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">zero</span><span class="p">,</span>
+                <span class="n">discarded_weight_cutoff</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="n">bond_fidelities</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">partition</span><span class="o">=</span><span class="s2">&quot;V&quot;</span> <span class="k">if</span> <span class="n">towards_root</span> <span class="k">else</span> <span class="s2">&quot;U&quot;</span><span class="p">,</span>  <span class="c1"># Contract S to parent or child</span>
+                <span class="n">normalization</span><span class="o">=</span><span class="s2">&quot;L2&quot;</span><span class="p">,</span>  <span class="c1"># Sum of squares singular values must equal 1</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Apply the SVD decomposition using the configuration defined above</span>
+            <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">svd_info</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+                <span class="s2">&quot;cp-&gt;cs,sp&quot;</span><span class="p">,</span>
+                <span class="n">bond_tensor</span><span class="p">,</span>
+                <span class="n">method</span><span class="o">=</span><span class="n">svd_method</span><span class="p">,</span>
+                <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+                <span class="n">return_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">assert</span> <span class="n">S</span> <span class="ow">is</span> <span class="kc">None</span>  <span class="c1"># Due to &quot;partition&quot; option in SVDMethod</span>
+
+            <span class="c1"># discarded_weight is calculated within cuTensorNet as:</span>
+            <span class="c1">#                             sum([s**2 for s in S&#39;])</span>
+            <span class="c1">#     discarded_weight = 1 - -------------------------</span>
+            <span class="c1">#                             sum([s**2 for s in S])</span>
+            <span class="c1"># where S is the list of original singular values and S&#39; is the set of</span>
+            <span class="c1"># singular values that remain after truncation (before normalisation).</span>
+            <span class="c1"># It can be shown that the fidelity |&lt;psi|phi&gt;|^2 (for |phi&gt; and |psi&gt;</span>
+            <span class="c1"># unit vectors before and after truncation) is equal to 1 - disc_weight.</span>
+            <span class="c1">#</span>
+            <span class="c1"># We multiply the fidelity of the current step to the overall fidelity</span>
+            <span class="c1"># to keep track of a lower bound for the fidelity.</span>
+            <span class="n">this_fidelity</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">svd_info</span><span class="o">.</span><span class="n">discarded_weight</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fidelity</span> <span class="o">*=</span> <span class="n">this_fidelity</span>
+            <span class="n">dimension_after</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># Contract U and V into the TTN. This reintroduces the data of bond_tensor</span>
+            <span class="c1"># back into the TTN, as required by ``canonicalise(.., unsafe=True)``.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contract_decomp_bond_tensor_into_ttn</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">bond_address</span><span class="p">)</span>
+
+            <span class="c1"># The next node in the path towards qR loses its canonical form, since</span>
+            <span class="c1"># S was contracted to it (either via U or V)</span>
+            <span class="k">if</span> <span class="n">towards_root</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">bond_address</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">canonical_form</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">bond_address</span><span class="p">]</span><span class="o">.</span><span class="n">canonical_form</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="c1"># Report to logger</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Truncation done. Truncation fidelity=</span><span class="si">{</span><span class="n">this_fidelity</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Reduced bond dimension from </span><span class="si">{</span><span class="n">dimension_before</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">dimension_after</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s2">&quot;Finished sequential weighted truncation (fidelity bound). &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Fidelity factor = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">fidelity</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">initial_fidelity</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Sanity check: reached the common ancestor and changed direction</span>
+        <span class="k">assert</span> <span class="ow">not</span> <span class="n">towards_root</span>
+
+    <span class="k">def</span> <span class="nf">_chi_sequential_truncation</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">bonds_from_q1_to_ancestor</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RootPath</span><span class="p">],</span>
+        <span class="n">bonds_from_ancestor_to_q0</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RootPath</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Truncate all bonds in the input lists to have a dimension of chi or lower.</span>
+
+<span class="sd">        The lists of bonds are explored sequentially, truncating the bonds</span>
+<span class="sd">        one by one.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            bonds_from_q1_to_ancestor: A list of bonds (each as their RootPath address).</span>
+<span class="sd">                These bonds will be truncated. The list must be ordered in such a way</span>
+<span class="sd">                that consecutive bonds share a common tensor and such that the first</span>
+<span class="sd">                bond in the list corresponds to the leaf node that `q0` is assigned to</span>
+<span class="sd">                and the last bond in the list corresponds to child bond of the common</span>
+<span class="sd">                ancestor between the leaves of `q0` and `q1`.</span>
+<span class="sd">            bonds_from_ancestor_q1: Same as above, but the list starts from the other</span>
+<span class="sd">                child bond of the common ancestor and ends at the leaf node that `q1`</span>
+<span class="sd">                is assigned to. Together, these two lists provide a path in the TTN</span>
+<span class="sd">                from the leaf node of `q0` to the leaf node of `q1`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Starting sequential truncation (chi bound).&quot;</span><span class="p">)</span>
+        <span class="n">initial_fidelity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fidelity</span>
+
+        <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;handle&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;device_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">device_id</span><span class="p">}</span>
+
+        <span class="c1"># Combine the two lists of bonds, but remember at which entry the direction</span>
+        <span class="c1"># of the path is switched from going towards root to going towards leaves.</span>
+        <span class="n">truncation_bonds</span> <span class="o">=</span> <span class="n">bonds_from_q1_to_ancestor</span> <span class="o">+</span> <span class="n">bonds_from_ancestor_to_q0</span>
+        <span class="n">switch_direction_at</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bonds_from_q1_to_ancestor</span><span class="p">)</span>
+        <span class="n">towards_root</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># First half of truncation_bonds is path towards ancestor</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bond_address</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">truncation_bonds</span><span class="p">):</span>
+            <span class="n">dimension_before</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dimension</span><span class="p">(</span><span class="n">bond_address</span><span class="p">,</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">PARENT</span><span class="p">)</span>
+
+            <span class="c1"># Canonicalise to this bond (unsafely, so we must reintroduce bond_tensor)</span>
+            <span class="n">bond_tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canonicalise</span><span class="p">(</span><span class="n">bond_address</span><span class="p">,</span> <span class="n">unsafe</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="c1"># Flip ``towards_root`` if we have reached the common ancestor</span>
+            <span class="c1"># i.e. if the ``bond_tensor`` needs to go towards a child tensor rather</span>
+            <span class="c1"># than towards the parent</span>
+            <span class="k">if</span> <span class="n">switch_direction_at</span> <span class="o">==</span> <span class="n">i</span><span class="p">:</span>
+                <span class="n">towards_root</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="c1"># Apply SVD decomposition on bond_tensor and truncate up to</span>
+            <span class="c1"># `self._cfg.chi`. Ask cuTensorNet to contract S directly into U/V and</span>
+            <span class="c1"># normalise the singular values so that the sum of its squares is equal</span>
+            <span class="c1"># to one (i.e. the TTN is a normalised state after truncation).</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Truncating at </span><span class="si">{</span><span class="n">bond_address</span><span class="si">}</span><span class="s2"> to (or below) chosen chi=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">chi</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+            <span class="n">svd_method</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">SVDMethod</span><span class="p">(</span>
+                <span class="n">abs_cutoff</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">zero</span><span class="p">,</span>
+                <span class="n">max_extent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">chi</span><span class="p">,</span>
+                <span class="n">partition</span><span class="o">=</span><span class="s2">&quot;V&quot;</span> <span class="k">if</span> <span class="n">towards_root</span> <span class="k">else</span> <span class="s2">&quot;U&quot;</span><span class="p">,</span>  <span class="c1"># Contract S to parent or child</span>
+                <span class="n">normalization</span><span class="o">=</span><span class="s2">&quot;L2&quot;</span><span class="p">,</span>  <span class="c1"># Sum of squares equal 1</span>
+            <span class="p">)</span>
+
+            <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">svd_info</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+                <span class="s2">&quot;cp-&gt;cs,sp&quot;</span><span class="p">,</span>
+                <span class="n">bond_tensor</span><span class="p">,</span>
+                <span class="n">method</span><span class="o">=</span><span class="n">svd_method</span><span class="p">,</span>
+                <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+                <span class="n">return_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">assert</span> <span class="n">S</span> <span class="ow">is</span> <span class="kc">None</span>  <span class="c1"># Due to &quot;partition&quot; option in SVDMethod</span>
+
+            <span class="c1"># discarded_weight is calculated within cuTensorNet as:</span>
+            <span class="c1">#                             sum([s**2 for s in S&#39;])</span>
+            <span class="c1">#     discarded_weight = 1 - -------------------------</span>
+            <span class="c1">#                             sum([s**2 for s in S])</span>
+            <span class="c1"># where S is the list of original singular values and S&#39; is the set of</span>
+            <span class="c1"># singular values that remain after truncation (before normalisation).</span>
+            <span class="c1"># It can be shown that the fidelity |&lt;psi|phi&gt;|^2 (for |phi&gt; and |psi&gt;</span>
+            <span class="c1"># unit vectors before and after truncation) is equal to 1 - disc_weight.</span>
+            <span class="c1">#</span>
+            <span class="c1"># We multiply the fidelity of the current step to the overall fidelity</span>
+            <span class="c1"># to keep track of a lower bound for the fidelity.</span>
+            <span class="n">this_fidelity</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">svd_info</span><span class="o">.</span><span class="n">discarded_weight</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fidelity</span> <span class="o">*=</span> <span class="n">this_fidelity</span>
+            <span class="n">dimension_after</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># Contract U and V into the TTN. This reintroduces the data of bond_tensor</span>
+            <span class="c1"># back into the TTN, as required by ``canonicalise(.., unsafe=True)``.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contract_decomp_bond_tensor_into_ttn</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">bond_address</span><span class="p">)</span>
+
+            <span class="c1"># The next node in the path towards qR loses its canonical form, since</span>
+            <span class="c1"># S was contracted to it (either via U or V)</span>
+            <span class="k">if</span> <span class="n">towards_root</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">bond_address</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">canonical_form</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">bond_address</span><span class="p">]</span><span class="o">.</span><span class="n">canonical_form</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="c1"># Report to logger</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Truncation done. Truncation fidelity=</span><span class="si">{</span><span class="n">this_fidelity</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Reduced bond dimension from </span><span class="si">{</span><span class="n">dimension_before</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">dimension_after</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s2">&quot;Finished sequential truncation (chi bound). &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Fidelity factor = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">fidelity</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">initial_fidelity</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Sanity check: reached the common ancestor and changed direction</span>
+        <span class="k">assert</span> <span class="ow">not</span> <span class="n">towards_root</span>
+
+    <span class="k">def</span> <span class="nf">_contract_decomp_bond_tensor_into_ttn</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">U</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">V</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">bond_address</span><span class="p">:</span> <span class="n">RootPath</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Contracts a decomposed bond_tensor back into the TTN.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            U: The tensor of the decomposition adjacent to the child node of the bond.</span>
+<span class="sd">            V: The tensor of the decomposition adjacent to the parent node of the bond.</span>
+<span class="sd">            bond_address: The address to the bond that was decomposed; explicitly, the</span>
+<span class="sd">                DirTTN.PARENT bond of the corresponding child node.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;handle&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;device_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">device_id</span><span class="p">}</span>
+
+        <span class="c1"># Contract V to the parent node of the bond</span>
+        <span class="n">direction</span> <span class="o">=</span> <span class="n">bond_address</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="n">DirTTN</span><span class="o">.</span><span class="n">LEFT</span><span class="p">:</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="s2">&quot;lrp,sl-&gt;srp&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="s2">&quot;lrp,sr-&gt;lsp&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">bond_address</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">tensor</span> <span class="o">=</span> <span class="n">cq</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span>
+            <span class="n">indices</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">bond_address</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">tensor</span><span class="p">,</span>
+            <span class="n">V</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="n">optimize</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]},</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Contract U to the child node of the bond</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">bond_address</span><span class="p">]</span><span class="o">.</span><span class="n">is_leaf</span><span class="p">:</span>
+            <span class="n">n_qbonds</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">bond_address</span><span class="p">]</span><span class="o">.</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="p">)</span>  <span class="c1"># Total number of physical bonds in this node</span>
+            <span class="n">node_bonds</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;q</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qbonds</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">node_bonds</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">]</span>
+        <span class="n">result_bonds</span> <span class="o">=</span> <span class="n">node_bonds</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">result_bonds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">bond_address</span><span class="p">]</span><span class="o">.</span><span class="n">tensor</span> <span class="o">=</span> <span class="n">cq</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">bond_address</span><span class="p">]</span><span class="o">.</span><span class="n">tensor</span><span class="p">,</span>
+            <span class="n">node_bonds</span><span class="p">,</span>
+            <span class="n">U</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">],</span>
+            <span class="n">result_bonds</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="n">optimize</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]},</span>
+        <span class="p">)</span></div>
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+              Copyright &#169; 2024 Quantinuum Ltd. All rights reserved.
+            </div>
+            <div class="terms" style="display:flex; gap:0.5rem; align-items:center; margin: 0.25rem 0rem;">
+              <a href="https://www.quantinuum.com/privacy-statement" target="_blank">Privacy Statement</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/cookie-notice" target="_blank">Cookie Notice</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/terms-conditions" target="_blank">Terms and Conditions</a>
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

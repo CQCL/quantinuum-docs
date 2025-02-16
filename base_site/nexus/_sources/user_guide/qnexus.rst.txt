@@ -1,0 +1,17 @@
+.. _qnexus_page:
+
+Installing the ``qnexus`` Package
+=================================
+
+The ``qnexus`` Python package is the user facing client for working with the Quantinuum Nexus API. It's available in our hosted lab environment or can be installed locally.
+
+The ``qnexus`` package is publicly available on `PyPI <https://pypi.org/project/qnexus/>`_ and can be installed with 
+
+.. code-block:: bash 
+
+    pip install qnexus
+
+To learn more about qnexus (including installation options) please refer to the :doc:`qnexus docs <../trainings/getting_started>`.
+
+
+qnexus is open source and available on `GitHub <https://github.com/CQCL/qnexus>`_.

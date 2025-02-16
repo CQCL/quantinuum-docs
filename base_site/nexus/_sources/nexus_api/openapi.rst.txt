@@ -1,0 +1,6 @@
+Nexus OpenAPI
+=============================================
+
+For our HTTP API reference, please see `our OpenAPI schema <https://nexus.quantinuum.com/api-docs>`_. 
+This can be used to build custom client programs if desired.
+

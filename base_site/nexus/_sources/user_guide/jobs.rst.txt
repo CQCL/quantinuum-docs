@@ -1,0 +1,30 @@
+.. _user_guide_jobs:
+
+Managing Submitted Jobs
+========================
+
+See details on Nexus Jobs :ref:`here <jobs>`.
+
+As all jobs are contained within a project, job management is done from the top level view inside a project.
+
+.. image:: job_management.png
+    :alt: Screenshot of the job management menu
+
+Options to retry jobs
+-----------------------
+
+There are multiple options for retrying jobs in the Nexus user interface: simply select the 'Retry' button next to the job to view the options.
+Options include the ability to retry certain Job item statuses, or to fully resubmit the job. Please note that some of these options may result
+in consumption of quotas or duplicated submissions, so please be careful and double check the option is appropriate for the state of your workflow.
+
+
+Cancel a running job
+--------------------
+
+Jobs in the running state can be cancelled, cancelling a job attempts to stop it ASAP, but there's no guarantee that cancelling a job will stop it executing in the event that it's already started.
+Cancellation works differently depending on the state of the job item:
+
+- Job items in a final state (Error, Completed or Cancelled) cannot be cancelled
+- Job items which are in a queuing state local to Nexus will be stopped from entering a running state
+- Compile job items which have already started will not be interrupted
+- Process job items which have already been submitted to a remote backend will be sent a cancellation request, exactly how it is handled upon reciept will vary by remote backend
