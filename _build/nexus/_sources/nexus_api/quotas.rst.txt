@@ -1,9 +1,0 @@
-
-quotas
-=============================================
-
-.. automodule:: qnexus.client.quotas
-   :members: 
-
-.. autoclass:: qnexus.quotas.Quota
-   :members: df

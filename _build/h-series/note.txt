@@ -1,1 +1,0 @@
-contains images to include in build artifact within the en subdirectory

@@ -1,9 +1,0 @@
-
-users
-=============================================
-
-.. automodule:: qnexus.client.users
-   :members:
-
-.. autoclass:: qnexus.users.UserRef
-   :members: df
