@@ -12,11 +12,21 @@
   <script>
     // Get the current URL path
     const path = window.location.pathname;
+    
 
     // Check if the URL starts with /subpath/
     if (path.startsWith('/h-series/')) {
+      const regex = new RegExp(`${'h-series'}(/.*)`);
+      const match = path.match(regex);
+      const pathAfterPhrase = match ? match[1] : "";
+      console.log(pathAfterPhrase);
       // Redirect to a custom 404 page for /subpath/
-      window.location.href = '/h-series/404.html';
+      window.location.href = '/systems/' + pathAfterPhrase;
+    }
+    else {
+      setTimeout(() => {
+        window.location.href = "/";
+    }, 3000);
     }
   </script>
 </body>
