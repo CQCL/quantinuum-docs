@@ -1,7 +1,0 @@
-
-Context Management in qnexus
-=============================================
-
-.. automodule:: qnexus.context
-   :members:
-

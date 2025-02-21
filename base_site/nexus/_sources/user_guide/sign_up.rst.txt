@@ -1,6 +1,0 @@
-Signing Up
-==========
-
-You can register your interest in Quantinuum Nexus by visiting https://nexus.quantinuum.com/signup and filling out the form there. On occasion we will be able to provide promotional access to customers that we think are a good fit.
-
-Unfortunately, not everyone will be able to access Nexus during this time, but everyone who registers their interest will be kept informed on when they can expect to be granted access.
