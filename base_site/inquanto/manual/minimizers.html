@@ -600,7 +600,7 @@ iterations and convergence threshold on initialization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-0 BEGINS AT 2025-02-24 13:12:35.390385
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-0 BEGINS AT 2025-02-24 14:44:45.819455
 
 ROTOSOLVER – A gradient-free optimizer for parametric circuits
 
@@ -618,7 +618,7 @@ Optimizer Converged
 nit = 2 	 nfun = 19
 final fun = -1.1368465754720543 	 final variance = 0.0 	 final p-norm = 0.10723350002059162
 
-# TIMER BLOCK-0 ENDS - DURATION (s):  0.3577268 [0:00:00.357727]
+# TIMER BLOCK-0 ENDS - DURATION (s):  0.3410553 [0:00:00.341055]
 VQE Energy: -1.1368465754720543
 </pre></div>
 </div>
@@ -653,19 +653,19 @@ available in the <a class="reference internal" href="../api/inquanto/minimizers.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-1 BEGINS AT 2025-02-24 13:12:35.754826
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-1 BEGINS AT 2025-02-24 14:44:46.166808
 
 Optimizer Stochastic Gradient Descent
 
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Iteration 0
+Iteration 0
 
                 fun = -1.117505884204331 	
                 p-norm = 0.0 	
                 g-norm = 0.35933735912603115 	
                 
-Iteration 1
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Iteration 1
 
                 fun = -1.132153514601271 	
                 p-norm = 0.054487281372526786 	
@@ -686,23 +686,20 @@ Iteration 3
 </pre></div>
 </div>
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Iteration 4
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
 
                 fun = -1.1367828405791485 	
                 p-norm = 0.10108947180749589 	
                 g-norm = 0.020746679121849076 	
                 
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Iteration 5
+Iteration 5
 
                 fun = -1.1368313985785874 	
                 p-norm = 0.10423534605115126 	
                 g-norm = 0.01012412847800237 	
                 
-Iteration 6
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Iteration 6
 
                 fun = -1.1368429616408462 	
                 p-norm = 0.10577049463234582 	
@@ -735,7 +732,7 @@ nit = 9 	 nfun = 9 	 njac = 9
             final p-norm = 0.10715055242023318 	
             final g-norm = 0.0005740118592296173 	
             
-# TIMER BLOCK-1 ENDS - DURATION (s):  0.4747796 [0:00:00.474780]
+# TIMER BLOCK-1 ENDS - DURATION (s):  0.4523658 [0:00:00.452366]
 VQE Energy: -1.1368465266849066
 </pre></div>
 </div>
@@ -768,24 +765,26 @@ only two objective function measurements and is robust to noisy measurements of 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-2 BEGINS AT 2025-02-24 13:12:36.235581
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-2 BEGINS AT 2025-02-24 14:44:46.624757
 Starting SPSA minimization.
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Result at iteration 0: [-0.174 -0.174 -0.174].
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Result at iteration 0: [0.    0.174 0.174].
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Result at iteration 1: [-0.012 -0.012 -0.012].
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Result at iteration 1: [0.    0.259 0.174].
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Result at iteration 2: [-0.012 -0.012  0.034].
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Result at iteration 2: [0.    0.174 0.089].
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Result at iteration 3: [-0.1   -0.1   -0.054].
-Result at iteration 4: [-0.1   -0.1   -0.054].
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Result at iteration 3: [0.019 0.174 0.089].
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Result at iteration 4: [0.019 0.174 0.089].
 Finishing SPSA minimization.
-# TIMER BLOCK-2 ENDS - DURATION (s):  0.5828144 [0:00:00.582814]
-VQE Energy: -1.1241761134930846
+# TIMER BLOCK-2 ENDS - DURATION (s):  0.5021409 [0:00:00.502141]
+VQE Energy: -1.0679718186998892
 </pre></div>
 </div>
 </div>
