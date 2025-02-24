@@ -1,0 +1,18 @@
+
+compile
+=============================================
+
+.. autofunction:: qnexus.compile
+
+.. autofunction:: qnexus.start_compile_job
+
+.. autoclass:: qnexus.jobs.CompileJobRef
+   :members: df
+
+.. autoclass:: qnexus.models.references.CompilationResultRef
+   :members: get_input, get_output, get_passes, df
+
+.. autoclass:: qnexus.models.references.CompilationPassRef
+   :members: get_input, get_output, df 
+
+.. autoclass:: quantinuum_schemas.models.hypertket_config.HyperTketConfig

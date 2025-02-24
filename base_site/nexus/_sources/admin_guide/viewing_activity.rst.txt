@@ -1,0 +1,25 @@
+Viewing your organization's activity
+====================================
+
+As an organization administrator you can see and monitor the activity of the users
+and the resource utilization of your organization. This information is available
+in the :doc:`management page<accessing_org_page>`.
+
+
+Resource utilization
+--------------------
+The Access tab shows an overview of the CPU time consumed for compilation,
+simulation and in the :ref:`Nexus Lab<nexus_lab>`,
+along with the disk space consumed for storage. These relate to the
+:ref:`quotas<quotas>`.
+
+.. image:: images/org_page_access_tab.png
+  :width: 800
+  :alt: Organization's utilization page
+
+When looking at the details you can see utilization graphs at different
+granularity levels, date ranges, and you can also filter the data by user.
+
+.. image:: images/nexus_lab_utilization.png
+  :width: 800
+  :alt: Organization's Nexus Lab utilization details

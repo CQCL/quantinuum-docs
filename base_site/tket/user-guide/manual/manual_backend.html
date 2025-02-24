@@ -1,0 +1,1278 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPQ1FTGDL3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YPQ1FTGDL3');
+    </script>
+    <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Compilation" href="manual_compiler.html" /><link rel="prev" title="Circuit Construction" href="manual_circuit.html" />
+
+    <link rel="shortcut icon" href="../_static/quantinuum_favicon.svg"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>Running on Backends - pytket user guide</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+<link rel="stylesheet" href="../_static/tokens.css"/>
+<link rel="stylesheet" href="../_static/styles.css"/>
+<link rel="stylesheet" href="../_static/tailwind.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="preload"
+as="style">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>  
+  .sidebar-sticky {
+    top: calc(3.5rem - 0px);
+    height: calc(100vh - 3.5rem);
+  }
+  
+  @media (min-width: 97em) {
+    html {
+      font-size: 100% !important;
+    }
+  }
+  
+</style>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+<!-- <script type="text/javascript" src="../_static/syncTheme.global.js" ></script> -->
+ <!--Force light mode -->
+ <script>document.body.setAttribute('data-theme','light')</script>
+<nav style="position:fixed;top:0;z-index:1021;width:100%;">
+    <div class="nexus-nav"></div>
+</nav>
+<script type="text/javascript" src="../_static/injectNav.global.js"></script>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">pytket user guide</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">pytket user guide</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="manual_intro.html">What is tket?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual_circuit.html">Circuit Construction</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Running on Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual_compiler.html">Compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual_noise.html">Noise and the Quantum Circuit Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual_assertion.html">Assertion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual_zx.html">ZX Diagrams</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Example Notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/circuit_construction/circuit_analysis_example.html">Circuit analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/circuit_construction/circuit_generation_example.html">Circuit generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/circuit_construction/conditional_gate_example.html">Conditional gates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/backends/backends_example.html">TKET <code class="docutils literal notranslate"><span class="pre">Backend</span></code> tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/backends/comparing_simulators.html">Comparison of the simulators available through TKET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/backends/creating_backends.html">How to create your own <code class="docutils literal notranslate"><span class="pre">Backend</span></code> using <code class="docutils literal notranslate"><span class="pre">pytket</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/backends/qiskit_integration.html">Integrating <code class="docutils literal notranslate"><span class="pre">pytket</span></code> into Qiskit software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/circuit_compilation/compilation_example.html">Compilation passes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/circuit_compilation/contextual_optimisation.html">Contextual optimisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/circuit_compilation/mapping_example.html">Qubit mapping and routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/circuit_compilation/symbolics_example.html">Symbolic compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/algorithms_and_protocols/ansatz_sequence_example.html">Ansatz sequencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/algorithms_and_protocols/entanglement_swapping.html">Iterated entanglement swapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/algorithms_and_protocols/expectation_value_example.html">Expectation values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/algorithms_and_protocols/measurement_reduction_example.html">Advanced expectation values and measurement reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/algorithms_and_protocols/phase_estimation.html">Quantum Phase Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/algorithms_and_protocols/pytket-qujax-classification.html">Binary classification using <code class="docutils literal notranslate"><span class="pre">pytket-qujax</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/algorithms_and_protocols/pytket-qujax_heisenberg_vqe.html">VQE example with <code class="docutils literal notranslate"><span class="pre">pytket-qujax</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/algorithms_and_protocols/pytket-qujax_qaoa.html">Symbolic circuits with <code class="docutils literal notranslate"><span class="pre">pytket-qujax</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/algorithms_and_protocols/ucc_vqe.html">VQE with UCC ansatz</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/manual/manual_backend.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="running-on-backends">
+<h1>Running on Backends<a class="headerlink" href="#running-on-backends" title="Link to this heading">¶</a></h1>
+<p>The interaction model for quantum computing in the near future is set to follow the co-processor model: there is a main program running on the classical host computer which routinely sends off jobs to a specialist device that can handle that class of computation efficiently, similar to interacting with GPUs and cloud HPC resources. We have already seen how to use <code class="docutils literal notranslate"><span class="pre">pytket</span></code> to describe a job to be performed with the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> class; the next step is to look at how we interact with the co-processor to run it.</p>
+<p>A <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> represents a connection to some co-processor instance, which can be either quantum hardware or a simulator. It presents a uniform interface for submitting <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> s to be processed and retrieving the results, allowing the general workflow of “generate, compile, process, retrieve, interpret” to be performed with little dependence on the specific co-processor used. This is to promote the development of platform-independent software, helping the code that you write to be more future-proof and encouraging exploration of the ever-changing landscape of quantum hardware solutions.</p>
+<p>With the wide variety of <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> s available, they naturally have very different capabilities and limitations. The class is designed to open up this information so that it is easy to examine at runtime and make hardware-dependent choices as needed for maximum performance, whilst providing a basic abstract model that is easy for proof-of-concept testing.</p>
+<p>No <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> s are currently provided with the core <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/index.html" title="Project name not set">pytket</a>) package, but most extension modules will add simulators or devices from the given provider, such as the <a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-qiskit/api.html#pytket.extensions.qiskit.AerBackend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AerBackend</span></code></a> and <a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-qiskit/api.html#pytket.extensions.qiskit.IBMQBackend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IBMQBackend</span></code></a> with <a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-qiskit/index.html" title="Project name not set">pytket-qiskit</a> or the <a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-quantinuum/api.html#pytket.extensions.quantinuum.QuantinuumBackend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantinuumBackend</span></code></a> with <a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-quantinuum/index.html" title="Project name not set">pytket-quantinuum</a>.</p>
+<section id="backend-requirements">
+<h2>Backend Requirements<a class="headerlink" href="#backend-requirements" title="Link to this heading">¶</a></h2>
+<p>Every device and simulator will have some restrictions to allow for a simpler implementation or because of the limits of engineering or noise within a device. For example, devices and simulators are typically designed to only support a small (but universal) gate set, so a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> containing other gate types could not be run immediately. However, as long as the fragment supported is universal, it is enough to be able to compile down to a semantically-equivalent <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> which satisfies the requirements, for example, by translating each unknown gate into sequences of known gates.</p>
+<p>Other common restrictions presented by QPUs include the number of available qubits and their connectivity (multi-qubit gates may only be performed between adjacent qubits on the architecture). Measurements may also be noisy or take a long time on some QPUs, leading to the destruction or decoherence of any remaining quantum state, so they are artificially restricted to only happen in a single layer at the end of execution and mid-circuit measurements are rejected. More extremely, some classes of classical simulators will reject measurements entirely as they are designed to simulate pure quantum circuits (for example, when looking to yield a statevector or unitary deterministically).</p>
+<p>Each <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> object is aware of the restrictions of the underlying device or simulator, encoding them as a collection of <code class="xref py py-class docutils literal notranslate"><span class="pre">Predicate</span></code> s. Each <code class="xref py py-class docutils literal notranslate"><span class="pre">Predicate</span></code> is essentially a Boolean property of a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> which must return <code class="docutils literal notranslate"><span class="pre">True</span></code> for the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> to successfully run. The set of <code class="xref py py-class docutils literal notranslate"><span class="pre">Predicate</span></code> s required by a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> can be queried with <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.required_predicates" title="(in Project name not set)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">required_predicates</span></code></a>.</p>
+<div class="cell tag_skip-execution docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">IBMQBackend</span><span class="p">,</span> <span class="n">AerStateBackend</span>
+
+<span class="n">dev_b</span> <span class="o">=</span> <span class="n">IBMQBackend</span><span class="p">(</span><span class="s2">&quot;ibm_brisbane&quot;</span><span class="p">)</span>
+<span class="n">sim_b</span> <span class="o">=</span> <span class="n">AerStateBackend</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dev_b</span><span class="o">.</span><span class="n">required_predicates</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sim_b</span><span class="o">.</span><span class="n">required_predicates</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">NoClassicalControlPredicate</span><span class="p">,</span> <span class="n">NoFastFeedforwardPredicate</span><span class="p">,</span> <span class="n">NoMidMeasurePredicate</span><span class="p">,</span> <span class="n">NoSymbolsPredicate</span><span class="p">,</span> <span class="n">GateSetPredicate</span><span class="p">:{</span> <span class="n">U1</span> <span class="n">noop</span> <span class="n">U2</span> <span class="n">CX</span> <span class="n">Barrier</span> <span class="n">Measure</span> <span class="n">U3</span> <span class="p">},</span> <span class="n">DirectednessPredicate</span><span class="p">:{</span> <span class="n">Nodes</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Edges</span><span class="p">:</span> <span class="mi">8</span> <span class="p">}]</span>
+<span class="p">[</span><span class="n">NoClassicalControlPredicate</span><span class="p">,</span> <span class="n">NoFastFeedforwardPredicate</span><span class="p">,</span> <span class="n">GateSetPredicate</span><span class="p">:{</span> <span class="n">CU1</span> <span class="n">CZ</span> <span class="n">CX</span> <span class="n">Unitary2qBox</span> <span class="n">Sdg</span> <span class="n">U1</span> <span class="n">Unitary1qBox</span> <span class="n">SWAP</span> <span class="n">S</span> <span class="n">U2</span> <span class="n">CCX</span> <span class="n">Y</span> <span class="n">U3</span> <span class="n">Z</span> <span class="n">X</span> <span class="n">T</span> <span class="n">noop</span> <span class="n">Tdg</span> <span class="n">Reset</span> <span class="n">H</span> <span class="p">}]</span>
+</pre></div>
+</div>
+<p>Knowing the requirements of each <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> is handy in case it has consequences for how you design a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a>, but can generally be abstracted away. Calling <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.valid_circuit" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">valid_circuit()</span></code></a> can check whether or not a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> satisfies every requirement to run on the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a>, and if it is not immediately valid then <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.get_compiled_circuit" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_compiled_circuit()</span></code></a> will try to solve all of the remaining constraints when possible (note that restrictions on measurements or conditional gate support may not be fixed by compilation), and return a new <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">OpType</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">Ry</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">add_gate</span><span class="p">(</span><span class="n">OpType</span><span class="o">.</span><span class="n">CnRy</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.74</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># CnRy not in AerBackend gate set</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Circuit valid for AerBackend?&quot;</span><span class="p">,</span> <span class="n">backend</span><span class="o">.</span><span class="n">valid_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">))</span>
+<span class="n">compiled_circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span> <span class="c1"># Compile circuit to AerBackend</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Compiled circuit valid for AerBackend?&quot;</span><span class="p">,</span> <span class="n">backend</span><span class="o">.</span><span class="n">valid_circuit</span><span class="p">(</span><span class="n">compiled_circ</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Circuit valid for AerBackend? False
+Compiled circuit valid for AerBackend? True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we can prepare our <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> s to be suitable for a given <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a>, we can send them off to be run and examine the results. This is always done by calling <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.process_circuit" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_circuit()</span></code></a> which sends a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> for execution and returns a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.resulthandle.ResultHandle" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultHandle</span></code></a> as an identifier for the job which can later be used to retrieve the actual results once the job has finished.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerStateBackend</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">Rx</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">Ry</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">CRz</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerStateBackend</span><span class="p">()</span>
+<span class="n">compiled_circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">compiled_circ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The exact arguments to <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.process_circuit" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_circuit()</span></code></a> and the means of retrieving results back are dependent on the type of data the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> can produce and whether it samples measurements or calculates the internal state of the quantum system.</p>
+</section>
+<section id="shots-and-sampling">
+<h2>Shots and Sampling<a class="headerlink" href="#shots-and-sampling" title="Link to this heading">¶</a></h2>
+<p>Running a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> on a quantum computer invovles applying the instructions to some quantum system to modify its state. Whilst we know that this state will form a vector (or linear map) in some Hilbert space, we cannot directly inspect it and obtain a complex vector/matrix to return to the classical host process. The best we can achieve is performing measurements to collapse the state and obtain a bit of information in the process. Since the measurements are not deterministic, each run of the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> samples from some distribution. By obtaining many <em>shots</em> (the classical readout from each full run of the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> from the initial state), we can start to predict what the underlying measurement distrubution looks like.</p>
+<p>The interaction with a QPU (or a simulator that tries to imitate a device by sampling from the underlying complex statevector) is focused around requesting shots for a given <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a>. The number of shots required is passed to <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.process_circuit" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_circuit()</span></code></a>. The result is retrieved using <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.get_result" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_result()</span></code></a>; and the shots are then given as a table from <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_shots()</span></code>: each row of the table describes a shot in the order of execution, and the columns are the classical bits from the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>
+<span class="n">compiled_circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+
+<span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">compiled_circ</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">shots</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">.</span><span class="n">get_shots</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">shots</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 1]
+ [0 1]
+ [0 1]
+ [1 1]
+ [0 1]
+ [1 1]
+ [0 1]
+ [1 1]
+ [0 1]
+ [1 1]
+ [1 1]
+ [0 1]
+ [1 1]
+ [1 1]
+ [1 1]
+ [0 1]
+ [1 1]
+ [1 1]
+ [0 1]
+ [1 1]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>For most applications, we are interested in the probability of each measurement outcome, so we need many shots for each experiment for high precision (it is quite typical to ask for several thousand or more). Even if we expect a single sharp peak in the distribution, as is the case from many of the popular textbook quantum algorithms (Deutsch-Jozsa, Bernstein-Vazirani, Shor, etc.), we will generally want to take many shots to help account for noise.</p>
+<p>If we don’t care about the temporal order of the shots, we can instead retrieve a compact summary of the frequencies of observed results. The dictionary returned by <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_counts()</span></code> maps tuples of bits to the number of shots that gave that result (keys only exist in the dictionary if this is non-zero). If probabilities are preferred to frequencies, we can apply the utility method <code class="xref py py-meth docutils literal notranslate"><span class="pre">probs_from_counts()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span>
+<span class="kn">from</span> <span class="nn">pytket.utils</span> <span class="kn">import</span> <span class="n">probs_from_counts</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>
+<span class="n">compiled_circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+
+<span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">compiled_circ</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">probs_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(1, 1): 1009, (0, 1): 991})
+{(0, 1): 0.4955, (1, 1): 0.5045}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">process_circuit</span></code> returns a handle to the computation to perform the quantum computation asynchronously. Non-blocking operations are essential when running circuits on remote devices, as submission and queuing times can be long. The handle may then be used to retrieve the results with <code class="xref py py-class docutils literal notranslate"><span class="pre">get_result</span></code>. If asynchronous computation is not needed, for example when running on a local simulator, pytket provides the shortcut <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.run_circuit" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pytket.backends.Backend.run_circuit()</span></code></a> that will immediately execute the circuit and return a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.backendresult.BackendResult" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendResult</span></code></a>.</p>
+</div>
+</section>
+<section id="statevector-and-unitary-simulation-with-tket-backends">
+<h2>Statevector and Unitary Simulation with TKET Backends<a class="headerlink" href="#statevector-and-unitary-simulation-with-tket-backends" title="Link to this heading">¶</a></h2>
+<p>Any form of sampling from a distribution will introduce sampling error and (unless it is a seeded simulator) non-deterministic results, whereas we could get much better accuracy and repeatability if we have the exact state of the underlying physical quantum system. Some simulators will provide direct access to this. The <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_state()</span></code> method will give the full representation of the physical state as a vector in the <span class="math notranslate nohighlight">\(2^n\)</span>-dimensional Hilbert space, whenever the underlying simulator provides this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerStateBackend</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerStateBackend</span><span class="p">()</span>
+<span class="n">compiled_circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+
+<span class="n">state</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run_circuit</span><span class="p">(</span><span class="n">compiled_circ</span><span class="p">)</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.     +0.j       0.70711+0.j       0.     +0.j       0.     +0.j
+  0.     +0.j       0.     +0.j      -0.     +0.j       0.     +0.70711j]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We have rounded the results here because simulators typically introduce a small amount of floating-point error, so killing near-zero entries gives a much more readable representation.</p>
+</div>
+<p>The majority of <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> s will run the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> on the initial state <span class="math notranslate nohighlight">\(|0\rangle^{\otimes n}\)</span>. However, because we can form the composition of <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> s, we want to be able to test them with open inputs. When the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> is purely quantum, we can represent its effect as an open circuit by a unitary matrix acting on the <span class="math notranslate nohighlight">\(2^n\)</span>-dimensional Hilbert space. The <a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-qiskit/api.html#pytket.extensions.qiskit.AerUnitaryBackend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AerUnitaryBackend</span></code></a> from <code class="docutils literal notranslate"><span class="pre">pytket-qiskit</span></code> is designed exactly for this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerUnitaryBackend</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerUnitaryBackend</span><span class="p">()</span>
+<span class="n">compiled_circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+
+<span class="n">unitary</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run_circuit</span><span class="p">(</span><span class="n">compiled_circ</span><span class="p">)</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">unitary</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.70711+0.j  0.     +0.j  0.70711-0.j  0.     +0.j]
+ [ 0.     +0.j  0.70711+0.j  0.     +0.j  0.70711-0.j]
+ [ 0.     +0.j  0.70711+0.j  0.     +0.j -0.70711+0.j]
+ [ 0.70711+0.j  0.     +0.j -0.70711+0.j  0.     +0.j]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Whilst the drive for quantum hardware is driven by the limited scalability of simulators, using statevector and unitary simulators will see long-term practical use to obtain high-precision results as well as for verifying the correctness of circuit designs. For the latter, we can assert that they match some expected reference state, but simply comparing the vectors/matrices may be too strict a test given that they could differ by a global phase but still be operationally equivalent. The utility methods <code class="xref py py-meth docutils literal notranslate"><span class="pre">compare_statevectors()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">compare_unitaries()</span></code> will compare two vectors/matrices for approximate equivalence accounting for global phase.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.utils.results</span> <span class="kn">import</span> <span class="n">compare_statevectors</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">ref_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span>      <span class="c1"># |+0&gt;</span>
+<span class="n">gph_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span> <span class="c1"># i|+0&gt;</span>
+<span class="n">prm_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span>      <span class="c1"># |0+&gt;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">compare_statevectors</span><span class="p">(</span><span class="n">ref_state</span><span class="p">,</span> <span class="n">gph_state</span><span class="p">))</span>   <span class="c1"># Differ by global phase</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">compare_statevectors</span><span class="p">(</span><span class="n">ref_state</span><span class="p">,</span> <span class="n">prm_state</span><span class="p">))</span>   <span class="c1"># Differ by qubit permutation</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Be warned that simulating any <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> that interacts with classical data (e.g. conditional gates and measurements) or deliberately collapses the quantum state (e.g. <code class="docutils literal notranslate"><span class="pre">OpType.Collapse</span></code> and <code class="docutils literal notranslate"><span class="pre">OpType.Reset</span></code>) would not yield a deterministic result in the system’s Hilbert space, so these will be rejected by the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a>.</p>
+</section>
+<section id="interpreting-results">
+<h2>Interpreting Results<a class="headerlink" href="#interpreting-results" title="Link to this heading">¶</a></h2>
+<p>Once we have obtained these results, we still have the matter of understanding what they mean. This corresponds to asking “which (qu)bit is which in this data structure?”</p>
+<p>By default, the bits in readouts (shots and counts) are ordered in Increasing Lexicographical Order (ILO) with respect to their <code class="xref py py-class docutils literal notranslate"><span class="pre">UnitID</span></code> s. That is, the register <code class="docutils literal notranslate"><span class="pre">c</span></code> will be listed completely before any bits in register <code class="docutils literal notranslate"><span class="pre">d</span></code>, and within each register the indices are given in increasing order. Many quantum software platforms including Qiskit and pyQuil will natively use the reverse order (Decreasing Lexicographical Order - DLO), so users familiar with them may wish to request that the order is changed when retrieving results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.circuit</span> <span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">BasisOrder</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>     <span class="c1"># write 0 to c[0] and 1 to c[1]</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>
+<span class="n">compiled_circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">compiled_circ</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>   <span class="c1"># ILO gives (c[0], c[1]) == (0, 1)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(</span><span class="n">basis</span><span class="o">=</span><span class="n">BasisOrder</span><span class="o">.</span><span class="n">dlo</span><span class="p">))</span>  <span class="c1"># DLO gives (c[1], c[0]) == (1, 0)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(0, 1): 10})
+Counter({(1, 0): 10})
+</pre></div>
+</div>
+</div>
+</div>
+<p>The choice of ILO or DLO defines the ordering of a bit sequence, but this can still be interpreted into the index of a statevector in two ways: by mapping the bits to a big-endian (BE) or little-endian (LE) integer. Every statevector and unitary in <code class="docutils literal notranslate"><span class="pre">pytket</span></code> uses a BE encoding (if LE is preferred, note that the ILO-LE interpretation gives the same result as DLO-BE for statevectors and unitaries, so just change the <code class="docutils literal notranslate"><span class="pre">basis</span></code> argument accordingly). The ILO-BE convention gives unitaries of individual gates as they typically appear in common textbooks <a class="footnote-reference brackets" href="#cite-niel2001" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.circuit</span> <span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">BasisOrder</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerUnitaryBackend</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerUnitaryBackend</span><span class="p">()</span>
+<span class="n">compiled_circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">compiled_circ</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">(</span><span class="n">basis</span><span class="o">=</span><span class="n">BasisOrder</span><span class="o">.</span><span class="n">dlo</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.+0.j 0.+0.j 0.+0.j 0.+0.j]
+ [0.+0.j 1.+0.j 0.+0.j 0.+0.j]
+ [0.+0.j 0.+0.j 0.+0.j 1.+0.j]
+ [0.+0.j 0.+0.j 1.+0.j 0.+0.j]]
+[[1.+0.j 0.+0.j 0.+0.j 0.+0.j]
+ [0.+0.j 0.+0.j 0.+0.j 1.+0.j]
+ [0.+0.j 0.+0.j 1.+0.j 0.+0.j]
+ [0.+0.j 1.+0.j 0.+0.j 0.+0.j]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suppose that we only care about a subset of the measurements used in a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a>. A shot table is a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, so it can be filtered by column selections. To identify which columns need to be retained/removed, we are able to predict their column indices from the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> object. <code class="xref py py-attr docutils literal notranslate"><span class="pre">pytket.Circuit.bit_readout</span></code> maps <code class="xref py py-class docutils literal notranslate"><span class="pre">Bit</span></code> s to their column index (assuming the ILO convention).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">Bit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span>
+<span class="kn">from</span> <span class="nn">pytket.utils</span> <span class="kn">import</span> <span class="n">expectation_from_shots</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">Rx</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">CZ</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Generate the state we want to consider</span>
+
+<span class="n">circ</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># Measure ZXY operator qubit-wise</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">Rx</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>
+<span class="n">compiled_circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">compiled_circ</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">shots</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">.</span><span class="n">get_shots</span><span class="p">()</span>
+
+<span class="c1"># To extract the expectation value for ZIY, we only want to consider bits c[0] and c[2]</span>
+<span class="n">bitmap</span> <span class="o">=</span> <span class="n">compiled_circ</span><span class="o">.</span><span class="n">bit_readout</span>
+<span class="n">shots</span> <span class="o">=</span> <span class="n">shots</span><span class="p">[:,</span> <span class="p">[</span><span class="n">bitmap</span><span class="p">[</span><span class="n">Bit</span><span class="p">(</span><span class="mi">0</span><span class="p">)],</span> <span class="n">bitmap</span><span class="p">[</span><span class="n">Bit</span><span class="p">(</span><span class="mi">2</span><span class="p">)]]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">expectation_from_shots</span><span class="p">(</span><span class="n">shots</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.010000000000000009
+</pre></div>
+</div>
+</div>
+</div>
+<p>If measurements occur at the end of the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a>, then we can associate each measurement to the qubit that was measured. <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit.qubit_readout" title="(in Project name not set)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">qubit_readout</span></code></a> gives the equivalent map to column indices for <code class="xref py py-class docutils literal notranslate"><span class="pre">Qubit</span></code> s, and <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit.qubit_to_bit_map" title="(in Project name not set)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">qubit_to_bit_map</span></code></a> relates each measured <code class="xref py py-class docutils literal notranslate"><span class="pre">Qubit</span></code> to the <code class="xref py py-class docutils literal notranslate"><span class="pre">Bit</span></code> that holds the corresponding measurement result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">Qubit</span><span class="p">,</span> <span class="n">Bit</span>
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">Rx</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">CZ</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">circ</span><span class="o">.</span><span class="n">bit_readout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">circ</span><span class="o">.</span><span class="n">qubit_readout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">circ</span><span class="o">.</span><span class="n">qubit_to_bit_map</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{c[0]: 0, c[1]: 1}
+{q[0]: 0, q[2]: 1}
+{q[0]: c[0], q[2]: c[1]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>For more control over the bits extracted from the results, we can instead call <code class="xref py py-class docutils literal notranslate"><span class="pre">get_result()</span></code>. The <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.backendresult.BackendResult" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendResult</span></code></a> object returned wraps up all the information returned from the experiment and allows it to be projected into any preferred way of viewing it. In particular, we can provide the list of <code class="xref py py-class docutils literal notranslate"><span class="pre">Bit</span></code> s we want to look at in the shot table/counts dictionary, and given the exact permutation we want (and similarly for the permutation of <code class="xref py py-class docutils literal notranslate"><span class="pre">Qubit</span></code> s for statevectors/unitaries).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">Bit</span><span class="p">,</span> <span class="n">Qubit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span><span class="p">,</span> <span class="n">AerStateBackend</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">Ry</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">state_b</span> <span class="o">=</span> <span class="n">AerStateBackend</span><span class="p">()</span>
+<span class="n">circ</span> <span class="o">=</span> <span class="n">state_b</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">state_b</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+
+<span class="c1"># Make q[1] the most-significant qubit, so interesting state uses consecutive coefficients</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">state_b</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_state</span><span class="p">([</span><span class="n">Qubit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">Qubit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">Qubit</span><span class="p">(</span><span class="mi">2</span><span class="p">)]))</span>
+
+<span class="n">circ</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">shot_b</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>
+<span class="n">circ</span> <span class="o">=</span> <span class="n">shot_b</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">shot_b</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">shot_b</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+
+<span class="c1"># Marginalise out q[0] from counts</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">([</span><span class="n">Bit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">Bit</span><span class="p">(</span><span class="mi">2</span><span class="p">)]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.63003676+0.j -0.32101976+0.j  0.63003676+0.j -0.32101976+0.j
+  0.        +0.j  0.        +0.j  0.        +0.j  0.        +0.j]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(1, 0, 0): 837, (0, 0, 0): 797, (0, 0, 1): 185, (1, 0, 1): 181})
+Counter({(0, 0): 1634, (0, 1): 366})
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="expectation-value-calculations">
+<h2>Expectation Value Calculations<a class="headerlink" href="#expectation-value-calculations" title="Link to this heading">¶</a></h2>
+<p>One of the most common calculations performed with a quantum state <span class="math notranslate nohighlight">\(\left| \psi \right&gt;\)</span> is to obtain an expectation value <span class="math notranslate nohighlight">\(\langle \psi | H | \psi \rangle\)</span>. For many applications, the operator <span class="math notranslate nohighlight">\(H\)</span> can be expressed as a tensor product of Pauli matrices, or a linear combination of these. Given any (pure quantum) <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> and any <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a>, the utility methods <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_pauli_expectation_value()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_operator_expectation_value()</span></code> will generate the expectation value of the state under some operator using whatever results the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> supports. This includes adding measurements in the appropriate basis (if needed by the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a>), running <code class="xref py py-class docutils literal notranslate"><span class="pre">get_compiled_circuit()</span></code>, and obtaining and interpreting the results. For operators with many terms, it can optionally perform some basic measurement reduction techniques to cut down the number of <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> s actually run by measuring multiple terms with simultaneous measurements in the same <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">Qubit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span>
+<span class="kn">from</span> <span class="nn">pytket.partition</span> <span class="kn">import</span> <span class="n">PauliPartitionStrat</span>
+<span class="kn">from</span> <span class="nn">pytket.pauli</span> <span class="kn">import</span> <span class="n">Pauli</span><span class="p">,</span> <span class="n">QubitPauliString</span>
+<span class="kn">from</span> <span class="nn">pytket.utils</span> <span class="kn">import</span> <span class="n">get_pauli_expectation_value</span><span class="p">,</span> <span class="n">get_operator_expectation_value</span>
+<span class="kn">from</span> <span class="nn">pytket.utils.operators</span> <span class="kn">import</span> <span class="n">QubitPauliOperator</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">Rx</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">CZ</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Generate the state we want to consider</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>
+
+<span class="n">zxy</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">({</span>
+        <span class="n">Qubit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>
+        <span class="n">Qubit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span>
+        <span class="n">Qubit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">})</span>
+<span class="n">xzi</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">({</span>
+        <span class="n">Qubit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span>
+        <span class="n">Qubit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Z</span><span class="p">})</span>
+<span class="n">op</span> <span class="o">=</span> <span class="n">QubitPauliOperator</span><span class="p">({</span>
+        <span class="n">QubitPauliString</span><span class="p">()</span> <span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+        <span class="n">zxy</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">xzi</span> <span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_pauli_expectation_value</span><span class="p">(</span>
+        <span class="n">circ</span><span class="p">,</span>
+        <span class="n">zxy</span><span class="p">,</span>
+        <span class="n">backend</span><span class="p">,</span>
+        <span class="n">n_shots</span><span class="o">=</span><span class="mi">2000</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_operator_expectation_value</span><span class="p">(</span>
+        <span class="n">circ</span><span class="p">,</span>
+        <span class="n">op</span><span class="p">,</span>
+        <span class="n">backend</span><span class="p">,</span>
+        <span class="n">n_shots</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+        <span class="n">partition_strat</span><span class="o">=</span><span class="n">PauliPartitionStrat</span><span class="o">.</span><span class="n">CommutingSets</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.038000000000000034
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.304+0j)
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you want a greater level of control over the procedure, then you may wish to write your own method for calculating <span class="math notranslate nohighlight">\(\langle \psi | H | \psi \rangle\)</span>. This is simple multiplication if we are given the statevector <span class="math notranslate nohighlight">\(| \psi \rangle\)</span>, but is slightly more complicated for measured systems. Since each measurement projects into either the subspace of +1 or -1 eigenvectors, we can assign +1 to each <code class="docutils literal notranslate"><span class="pre">0</span></code> readout and -1 to each <code class="docutils literal notranslate"><span class="pre">1</span></code> readout and take the average across all shots. When the desired operator is given by the product of multiple measurements, the contribution of +1 or -1 is dependent on the parity (XOR) of each measurement result in that shot. <code class="docutils literal notranslate"><span class="pre">pytket</span></code> provides some utility functions to wrap up this calculation and apply it to either a shot table (<code class="xref py py-meth docutils literal notranslate"><span class="pre">expectation_from_shots()</span></code>) or a counts dictionary (<code class="xref py py-meth docutils literal notranslate"><span class="pre">expectation_from_counts()</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span>
+<span class="kn">from</span> <span class="nn">pytket.utils</span> <span class="kn">import</span> <span class="n">expectation_from_counts</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">Rx</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">CZ</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Generate the state we want to consider</span>
+
+<span class="n">circ</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>         <span class="c1"># Want to measure expectation for Pauli ZXY</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">Rx</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Measure ZII, IXI, IIY separately</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>
+<span class="n">compiled_circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">compiled_circ</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">expectation_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(0, 0, 1): 441, (0, 1, 0): 418, (0, 1, 1): 390, (0, 0, 0): 359, (1, 1, 0): 116, (1, 0, 1): 105, (1, 0, 0): 89, (1, 1, 1): 82})
+-0.030000000000000027
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">expectation_from_shots()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">expectation_from_counts()</span></code> take into account every classical bit in the results object. If the expectation value of interest is a product of only a subset of the measurements in the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> (as is the case when simultaneously measuring several commuting operators), then you will want to filter/marginalise out the ignored bits when performing this calculation.</p>
+</div>
+</section>
+<section id="guidance-for-writing-hardware-agnostic-code">
+<h2>Guidance for Writing Hardware-Agnostic Code<a class="headerlink" href="#guidance-for-writing-hardware-agnostic-code" title="Link to this heading">¶</a></h2>
+<p>Writing code for experiments that can be retargeted to different <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> s can be a challenge, but has many great payoffs for long-term developments. Being able to experiment with new devices and simulators helps to identify which is best for the needs of the experiment and how this changes with the experiment parameters (such as size of chemical molecule being simulated, or choice of model to train for a neural network). Being able to react to changes in device availability helps get your results faster when contesting against queues for device access or downtime for maintenance, in addition to moving on if a device is retired from live service and taking advantage of the newest devices as soon as they come online. This is especially important in the near future as there is no clear frontrunner in terms of device, manufacturer, or even fundamental quantum technology, and the rate at which they are improving performance and scale is so high that it is essential to not get left behind with old systems.</p>
+<p>One of the major counter-arguments against developing hardware-agnostic experiments is that the manual incorporation of the target architecture’s connectivity and noise characteristics into the circuit design and choice of error mitigation/detection/correction strategies obtains the optimal performance from the device. The truth is that hardware characteristics are highly variable over time, invalidating noise models after only a few hours <a class="footnote-reference brackets" href="#cite-wils2020" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> and requiring regular recalibration. Over the lifetime of the device, this could lead to some qubits or couplers becoming so ineffective that they are removed from the system by the providers, giving drastic changes to the connectivity and admissible circuit designs. The instability of the experiment designs is difficult to argue when the optimal performance on one of today’s devices is likely to be surpassed by an average performance on another device a short time after.</p>
+<p>We have already seen that devices and simulators will have different sets of requirements on the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> s they can accept and different types of results they can return, so hardware-agnosticism will not always come for free. The trick is to spot these differences and handle them on-the-fly at runtime. The design of the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> class in <code class="docutils literal notranslate"><span class="pre">pytket</span></code> aims to expose the fundamental requirements that require consideration for circuit design, compilation, and result interpretation in such a way that they can easily be queried at runtime to dynamically adapt the experiment procedure. All other aspects of backend interaction that are shared between different <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> s are then unified for ease of integration. In practice, the constraints of the algorithm might limit the choice of <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a>, or we might choose to forego the ability to run on statevector simulators so that we only have to define the algorithm to calculate using counts, but we can still be agnostic within these categories.</p>
+<p>The first point in an experiment where you might have to act differently between <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> s is during <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> construction. A <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> may support a non-universal fragment of the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> language, typically relating to their interaction with classical data – either full interaction, no mid-circuit measurement and conditional operations, or no measurement at all for statevector and unitary simulators. If the algorithm chosen requires mid-circuit measurement, then we must sacrifice some freedom of choice of <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> to accommodate this. For safety, it could be beneficial to include assertions that the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> provided meets the expectations of the algorithm.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span> <span class="c1">#, AerStateBackend</span>
+<span class="kn">from</span> <span class="nn">pytket.predicates</span> <span class="kn">import</span> <span class="n">NoMidMeasurePredicate</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>      <span class="c1"># Choose backend in one place</span>
+<span class="c1"># backend = AerStateBackend()   # A backend that is incompatible with the experiment</span>
+
+<span class="c1"># For algorithms using mid-circuit measurement, we can assert this is valid</span>
+<span class="n">qkd</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">qkd</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># Prepare a random bit in the Z basis</span>
+<span class="n">qkd</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Eavesdropper measures in the X basis</span>
+<span class="n">qkd</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>           <span class="c1"># Recipient measures in the Z basis</span>
+
+<span class="k">assert</span> <span class="n">backend</span><span class="o">.</span><span class="n">supports_counts</span>  <span class="c1"># Using AerStateBackend would fail at this check</span>
+<span class="k">assert</span> <span class="n">NoMidMeasurePredicate</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">backend</span><span class="o">.</span><span class="n">required_predicates</span>
+<span class="n">compiled_qkd</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">qkd</span><span class="p">)</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">compiled_qkd</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(0, 0, 1): 145, (1, 1, 0): 132, (0, 0, 0): 130, (1, 0, 0): 127, (1, 1, 1): 125, (0, 1, 0): 122, (1, 0, 1): 112, (0, 1, 1): 107})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The same effect can be achieved by <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">backend.valid_circuit(qkd)</span></code> after compilation. However, when designing the compilation procedure manually, it is unclear whether a failure for this assertion would come from the incompatibility of the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> for the experiment or from the compilation failing.</p>
+</div>
+<p>Otherwise, a practical solution around different measurement requirements is to separate the design into “state circuits” and “measurement circuits”. At the point of running on the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a>, we can then choose to either just send the state circuit for statevector calculations or compose it with the measurement circuits to run on sampling <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> s.</p>
+<p>At runtime, we can check whether a particular result type is supported using the <code class="xref py py-attr docutils literal notranslate"><span class="pre">Backend.supports_X</span></code> properties (such as <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.supports_counts" title="(in Project name not set)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">supports_counts</span></code></a>), whereas restrictions on the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> s supported can be inspected with <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.required_predicates" title="(in Project name not set)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">required_predicates</span></code></a>.</p>
+<p>Whilst the demands of each <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> on the properties of the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> necessitate different compilation procedures, using the default compilation sequences provided with <code class="xref py py-class docutils literal notranslate"><span class="pre">get_compiled_circuit</span></code> handles compiling generically.</p>
+<p>Similarly, every <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> can use <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.process_circuit" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_circuit()</span></code></a> identically. Additional <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a>-specific arguments (such as the number of shots required or the seed for a simulator) will just be ignored if passed to a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> that does not use them.</p>
+<p>For the final steps of retrieving and interpreting the results, it suffices to just case-split on the form of data we can retrieve again with <code class="xref py py-attr docutils literal notranslate"><span class="pre">Backend.supports_X</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span> <span class="c1">#, AerStateBackend</span>
+<span class="kn">from</span> <span class="nn">pytket.utils</span> <span class="kn">import</span> <span class="n">expectation_from_counts</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>      <span class="c1"># Choose backend in one place</span>
+<span class="c1"># backend = AerStateBackend()   # Alternative backend with different requirements and result type</span>
+
+<span class="c1"># For many algorithms, we can separate the state preparation from measurements</span>
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>           <span class="c1"># Apply e^{0.135 i pi XY} to the initial state</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Rz</span><span class="p">(</span><span class="o">-</span><span class="mf">0.27</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">Vdg</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">measure</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>     <span class="c1"># Measure the YZ operator via YI and IZ</span>
+<span class="n">measure</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">backend</span><span class="o">.</span><span class="n">supports_counts</span><span class="p">:</span>
+    <span class="n">circ</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure</span><span class="p">)</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+
+<span class="n">expectation</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">backend</span><span class="o">.</span><span class="n">supports_state</span><span class="p">:</span>
+    <span class="n">yz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+    <span class="n">svec</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+    <span class="n">expectation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">svec</span><span class="p">,</span> <span class="n">yz</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">svec</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+    <span class="n">expectation</span> <span class="o">=</span> <span class="n">expectation_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">expectation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.010000000000000009
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="batch-submission">
+<h2>Batch Submission<a class="headerlink" href="#batch-submission" title="Link to this heading">¶</a></h2>
+<p>Current public-access quantum computers tend to implement either a queueing or a reservation system for mediating access. Whilst the queue-based access model gives relative fairness, guarantees availability, and maximises throughput and utilisation of the hardware, it also presents a big problem to the user with regards to latency. Whenever a circuit is submitted, not only must the user wait for it to be run on the hardware, but they must wait longer for their turn before it can even start running. This can end up dominating the time taken for the overall experiment, especially when demand is high for a particular device.</p>
+<p>We can mitigate the problem of high queue latency by batching many <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> s together. This means that we only have to wait the queue time once, since after the first <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> is run the next one is run immediately rather than joining the end of the queue.</p>
+<p>To maximise the benefits of batch submission, it is advisable to generate as many of your <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> s as possible at the same time to send them all off together. This is possible when, for example, generating every measurement circuit for an expectation value calculation, or sampling several parameter values from a local neighbourhood in a variational procedure. The method <code class="xref py py-class docutils literal notranslate"><span class="pre">process_circuits()</span></code> (plural) will then submit all the provided <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> s simultaneously and return a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.resulthandle.ResultHandle" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultHandle</span></code></a> for each <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> to allow each result to be extracted individually for interpretation. Since there is no longer a single <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> being handled from start to finish, it may be necessary to store additional data to record how to interpret them, like the set of <code class="xref py py-class docutils literal notranslate"><span class="pre">Bit</span></code> s to extract for each <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> or the coefficient to multiply the expectation value by.</p>
+<div class="cell tag_skip-execution docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">IBMQBackend</span>
+<span class="kn">from</span> <span class="nn">pytket.utils</span> <span class="kn">import</span> <span class="n">expectation_from_counts</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">IBMQBackend</span><span class="p">(</span><span class="s2">&quot;ibm_brisbane&quot;</span><span class="p">)</span>
+
+<span class="n">state</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">state</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Compute expectation value for -0.3i ZZZ + 0.8 XZZ + 1.2 XXX</span>
+<span class="n">zzz</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">zzz</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">xzz</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">xzz</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">xxx</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">xxx</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">circ_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="n">zzz</span><span class="p">,</span> <span class="n">xzz</span><span class="p">,</span> <span class="n">xxx</span><span class="p">]:</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">circ_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">coeff_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">-</span><span class="mf">0.3</span><span class="n">j</span><span class="p">,</span>  <span class="c1"># ZZZ</span>
+    <span class="mf">0.8</span><span class="p">,</span>    <span class="c1"># XZZ</span>
+    <span class="mf">1.2</span>     <span class="c1"># XXX</span>
+<span class="p">]</span>
+<span class="n">circ_list</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuits</span><span class="p">(</span><span class="n">circ_list</span><span class="p">)</span>
+
+<span class="n">handle_list</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuits</span><span class="p">(</span><span class="n">circ_list</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">result_list</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">handle_list</span><span class="p">)</span>
+
+<span class="n">expectation</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">coeff</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">coeff_list</span><span class="p">,</span> <span class="n">result_list</span><span class="p">):</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+    <span class="n">expectation</span> <span class="o">+=</span> <span class="n">coeff</span> <span class="o">*</span> <span class="n">expectation_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">expectation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">1.2047999999999999</span><span class="o">-</span><span class="mf">0.0015000000000000013</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently, only some devices (e.g. those from IBMQ, Quantinuum and Amazon Braket) support a queue model and benefit from this methodology, though more may adopt this in future. The <a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-qiskit/api.html#pytket.extensions.qiskit.AerBackend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AerBackend</span></code></a> simulator and the <a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-quantinuum/api.html#pytket.extensions.quantinuum.QuantinuumBackend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantinuumBackend</span></code></a> can take advantage of batch submission for parallelisation. In other cases, <code class="xref py py-class docutils literal notranslate"><span class="pre">process_circuits</span></code> will just loop through each <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> in turn.</p>
+</div>
+</section>
+<section id="embedding-into-qiskit">
+<h2>Embedding into Qiskit<a class="headerlink" href="#embedding-into-qiskit" title="Link to this heading">¶</a></h2>
+<p>Not only is the goal of tket to be a device-agnostic platform, but also interface-agnostic, so users are not obliged to have to work entirely in tket to benefit from the wide range of devices supported. For example, Qiskit is currently the most widely adopted quantum software development platform, providing its own modules for building and compiling circuits, submitting to backends, applying error mitigation techniques and combining these into higher-level algorithms. Each <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> in <code class="docutils literal notranslate"><span class="pre">pytket</span></code> can be wrapped up to imitate a Qiskit backend, allowing the benefits of tket to be felt in existing Qiskit projects with minimal work.</p>
+<p>Below we show how the <a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-cirq/api.html#pytket.extensions.cirq.CirqStateSampleBackend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CirqStateSampleBackend</span></code></a> from the <code class="docutils literal notranslate"><span class="pre">pytket-cirq</span></code> extension can be used with its <code class="xref py py-meth docutils literal notranslate"><span class="pre">default_compilation_pass()</span></code> directly in qiskit.</p>
+<div class="cell tag_skip-execution docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.primitives</span> <span class="kn">import</span> <span class="n">BackendSampler</span>
+<span class="kn">from</span> <span class="nn">qiskit_algorithms</span> <span class="kn">import</span> <span class="n">Grover</span><span class="p">,</span> <span class="n">AmplificationProblem</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+
+<span class="kn">from</span> <span class="nn">pytket.extensions.cirq</span> <span class="kn">import</span> <span class="n">CirqStateSampleBackend</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit.tket_backend</span> <span class="kn">import</span> <span class="n">TketBackend</span>
+
+<span class="n">cirq_simulator</span> <span class="o">=</span> <span class="n">CirqStateSampleBackend</span><span class="p">()</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">TketBackend</span><span class="p">(</span><span class="n">cirq_simulator</span><span class="p">,</span> <span class="n">cirq_simulator</span><span class="o">.</span><span class="n">default_compilation_pass</span><span class="p">())</span>
+<span class="n">sampler_options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;shots&quot;</span><span class="p">:</span><span class="mi">1024</span><span class="p">}</span>
+<span class="n">qsampler</span> <span class="o">=</span> <span class="n">BackendSampler</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">sampler_options</span><span class="p">)</span>
+
+<span class="n">oracle</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">oracle</span><span class="o">.</span><span class="n">cz</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">is_good_state</span><span class="p">(</span><span class="n">bitstr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">bitstr</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span>
+
+<span class="n">problem</span> <span class="o">=</span> <span class="n">AmplificationProblem</span><span class="p">(</span><span class="n">oracle</span><span class="o">=</span><span class="n">oracle</span><span class="p">,</span> <span class="n">is_good_state</span><span class="o">=</span><span class="n">is_good_state</span><span class="p">)</span>
+<span class="n">grover</span> <span class="o">=</span> <span class="n">Grover</span><span class="p">(</span><span class="n">sampler</span><span class="o">=</span><span class="n">qsampler</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">grover</span><span class="o">.</span><span class="n">amplify</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top measurement:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">top_measurement</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since Qiskit may not be able to solve all of the constraints of the chosen device/simulator, some compilation may be required after a circuit is passed to the <code class="xref py py-class docutils literal notranslate"><span class="pre">TketBackend</span></code>, or it may just be preferable to do so to take advantage of the sophisticated compilation solutions provided in <code class="docutils literal notranslate"><span class="pre">pytket</span></code>. Upon constructing the <code class="xref py py-class docutils literal notranslate"><span class="pre">TketBackend</span></code>, you can provide a <code class="docutils literal notranslate"><span class="pre">pytket</span></code> compilation pass to apply to each circuit, e.g. <code class="docutils literal notranslate"><span class="pre">TketBackend(backend,</span> <span class="pre">backend.default_compilation_pass())</span></code>. Some experimentation may be required to find a combination of <code class="docutils literal notranslate"><span class="pre">qiskit.transpiler.PassManager</span></code> and <code class="docutils literal notranslate"><span class="pre">pytket</span></code> compilation passes that executes successfully.</p>
+</div>
+</section>
+<section id="advanced-backend-topics">
+<h2>Advanced Backend Topics<a class="headerlink" href="#advanced-backend-topics" title="Link to this heading">¶</a></h2>
+<section id="simulator-support-for-expectation-values">
+<h3>Simulator Support for Expectation Values<a class="headerlink" href="#simulator-support-for-expectation-values" title="Link to this heading">¶</a></h3>
+<p>Some simulators will have dedicated support for fast expectation value calculations. In this special case, they will provide extra methods <code class="xref py py-class docutils literal notranslate"><span class="pre">get_pauli_expectation_value()</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">get_operator_expectation_value()</span></code>, which take a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> and some operator and directly return the expectation value. Again, we can check whether a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> has this feature with <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.supports_expectation" title="(in Project name not set)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">supports_expectation</span></code></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">Qubit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerStateBackend</span>
+<span class="kn">from</span> <span class="nn">pytket.pauli</span> <span class="kn">import</span> <span class="n">Pauli</span><span class="p">,</span> <span class="n">QubitPauliString</span>
+<span class="kn">from</span> <span class="nn">pytket.utils.operators</span> <span class="kn">import</span> <span class="n">QubitPauliOperator</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerStateBackend</span><span class="p">()</span>
+
+<span class="n">state</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">state</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">xxy</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">({</span>
+    <span class="n">Qubit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span>
+    <span class="n">Qubit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">X</span><span class="p">,</span>
+    <span class="n">Qubit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Y</span><span class="p">})</span>
+<span class="n">zzi</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">({</span>
+    <span class="n">Qubit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>
+    <span class="n">Qubit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Z</span><span class="p">})</span>
+<span class="n">iiz</span> <span class="o">=</span> <span class="n">QubitPauliString</span><span class="p">({</span>
+    <span class="n">Qubit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">:</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">Z</span><span class="p">})</span>
+<span class="n">op</span> <span class="o">=</span> <span class="n">QubitPauliOperator</span><span class="p">({</span>
+    <span class="n">QubitPauliString</span><span class="p">()</span> <span class="p">:</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">xxy</span> <span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+    <span class="n">zzi</span> <span class="p">:</span> <span class="mf">1.4</span><span class="p">,</span>
+    <span class="n">iiz</span> <span class="p">:</span> <span class="mf">3.2</span><span class="p">})</span>
+
+<span class="k">assert</span> <span class="n">backend</span><span class="o">.</span><span class="n">supports_expectation</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">get_pauli_expectation_value</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">xxy</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">get_operator_expectation_value</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">op</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.0
+0.20000000000000068
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="asynchronous-job-submission">
+<h3>Asynchronous Job Submission<a class="headerlink" href="#asynchronous-job-submission" title="Link to this heading">¶</a></h3>
+<p>In the near future, as we look to more sophisticated algorithms and larger problem instances, the quantity and size of <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> s to be run per experiment and the number of shots required to obtain satisfactory precision will mean the time taken for the quantum computation could exceed that of the classical computation. At this point, the overall algorithm can be sped up by maintaining maximum throughput on the quantum device and minimising how often the quantum device is left idle whilst the classical system is determining the next <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> s to send. This can be achieved by writing your algorithm to operate asynchronously.</p>
+<p>The intended semantics of the <code class="xref py py-meth docutils literal notranslate"><span class="pre">Backend()</span></code> methods are designed to enable asynchronous execution of quantum programs whenever admissible from the underlying API provided by the device/simulator. <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.process_circuit" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_circuit()</span></code></a> and <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.process_circuits" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_circuits()</span></code></a> will submit the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> (s) and immediately return.</p>
+<p>The progress can be checked by querying <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.circuit_status" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">circuit_status()</span></code></a>. If this returns a <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.status.CircuitStatus" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CircuitStatus</span></code></a> matching <code class="docutils literal notranslate"><span class="pre">StatusEnum.COMPLETED</span></code>, then <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_X()</span></code> will obtain the results and return immediately, otherwise it will block the thread and wait until the results are available.</p>
+<div class="cell tag_skip-execution docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.backends</span> <span class="kn">import</span> <span class="n">StatusEnum</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">IBMQBackend</span>
+<span class="kn">from</span> <span class="nn">pytket.utils</span> <span class="kn">import</span> <span class="n">expectation_from_counts</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">IBMQBackend</span><span class="p">(</span><span class="s2">&quot;ibm_brisbane&quot;</span><span class="p">)</span>
+
+<span class="n">state</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">state</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Compute expectation value for -0.3i ZZZ + 0.8 XZZ + 1.2 XXX</span>
+<span class="n">zzz</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">zzz</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">xzz</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">xzz</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">xxx</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">xxx</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">circ_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="n">zzz</span><span class="p">,</span> <span class="n">xzz</span><span class="p">,</span> <span class="n">xxx</span><span class="p">]:</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">circ_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+
+<span class="n">coeff_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">-</span><span class="mf">0.3</span><span class="n">j</span><span class="p">,</span>  <span class="c1"># ZZZ</span>
+    <span class="mf">0.8</span><span class="p">,</span>    <span class="c1"># XZZ</span>
+    <span class="mf">1.2</span>     <span class="c1"># XXX</span>
+<span class="p">]</span>
+
+<span class="n">handle_list</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuits</span><span class="p">(</span><span class="n">circ_list</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">check_at_intervals</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">handle</span><span class="p">,</span> <span class="n">interval</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">circuit_status</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status</span><span class="o">.</span><span class="n">status</span> <span class="ow">in</span> <span class="p">(</span><span class="n">StatusEnum</span><span class="o">.</span><span class="n">COMPLETED</span><span class="p">,</span> <span class="n">StatusEnum</span><span class="o">.</span><span class="n">ERROR</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">status</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">expectation</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">handle</span><span class="p">,</span> <span class="n">coeff</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">check_at_intervals</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">handle</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">coeff</span> <span class="o">*</span> <span class="n">expectation_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">task_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">expectation</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span> <span class="k">for</span> <span class="n">h</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">handle_list</span><span class="p">,</span> <span class="n">coeff_list</span><span class="p">)])</span>
+    <span class="n">done</span><span class="p">,</span> <span class="n">pending</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">task_set</span><span class="p">,</span> <span class="n">return_when</span><span class="o">=</span><span class="n">asyncio</span><span class="o">.</span><span class="n">ALL_COMPLETED</span><span class="p">)</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">done</span><span class="p">:</span>
+        <span class="nb">sum</span> <span class="o">+=</span> <span class="k">await</span> <span class="n">t</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">1.2087999999999999</span><span class="o">-</span><span class="mf">0.002400000000000002</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In some cases you may want to end execution early, perhaps because it is taking too long or you already have all the data you need. You can use the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend.cancel" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cancel()</span></code></a> method to cancel the job for a given <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.resulthandle.ResultHandle" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultHandle</span></code></a>. This is recommended to help reduce load on the devices if you no longer need to run the submitted jobs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Asynchronous submission is currently available with the <a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-qiskit/api.html#pytket.extensions.qiskit.IBMQBackend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IBMQBackend</span></code></a>, <a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-quantinuum/api.html#pytket.extensions.quantinuum.QuantinuumBackend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantinuumBackend</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BraketBackend</span></code> and <a class="reference external" href="https://docs.quantinuum.com/tket/extensions/pytket-qiskit/api.html#pytket.extensions.qiskit.AerBackend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AerBackend</span></code></a>. It will be extended to others in future updates.</p>
+</div>
+</section>
+<section id="persistent-handles">
+<h3>Persistent Handles<a class="headerlink" href="#persistent-handles" title="Link to this heading">¶</a></h3>
+<p>Being able to split your processing into distinct procedures for <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> generation and result interpretation can help improve throughput on the quantum device, but it can also provide a way to split the processing between different Python sessions. This may be desirable when the classical computation to interpret the results and determine the next experiment parameters is sufficiently intensive that we would prefer to perform it offline and only reserve a quantum device once we are ready to run more. Furthermore, resuming with previously-generated results could benefit repeatability of experiments and better error-safety since the logged results can be saved and reused.</p>
+<p>Some <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> s support persistent handles, in that the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.resulthandle.ResultHandle" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultHandle</span></code></a> object can be stored and the associated results obtained from another instance of the same <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> in a different session. This is indicated by the boolean <code class="docutils literal notranslate"><span class="pre">persistent_handles</span></code> property of the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a>. Use of persistent handles can greatly reduce the amount of logging you would need to do to take advantage of this workflow.</p>
+<div class="cell tag_skip-execution docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">IBMQBackend</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">IBMQBackend</span><span class="p">(</span><span class="s2">&quot;ibm_brisbane&quot;</span><span class="p">)</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">CZ</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_compiled_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># assert backend.persistent_handles</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">handle</span><span class="p">))</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;5e8f3dcbbb7d8500119cfbf6&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">1000</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="cell tag_skip-execution docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytket.backends</span> <span class="kn">import</span> <span class="n">ResultHandle</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">IBMQBackend</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">IBMQBackend</span><span class="p">(</span><span class="s2">&quot;ibm_brisbane&quot;</span><span class="p">)</span>
+
+<span class="n">handle</span> <span class="o">=</span> <span class="n">ResultHandle</span><span class="o">.</span><span class="n">from_str</span><span class="p">(</span><span class="s2">&quot;(&#39;5e8f3dcbbb7d8500119cfbf6&#39;, 0)&quot;</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">1000</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="result-serialization">
+<h3>Result Serialization<a class="headerlink" href="#result-serialization" title="Link to this heading">¶</a></h3>
+<p>When performing experiments using <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.Backend" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a> s, it is often useful to be able to easily store and retrieve the results for later analysis or backup.
+This can be achieved using native serialiaztion and deserialization of <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.backendresult.BackendResult" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendResult</span></code></a> objects from JSON compatible dictionaries, using the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.backendresult.BackendResult.to_dict" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_dict()</span></code></a> and <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/backends.html#pytket.backends.backendresult.BackendResult.from_dict" title="(in Project name not set)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_dict()</span></code></a> methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">pytket</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">pytket.backends.backendresult</span> <span class="kn">import</span> <span class="n">BackendResult</span>
+<span class="kn">from</span> <span class="nn">pytket.extensions.qiskit</span> <span class="kn">import</span> <span class="n">AerBackend</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">CX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">AerBackend</span><span class="p">()</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">process_circuit</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryFile</span><span class="p">(</span><span class="s1">&#39;w+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span> <span class="n">fp</span><span class="p">)</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">new_res</span> <span class="o">=</span> <span class="n">BackendResult</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">new_res</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(1, 1): 6, (0, 0): 4})
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="cite-niel2001" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Nielsen, M.A. and Chuang, I.L., 2001. Quantum computation and quantum information. Phys. Today, 54(2), p.60.</p>
+</aside>
+<aside class="footnote brackets" id="cite-wils2020" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Wilson, E., Singh, S. and Mueller, F., 2020. Just-in-time Quantum Circuit Transpilation Reduces Noise. arXiv preprint arXiv:2005.12820.</p>
+</aside>
+</aside>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="manual_compiler.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Compilation</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="manual_circuit.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Circuit Construction</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+              Copyright &#169; 2024 Quantinuum Ltd. All rights reserved.
+            </div>
+            <div class="terms" style="display:flex; gap:0.5rem; align-items:center; margin: 0.25rem 0rem;">
+              <a href="https://www.quantinuum.com/privacy-statement" target="_blank">Privacy Statement</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/cookie-notice" target="_blank">Cookie Notice</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/terms-conditions" target="_blank">Terms and Conditions</a>
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Running on Backends</a><ul>
+<li><a class="reference internal" href="#backend-requirements">Backend Requirements</a></li>
+<li><a class="reference internal" href="#shots-and-sampling">Shots and Sampling</a></li>
+<li><a class="reference internal" href="#statevector-and-unitary-simulation-with-tket-backends">Statevector and Unitary Simulation with TKET Backends</a></li>
+<li><a class="reference internal" href="#interpreting-results">Interpreting Results</a></li>
+<li><a class="reference internal" href="#expectation-value-calculations">Expectation Value Calculations</a></li>
+<li><a class="reference internal" href="#guidance-for-writing-hardware-agnostic-code">Guidance for Writing Hardware-Agnostic Code</a></li>
+<li><a class="reference internal" href="#batch-submission">Batch Submission</a></li>
+<li><a class="reference internal" href="#embedding-into-qiskit">Embedding into Qiskit</a></li>
+<li><a class="reference internal" href="#advanced-backend-topics">Advanced Backend Topics</a><ul>
+<li><a class="reference internal" href="#simulator-support-for-expectation-values">Simulator Support for Expectation Values</a></li>
+<li><a class="reference internal" href="#asynchronous-job-submission">Asynchronous Job Submission</a></li>
+<li><a class="reference internal" href="#persistent-handles">Persistent Handles</a></li>
+<li><a class="reference internal" href="#result-serialization">Result Serialization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

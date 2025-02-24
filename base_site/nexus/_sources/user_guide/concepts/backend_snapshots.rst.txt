@@ -1,0 +1,23 @@
+.. _backend_snapshots:
+
+Backend Snapshots
+=================
+
+Nexus stores a snapshot - a representation of the state of a :doc:`backend
+<backends>` - when important events take place, including compilation and
+execution.
+
+Unlike a backend, which is a provider of quantum or other computation, a
+**backend snapshot** stores data about a provider at a certain moment in time.
+
+Nexus captures and stores backend snapshots automatically and associates them
+with relevant resources such as compilation jobs or execution jobs. You can see
+all the backend snapshots in a :ref:`project <projects>` on its "Resources" tab,
+or for an individual result or compilation, linked from the result or
+compilation page itself.
+
+In python code, backend snapshots are often represented as instances of
+``pytket``'s ``BackendInfo`` class. For example, an execution result in
+``qnexus`` is represented by an ``ExecutionResultRef`` instance, whose
+``download_backend_info()`` method returns a ``pytket`` ``BackendInfo``
+representing the state of the compute provider at the time of execution.

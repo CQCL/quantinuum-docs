@@ -1,0 +1,1204 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPQ1FTGDL3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YPQ1FTGDL3');
+    </script>
+    <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="InQuanto-Extensions" href="../extensions/extensions-overview.html" /><link rel="prev" title="Projection-based embedding with energy corrections" href="InQ_tut_wft_dft_2.html" />
+
+    <link rel="shortcut icon" href="../_static/quantinuum_favicon.svg"/><!-- Generated with Sphinx 6.2.1 and Furo 2024.08.06 -->
+        <title>Overview of examples - InQuanto 4.2.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=04c057b233f3c8d71940eee6080f658a04e2027d" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=cf727022eb7470bc603c08d2e55c3247faec75c9" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+<link rel="stylesheet" href="../_static/tokens.css"/>
+<link rel="stylesheet" href="../_static/styles.css"/>
+<link rel="stylesheet" href="../_static/tailwind.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="preload"
+as="style">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>  
+  .sidebar-sticky {
+    top: calc(3.5rem - 0px);
+    height: calc(100vh - 3.5rem);
+  }
+  
+  @media (min-width: 97em) {
+    html {
+      font-size: 100% !important;
+    }
+  }
+  
+</style>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+<!-- <script type="text/javascript" src="../_static/syncTheme.global.js" ></script> -->
+ <!--Force light mode -->
+ <script>document.body.setAttribute('data-theme','light')</script>
+<nav style="position:fixed;top:0;z-index:1021;width:100%;">
+    <div class="nexus-nav"></div>
+</nav>
+<script type="text/javascript" src="../_static/injectNav.global.js"></script>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">InQuanto 4.2.0</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/inquanto_short_logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">InQuanto 4.2.0</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/overview.html">What is InQuanto?</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/installation.html">Installation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Installation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/quickstart.html">Quick-start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../manual/howto.html">How to use InQuanto</a></li>
+</ul>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../manual/algorithms_overview.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../manual/algorithms/variational_overview.html">Variational Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Variational Algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/algorithms_vqe.html">Variational Quantum Eigensolver <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmVQE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/algorithms_vqd.html">Variational Quantum Deflation <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmVQD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/algorithms_adapt.html">ADAPT-VQE</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../manual/algorithms/non_variational_overview.html">Non-variational and Phase Estimation algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Non-variational and Phase Estimation algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/algorithms_qse.html">Quantum Subspace Expansion <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmQSE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/algorithms_sceom.html">Quantum Self Consistent Equation of Motion <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmSCEOM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/qpe_canonical.html">Canonical Quantum Phase Estimation <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmDeterministicQPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/qpe_iterative.html">Iterative Phase Estimation Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../manual/algorithms/time_evolution_overview.html">Time evolution algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Time evolution algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/algorithms/te_vqs.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmVQS</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmMcLachlanRealTime</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmMcLachlanImagTime</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../manual/computables_overview.html">Computables</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Computables</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../manual/computables/basic_usage.html">Basic Usage and Composability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/computables/evaluating_w_protocols.html">Evaluating Computables with Protocols</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../manual/computables/composite_computables.html">Composite Computables</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Composite Computables</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/computables/greens_function.html">Krylov subspace &amp; Green’s functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/computables/rdms.html">Reduced Density Matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/computables/overlap_matrix.html">Overlap Matrices &amp; Non-Orthogonal Subspaces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/computables/primitives.html">Primitive Computables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/computables/custom_computables.html">Custom Computables &amp; Partial Evaluations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../manual/protocols_overview.html">Protocols</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Protocols</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/expval.html">Protocols for expectation values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/overlap_squared.html">Protocols for overlap squared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/overlap.html">Protocols for overlaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/derivative.html">Protocols for derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/other.html">Other averaging protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/phase_est.html">Protocols for Phase Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/protocols/resource_estimation.html">Resource estimation</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../manual/errmit.html">Noise mitigation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/spaces.html">Spaces, Operators, and States</a></li>
+</ul>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../manual/ansatzae_overview.html">Ansatzes</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Ansatzes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/ucc_family.html">The UCC Family</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/chemically_aware.html">Chemically Aware Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/trotter_ansatz.html">Trotter Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/fermion_state_exp.html">Fermionic Exponentiated Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/circuit_ansatz.html">Circuit Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/composed_ansatz.html">Composed Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/hea.html">Hardware Efficient Ansatz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/multi_configurational.html">Multiconfiguration States Using Givens Rotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/ansatze/basis_rotation.html">Real Basis Rotation Ansatzes</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../manual/symmetry.html">Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/geometry.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/minimizers.html">Classical Minimizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/dmet.html">Density Matrix Embedding Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/express.html">Express</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials &amp; Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial_overview.html">Tutorials</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorial_overview.html#core-tutorials">Core Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Core Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="InQ_tut_vqe_1.html">A basic VQE simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_tut_vqe_2.html">Extended VQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_tut_vqd.html">Variational Quantum Deflation for excited states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_tut_viz.html">Visualization with inquanto-nglview</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorial_overview.html#backend-tutorials">Backend Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Backend Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="backends_overview.html">Backends Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_tut_Nexus_1.html"><b>Tutorial: InQuanto + qnexus</b></a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_htut_Aer_H2.html">Running on the Aer simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_htut_qsys_H2.html">Running on Quantinuum Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_htut_qsys_l%2Br.html">Quantinuum Systems -  Launching circuits and retrieving results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_htut_qsys_qse.html">Quantinuum Systems -  Quantum Subspace Expansion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorial_overview.html#case-study-tutorials-fe4n2">Case Study Tutorials - Fe4N2</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of Case Study Tutorials - Fe4N2</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="InQ_tut_fe4n2_1.html">Fe4N2 - 1 - system construction with AVAS and CASSCF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_tut_fe4n2_2.html">Fe4N2 - 2 - circuit construction with ADAPT-VQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_tut_fe4n2_3.html">Fe4N2 - 3 - calculations on Quantinuum hardware</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorial_overview.html#fragmentation-tutorials">Fragmentation Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Fragmentation Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="InQ_tut_dmet.html">Tackling larger systems with fragmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_tut_wft_dft.html">Projection-based embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_tut_nevpt2_AC0.html">NEVPT2 and AC0 energy corrections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InQ_tut_wft_dft_2.html">Projection-based embedding with energy corrections</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/extensions-overview.html">Extensions overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/inquanto-nexus.html">InQuanto-Nexus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/inquanto-pyscf.html">InQuanto-PySCF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/inquanto-nglview.html">InQuanto-NGLView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/inquanto-phayes.html">InQuanto-Phayes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/extensions_examples.html">Extensions examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/inquanto_api_intro.html">InQuanto</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of InQuanto</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/algorithms.html">inquanto.algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/ansatz.html">inquanto.ansatzes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/computables.html">inquanto.computables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/core.html">inquanto.core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/embeddings.html">inquanto.embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/express.html">inquanto.express</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/geometry.html">inquanto.geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/mappings.html">inquanto.mappings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/minimizers.html">inquanto.minimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/operators.html">inquanto.operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/protocols.html">inquanto.protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/spaces.html">inquanto.spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/states.html">inquanto.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/inquanto/symmetry.html">inquanto.symmetry</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/inquanto-ext_api_intro.html">InQuanto-Extensions</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of InQuanto-Extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/extensions/inquanto-nexus_api.html">InQuanto-Nexus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/extensions/inquanto-pyscf_api.html">InQuanto-PySCF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/extensions/inquanto-nglview_api.html">InQuanto-NGLView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/extensions/inquanto-phayes.html">InQuanto-Phayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/extensions/inquanto-cutensornet_api.html">InQuanto-cuTensorNet</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/changelog.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/contact.html">Contact Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/cite.html">How to cite InQuanto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/licence.html">License and Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/opensource.html">Open-source Attribution</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="overview-of-examples">
+<span id="examples-overview"></span><h1>Overview of examples<a class="headerlink" href="#overview-of-examples" title="Permalink to this heading">¶</a></h1>
+<p>In addition to the detailed <a class="reference internal" href="tutorial_overview.html#tutorialoverview"><span class="std std-ref">tutorials</span></a>, InQuanto contains several example scripts showing how various functionality is used.
+In this file we provide a broad overview of the intention of each example, highlighting the functionality
+that is demonstrated. Examples using the extensions are found <a class="reference internal" href="../extensions/extensions_examples.html#ext-examples-overview"><span class="std std-ref">elsewhere</span></a>.</p>
+<section id="algorithms-adapt">
+<h2>algorithms/adapt<a class="headerlink" href="#algorithms-adapt" title="Permalink to this heading">¶</a></h2>
+<p>Examples of ADAPT-VQE.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/0ae0077fedc736c651e97ce8f5b0f794/algorithm_iqeb.py"><code class="xref download docutils literal notranslate"><span class="pre">algorithm_iqeb.py</span></code></a></p></td>
+<td><p>A simulation of H2 in STO-3G using IQEB algorithm.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/8b9a3f3826f78ff97998aa99ff382d9d/algorithm_fermionic_adapt.py"><code class="xref download docutils literal notranslate"><span class="pre">algorithm_fermionic_adapt.py</span></code></a></p></td>
+<td><p>A simulation of H2 in STO-3G using the ADAPT algorithm with fermionic helper functions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/4803a0d44776818af150df8e5912d4bd/algorithm_adapt.py"><code class="xref download docutils literal notranslate"><span class="pre">algorithm_adapt.py</span></code></a></p></td>
+<td><p>A simulation of H2 in STO-3G using the ADAPT algorithm.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="algorithms-qse">
+<h2>algorithms/qse<a class="headerlink" href="#algorithms-qse" title="Permalink to this heading">¶</a></h2>
+<p>Examples of Quantum Subspace Expansion.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/1f1f507435d581e14913fd78f1dfc29e/algorithm_qse.py"><code class="xref download docutils literal notranslate"><span class="pre">algorithm_qse.py</span></code></a></p></td>
+<td><p>A simulation of H2 in STO-3G using the QSE algorithm</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="algorithms-time-evolution">
+<h2>algorithms/time_evolution<a class="headerlink" href="#algorithms-time-evolution" title="Permalink to this heading">¶</a></h2>
+<p>Examples of time evolution algorithms.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/74e9554926fcab0a3fd38e0d84c69af7/vqs_real_example_paper.py"><code class="xref download docutils literal notranslate"><span class="pre">vqs_real_example_paper.py</span></code></a></p></td>
+<td><p>A AlgorithmMcLachlanRealTime time evolution simulation for a small system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/e834d627137a55a34b87539fe78bb06a/vqs_real_example.py"><code class="xref download docutils literal notranslate"><span class="pre">vqs_real_example.py</span></code></a></p></td>
+<td><p>A AlgorithmMcLachlanRealTime time evolution simulation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/6670ef34a4480d42417e122fd73bf740/vqs_real_example_paper_phased.py"><code class="xref download docutils literal notranslate"><span class="pre">vqs_real_example_paper_phased.py</span></code></a></p></td>
+<td><p>A custom equation of motion VQS time evolution simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/b099a98bdd6e322e6e21edb7d3b0bf9c/vqs_imag_example.py"><code class="xref download docutils literal notranslate"><span class="pre">vqs_imag_example.py</span></code></a></p></td>
+<td><p>A AlgorithmMcLachlanImagTime time evolution simulation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/a073e4d0043d15782686c40fdf438823/time_evolution_example.py"><code class="xref download docutils literal notranslate"><span class="pre">time_evolution_example.py</span></code></a></p></td>
+<td><p>An exact time evolution simulation using express methods</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/291c7fa1604b6480e07c84d518f213f5/imtime_evolution_example.py"><code class="xref download docutils literal notranslate"><span class="pre">imtime_evolution_example.py</span></code></a></p></td>
+<td><p>An exact imaginary time evolution simulation using express methods</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="algorithms-vqd">
+<h2>algorithms/vqd<a class="headerlink" href="#algorithms-vqd" title="Permalink to this heading">¶</a></h2>
+<p>Examples of Variational Quantum Deflation.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/eb6559716ade98e15e6a5d281238dbb3/algorithm_vqd.py"><code class="xref download docutils literal notranslate"><span class="pre">algorithm_vqd.py</span></code></a></p></td>
+<td><p>Variational Quantum Deflation using computables.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="algorithms-vqe">
+<h2>algorithms/vqe<a class="headerlink" href="#algorithms-vqe" title="Permalink to this heading">¶</a></h2>
+<p>Examples of canonical Variational Quantum Eigensolver usage.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/55e178f550a62dedb85ab8b0d296161e/algorithm_vqe_varCI.py"><code class="xref download docutils literal notranslate"><span class="pre">algorithm_vqe_varCI.py</span></code></a></p></td>
+<td><p>A canonical VQE simulation of H2 in STO-3G using a variational configuration interaction Ansatz.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/161ed3b36e7312375088ba9292d2ced3/algorithm_vqe_uccsd.py"><code class="xref download docutils literal notranslate"><span class="pre">algorithm_vqe_uccsd.py</span></code></a></p></td>
+<td><p>A canonical VQE simulation of H2 in STO-3G using a UCCSD Ansatz.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/7a7d71d89ea139f79e4b49fecf1e9b55/algorithm_vqe_hea.py"><code class="xref download docutils literal notranslate"><span class="pre">algorithm_vqe_hea.py</span></code></a></p></td>
+<td><p>A canonical VQE simulation of H2 in STO-3G using a hardware-efficient Ansatz.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/9aecfbf7f9f760d3a2822da9e9db57e7/algorithm_vqe_shots_minimizers.py"><code class="xref download docutils literal notranslate"><span class="pre">algorithm_vqe_shots_minimizers.py</span></code></a></p></td>
+<td><p>Use of minimizers in shot-based calculations.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ansatzes">
+<h2>ansatzes<a class="headerlink" href="#ansatzes" title="Permalink to this heading">¶</a></h2>
+<p>Examples demonstrating usage of Ansatz classes.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/c48bc2b081de6736e871557f86bbf63a/multiconfigstate_4qubit.py"><code class="xref download docutils literal notranslate"><span class="pre">multiconfigstate_4qubit.py</span></code></a></p></td>
+<td><p>Preparation of a 4 qubit linear combination of fermionic occupation states with fixed coefficients.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/119c5e9aaf3102a3d42bfda860d98623/fermion_space_ansatze.py"><code class="xref download docutils literal notranslate"><span class="pre">fermion_space_ansatze.py</span></code></a></p></td>
+<td><p>Use of a general Fermionic Ansatz.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/891496ba84ec3e356c15560465e6d088/multiconfigstate_6qubit.py"><code class="xref download docutils literal notranslate"><span class="pre">multiconfigstate_6qubit.py</span></code></a></p></td>
+<td><p>Preparation of a 6 qubit linear combination of fermionic occupation states with fixed coefficients.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/443bf5983cddc8eb72e3f915a950887c/layered_hea.py"><code class="xref download docutils literal notranslate"><span class="pre">layered_hea.py</span></code></a></p></td>
+<td><p>Use of a layered hardware efficient Ansatz.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/349eac52a0dee54c9591a1edfb9f5edf/multiconfig_with_symbols.py"><code class="xref download docutils literal notranslate"><span class="pre">multiconfig_with_symbols.py</span></code></a></p></td>
+<td><p>Use of a linear combination of fermionic occupation states as a variational ansatz.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/f3501eb169e5e93643164349050321c9/multiconfigstatebox_6qubit.py"><code class="xref download docutils literal notranslate"><span class="pre">multiconfigstatebox_6qubit.py</span></code></a></p></td>
+<td><p>Preparation of a 6 qubit linear combination of fermionic occupation states with fixed coefficients.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/eec2b0ce1ed8eead7e1154bb8533a5af/multiconfigstatebox_4qubit.py"><code class="xref download docutils literal notranslate"><span class="pre">multiconfigstatebox_4qubit.py</span></code></a></p></td>
+<td><p>Preparation of a 4 qubit linear combination of fermionic occupation states with fixed coefficients.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="computables">
+<h2>computables<a class="headerlink" href="#computables" title="Permalink to this heading">¶</a></h2>
+<p>Examples demonstrating usage of computables classes.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/f1b1e69268e268e69bcbc9ef868ec5fe/computable_protocol_tutorial.py"><code class="xref download docutils literal notranslate"><span class="pre">computable_protocol_tutorial.py</span></code></a></p></td>
+<td><p>Demonstrates the general use of computables and protocols.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/e6e95b1ebc87c0e1a2aab66d65bb8633/bootstrapping_vs_uvalue.py"><code class="xref download docutils literal notranslate"><span class="pre">bootstrapping_vs_uvalue.py</span></code></a></p></td>
+<td><p>Comparing error bars obtained from bootstrapping (using BackendResultsBootstrap) and linear error propagation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/9538d5a95a60b3c652a6b5b25957fa11/bootstrapping_computable.py"><code class="xref download docutils literal notranslate"><span class="pre">bootstrapping_computable.py</span></code></a></p></td>
+<td><p>Computable level usage of BackendResult resampling classes for bootstrapping of H2 energy (STO-3G).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/98d51634a482b2ce103dab8759f23fd2/bootstrapping_simple.py"><code class="xref download docutils literal notranslate"><span class="pre">bootstrapping_simple.py</span></code></a></p></td>
+<td><p>Computable level usage of BackendResult resampling classes for bootstrappi</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="computables-atomic">
+<h2>computables/atomic<a class="headerlink" href="#computables-atomic" title="Permalink to this heading">¶</a></h2>
+<p>Examples demonstrating usage of atomic computable classes.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/4e995046b4765afff227179e07a8f765/expval_pauli.py"><code class="xref download docutils literal notranslate"><span class="pre">expval_pauli.py</span></code></a></p></td>
+<td><p>Protocol observable averaging to calculate expectation values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/32177226feb5469c5e450a7ec0d47402/finite_difference.py"><code class="xref download docutils literal notranslate"><span class="pre">finite_difference.py</span></code></a></p></td>
+<td><p>An example showing how to use evaluate gradients and compare against finite differences</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/5033d09a5bc0d3825792a9951b277457/computable_h2.py"><code class="xref download docutils literal notranslate"><span class="pre">computable_h2.py</span></code></a></p></td>
+<td><p>Use of computables classes for STO-3G H2 expectation value measurement.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/a797b33215972e89e2ed5696e2608aeb/computable_h2_symbolic_derivatives.py"><code class="xref download docutils literal notranslate"><span class="pre">computable_h2_symbolic_derivatives.py</span></code></a></p></td>
+<td><p>Use of computables classes for STO-3G H2 expectation value and gradients with symbolic protocol.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/c467dbeaee81868c1d932e9fe77677d3/expval_noisy_backend.py"><code class="xref download docutils literal notranslate"><span class="pre">expval_noisy_backend.py</span></code></a></p></td>
+<td><p>Computable expression example (ExpectationValue)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/1253c101f236950ad861f875b3f3ff10/using_protocol_list.py"><code class="xref download docutils literal notranslate"><span class="pre">using_protocol_list.py</span></code></a></p></td>
+<td><p>An example using protocol list for finite differences</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/a37ad1b9b22794a05d6e90546249dfec/expval_symbolic.py"><code class="xref download docutils literal notranslate"><span class="pre">expval_symbolic.py</span></code></a></p></td>
+<td><p>Use of symbolic protocol for expectation value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/b0dc9cb0e71bc9bb5dec3c96b8ad00b4/derivatives_methods.py"><code class="xref download docutils literal notranslate"><span class="pre">derivatives_methods.py</span></code></a></p></td>
+<td><p>An example showing how to use evaluate gradients</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/6a4df02ef54c8250b37bef92ea35f65f/computable_overlap_squared.py"><code class="xref download docutils literal notranslate"><span class="pre">computable_overlap_squared.py</span></code></a></p></td>
+<td><p>Computable expression example (OverlapSquared)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="computables-composite">
+<h2>computables/composite<a class="headerlink" href="#computables-composite" title="Permalink to this heading">¶</a></h2>
+<p>Examples demonstrating usage of composite computable classes.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/34152656c7c01b39cddb620fc210fc2b/qcm4_computable.py"><code class="xref download docutils literal notranslate"><span class="pre">qcm4_computable.py</span></code></a></p></td>
+<td><p>Estimating energy using QCM4 computable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/cbda32b5a2d3889b650337ade63de6d7/overlap_matrix.py"><code class="xref download docutils literal notranslate"><span class="pre">overlap_matrix.py</span></code></a></p></td>
+<td><p>Simple overlap matrix calculation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/cf0300ff843bbd1db42953ed66343c02/qse_matrices.py"><code class="xref download docutils literal notranslate"><span class="pre">qse_matrices.py</span></code></a></p></td>
+<td><p>An example running QSE using computables</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/a8c7f2bd8156bd88c24f6981d1a99d15/nonorthogonal_matrices.py"><code class="xref download docutils literal notranslate"><span class="pre">nonorthogonal_matrices.py</span></code></a></p></td>
+<td><p>Basic CI calculation with NonOrthogonal computable.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="computables-composite-gf">
+<h2>computables/composite/gf<a class="headerlink" href="#computables-composite-gf" title="Permalink to this heading">¶</a></h2>
+<p>Examples demonstrating usage of Green’s function computable classes.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/04093e1faded4ba230689e4a7cf0a8b8/krylov_3.py"><code class="xref download docutils literal notranslate"><span class="pre">krylov_3.py</span></code></a></p></td>
+<td><p>Example of evaluating KrylovSubspaceComputable with sandwiched moments from shot-based protocol.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/f6ebd629b75c849e31728c7a537ae63d/krylov_1.py"><code class="xref download docutils literal notranslate"><span class="pre">krylov_1.py</span></code></a></p></td>
+<td><p>Example of evaluating LanczosMatrixComputable to get tridiagonal matrix for given dimension of Krylov space.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/51bc42a1fc96073911cb5721e993e9eb/krylov_-1.py"><code class="xref download docutils literal notranslate"><span class="pre">krylov_-1.py</span></code></a></p></td>
+<td><p>Example of building your own Lanczos routine, then comparing it to KrylovSubspaceComputable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/e1076678553cc5cd63dbd87877c39608/gf_measurenorm_matrix_mbgf.py"><code class="xref download docutils literal notranslate"><span class="pre">gf_measurenorm_matrix_mbgf.py</span></code></a></p></td>
+<td><p>Computation (noiseless statevector) the full GF matrix of the Hubbard dimer at a single frequency.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/66c002878fe812190cc3b0e51000b5f5/gf_measurenorm_matrix_mbgf_circuits.py"><code class="xref download docutils literal notranslate"><span class="pre">gf_measurenorm_matrix_mbgf_circuits.py</span></code></a></p></td>
+<td><p>Generation of the circuits required for the full GF matrix of the Hubbard dimer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/a9f7c11da1c6a6a6f4a0f073257c30f7/gf_measurenorm_matrix_mbgf_spectral.py"><code class="xref download docutils literal notranslate"><span class="pre">gf_measurenorm_matrix_mbgf_spectral.py</span></code></a></p></td>
+<td><p>Computation of the full GF matrix of the Hubbard dimer, and plot the spectral function A(omega).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/bfc6cb1460a848fa6a475e3b47a3a2fb/krylov_0.py"><code class="xref download docutils literal notranslate"><span class="pre">krylov_0.py</span></code></a></p></td>
+<td><p>Example of evaluating LanczosCoefficientsComputable to get elements of tridiagonal matrix.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/7f4336dc40c2bcd2eb802a3c063ac85f/krylov_4.py"><code class="xref download docutils literal notranslate"><span class="pre">krylov_4.py</span></code></a></p></td>
+<td><p>Example of evaluating LanczosMatrixComputable with sandwiched moments from shot-based protocol.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/c1c4377c2b781667d2b4bec4b8356d55/gf_measurenorm_element_shots_1.py"><code class="xref download docutils literal notranslate"><span class="pre">gf_measurenorm_element_shots_1.py</span></code></a></p></td>
+<td><p>Computation (shots for Lanczos, statevector for ground state) one element of GF of Hubbard dimer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/2d86f3fc895bd0c9caa46fa0a283fdd9/gf_measurenorm_matrix_mbgf_spectral_shots.py"><code class="xref download docutils literal notranslate"><span class="pre">gf_measurenorm_matrix_mbgf_spectral_shots.py</span></code></a></p></td>
+<td><p>Computation of the full GF matrix of the Hubbard dimer with shots, and plot the spectral function A(omega).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/302c1e9d0cef33519fc7a56fe1b8fdb7/krylov_2.py"><code class="xref download docutils literal notranslate"><span class="pre">krylov_2.py</span></code></a></p></td>
+<td><p>Use of KrylovSubspaceComputable to get Green’s function element from shot-based protocol from 1st Lanczos vector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/eb1486c45b25bf4c668056d6cab9cb7f/gf_measurenorm_element.py"><code class="xref download docutils literal notranslate"><span class="pre">gf_measurenorm_element.py</span></code></a></p></td>
+<td><p>Noiseless statevector computation of one element of GF of Hubbard dimer by sandwiching Hamiltonian moments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/c759975718d61beb5cc023e91c01ec7a/gf_measurenorm_element_shots_2.py"><code class="xref download docutils literal notranslate"><span class="pre">gf_measurenorm_element_shots_2.py</span></code></a></p></td>
+<td><p>Computation (shots for Lanczos, shots for ground state) one element of GF of Hubbard dimer.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="computables-composite-rdm">
+<h2>computables/composite/rdm<a class="headerlink" href="#computables-composite-rdm" title="Permalink to this heading">¶</a></h2>
+<p>Examples demonstrating usage of reduced density matrix computable classes.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/b5f69068178fbe87f9154ba56c846d54/rdm_computable.py"><code class="xref download docutils literal notranslate"><span class="pre">rdm_computable.py</span></code></a></p></td>
+<td><p>An example for constructing an RDM using computables</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/9c5ae51f113f4bc0ea125c25ca2044ca/rdm_nevpt2.py"><code class="xref download docutils literal notranslate"><span class="pre">rdm_nevpt2.py</span></code></a></p></td>
+<td><p>Test of NEVPT2 using RDMs from</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="computables-primitive">
+<h2>computables/primitive<a class="headerlink" href="#computables-primitive" title="Permalink to this heading">¶</a></h2>
+<p>Examples demonstrating usage of primitive computable classes.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/a41191e7465d597f9c83a98e3725b44e/basic_primitives.py"><code class="xref download docutils literal notranslate"><span class="pre">basic_primitives.py</span></code></a></p></td>
+<td><p>An example showing how to use quantum computables.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="core">
+<h2>core<a class="headerlink" href="#core" title="Permalink to this heading">¶</a></h2>
+<p>Examples demonstrating usage of logging and debugging functionality.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/bb4b7311488ceae5e3716a2931d2e442/context_printing.py"><code class="xref download docutils literal notranslate"><span class="pre">context_printing.py</span></code></a></p></td>
+<td><p>Using context for logging standard outputs</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="embeddings">
+<h2>embeddings<a class="headerlink" href="#embeddings" title="Permalink to this heading">¶</a></h2>
+<blockquote id="eg-embeddings">
+<div><p>Examples of usage of embedding methods.</p>
+</div></blockquote>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/e00832dfe30600e4af7c5dcecb2e963b/dmet_one_h2x3_express_vqe.py"><code class="xref download docutils literal notranslate"><span class="pre">dmet_one_h2x3_express_vqe.py</span></code></a></p></td>
+<td><p>One-shot DMET calculations on hydrogen rings</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/ed8d2df5b4e196f95964fe2a6041c306/dmet_full_h2x3_express_hf.py"><code class="xref download docutils literal notranslate"><span class="pre">dmet_full_h2x3_express_hf.py</span></code></a></p></td>
+<td><p>Full DMET calculations on hydrogen rings.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/1dd5afae491d7df9b35b463ff7bb6364/dmet_one_h2x3_express_hf.py"><code class="xref download docutils literal notranslate"><span class="pre">dmet_one_h2x3_express_hf.py</span></code></a></p></td>
+<td><p>One-shot DMET calculations on hydrogen rings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/ddee000b6e2f7746d4764bc14eee0a73/impurity_dmet_h2x3_express_vqe.py"><code class="xref download docutils literal notranslate"><span class="pre">impurity_dmet_h2x3_express_vqe.py</span></code></a></p></td>
+<td><p>An example impurity DMET simulation of a 3-dihydrogen ring using the express module.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="express">
+<h2>express<a class="headerlink" href="#express" title="Permalink to this heading">¶</a></h2>
+<p>Examples of usage of the built-in example molecular data in InQuanto.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/855aeb16354710f713d8bfdf385a5b0c/get_started_express.py"><code class="xref download docutils literal notranslate"><span class="pre">get_started_express.py</span></code></a></p></td>
+<td><p>Basic code snippets to use express, operators and states.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/f68921d775510b333d53d4c0f4c523c7/h5_operations.py"><code class="xref download docutils literal notranslate"><span class="pre">h5_operations.py</span></code></a></p></td>
+<td><p>Built-in example molecular data.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="mappings">
+<h2>mappings<a class="headerlink" href="#mappings" title="Permalink to this heading">¶</a></h2>
+<p>Examples of fermion-qubit mapping functionality.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/01d21759ecce6fbf403767375ee95143/mapping_jw.py"><code class="xref download docutils literal notranslate"><span class="pre">mapping_jw.py</span></code></a></p></td>
+<td><p>Use of the Jordan-Wigner mapping from fermions to qubits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/42f84066314c1d336c1218e756b8677b/mapping_bk.py"><code class="xref download docutils literal notranslate"><span class="pre">mapping_bk.py</span></code></a></p></td>
+<td><p>Use of the Bravyi-Kitaev mapping from fermions to qubits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/03ad84b1a73d8b333bd79949df1cdd11/mapping_paraparticular.py"><code class="xref download docutils literal notranslate"><span class="pre">mapping_paraparticular.py</span></code></a></p></td>
+<td><p>Use and comparison of the paraparticle mapping from fermions to qubits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="minimizers">
+<h2>minimizers<a class="headerlink" href="#minimizers" title="Permalink to this heading">¶</a></h2>
+<p>Examples of classical minimizers in InQuanto.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/3f8dc4f6bf7b59f31afd9235b8faaed3/integrators.py"><code class="xref download docutils literal notranslate"><span class="pre">integrators.py</span></code></a></p></td>
+<td><p>Symbolic evaluation and comparing integrator methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/ce6f5bde93b8b74200eadc5720a30400/minimizers.py"><code class="xref download docutils literal notranslate"><span class="pre">minimizers.py</span></code></a></p></td>
+<td><p>Use of minimizers.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="operators">
+<h2>operators<a class="headerlink" href="#operators" title="Permalink to this heading">¶</a></h2>
+<p>Examples of functionality of operator and state classes.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/4fb7a2b57aea31e90d7636caf9258c59/orbital_transformer.py"><code class="xref download docutils literal notranslate"><span class="pre">orbital_transformer.py</span></code></a></p></td>
+<td><p>Orbital transformation methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/ad703b221af731de150655eb32c91fff/double_factorization_lih_sv.py"><code class="xref download docutils literal notranslate"><span class="pre">double_factorization_lih_sv.py</span></code></a></p></td>
+<td><p>Statevector calculations of energy with a double factorized hamiltonian.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/2969f70c9694efa51dd38df4fdcf3a4c/orbital_optimizer.py"><code class="xref download docutils literal notranslate"><span class="pre">orbital_optimizer.py</span></code></a></p></td>
+<td><p>Orbital optimization using Pipek-Mezey as an example.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/b2eeb5020f5e79d0816bc61effb1a4f0/chemistry_integral_operators.py"><code class="xref download docutils literal notranslate"><span class="pre">chemistry_integral_operators.py</span></code></a></p></td>
+<td><p>Creation of ChemistryRestrictedIntegralOperator (CRIO) and conversion to FermionOperator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/8d27af64d165dabdf8bcf9316fef8c43/qubit_state.py"><code class="xref download docutils literal notranslate"><span class="pre">qubit_state.py</span></code></a></p></td>
+<td><p>Construction of QubitState and demonstration of some functionality.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/c7a8d7cd3ee2f7a4de32ae27132c68f8/double_factorization_h2.py"><code class="xref download docutils literal notranslate"><span class="pre">double_factorization_h2.py</span></code></a></p></td>
+<td><p>Simple shot-based energy calculation using a double factorized hamiltonian.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/e3f2c38ae126beb8f6b90cfefc71455a/qubit_operator.py"><code class="xref download docutils literal notranslate"><span class="pre">qubit_operator.py</span></code></a></p></td>
+<td><p>Construction of QubitOperator and demonstration of some functionality.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/93b39120e9c3015e10c4e9ed69db302e/fermion_operator.py"><code class="xref download docutils literal notranslate"><span class="pre">fermion_operator.py</span></code></a></p></td>
+<td><p>Examples of some FermionOperator methods.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/1d1bb92d8fdaad593932597d570c55fe/double_factorization_h3.py"><code class="xref download docutils literal notranslate"><span class="pre">double_factorization_h3.py</span></code></a></p></td>
+<td><p>Simple shot-based energy calculation using a double factorized, unrestricted-spin hamiltonian.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/0237bab9c5b6afb21aa624375e81591c/fermion_state.py"><code class="xref download docutils literal notranslate"><span class="pre">fermion_state.py</span></code></a></p></td>
+<td><p>Creation of FermionState objects and demonstration of some functionality.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="protocols">
+<h2>protocols<a class="headerlink" href="#protocols" title="Permalink to this heading">¶</a></h2>
+<p>Examples demonstrating usage of protocol classes.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/964e9964a4b807bfa4dc80b864bf6921/bootstrapping_expval.py"><code class="xref download docutils literal notranslate"><span class="pre">bootstrapping_expval.py</span></code></a></p></td>
+<td><p>Low level usage of BackendResult resampling classes, like Bootstrapping.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/ddfaecc916ab7cbd2af4e4860cb937eb/pauli_hadamard_protocols.py"><code class="xref download docutils literal notranslate"><span class="pre">pauli_hadamard_protocols.py</span></code></a></p></td>
+<td><p>Usage of the PauliAveraging and HadamardTest protocols.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/c1b2fa541b9d3c2c90116c0cb9125548/feature_projective_measurements.py"><code class="xref download docutils literal notranslate"><span class="pre">feature_projective_measurements.py</span></code></a></p></td>
+<td><p>Example using a simple ProjectiveMeasurements protocol.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/b254dac29df785d9721bd0d9996c21b2/feature_credits_cost.py"><code class="xref download docutils literal notranslate"><span class="pre">feature_credits_cost.py</span></code></a></p></td>
+<td><p>Protocol observable averaging to calculate expectation values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/07c328e785688c6c66e7d17db57e61a9/hadamard_direct_df_grad_expr.py"><code class="xref download docutils literal notranslate"><span class="pre">hadamard_direct_df_grad_expr.py</span></code></a></p></td>
+<td><p>Use of Hadamard test derivative for STO-3G H2 expectation value measurement in direct and indirect mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/988b7c3b904e13f81ab5ad3213ff605b/feature_partition_strategy.py"><code class="xref download docutils literal notranslate"><span class="pre">feature_partition_strategy.py</span></code></a></p></td>
+<td><p>Partition measurement reduction strategies for PauliAveraging protocol.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/62c9fc4edba36c655b2808b51825d87e/qermit_spam_zne.py"><code class="xref download docutils literal notranslate"><span class="pre">qermit_spam_zne.py</span></code></a></p></td>
+<td><p>Running protocols via Qermit’s MitRes and MitEx.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/728cee9597081f8097d8a8d5f3bb831c/overlap_squared_protocols.py"><code class="xref download docutils literal notranslate"><span class="pre">overlap_squared_protocols.py</span></code></a></p></td>
+<td><p>Compare different shot based protocols for calculating an overlap squared.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/c9b9ced8898c7a3142034e667af368ea/hadamard_test_overlap.py"><code class="xref download docutils literal notranslate"><span class="pre">hadamard_test_overlap.py</span></code></a></p></td>
+<td><p>Calculating complex overlaps with the HadamardTestOverlap protocol.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/33e8fced5ea05ab80f35cf89226c0d1d/hadamard_df_grad_expr.py"><code class="xref download docutils literal notranslate"><span class="pre">hadamard_df_grad_expr.py</span></code></a></p></td>
+<td><p>Use of Hadamard test derivative for STO-3G H2 expectation value measurement.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/c1ebf7039afe0c172733ff2802487af1/expval_mitigation_methods%2Bqermit.py"><code class="xref download docutils literal notranslate"><span class="pre">expval_mitigation_methods+qermit.py</span></code></a></p></td>
+<td><p>Running protocols via Qermit’s MitRes and MitEx and inquanto’s noise mitigation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/c7f5edf6e6adeb6a5d440542a06a3100/expval_pmsv.py"><code class="xref download docutils literal notranslate"><span class="pre">expval_pmsv.py</span></code></a></p></td>
+<td><p>Example using PMSV error mitigation to calculate expectation values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/9e380bea005ec87202002e04dfe81c99/hadamard_df_grad_hea.py"><code class="xref download docutils literal notranslate"><span class="pre">hadamard_df_grad_hea.py</span></code></a></p></td>
+<td><p>Use of Hadamard test derivative for STO-3G H2 expectation value measurement with a hardware-efficient ansatz.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/b621a15e2b7b02a9783ea75c56142698/expval_spam.py"><code class="xref download docutils literal notranslate"><span class="pre">expval_spam.py</span></code></a></p></td>
+<td><p>Running PauliAveraging with inquanto’s noise mitigation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/e5b604fcd1cb217044f4999a381d36b5/factorized_overlap.py"><code class="xref download docutils literal notranslate"><span class="pre">factorized_overlap.py</span></code></a></p></td>
+<td><p>Calculating complex overlaps with the FactorizedOverlap protocols and comparing to HadamardTestOverlap.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/fe65d4d51353d2bd4874df85ee461331/feature_observable_averaging.py"><code class="xref download docutils literal notranslate"><span class="pre">feature_observable_averaging.py</span></code></a></p></td>
+<td><p>Protocol observable averaging to calculate expectation values.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="protocols-phase-estimation">
+<h2>protocols/phase_estimation<a class="headerlink" href="#protocols-phase-estimation" title="Permalink to this heading">¶</a></h2>
+<p>Examples demonstrating usage of the quantum phase estimation protocols.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/93801a4d6232adf5188e2819a6dda968/hadamard_test_iqpe.py"><code class="xref download docutils literal notranslate"><span class="pre">hadamard_test_iqpe.py</span></code></a></p></td>
+<td><p>Demonstration of the generation of IPEA circuits, and their use for Hadamard test sampling.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/13cc0ab8fd36ad2c5669ec213af9b636/hadamard_test_iqpe_statevector.py"><code class="xref download docutils literal notranslate"><span class="pre">hadamard_test_iqpe_statevector.py</span></code></a></p></td>
+<td><p>Demonstration of the generation of IPEA unitaries for statevector simulation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/18522fae01dedb2ee54f160d5e6d23ad/hadamard_test_iqpe_quantinuum.py"><code class="xref download docutils literal notranslate"><span class="pre">hadamard_test_iqpe_quantinuum.py</span></code></a></p></td>
+<td><p>Demonstration of the generation of IPEA circuits with the specialized Quantinuum protocols.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="spaces">
+<h2>spaces<a class="headerlink" href="#spaces" title="Permalink to this heading">¶</a></h2>
+<p>Examples of space classes for generating operators and states.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/d8b60e7b991048c30d5adfc0d22c783e/qubit_spaces.py"><code class="xref download docutils literal notranslate"><span class="pre">qubit_spaces.py</span></code></a></p></td>
+<td><p>Use of QubitSpace object to generate qubit operators.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/997d60636ca59c877b09508d1f06944f/parafermion_space.py"><code class="xref download docutils literal notranslate"><span class="pre">parafermion_space.py</span></code></a></p></td>
+<td><p>Use of ParaFermionSpace objects to generate parafermionic states and operators.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/cb31613fad82d51f445f8c0fb8ab905d/fermion_spaces.py"><code class="xref download docutils literal notranslate"><span class="pre">fermion_spaces.py</span></code></a></p></td>
+<td><p>Use of FermionSpace objects to generate fermionic states and operators, including point group symmetry.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="symmetry">
+<h2>symmetry<a class="headerlink" href="#symmetry" title="Permalink to this heading">¶</a></h2>
+<p>Examples of symmetry classes and functionality.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/099d169d5dfb379dc8030a0fb492d8c0/fermionic_symmetry_operators.py"><code class="xref download docutils literal notranslate"><span class="pre">fermionic_symmetry_operators.py</span></code></a></p></td>
+<td><p>Finding fermionic Z2 symmetry operators.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/ec2df3475dcbfc671b297dbecabea842/qubit_symmetry_operators.py"><code class="xref download docutils literal notranslate"><span class="pre">qubit_symmetry_operators.py</span></code></a></p></td>
+<td><p>Finding qubit Z2 symmetry operators.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/08a99529bfe5a912bb8c7e93e9be56e5/point_group.py"><code class="xref download docutils literal notranslate"><span class="pre">point_group.py</span></code></a></p></td>
+<td><p>Use of PointGroup class containing point group symmetry information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/c9ccc86025c2990473ff0cae073cd009/qubit_tapering.py"><code class="xref download docutils literal notranslate"><span class="pre">qubit_tapering.py</span></code></a></p></td>
+<td><p>Qubit tapering - operators and Ansatzae.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../extensions/extensions-overview.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">InQuanto-Extensions</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="InQ_tut_wft_dft_2.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Projection-based embedding with energy corrections</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+              Copyright &#169; 2024 Quantinuum Ltd. All rights reserved.
+            </div>
+            <div class="terms" style="display:flex; gap:0.5rem; align-items:center; margin: 0.25rem 0rem;">
+              <a href="https://www.quantinuum.com/privacy-statement" target="_blank">Privacy Statement</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/cookie-notice" target="_blank">Cookie Notice</a>
+              <div role="separator">/</div>
+              <a href="https://www.quantinuum.com/terms-conditions" target="_blank">Terms and Conditions</a>
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Overview of examples</a><ul>
+<li><a class="reference internal" href="#algorithms-adapt">algorithms/adapt</a></li>
+<li><a class="reference internal" href="#algorithms-qse">algorithms/qse</a></li>
+<li><a class="reference internal" href="#algorithms-time-evolution">algorithms/time_evolution</a></li>
+<li><a class="reference internal" href="#algorithms-vqd">algorithms/vqd</a></li>
+<li><a class="reference internal" href="#algorithms-vqe">algorithms/vqe</a></li>
+<li><a class="reference internal" href="#ansatzes">ansatzes</a></li>
+<li><a class="reference internal" href="#computables">computables</a></li>
+<li><a class="reference internal" href="#computables-atomic">computables/atomic</a></li>
+<li><a class="reference internal" href="#computables-composite">computables/composite</a></li>
+<li><a class="reference internal" href="#computables-composite-gf">computables/composite/gf</a></li>
+<li><a class="reference internal" href="#computables-composite-rdm">computables/composite/rdm</a></li>
+<li><a class="reference internal" href="#computables-primitive">computables/primitive</a></li>
+<li><a class="reference internal" href="#core">core</a></li>
+<li><a class="reference internal" href="#embeddings">embeddings</a></li>
+<li><a class="reference internal" href="#express">express</a></li>
+<li><a class="reference internal" href="#mappings">mappings</a></li>
+<li><a class="reference internal" href="#minimizers">minimizers</a></li>
+<li><a class="reference internal" href="#operators">operators</a></li>
+<li><a class="reference internal" href="#protocols">protocols</a></li>
+<li><a class="reference internal" href="#protocols-phase-estimation">protocols/phase_estimation</a></li>
+<li><a class="reference internal" href="#spaces">spaces</a></li>
+<li><a class="reference internal" href="#symmetry">symmetry</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/jquery.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    </body>
+</html>

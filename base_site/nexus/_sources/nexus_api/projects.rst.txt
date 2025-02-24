@@ -1,0 +1,13 @@
+
+projects
+=============================================
+
+.. automodule:: qnexus.client.projects
+   :members:
+   :exclude-members: Params
+
+.. autoclass:: qnexus.projects.ProjectRef
+   :members: df
+
+.. autoclass:: qnexus.projects.Property
+   :members: df

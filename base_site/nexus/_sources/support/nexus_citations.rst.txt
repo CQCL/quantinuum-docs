@@ -1,0 +1,28 @@
+How to Cite Quantinuum Nexus
+=============================
+
+This document provides information on how to cite use of the Quantinuum Nexus platform for 
+third-party academic papers. If you would like to reference the Nexus platform in another context,
+such as a press release, please contact Quantinuum at `press@quantinuum.com <mailto:press@quantinuum.com>`_.
+
+
+
+Research papers
+-----------------
+
+All research papers that use Quantinuum Nexus as part of their work should cite the platform.
+
+
+.. code-block:: text
+
+    Quantinuum Nexus. https://nexus.quantinuum.com/, 2024.
+
+Example Bibtex entry:
+
+.. code-block:: bibtex
+
+    @misc{quantinuum_nexus,
+      title={Quantinuum Nexus},
+      url={https://nexus.quantinuum.com/},
+      year={2024},
+    }

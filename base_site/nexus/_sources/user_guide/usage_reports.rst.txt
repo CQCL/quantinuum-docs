@@ -1,0 +1,16 @@
+Usage Reports
+=============
+
+Usage reports can be generated to show your individual usage of Quantinuum Systems.
+
+You can view your usage reports by navigating to the "Organization" tab on the settings page, under the "My Usage Reports" section.
+
+Create Usage Reports
+------------------------
+
+You can generate a usage report in the "Organization" tab on the settings page, under the "My Usage Reports" section.
+
+From here you can click "Create Report" which will open a dialog where you can name your report, set the expiration length and select the date range for the report.
+
+.. note::
+   Once a report has expired it will no longer be available for download.

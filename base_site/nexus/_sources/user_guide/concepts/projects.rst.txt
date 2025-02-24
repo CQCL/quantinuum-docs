@@ -1,0 +1,32 @@
+.. _projects:
+
+Projects
+========
+
+When you :ref:`compile or run a quantum circuit <jobs>` in Nexus, you need to choose a project to associate that circuit with.
+Projects allow you to store related data together. For example, you can use a project to store all the circuits and results that are part
+of a VQE experiment.
+
+Data that projects can contain includes:
+
+* Circuits that were compiled, along with data about the compilation steps and intermediate circuits
+* Circuits that were run, along with the results from running the circuits,
+  and :ref:`snapshots of the quantum system they were run on <backend_snapshots>`
+* Details of how long the circuit compilation or circuit execution jobs have taken, and the status of the jobs
+* Extra properties on the project which can be used to store information about an experiment, for example,
+  or to make it easier to search for it among all your projects
+
+You can create as many projects as you need, but each new project you create needs to have a name that you have not given to
+any other project you have created.
+
+.. warning::
+
+    Projects created by other users can have the same name as projects you create. This may cause confusion if they share that project with you.
+
+You can also share a project with other users or with teams. To do this, you must have :ref:`administrator permissions <access_control>` on
+the project. If you created a project, you automatically have administrator permissions on that project.
+
+If you are no longer working on a project, and want to make sure it cannot have data added to it, you can archive the project. To do this,
+you must have :ref:`maintainer or administrator permissions <access_control>` on the project.
+
+You can also delete an archived project if you have maintainer or administrator permissions on the project.

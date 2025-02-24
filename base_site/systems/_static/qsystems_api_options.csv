@@ -1,0 +1,5 @@
+**API Options**, **Description**, **Default Values**, **Allowed Values**
+*no-reduce*, "turns off all TKET optimizations, all hardware compiler gate combination logic, and requires exact 1:1 correspondence of two-qubit gates with gates on the system. This requires the circuit be submitted using one of the native two-qubit gates on the system, otherwise an error will be returned", True, Boolean
+*no-opt*, "turns off all TKET optimizations and all hardware compiler gate combination logic. If more than 1 native gate is used in the circuit, the circuit will be rebased to 1 native gate, but no further gate combination logic will occur. The job will fail if no-opt is set to True and the circuit contains non-native gates.", True, Boolean
+*TKET-opt-level*, "the TKET optimization level to apply, with TKET optimizations turned on, the hardware compiler will provide further gate combination logic as makes sense for ions and transport", 2, "0, 1, 2, None"
+*no-qir-convert*, "Uses the legacy QASM compilation flow for programs, without converting QASM programs to QIR. Accepts Boolean argument.", False, Boolean

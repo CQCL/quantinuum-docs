@@ -1,0 +1,22 @@
+Managing your organization
+==========================
+
+Organization administrators can use the organization management page to
+manage an organization and perform actions like :doc:`invite users<inviting_users>`,
+see the :doc:`organization's activity<viewing_activity>`,
+manage :doc:`quotas<quotas>`, :doc:`jobs<job_management>` and :doc:`priorities<priority_management>`
+, as well as :doc:`grant or revoke admin permissions<organization_admin>` to other users.
+
+The organization admin can access the organization management page via:
+
+#. The "Manage Organization" option in the top right user's menu.
+
+   .. image:: images/org_admin_user_menu.png
+     :width: 300
+     :alt: user menu
+
+#. The "Manage Organization" button in the Settings -> Organization page.
+
+   .. image:: images/org_admin_org_settings.png
+     :width: 800
+     :alt: Settings Organization page

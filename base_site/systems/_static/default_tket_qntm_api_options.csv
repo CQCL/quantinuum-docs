@@ -1,0 +1,5 @@
+**API Option**, **Value Type**, **Default Value**
+`simulator`, str, `state-vector`
+`no-opt`, bool, True
+`noreduce`, bool, True
+`tket-opt-level`, bool, None

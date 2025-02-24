@@ -1,0 +1,10 @@
+
+devices
+=============================================
+
+.. automodule:: qnexus.client.devices
+   :members:
+   :exclude-members: Params
+
+.. autoclass:: qnexus.devices.Device
+   :members: df

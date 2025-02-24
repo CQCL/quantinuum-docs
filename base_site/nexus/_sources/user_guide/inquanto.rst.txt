@@ -1,0 +1,12 @@
+.. _inquanto_integration_page:
+
+InQuanto Integration
+=================================
+
+``InQuanto`` is Quantinuum's platform for quantum computational chemistry, and optionally integrates with Nexus. 
+If you have access to InQuanto as part of your plan, you can access it in the :ref:`Nexus Lab <nexus_lab>`.  
+
+
+InQuanto documentation can be found :inquanto:`here <introduction/overview>`.
+
+

@@ -1,0 +1,14 @@
+:orphan:
+
+Guides
+========
+
+Covers basic Nexus usage for users and administrators, mostly focusing on the web user interface.
+
+
+.. toctree::
+    :caption: Guides
+    :maxdepth: 1
+    
+    user_guide/user_guide.rst
+    admin_guide/admin_guide.rst

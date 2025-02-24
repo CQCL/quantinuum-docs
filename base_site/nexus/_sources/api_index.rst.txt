@@ -1,0 +1,14 @@
+:orphan:
+
+Nexus API Reference
+=============================================
+
+This document lists the API documentation for Nexus.
+
+.. toctree::
+    :maxdepth: 1
+
+    nexus_api/openapi.rst
+    nexus_api/qnexus_api.rst
+
+
