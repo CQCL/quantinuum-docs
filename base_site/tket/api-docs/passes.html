@@ -815,7 +815,7 @@ Raises an error if no known TK1 decomposition can be found based on the given ga
 <dl class="py function">
 <dt class="sig sig-object py" id="pytket.passes.DecomposeClassicalExp">
 <span class="sig-prename descclassname"><span class="pre">pytket.passes.</span></span><span class="sig-name descname"><span class="pre">DecomposeClassicalExp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.passes.BasePass" title="pytket.passes.BasePass"><span class="pre">pytket.passes.BasePass</span></a></span></span><a class="headerlink" href="#pytket.passes.DecomposeClassicalExp" title="Link to this definition">¶</a></dt>
-<dd><p>Replaces each <code class="xref py py-class docutils literal notranslate"><span class="pre">ClassicalExpBox</span></code> and <cite>ClExprOp</cite> by a sequence of classical gates.</p>
+<dd><p>Replaces each <cite>ClExprOp</cite> by a sequence of classical gates.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -931,14 +931,11 @@ Raises an error if no known TK1 decomposition can be found based on the given ga
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pytket.passes.FlattenRelabelRegistersPass">
-<span class="sig-prename descclassname"><span class="pre">pytket.passes.</span></span><span class="sig-name descname"><span class="pre">FlattenRelabelRegistersPass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'q'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relabel_classical_expressions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.passes.BasePass" title="pytket.passes.BasePass"><span class="pre">pytket.passes.BasePass</span></a></span></span><a class="headerlink" href="#pytket.passes.FlattenRelabelRegistersPass" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pytket.passes.</span></span><span class="sig-name descname"><span class="pre">FlattenRelabelRegistersPass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'q'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.passes.BasePass" title="pytket.passes.BasePass"><span class="pre">pytket.passes.BasePass</span></a></span></span><a class="headerlink" href="#pytket.passes.FlattenRelabelRegistersPass" title="Link to this definition">¶</a></dt>
 <dd><p>Removes empty Quantum wires from the Circuit and relabels all Qubit to a register from passed name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>label</strong> – Name to relabel remaining Qubit to, default ‘q’.</p></li>
-<li><p><strong>relabel_classical_expressions</strong> – Whether to relabel arguments of expressions held in <cite>ClassicalExpBox</cite>.</p></li>
-</ul>
+<dd class="field-odd"><p><strong>label</strong> – Name to relabel remaining Qubit to, default ‘q’.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A pass that removes empty wires and relabels.</p>
@@ -973,21 +970,6 @@ Raises an error if no known TK1 decomposition can be found based on the given ga
 <dd class="field-odd"><p><strong>allow_swaps</strong> – whether to allow implicit wire swaps</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pytket.passes.GlobalisePhasedX">
-<span class="sig-prename descclassname"><span class="pre">pytket.passes.</span></span><span class="sig-name descname"><span class="pre">GlobalisePhasedX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">squash</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.passes.BasePass" title="pytket.passes.BasePass"><span class="pre">pytket.passes.BasePass</span></a></span></span><a class="headerlink" href="#pytket.passes.GlobalisePhasedX" title="Link to this definition">¶</a></dt>
-<dd><p>Turns all PhasedX and NPhasedX gates into global gates</p>
-<p>Replaces any PhasedX gates with global NPhasedX gates. By default, this transform will squash all single-qubit gates to PhasedX and Rz gates before proceeding further. Existing non-global NPhasedX will not be preserved. This is the recommended setting for best performance. If squashing is disabled, each non-global PhasedX gate will be replaced with two global NPhasedX, but any other gates will be left untouched.</p>
-<p>DEPRECATED: This pass will be removed no earlier than three months after the pytket 1.35 release.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>squash</strong> – Whether to squash the circuit in pre-processing (default: true).</p>
-</dd>
-</dl>
-<p>If squash=true (default), the <cite>GlobalisePhasedX</cite> transform’s <cite>apply</cite> method will always return true. For squash=false, <cite>apply()</cite> will return true if the circuit was changed and false otherwise.</p>
-<p>It is not recommended to use this pass with symbolic expressions, as in certain cases a blow-up in symbolic expression sizes may occur.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -1366,12 +1348,6 @@ Raises an error if no known TK1 decomposition can be found based on the given ga
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pytket.passes.SynthesiseUMD">
-<span class="sig-prename descclassname"><span class="pre">pytket.passes.</span></span><span class="sig-name descname"><span class="pre">SynthesiseUMD</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.passes.BasePass" title="pytket.passes.BasePass"><span class="pre">pytket.passes.BasePass</span></a></span></span><a class="headerlink" href="#pytket.passes.SynthesiseUMD" title="Link to this definition">¶</a></dt>
-<dd><p>Optimises and converts all gates to XXPhase, PhasedX, Rz and Phase. DEPRECATED: will be removed after pytket 1.32.</p>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="pytket.passes.ThreeQubitSquash">
 <span class="sig-prename descclassname"><span class="pre">pytket.passes.</span></span><span class="sig-name descname"><span class="pre">ThreeQubitSquash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allow_swaps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.passes.BasePass" title="pytket.passes.BasePass"><span class="pre">pytket.passes.BasePass</span></a></span></span><a class="headerlink" href="#pytket.passes.ThreeQubitSquash" title="Link to this definition">¶</a></dt>
 <dd><p>Squash three-qubit subcircuits into subcircuits having fewer CX gates, when possible, and apply Clifford simplification.</p>
@@ -1666,7 +1642,6 @@ lambdas or circuits.</p>
 <li><a class="reference internal" href="#pytket.passes.FlattenRelabelRegistersPass"><code class="docutils literal notranslate"><span class="pre">FlattenRelabelRegistersPass()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.passes.FullMappingPass"><code class="docutils literal notranslate"><span class="pre">FullMappingPass()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.passes.FullPeepholeOptimise"><code class="docutils literal notranslate"><span class="pre">FullPeepholeOptimise()</span></code></a></li>
-<li><a class="reference internal" href="#pytket.passes.GlobalisePhasedX"><code class="docutils literal notranslate"><span class="pre">GlobalisePhasedX()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.passes.GreedyPauliSimp"><code class="docutils literal notranslate"><span class="pre">GreedyPauliSimp()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.passes.GuidedPauliSimp"><code class="docutils literal notranslate"><span class="pre">GuidedPauliSimp()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.passes.KAKDecomposition"><code class="docutils literal notranslate"><span class="pre">KAKDecomposition()</span></code></a></li>
@@ -1695,7 +1670,6 @@ lambdas or circuits.</p>
 <li><a class="reference internal" href="#pytket.passes.SquashTK1"><code class="docutils literal notranslate"><span class="pre">SquashTK1()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.passes.SynthesiseTK"><code class="docutils literal notranslate"><span class="pre">SynthesiseTK()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.passes.SynthesiseTket"><code class="docutils literal notranslate"><span class="pre">SynthesiseTket()</span></code></a></li>
-<li><a class="reference internal" href="#pytket.passes.SynthesiseUMD"><code class="docutils literal notranslate"><span class="pre">SynthesiseUMD()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.passes.ThreeQubitSquash"><code class="docutils literal notranslate"><span class="pre">ThreeQubitSquash()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.passes.ZXGraphlikeOptimisation"><code class="docutils literal notranslate"><span class="pre">ZXGraphlikeOptimisation()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.passes.ZZPhaseToRz"><code class="docutils literal notranslate"><span class="pre">ZZPhaseToRz()</span></code></a></li>

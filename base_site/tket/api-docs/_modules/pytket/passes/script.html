@@ -381,7 +381,6 @@ as="style">
     <span class="n">SimplifyInitial</span><span class="p">,</span>
     <span class="n">SimplifyMeasured</span><span class="p">,</span>
     <span class="n">SynthesiseTket</span><span class="p">,</span>
-    <span class="n">SynthesiseUMD</span><span class="p">,</span>
     <span class="n">ThreeQubitSquash</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">pytket.transform</span> <span class="kn">import</span> <span class="n">PauliSynthStrat</span>
@@ -425,7 +424,6 @@ as="style">
 <span class="s2">    | simplify_initial_no_classical</span>
 <span class="s2">    | simplify_measured</span>
 <span class="s2">    | synthesise_tket</span>
-<span class="s2">    | synthesise_umd</span>
 <span class="s2">    | three_qubit_squash</span>
 <span class="s2">seq_pass: &quot;[&quot; pass_list &quot;]&quot;</span>
 <span class="s2">pass_list: comp_pass (&quot;,&quot; comp_pass)*</span>
@@ -468,7 +466,6 @@ as="style">
 <span class="s2">simplify_initial_no_classical: &quot;SimplifyInitialNoClassical&quot;</span>
 <span class="s2">simplify_measured: &quot;SimplifyMeasured&quot;</span>
 <span class="s2">synthesise_tket: &quot;SynthesiseTket&quot;</span>
-<span class="s2">synthesise_umd: &quot;SynthesiseUMD&quot;</span>
 <span class="s2">three_qubit_squash: &quot;ThreeQubitSquash&quot;</span>
 
 <span class="s2">cx_config_type:</span>
@@ -639,9 +636,6 @@ as="style">
 
     <span class="k">def</span> <span class="nf">synthesise_tket</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BasePass</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">SynthesiseTket</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">synthesise_umd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BasePass</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">SynthesiseUMD</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">three_qubit_squash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BasePass</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ThreeQubitSquash</span><span class="p">()</span>

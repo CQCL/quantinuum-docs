@@ -362,7 +362,6 @@ as="style">
 
 <span class="kn">from</span> <span class="nn">pytket.circuit</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">BarrierOp</span><span class="p">,</span>
-    <span class="n">ClassicalExpBox</span><span class="p">,</span>
     <span class="n">ClExpr</span><span class="p">,</span>
     <span class="n">ClExprOp</span><span class="p">,</span>
     <span class="n">Command</span><span class="p">,</span>
@@ -639,7 +638,6 @@ as="style">
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">return_gate_dict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">maxwidth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
-        <span class="n">use_clexpr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">q_registers</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
@@ -649,7 +647,6 @@ as="style">
         <span class="bp">self</span><span class="o">.</span><span class="n">include</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">return_gate_dict</span> <span class="o">=</span> <span class="n">return_gate_dict</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">maxwidth</span> <span class="o">=</span> <span class="n">maxwidth</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">use_clexpr</span> <span class="o">=</span> <span class="n">use_clexpr</span>
 
     <span class="k">def</span> <span class="nf">_fresh_temp_bit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">_TEMP_BIT_NAME</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_registers</span><span class="p">:</span>
@@ -1043,22 +1040,6 @@ as="style">
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">exp_args</span><span class="p">,</span> <span class="n">numbers_dict</span>
 
-    <span class="k">def</span> <span class="nf">_cexpbox_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span> <span class="n">LogicExp</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CommandDict</span><span class="p">:</span>
-        <span class="n">box</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="n">exp</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ClassicalExpBox&quot;</span><span class="p">,</span>
-        <span class="p">}</span>
-        <span class="n">args</span><span class="p">,</span> <span class="n">numbers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_exp_io</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
-        <span class="n">box</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="n">args</span><span class="p">,</span>
-            <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;box&quot;</span><span class="p">:</span> <span class="n">box</span><span class="p">,</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ClassicalExpBox&quot;</span><span class="p">,</span>
-            <span class="p">},</span>
-        <span class="p">}</span>
-
     <span class="k">def</span> <span class="nf">_clexpr_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span> <span class="n">LogicExp</span><span class="p">,</span> <span class="n">out_args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CommandDict</span><span class="p">:</span>
         <span class="c1"># Convert the LogicExp to a serialization of a command containing the</span>
         <span class="c1"># corresponding ClExprOp.</span>
@@ -1072,15 +1053,6 @@ as="style">
             <span class="p">},</span>
             <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">arg</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">],</span>
         <span class="p">}</span>
-
-    <span class="k">def</span> <span class="nf">_logic_exp_as_cmd_dict</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">exp</span><span class="p">:</span> <span class="n">LogicExp</span><span class="p">,</span> <span class="n">out_args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">]</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CommandDict</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_clexpr_dict</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">out_args</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_clexpr</span>
-            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cexpbox_dict</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">out_args</span><span class="p">)</span>
-        <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">assign</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">CommandDict</span><span class="p">]:</span>
         <span class="n">child_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
@@ -1119,7 +1091,7 @@ as="style">
         <span class="n">args</span> <span class="o">=</span> <span class="n">args_uids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out_arg</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">LogicExp</span><span class="p">):</span>
-                <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logic_exp_as_cmd_dict</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clexpr_dict</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)):</span>
                 <span class="k">assert</span> <span class="n">exp</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
                 <span class="k">yield</span> <span class="p">{</span>
@@ -1136,9 +1108,9 @@ as="style">
         <span class="k">else</span><span class="p">:</span>
             <span class="n">reg</span> <span class="o">=</span> <span class="n">out_arg</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">RegLogicExp</span><span class="p">):</span>
-                <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logic_exp_as_cmd_dict</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clexpr_dict</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">BitLogicExp</span><span class="p">):</span>
-                <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logic_exp_as_cmd_dict</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">args</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clexpr_dict</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">args</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
                 <span class="k">yield</span> <span class="p">{</span>
                     <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="n">args</span><span class="p">,</span>
@@ -1302,28 +1274,26 @@ as="style">
         <span class="k">return</span> <span class="n">outdict</span>
 
 
-<span class="k">def</span> <span class="nf">parser</span><span class="p">(</span><span class="n">maxwidth</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">use_clexpr</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Lark</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">parser</span><span class="p">(</span><span class="n">maxwidth</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Lark</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">Lark</span><span class="p">(</span>
         <span class="n">grammar</span><span class="p">,</span>
         <span class="n">start</span><span class="o">=</span><span class="s2">&quot;prog&quot;</span><span class="p">,</span>
         <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">parser</span><span class="o">=</span><span class="s2">&quot;lalr&quot;</span><span class="p">,</span>
         <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">transformer</span><span class="o">=</span><span class="n">CircuitTransformer</span><span class="p">(</span><span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">,</span> <span class="n">use_clexpr</span><span class="o">=</span><span class="n">use_clexpr</span><span class="p">),</span>
+        <span class="n">transformer</span><span class="o">=</span><span class="n">CircuitTransformer</span><span class="p">(</span><span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">),</span>
     <span class="p">)</span>
 
 
 <span class="n">g_parser</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">g_maxwidth</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="n">g_use_clexpr</span> <span class="o">=</span> <span class="kc">False</span>
 
 
-<span class="k">def</span> <span class="nf">set_parser</span><span class="p">(</span><span class="n">maxwidth</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">use_clexpr</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">global</span> <span class="n">g_parser</span><span class="p">,</span> <span class="n">g_maxwidth</span><span class="p">,</span> <span class="n">g_use_clexpr</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">g_parser</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">g_maxwidth</span> <span class="o">!=</span> <span class="n">maxwidth</span><span class="p">)</span> <span class="ow">or</span> <span class="n">g_use_clexpr</span> <span class="o">!=</span> <span class="n">use_clexpr</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
-        <span class="n">g_parser</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span><span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">,</span> <span class="n">use_clexpr</span><span class="o">=</span><span class="n">use_clexpr</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">set_parser</span><span class="p">(</span><span class="n">maxwidth</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">global</span> <span class="n">g_parser</span><span class="p">,</span> <span class="n">g_maxwidth</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">g_parser</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">g_maxwidth</span> <span class="o">!=</span> <span class="n">maxwidth</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+        <span class="n">g_parser</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span><span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">)</span>
         <span class="n">g_maxwidth</span> <span class="o">=</span> <span class="n">maxwidth</span>
-        <span class="n">g_use_clexpr</span> <span class="o">=</span> <span class="n">use_clexpr</span>
 
 
 <div class="viewcode-block" id="circuit_from_qasm">
@@ -1332,14 +1302,12 @@ as="style">
     <span class="n">input_file</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;os.PathLike[Any]&quot;</span><span class="p">],</span>
     <span class="n">encoding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
     <span class="n">maxwidth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
-    <span class="n">use_clexpr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Circuit</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A method to generate a tket Circuit from a qasm file.</span>
 
 <span class="sd">    :param input_file: path to qasm file; filename must have ``.qasm`` extension</span>
 <span class="sd">    :param encoding: file encoding (default utf-8)</span>
 <span class="sd">    :param maxwidth: maximum allowed width of classical registers (default 32)</span>
-<span class="sd">    :param use_clexpr: whether to use ClExprOp to represent classical expressions</span>
 <span class="sd">    :return: pytket circuit</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">input_file</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -1347,7 +1315,7 @@ as="style">
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Can only convert .qasm files&quot;</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">circ</span> <span class="o">=</span> <span class="n">circuit_from_qasm_io</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">,</span> <span class="n">use_clexpr</span><span class="o">=</span><span class="n">use_clexpr</span><span class="p">)</span>
+            <span class="n">circ</span> <span class="o">=</span> <span class="n">circuit_from_qasm_io</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">QASMParseError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">QASMParseError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">line</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">input_file</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">circ</span></div>
@@ -1356,18 +1324,15 @@ as="style">
 
 <div class="viewcode-block" id="circuit_from_qasm_str">
 <a class="viewcode-back" href="../../../qasm.html#pytket.qasm.circuit_from_qasm_str">[docs]</a>
-<span class="k">def</span> <span class="nf">circuit_from_qasm_str</span><span class="p">(</span>
-    <span class="n">qasm_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">maxwidth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span> <span class="n">use_clexpr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Circuit</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">circuit_from_qasm_str</span><span class="p">(</span><span class="n">qasm_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">maxwidth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Circuit</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A method to generate a tket Circuit from a qasm string.</span>
 
 <span class="sd">    :param qasm_str: qasm string</span>
 <span class="sd">    :param maxwidth: maximum allowed width of classical registers (default 32)</span>
-<span class="sd">    :param use_clexpr: whether to use ClExprOp to represent classical expressions</span>
 <span class="sd">    :return: pytket circuit</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">g_parser</span>
-    <span class="n">set_parser</span><span class="p">(</span><span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">,</span> <span class="n">use_clexpr</span><span class="o">=</span><span class="n">use_clexpr</span><span class="p">)</span>
+    <span class="n">set_parser</span><span class="p">(</span><span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">g_parser</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
     <span class="n">cast</span><span class="p">(</span><span class="n">CircuitTransformer</span><span class="p">,</span> <span class="n">g_parser</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">transformer</span><span class="p">)</span><span class="o">.</span><span class="n">_reset_context</span><span class="p">(</span>
         <span class="n">reset_wasm</span><span class="o">=</span><span class="kc">False</span>
@@ -1382,13 +1347,9 @@ as="style">
 
 <div class="viewcode-block" id="circuit_from_qasm_io">
 <a class="viewcode-back" href="../../../qasm.html#pytket.qasm.circuit_from_qasm_io">[docs]</a>
-<span class="k">def</span> <span class="nf">circuit_from_qasm_io</span><span class="p">(</span>
-    <span class="n">stream_in</span><span class="p">:</span> <span class="n">TextIO</span><span class="p">,</span> <span class="n">maxwidth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span> <span class="n">use_clexpr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Circuit</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">circuit_from_qasm_io</span><span class="p">(</span><span class="n">stream_in</span><span class="p">:</span> <span class="n">TextIO</span><span class="p">,</span> <span class="n">maxwidth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Circuit</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A method to generate a tket Circuit from a qasm text stream&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">circuit_from_qasm_str</span><span class="p">(</span>
-        <span class="n">stream_in</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">,</span> <span class="n">use_clexpr</span><span class="o">=</span><span class="n">use_clexpr</span>
-    <span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">circuit_from_qasm_str</span><span class="p">(</span><span class="n">stream_in</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">)</span></div>
 
 
 
@@ -1399,7 +1360,6 @@ as="style">
     <span class="n">wasm_file</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;os.PathLike[Any]&quot;</span><span class="p">],</span>
     <span class="n">encoding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
     <span class="n">maxwidth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
-    <span class="n">use_clexpr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Circuit</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A method to generate a tket Circuit from a qasm string and external WASM module.</span>
 
@@ -1411,12 +1371,10 @@ as="style">
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">g_parser</span>
     <span class="n">wasm_module</span> <span class="o">=</span> <span class="n">WasmFileHandler</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">wasm_file</span><span class="p">))</span>
-    <span class="n">set_parser</span><span class="p">(</span><span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">,</span> <span class="n">use_clexpr</span><span class="o">=</span><span class="n">use_clexpr</span><span class="p">)</span>
+    <span class="n">set_parser</span><span class="p">(</span><span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">g_parser</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
     <span class="n">cast</span><span class="p">(</span><span class="n">CircuitTransformer</span><span class="p">,</span> <span class="n">g_parser</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">transformer</span><span class="p">)</span><span class="o">.</span><span class="n">wasm</span> <span class="o">=</span> <span class="n">wasm_module</span>
-    <span class="k">return</span> <span class="n">circuit_from_qasm</span><span class="p">(</span>
-        <span class="n">input_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">,</span> <span class="n">use_clexpr</span><span class="o">=</span><span class="n">use_clexpr</span>
-    <span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">circuit_from_qasm</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">maxwidth</span><span class="o">=</span><span class="n">maxwidth</span><span class="p">)</span></div>
 
 
 
@@ -1479,7 +1437,6 @@ as="style">
             <span class="n">OpType</span><span class="o">.</span><span class="n">ExplicitModifier</span><span class="p">,</span>
             <span class="n">OpType</span><span class="o">.</span><span class="n">SetBits</span><span class="p">,</span>
             <span class="n">OpType</span><span class="o">.</span><span class="n">CopyBits</span><span class="p">,</span>
-            <span class="n">OpType</span><span class="o">.</span><span class="n">ClassicalExpBox</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">hqs_header</span><span class="p">(</span><span class="n">header</span><span class="p">)):</span>
         <span class="k">raise</span> <span class="n">QASMUnsupportedError</span><span class="p">(</span>
@@ -2148,27 +2105,6 @@ as="style">
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mark_as_written</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">add_classical_exp_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">op</span><span class="p">:</span> <span class="n">ClassicalExpBox</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Bit</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">out_args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">op</span><span class="o">.</span><span class="n">get_n_i</span><span class="p">()</span> <span class="p">:]</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out_args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">out_args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">op</span><span class="o">.</span><span class="n">get_exp</span><span class="p">()</span><span class="si">!s}</span><span class="s2">;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mark_as_written</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">out_args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="p">(</span>
-            <span class="n">out_args</span>
-            <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">cregs</span><span class="p">[</span><span class="n">out_args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reg_name</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()[</span>
-                <span class="p">:</span> <span class="n">op</span><span class="o">.</span><span class="n">get_n_io</span><span class="p">()</span> <span class="o">+</span> <span class="n">op</span><span class="o">.</span><span class="n">get_n_o</span><span class="p">()</span>
-            <span class="p">]</span>
-        <span class="p">):</span>
-            <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">out_args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reg_name</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">op</span><span class="o">.</span><span class="n">get_exp</span><span class="p">()</span><span class="si">!s}</span><span class="s2">;</span><span class="se">\n</span><span class="s2">&quot;</span>
-            <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mark_as_written</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">out_args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reg_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">QASMUnsupportedError</span><span class="p">(</span>
-                <span class="s2">&quot;ClassicalExpBox only supported&quot;</span>
-                <span class="s2">&quot; for writing to a single bit or whole registers.&quot;</span>
-            <span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">add_wired_clexpr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">op</span><span class="p">:</span> <span class="n">ClExprOp</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Bit</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">wexpr</span><span class="p">:</span> <span class="n">WiredClExpr</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">expr</span>
         <span class="c1"># 1. Determine the mappings from bit variables to bits and from register</span>
@@ -2335,9 +2271,6 @@ as="style">
             <span class="bp">self</span><span class="o">.</span><span class="n">add_multi_bit</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">Bit</span><span class="p">],</span> <span class="n">args</span><span class="p">))</span>
         <span class="k">elif</span> <span class="n">optype</span> <span class="ow">in</span> <span class="p">(</span><span class="n">OpType</span><span class="o">.</span><span class="n">ExplicitPredicate</span><span class="p">,</span> <span class="n">OpType</span><span class="o">.</span><span class="n">ExplicitModifier</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_explicit_op</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">Bit</span><span class="p">],</span> <span class="n">args</span><span class="p">))</span>
-        <span class="k">elif</span> <span class="n">optype</span> <span class="o">==</span> <span class="n">OpType</span><span class="o">.</span><span class="n">ClassicalExpBox</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">ClassicalExpBox</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">add_classical_exp_box</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">Bit</span><span class="p">],</span> <span class="n">args</span><span class="p">))</span>
         <span class="k">elif</span> <span class="n">optype</span> <span class="o">==</span> <span class="n">OpType</span><span class="o">.</span><span class="n">ClExpr</span><span class="p">:</span>
             <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">ClExprOp</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_wired_clexpr</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">Bit</span><span class="p">],</span> <span class="n">args</span><span class="p">))</span>

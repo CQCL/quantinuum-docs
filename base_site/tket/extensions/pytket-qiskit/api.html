@@ -2550,7 +2550,7 @@ dictionary containing device Characteristics</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>qcirc</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.QuantumCircuit" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code></a></span>) – A circuit to be converted</p></li>
+<li><p><strong>qcirc</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.QuantumCircuit" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code></a></span>) – A circuit to be converted</p></li>
 <li><p><strong>preserve_param_uuid</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span>) – Whether to preserve symbolic Parameter uuids
 by appending them to the tket Circuit symbol names as “_UUID:&lt;uuid&gt;”.
 This can be useful if you want to reassign Parameters after conversion
@@ -2588,7 +2588,7 @@ and <cite>replace_implicit_swaps</cite> is <cite>False</cite>. True by default.<
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.QuantumCircuit" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code></a></span></p>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.QuantumCircuit" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code></a></span></p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The converted circuit</p>
@@ -2599,10 +2599,10 @@ and <cite>replace_implicit_swaps</cite> is <cite>False</cite>. True by default.<
 <dl class="py class" id="module-pytket.extensions.qiskit.tket_backend">
 <dt class="sig sig-object py" id="pytket.extensions.qiskit.tket_backend.TketBackend">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytket.extensions.qiskit.tket_backend.</span></span><span class="sig-name descname"><span class="pre">TketBackend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comp_pass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/qiskit/tket_backend.html#TketBackend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.qiskit.tket_backend.TketBackend" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.providers.BackendV2" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendV2</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.providers.BackendV2" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendV2</span></code></a></p>
 <p>Wraps a <code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code> as a <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.BaseBackend</span></code> for use
 within the Qiskit software stack.</p>
-<p>Each <a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.QuantumCircuit" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.circuit.quantumcircuit.QuantumCircuit</span></code></a> passed in will be
+<p>Each <a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.QuantumCircuit" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.circuit.quantumcircuit.QuantumCircuit</span></code></a> passed in will be
 converted to a <code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code> object. If a <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePass</span></code> is provided for
 <code class="docutils literal notranslate"><span class="pre">comp_pass</span></code>, this is applied to the <code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code>. Then it is processed by
 the <code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code>, wrapping the <code class="xref py py-class docutils literal notranslate"><span class="pre">ResultHandle</span></code> s in a
@@ -2616,7 +2616,7 @@ compatible gateset and set <code class="docutils literal notranslate"><span clas
 tket only, set <code class="docutils literal notranslate"><span class="pre">comp_pass</span></code> and just use Qiskit to map into a tket-compatible
 gateset. In Qiskit Aqua, you should wrap the <a class="reference internal" href="#pytket.extensions.qiskit.tket_backend.TketBackend" title="pytket.extensions.qiskit.tket_backend.TketBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">TketBackend</span></code></a> in a
 <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.QuantumInstance</span></code>, providing a custom
-<a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.transpiler.PassManager" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.PassManager</span></code></a> with a
+<a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.transpiler.PassManager" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.PassManager</span></code></a> with a
 <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.passes.Unroller</span></code>. For examples, see the <a class="reference external" href="https://docs.quantinuum.com/tket/user-guide/manual/manual_backend.html#embedding-into-qiskit">user manual</a> or the <a class="reference external" href="https://docs.quantinuum.com/tket/user-guide/examples/backends/qiskit_integration.html">Qiskit integration example</a>.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pytket.extensions.qiskit.tket_backend.TketBackend.__init__">
@@ -2637,7 +2637,7 @@ before submitting to the <code class="xref py py-class docutils literal notransl
 <dt class="sig sig-object py" id="pytket.extensions.qiskit.tket_backend.TketBackend.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_input</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/qiskit/tket_backend.html#TketBackend.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.qiskit.tket_backend.TketBackend.run" title="Link to this definition">¶</a></dt>
 <dd><p>Run on the backend.</p>
-<p>This method returns a <a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.providers.Job" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Job</span></code></a> object
+<p>This method returns a <a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.providers.Job" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Job</span></code></a> object
 that runs circuits. Depending on the backend this may be either an async
 or sync call. It is at the discretion of the provider to decide whether
 running should block until the execution is finished or not: the Job
@@ -2647,7 +2647,7 @@ class can handle either situation.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>run_input</strong> (<em>QuantumCircuit</em><em> or </em><em>Schedule</em><em> or </em><em>ScheduleBlock</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a>) – An
 individual or a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code>,
-<a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.pulse.ScheduleBlock" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScheduleBlock</span></code></a>, or <a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.pulse.Schedule" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Schedule</span></code></a> objects to
+<a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.pulse.ScheduleBlock" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScheduleBlock</span></code></a>, or <a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.pulse.Schedule" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Schedule</span></code></a> objects to
 run on the backend.</p></li>
 <li><p><strong>options</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a></span>) – Any kwarg options to pass to the backend for running the
 config. If a key is also present in the options
@@ -2675,8 +2675,8 @@ run in a single job.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pytket.extensions.qiskit.tket_backend.TketBackend.target">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">target</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.transpiler.Target" title="(in Qiskit v1.3)"><span class="pre">Target</span></a></em><a class="headerlink" href="#pytket.extensions.qiskit.tket_backend.TketBackend.target" title="Link to this definition">¶</a></dt>
-<dd><p>A <a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.transpiler.Target" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.Target</span></code></a> object for the backend.</p>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">target</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.transpiler.Target" title="(in Qiskit v1.4)"><span class="pre">Target</span></a></em><a class="headerlink" href="#pytket.extensions.qiskit.tket_backend.TketBackend.target" title="Link to this definition">¶</a></dt>
+<dd><p>A <a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.transpiler.Target" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.Target</span></code></a> object for the backend.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Target</p>
@@ -2736,11 +2736,11 @@ and amplitude_damping_error</p>
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimisation_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/qiskit/tket_pass.html#TketAutoPass.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.qiskit.tket_pass.TketAutoPass.__init__" title="Link to this definition">¶</a></dt>
 <dd><p>Identifies a Qiskit backend and provides the corresponding default
 compilation pass from pytket as a
-<a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.transpiler.TransformationPass" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.TransformationPass</span></code></a>.</p>
+<a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.transpiler.TransformationPass" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.TransformationPass</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>backend</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.providers.BackendV2" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendV2</span></code></a></span>) – The Qiskit backend to target. Accepts Aer or IBMQ backends.</p></li>
+<li><p><strong>backend</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.providers.BackendV2" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendV2</span></code></a></span>) – The Qiskit backend to target. Accepts Aer or IBMQ backends.</p></li>
 <li><p><strong>optimisation_level</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span>) – The level of optimisation to perform during
 compilation. Level 0 just solves the device constraints without
 optimising. Level 1 additionally performs some light optimisations.
@@ -2761,8 +2761,8 @@ Level 2 adds more computationally intensive optimisations. Defaults to 2.</p></l
 <dt class="sig sig-object py" id="pytket.extensions.qiskit.tket_pass.TketPass.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tket_pass</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/qiskit/tket_pass.html#TketPass.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.qiskit.tket_pass.TketPass.__init__" title="Link to this definition">¶</a></dt>
 <dd><p>Wraps a pytket compiler pass as a
-<a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.transpiler.TransformationPass" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.TransformationPass</span></code></a>. A
-<a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.dagcircuit.DAGCircuit" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.dagcircuit.DAGCircuit</span></code></a> is converted to a pytket
+<a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.transpiler.TransformationPass" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.TransformationPass</span></code></a>. A
+<a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.dagcircuit.DAGCircuit" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.dagcircuit.DAGCircuit</span></code></a> is converted to a pytket
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code>. <cite>tket_pass</cite> will be run and the result is converted back.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2778,10 +2778,10 @@ Level 2 adds more computationally intensive optimisations. Defaults to 2.</p></l
 backend.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>dag</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.dagcircuit.DAGCircuit" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DAGCircuit</span></code></a></span>) – The circuit to optimise and route</p>
+<dd class="field-odd"><p><strong>dag</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.dagcircuit.DAGCircuit" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DAGCircuit</span></code></a></span>) – The circuit to optimise and route</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.dagcircuit.DAGCircuit" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DAGCircuit</span></code></a></span></p>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.dagcircuit.DAGCircuit" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DAGCircuit</span></code></a></span></p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The modified circuit</p>
@@ -2805,7 +2805,7 @@ backend.</p>
 <dt class="sig sig-object py" id="pytket.extensions.qiskit.tket_job.TketJob">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytket.extensions.qiskit.tket_job.</span></span><span class="sig-name descname"><span class="pre">TketJob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobinfos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_maps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/qiskit/tket_job.html#TketJob"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.qiskit.tket_job.TketJob" title="Link to this definition">¶</a></dt>
 <dd><p>TketJob wraps a <code class="xref py py-class docutils literal notranslate"><span class="pre">ResultHandle</span></code> list as a
-<a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.providers.JobV1" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.JobV1</span></code></a></p>
+<a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.providers.JobV1" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.JobV1</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pytket.extensions.qiskit.tket_job.TketJob.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobinfos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_maps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytket/extensions/qiskit/tket_job.html#TketJob.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytket.extensions.qiskit.tket_job.TketJob.__init__" title="Link to this definition">¶</a></dt>
@@ -2829,7 +2829,7 @@ backend.</p>
 <dd><p>Return the results of the job.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.result.Result" title="(in Qiskit v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Result</span></code></a></span></p>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.quantum.ibm.com/api/qiskit/qiskit.result.Result" title="(in Qiskit v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Result</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>

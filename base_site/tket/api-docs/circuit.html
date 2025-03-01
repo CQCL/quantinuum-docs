@@ -1293,58 +1293,6 @@ Phase parameters may be symbolic.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pytket.circuit.ClassicalExpBox">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytket.circuit.</span></span><span class="sig-name descname"><span class="pre">ClassicalExpBox</span></span><a class="headerlink" href="#pytket.circuit.ClassicalExpBox" title="Link to this definition">¶</a></dt>
-<dd><p>A box for holding classical expressions on Bits.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="pytket.circuit.ClassicalExpBox.content_equality">
-<span class="sig-name descname"><span class="pre">content_equality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.circuit.ClassicalExpBox" title="pytket.circuit.ClassicalExpBox"><span class="pre">pytket.circuit.ClassicalExpBox</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.circuit.ClassicalExpBox" title="pytket.circuit.ClassicalExpBox"><span class="pre">pytket.circuit.ClassicalExpBox</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#pytket.circuit.ClassicalExpBox.content_equality" title="Link to this definition">¶</a></dt>
-<dd><p>Check whether two ClassicalExpBox are equal in content</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pytket.circuit.ClassicalExpBox.get_exp">
-<span class="sig-name descname"><span class="pre">get_exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.circuit.ClassicalExpBox" title="pytket.circuit.ClassicalExpBox"><span class="pre">pytket.circuit.ClassicalExpBox</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="classical.html#pytket.circuit.logic_exp.LogicExp" title="pytket.circuit.logic_exp.LogicExp"><span class="pre">pytket.circuit.logic_exp.LogicExp</span></a></span></span><a class="headerlink" href="#pytket.circuit.ClassicalExpBox.get_exp" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the classical expression</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pytket.circuit.ClassicalExpBox.get_n_i">
-<span class="sig-name descname"><span class="pre">get_n_i</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.circuit.ClassicalExpBox" title="pytket.circuit.ClassicalExpBox"><span class="pre">pytket.circuit.ClassicalExpBox</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#pytket.circuit.ClassicalExpBox.get_n_i" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the number of pure inputs to the box.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pytket.circuit.ClassicalExpBox.get_n_io">
-<span class="sig-name descname"><span class="pre">get_n_io</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.circuit.ClassicalExpBox" title="pytket.circuit.ClassicalExpBox"><span class="pre">pytket.circuit.ClassicalExpBox</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#pytket.circuit.ClassicalExpBox.get_n_io" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the number of inputs/outputs to the box.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pytket.circuit.ClassicalExpBox.get_n_o">
-<span class="sig-name descname"><span class="pre">get_n_o</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.circuit.ClassicalExpBox" title="pytket.circuit.ClassicalExpBox"><span class="pre">pytket.circuit.ClassicalExpBox</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#pytket.circuit.ClassicalExpBox.get_n_o" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the number of pure outputs from the box.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="pytket.circuit.ClExprOp">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytket.circuit.</span></span><span class="sig-name descname"><span class="pre">ClExprOp</span></span><a class="headerlink" href="#pytket.circuit.ClExprOp" title="Link to this definition">¶</a></dt>
 <dd><p>An operation defined by a classical expression</p>
@@ -2675,14 +2623,6 @@ Phase parameters may be symbolic.</p>
 <li><a class="reference internal" href="#pytket.circuit.Conditional.op"><code class="docutils literal notranslate"><span class="pre">Conditional.op</span></code></a></li>
 <li><a class="reference internal" href="#pytket.circuit.Conditional.value"><code class="docutils literal notranslate"><span class="pre">Conditional.value</span></code></a></li>
 <li><a class="reference internal" href="#pytket.circuit.Conditional.width"><code class="docutils literal notranslate"><span class="pre">Conditional.width</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#pytket.circuit.ClassicalExpBox"><code class="docutils literal notranslate"><span class="pre">ClassicalExpBox</span></code></a><ul>
-<li><a class="reference internal" href="#pytket.circuit.ClassicalExpBox.content_equality"><code class="docutils literal notranslate"><span class="pre">ClassicalExpBox.content_equality()</span></code></a></li>
-<li><a class="reference internal" href="#pytket.circuit.ClassicalExpBox.get_exp"><code class="docutils literal notranslate"><span class="pre">ClassicalExpBox.get_exp()</span></code></a></li>
-<li><a class="reference internal" href="#pytket.circuit.ClassicalExpBox.get_n_i"><code class="docutils literal notranslate"><span class="pre">ClassicalExpBox.get_n_i()</span></code></a></li>
-<li><a class="reference internal" href="#pytket.circuit.ClassicalExpBox.get_n_io"><code class="docutils literal notranslate"><span class="pre">ClassicalExpBox.get_n_io()</span></code></a></li>
-<li><a class="reference internal" href="#pytket.circuit.ClassicalExpBox.get_n_o"><code class="docutils literal notranslate"><span class="pre">ClassicalExpBox.get_n_o()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#pytket.circuit.ClExprOp"><code class="docutils literal notranslate"><span class="pre">ClExprOp</span></code></a><ul>

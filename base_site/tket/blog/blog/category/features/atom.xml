@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://docs.quantinuum.com/tket/blog/</id>
   <title>TKET Developer Blog - Posts in Features</title>
-  <updated>2025-02-25T00:16:25.085182+00:00</updated>
+  <updated>2025-03-01T11:40:45.935993+00:00</updated>
   <link href="https://docs.quantinuum.com/tket/blog/"/>
   <link href="https://docs.quantinuum.com/tket/blog/blog/category/features/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>

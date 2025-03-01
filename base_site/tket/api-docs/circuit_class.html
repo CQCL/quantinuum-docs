@@ -717,6 +717,12 @@ condition on a specified set of bit values.)</p>
 </dl>
 </dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="pytket.circuit.Circuit.has_implicit_wireswaps">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_implicit_wireswaps</span></span><a class="headerlink" href="#pytket.circuit.Circuit.has_implicit_wireswaps" title="Link to this definition">¶</a></dt>
+<dd><p>Indicates whether the circuit has a non-trivial qubit permutation (i.e., whether there are any implicit wire swaps).</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="pytket.circuit.Circuit.add_q_register">
 <span class="sig-name descname"><span class="pre">add_q_register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytket.circuit.Circuit.add_q_register" title="Link to this definition">¶</a></dt>
@@ -864,13 +870,8 @@ condition on a specified set of bit values.)</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pytket.circuit.Circuit.flatten_registers">
-<span class="sig-name descname"><span class="pre">flatten_registers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><span class="pre">pytket.circuit.Circuit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">relabel_classical_expression</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="unit_id.html#pytket.unit_id.UnitID" title="pytket.unit_id.UnitID"><span class="pre">pytket.unit_id.UnitID</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="unit_id.html#pytket.unit_id.UnitID" title="pytket.unit_id.UnitID"><span class="pre">pytket.unit_id.UnitID</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pytket.circuit.Circuit.flatten_registers" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">flatten_registers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><span class="pre">pytket.circuit.Circuit</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="unit_id.html#pytket.unit_id.UnitID" title="pytket.unit_id.UnitID"><span class="pre">pytket.unit_id.UnitID</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="unit_id.html#pytket.unit_id.UnitID" title="pytket.unit_id.UnitID"><span class="pre">pytket.unit_id.UnitID</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pytket.circuit.Circuit.flatten_registers" title="Link to this definition">¶</a></dt>
 <dd><p>Combines all qubits into a single register namespace with the default name, and likewise for bits</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>relabel_classical_expression</strong> – Determines whether python classical expressions held in <cite>ClassicalExpBox</cite> have their expression relabelled to match relabelled Bit.</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py property">
@@ -1926,42 +1927,6 @@ Allowed parameters are <cite>opgroup</cite>,  <cite>condition</cite> , <cite>con
 <li><p>add_c_predicate(self: pytket.circuit.Circuit, values: Sequence[bool], args_in: Sequence[pytket.unit_id.Bit], arg_out: pytket.unit_id.Bit, name: str = ‘ExplicitPredicate’, <a href="#id55"><span class="problematic" id="id56">**</span></a>kwargs) -&gt; pytket.circuit.Circuit</p></li>
 </ol>
 <p>See <a class="reference internal" href="#pytket.circuit.Circuit.add_c_predicate" title="pytket.circuit.Circuit.add_c_predicate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_c_predicate()</span></code></a>.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pytket.circuit.Circuit.add_classicalexpbox_bit">
-<span class="sig-name descname"><span class="pre">add_classicalexpbox_bit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><span class="pre">pytket.circuit.Circuit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="classical.html#pytket.circuit.logic_exp.BitLogicExp" title="pytket.circuit.logic_exp.BitLogicExp"><span class="pre">pytket.circuit.logic_exp.BitLogicExp</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="unit_id.html#pytket.unit_id.Bit" title="pytket.unit_id.Bit"><span class="pre">pytket.unit_id.Bit</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><span class="pre">pytket.circuit.Circuit</span></a></span></span><a class="headerlink" href="#pytket.circuit.Circuit.add_classicalexpbox_bit" title="Link to this definition">¶</a></dt>
-<dd><p>Append a <a class="reference internal" href="circuit.html#pytket.circuit.ClassicalExpBox" title="pytket.circuit.ClassicalExpBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClassicalExpBox</span></code></a> over Bit to the circuit.
-DEPRECATED: Please use <a class="reference internal" href="#pytket.circuit.Circuit.add_clexpr" title="pytket.circuit.Circuit.add_clexpr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_clexpr()</span></code></a> instead. This method will be removed after pytket 1.40.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>classicalexpbox</strong> – The box to append</p></li>
-<li><p><strong>args</strong> – Indices of the qubits to append the box to</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the new <a class="reference internal" href="#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pytket.circuit.Circuit.add_classicalexpbox_register">
-<span class="sig-name descname"><span class="pre">add_classicalexpbox_register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><span class="pre">pytket.circuit.Circuit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="classical.html#pytket.circuit.logic_exp.RegLogicExp" title="pytket.circuit.logic_exp.RegLogicExp"><span class="pre">pytket.circuit.logic_exp.RegLogicExp</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="unit_id.html#pytket.unit_id.Bit" title="pytket.unit_id.Bit"><span class="pre">pytket.unit_id.Bit</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><span class="pre">pytket.circuit.Circuit</span></a></span></span><a class="headerlink" href="#pytket.circuit.Circuit.add_classicalexpbox_register" title="Link to this definition">¶</a></dt>
-<dd><p>Append a <a class="reference internal" href="circuit.html#pytket.circuit.ClassicalExpBox" title="pytket.circuit.ClassicalExpBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClassicalExpBox</span></code></a> over BitRegister to the circuit.
-DEPRECATED: Please use <a class="reference internal" href="#pytket.circuit.Circuit.add_clexpr" title="pytket.circuit.Circuit.add_clexpr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_clexpr()</span></code></a> instead. This method will be removed after pytket 1.40.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>classicalexpbox</strong> – The box to append</p></li>
-<li><p><strong>args</strong> – Indices of the qubits to append the box to</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the new <a class="reference internal" href="#pytket.circuit.Circuit" title="pytket.circuit.Circuit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a></p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -4433,6 +4398,7 @@ Some gates can only be added with <a class="reference internal" href="#pytket.ci
 <li><a class="reference internal" href="#pytket.circuit.Circuit.qubits"><code class="docutils literal notranslate"><span class="pre">Circuit.qubits</span></code></a></li>
 <li><a class="reference internal" href="#pytket.circuit.Circuit.bits"><code class="docutils literal notranslate"><span class="pre">Circuit.bits</span></code></a></li>
 <li><a class="reference internal" href="#pytket.circuit.Circuit.n_gates"><code class="docutils literal notranslate"><span class="pre">Circuit.n_gates</span></code></a></li>
+<li><a class="reference internal" href="#pytket.circuit.Circuit.has_implicit_wireswaps"><code class="docutils literal notranslate"><span class="pre">Circuit.has_implicit_wireswaps</span></code></a></li>
 <li><a class="reference internal" href="#pytket.circuit.Circuit.add_q_register"><code class="docutils literal notranslate"><span class="pre">Circuit.add_q_register()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.circuit.Circuit.get_q_register"><code class="docutils literal notranslate"><span class="pre">Circuit.get_q_register()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.circuit.Circuit.add_c_register"><code class="docutils literal notranslate"><span class="pre">Circuit.add_c_register()</span></code></a></li>
@@ -4490,8 +4456,6 @@ Some gates can only be added with <a class="reference internal" href="#pytket.ci
 <li><a class="reference internal" href="#pytket.circuit.Circuit.add_c_transform"><code class="docutils literal notranslate"><span class="pre">Circuit.add_c_transform()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.circuit.Circuit.add_c_modifier"><code class="docutils literal notranslate"><span class="pre">Circuit.add_c_modifier()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.circuit.Circuit.add_c_predicate"><code class="docutils literal notranslate"><span class="pre">Circuit.add_c_predicate()</span></code></a></li>
-<li><a class="reference internal" href="#pytket.circuit.Circuit.add_classicalexpbox_bit"><code class="docutils literal notranslate"><span class="pre">Circuit.add_classicalexpbox_bit()</span></code></a></li>
-<li><a class="reference internal" href="#pytket.circuit.Circuit.add_classicalexpbox_register"><code class="docutils literal notranslate"><span class="pre">Circuit.add_classicalexpbox_register()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.circuit.Circuit.add_clexpr"><code class="docutils literal notranslate"><span class="pre">Circuit.add_clexpr()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.circuit.Circuit.qubit_create"><code class="docutils literal notranslate"><span class="pre">Circuit.qubit_create()</span></code></a></li>
 <li><a class="reference internal" href="#pytket.circuit.Circuit.qubit_create_all"><code class="docutils literal notranslate"><span class="pre">Circuit.qubit_create_all()</span></code></a></li>
