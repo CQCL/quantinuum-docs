@@ -347,6 +347,7 @@ as="style">
     <span class="n">scratch_reg_resize_pass</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">pytket.predicates</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CliffordCircuitPredicate</span><span class="p">,</span>
     <span class="n">GateSetPredicate</span><span class="p">,</span>
     <span class="n">MaxNClRegPredicate</span><span class="p">,</span>
     <span class="n">MaxNQubitsPredicate</span><span class="p">,</span>
@@ -397,7 +398,6 @@ as="style">
     <span class="n">OpType</span><span class="o">.</span><span class="n">ExplicitModifier</span><span class="p">,</span>
     <span class="n">OpType</span><span class="o">.</span><span class="n">SetBits</span><span class="p">,</span>
     <span class="n">OpType</span><span class="o">.</span><span class="n">CopyBits</span><span class="p">,</span>
-    <span class="n">OpType</span><span class="o">.</span><span class="n">ClassicalExpBox</span><span class="p">,</span>
     <span class="n">OpType</span><span class="o">.</span><span class="n">ClExpr</span><span class="p">,</span>
     <span class="n">OpType</span><span class="o">.</span><span class="n">WASM</span><span class="p">,</span>
 <span class="p">}</span>
@@ -935,6 +935,8 @@ as="style">
             <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend_info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="n">preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MaxNQubitsPredicate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backend_info</span><span class="o">.</span><span class="n">n_nodes</span><span class="p">))</span>
             <span class="n">preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MaxNClRegPredicate</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend_info</span><span class="o">.</span><span class="n">n_cl_reg</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">simulator_type</span> <span class="o">==</span> <span class="s2">&quot;stabilizer&quot;</span><span class="p">:</span>
+            <span class="n">preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CliffordCircuitPredicate</span><span class="p">())</span>
 
         <span class="k">return</span> <span class="n">preds</span>
 
