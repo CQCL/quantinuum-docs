@@ -219,7 +219,7 @@ as="style">
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -378,14 +378,117 @@ as="style">
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="roles">
-<h1>roles<a class="headerlink" href="#roles" title="Link to this heading">¶</a></h1>
+          <section id="module-qnexus.client.roles">
+<span id="roles"></span><h1>roles<a class="headerlink" href="#module-qnexus.client.roles" title="Link to this heading">¶</a></h1>
+<p>Client API for role-based-access-control roles and assignments in Nexus.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.roles.assign_team">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.roles.</span></span><span class="sig-name descname"><span class="pre">assign_team</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">resource_ref</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseRef</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">team</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="teams.html#qnexus.teams.TeamRef" title="qnexus.models.references.TeamRef"><span class="pre">TeamRef</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'Administrator'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Contributor'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Reader'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Maintainer'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#qnexus.roles.Role" title="qnexus.models.Role"><span class="pre">Role</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#qnexus.client.roles.assign_team" title="Link to this definition">¶</a></dt>
+<dd><p>Assign a role-based access control assignment to a team.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.roles.assign_user">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.roles.</span></span><span class="sig-name descname"><span class="pre">assign_user</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">resource_ref</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseRef</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">user_email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EmailStr</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'Administrator'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Contributor'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Reader'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Maintainer'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#qnexus.roles.Role" title="qnexus.models.Role"><span class="pre">Role</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#qnexus.client.roles.assign_user" title="Link to this definition">¶</a></dt>
+<dd><p>Assign a role-based access control assignment to a user.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.roles.assignments">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.roles.</span></span><span class="sig-name descname"><span class="pre">assignments</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">resource_ref</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseRef</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="nexus_iterator.html#qnexus.models.references.DataframableList" title="qnexus.models.references.DataframableList"><span class="pre">DataframableList</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qnexus.roles.RoleInfo" title="qnexus.models.RoleInfo"><span class="pre">RoleInfo</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qnexus.client.roles.assignments" title="Link to this definition">¶</a></dt>
+<dd><p>Check the assignments on a particular resource.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.roles.get">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.roles.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'Administrator'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Contributor'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Reader'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Maintainer'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qnexus.roles.Role" title="qnexus.models.Role"><span class="pre">Role</span></a></span></span><a class="headerlink" href="#qnexus.client.roles.get" title="Link to this definition">¶</a></dt>
+<dd><p>Get a single <code class="docutils literal notranslate"><span class="pre">Role</span></code> by name.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.roles.get_all">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.roles.</span></span><span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="nexus_iterator.html#qnexus.models.references.DataframableList" title="qnexus.models.references.DataframableList"><span class="pre">DataframableList</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qnexus.roles.Role" title="qnexus.models.Role"><span class="pre">Role</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qnexus.client.roles.get_all" title="Link to this definition">¶</a></dt>
+<dd><p>Get the definitions of possible role-based access control assignments.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qnexus.roles.Role">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.roles.</span></span><span class="sig-name descname"><span class="pre">Role</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.13)"><span class="pre">UUID</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">permissions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'role'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'role'</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.roles.Role" title="Link to this definition">¶</a></dt>
+<dd><p>A role for use in RBAC assignments.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qnexus.roles.Role.df">
+<span class="sig-name descname"><span class="pre">df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#qnexus.roles.Role.df" title="Link to this definition">¶</a></dt>
+<dd><p>Convert to a pandas DataFrame.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qnexus.roles.RoleInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.roles.</span></span><span class="sig-name descname"><span class="pre">RoleInfo</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">assignment_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'user'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'team'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'public'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">assignee</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="teams.html#qnexus.teams.TeamRef" title="qnexus.models.references.TeamRef"><span class="pre">TeamRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="users.html#qnexus.users.UserRef" title="qnexus.models.references.UserRef"><span class="pre">UserRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qnexus.roles.Role" title="qnexus.models.Role"><span class="pre">Role</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.roles.RoleInfo" title="Link to this definition">¶</a></dt>
+<dd><p>Information on a role assigned on a resource.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qnexus.roles.RoleInfo.df">
+<span class="sig-name descname"><span class="pre">df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#qnexus.roles.RoleInfo.df" title="Link to this definition">¶</a></dt>
+<dd><p>Convert to a pandas DataFrame.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
         </article>
@@ -438,13 +541,44 @@ as="style">
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">roles</a><ul>
+<li><a class="reference internal" href="#qnexus.client.roles.assign_team"><code class="docutils literal notranslate"><span class="pre">assign_team()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.roles.assign_user"><code class="docutils literal notranslate"><span class="pre">assign_user()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.roles.assignments"><code class="docutils literal notranslate"><span class="pre">assignments()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.roles.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.roles.get_all"><code class="docutils literal notranslate"><span class="pre">get_all()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.roles.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a><ul>
+<li><a class="reference internal" href="#qnexus.roles.Role.df"><code class="docutils literal notranslate"><span class="pre">Role.df()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#qnexus.roles.RoleInfo"><code class="docutils literal notranslate"><span class="pre">RoleInfo</span></code></a><ul>
+<li><a class="reference internal" href="#qnexus.roles.RoleInfo.df"><code class="docutils literal notranslate"><span class="pre">RoleInfo.df()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f3b36f1a"></script>
+</div><script src="../_static/documentation_options.js?v=82662543"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>

@@ -219,7 +219,7 @@ as="style">
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -378,14 +378,202 @@ as="style">
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="context-management-in-qnexus">
-<h1>Context Management in qnexus<a class="headerlink" href="#context-management-in-qnexus" title="Link to this heading">¶</a></h1>
+          <section id="module-qnexus.context">
+<span id="context-management-in-qnexus"></span><h1>Context Management in qnexus<a class="headerlink" href="#module-qnexus.context" title="Link to this heading">¶</a></h1>
+<p>Functions for managing context in the client.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.context.deactivate_project">
+<span class="sig-prename descclassname"><span class="pre">qnexus.context.</span></span><span class="sig-name descname"><span class="pre">deactivate_project</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Token</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="projects.html#qnexus.projects.ProjectRef" title="qnexus.models.references.ProjectRef"><span class="pre">ProjectRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#qnexus.context.deactivate_project" title="Link to this definition">¶</a></dt>
+<dd><p>Deactivate a project from the current context.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.context.deactivate_properties">
+<span class="sig-prename descclassname"><span class="pre">qnexus.context.</span></span><span class="sig-name descname"><span class="pre">deactivate_properties</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Token</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.13)"><span class="pre">OrderedDict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#qnexus.context.deactivate_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Deactivate the current properties.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.context.get_active_project">
+<span class="sig-prename descclassname"><span class="pre">qnexus.context.</span></span><span class="sig-name descname"><span class="pre">get_active_project</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">project_required</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="projects.html#qnexus.projects.ProjectRef" title="qnexus.models.references.ProjectRef"><span class="pre">ProjectRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#qnexus.context.get_active_project" title="Link to this definition">¶</a></dt>
+<dd><p>Get a reference to the active project if set.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_active_project</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">qnexus.models.annotations</span> <span class="kn">import</span> <span class="n">Annotations</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">token</span> <span class="o">=</span> <span class="n">set_active_project_token</span><span class="p">(</span>
+<span class="gp">... </span><span class="n">ProjectRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;dca33f7f-9619-4cf7-a3fb-56256b117d6e&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">annotations</span><span class="o">=</span><span class="n">Annotations</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;example&quot;</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_active_project</span><span class="p">()</span>
+<span class="go">ProjectRef(</span>
+<span class="go">    id=UUID(&#39;dca33f7f-9619-4cf7-a3fb-56256b117d6e&#39;),</span>
+<span class="go">    annotations=Annotations(name=&#39;example&#39;, description=None, properties=OrderedDict())</span>
+<span class="go">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deactivate_project</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.context.get_active_properties">
+<span class="sig-prename descclassname"><span class="pre">qnexus.context.</span></span><span class="sig-name descname"><span class="pre">get_active_properties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.13)"><span class="pre">OrderedDict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qnexus.context.get_active_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Get the keys and values of the currently active properties.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_active_properties</span><span class="p">()</span>
+<span class="go">OrderedDict()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">token</span> <span class="o">=</span> <span class="n">update_active_properties_token</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_active_properties</span><span class="p">()</span>
+<span class="go">OrderedDict([(&#39;foo&#39;, 3), (&#39;bar&#39;, True)])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deactivate_properties</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.context.merge_project_from_context">
+<span class="sig-prename descclassname"><span class="pre">qnexus.context.</span></span><span class="sig-name descname"><span class="pre">merge_project_from_context</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.13)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">P</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.13)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">P</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qnexus.context.merge_project_from_context" title="Link to this definition">¶</a></dt>
+<dd><p>Decorator to merge a project from the context.
+ProjectRef in kwargs takes precedence (will be selected).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.context.merge_properties_from_context">
+<span class="sig-prename descclassname"><span class="pre">qnexus.context.</span></span><span class="sig-name descname"><span class="pre">merge_properties_from_context</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.13)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">P</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.13)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">P</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qnexus.context.merge_properties_from_context" title="Link to this definition">¶</a></dt>
+<dd><p>Decorator to take the union of properties from the context with
+any provided in kwargs. Properties in kwargs take precendence.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.context.set_active_project">
+<span class="sig-prename descclassname"><span class="pre">qnexus.context.</span></span><span class="sig-name descname"><span class="pre">set_active_project</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="projects.html#qnexus.projects.ProjectRef" title="qnexus.models.references.ProjectRef"><span class="pre">ProjectRef</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#qnexus.context.set_active_project" title="Link to this definition">¶</a></dt>
+<dd><p>Globally set a project as active.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.context.set_active_project_token">
+<span class="sig-prename descclassname"><span class="pre">qnexus.context.</span></span><span class="sig-name descname"><span class="pre">set_active_project_token</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="projects.html#qnexus.projects.ProjectRef" title="qnexus.models.references.ProjectRef"><span class="pre">ProjectRef</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Token</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="projects.html#qnexus.projects.ProjectRef" title="qnexus.models.references.ProjectRef"><span class="pre">ProjectRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qnexus.context.set_active_project_token" title="Link to this definition">¶</a></dt>
+<dd><p>Globally set a project as active,
+returning a Token to the ProjectRef in the context.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.context.update_active_properties">
+<span class="sig-prename descclassname"><span class="pre">qnexus.context.</span></span><span class="sig-name descname"><span class="pre">update_active_properties</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">properties</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#qnexus.context.update_active_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Globally update and merge properties with the existing ones.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.context.update_active_properties_token">
+<span class="sig-prename descclassname"><span class="pre">qnexus.context.</span></span><span class="sig-name descname"><span class="pre">update_active_properties_token</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">properties</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Token</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.13)"><span class="pre">OrderedDict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qnexus.context.update_active_properties_token" title="Link to this definition">¶</a></dt>
+<dd><p>Globally update and merge properties with the existing ones,
+returning a token to the PropertiesDict in the context.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.context.using_project">
+<span class="sig-prename descclassname"><span class="pre">qnexus.context.</span></span><span class="sig-name descname"><span class="pre">using_project</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="projects.html#qnexus.projects.ProjectRef" title="qnexus.models.references.ProjectRef"><span class="pre">ProjectRef</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.context.using_project" title="Link to this definition">¶</a></dt>
+<dd><p>Attach a ProjectRef to the current context.</p>
+<p>All operations in the context will make use of the project.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">qnexus.models.annotations</span> <span class="kn">import</span> <span class="n">Annotations</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span> <span class="o">=</span> <span class="n">ProjectRef</span><span class="p">(</span>
+<span class="gp">... </span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;cd325b9c-d4a2-4b6e-ae58-8fad89749fac&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">annotations</span><span class="o">=</span><span class="n">Annotations</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;example&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">using_project</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">get_active_project</span><span class="p">()</span>
+<span class="go">ProjectRef(</span>
+<span class="go">    id=UUID(&#39;cd325b9c-d4a2-4b6e-ae58-8fad89749fac&#39;),</span>
+<span class="go">    annotations=Annotations(name=&#39;example&#39;, description=None, properties=OrderedDict())</span>
+<span class="go">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_active_project</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.context.using_properties">
+<span class="sig-prename descclassname"><span class="pre">qnexus.context.</span></span><span class="sig-name descname"><span class="pre">using_properties</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">properties</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.context.using_properties" title="Link to this definition">¶</a></dt>
+<dd><p>Attach properties to the current context.</p>
+</dd></dl>
+
 </section>
 
         </article>
@@ -438,13 +626,43 @@ as="style">
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Context Management in qnexus</a><ul>
+<li><a class="reference internal" href="#qnexus.context.deactivate_project"><code class="docutils literal notranslate"><span class="pre">deactivate_project()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.context.deactivate_properties"><code class="docutils literal notranslate"><span class="pre">deactivate_properties()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.context.get_active_project"><code class="docutils literal notranslate"><span class="pre">get_active_project()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.context.get_active_properties"><code class="docutils literal notranslate"><span class="pre">get_active_properties()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.context.merge_project_from_context"><code class="docutils literal notranslate"><span class="pre">merge_project_from_context()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.context.merge_properties_from_context"><code class="docutils literal notranslate"><span class="pre">merge_properties_from_context()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.context.set_active_project"><code class="docutils literal notranslate"><span class="pre">set_active_project()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.context.set_active_project_token"><code class="docutils literal notranslate"><span class="pre">set_active_project_token()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.context.update_active_properties"><code class="docutils literal notranslate"><span class="pre">update_active_properties()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.context.update_active_properties_token"><code class="docutils literal notranslate"><span class="pre">update_active_properties_token()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.context.using_project"><code class="docutils literal notranslate"><span class="pre">using_project()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.context.using_properties"><code class="docutils literal notranslate"><span class="pre">using_properties()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f3b36f1a"></script>
+</div><script src="../_static/documentation_options.js?v=82662543"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>

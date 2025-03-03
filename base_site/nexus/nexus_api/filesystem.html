@@ -219,7 +219,7 @@ as="style">
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -378,14 +378,41 @@ as="style">
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="filesystem">
-<h1>filesystem<a class="headerlink" href="#filesystem" title="Link to this heading">¶</a></h1>
+          <section id="module-qnexus.filesystem">
+<span id="filesystem"></span><h1>filesystem<a class="headerlink" href="#module-qnexus.filesystem" title="Link to this heading">¶</a></h1>
+<p>Utilities for qnexus-filesystem interactions.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.filesystem.load">
+<span class="sig-prename descclassname"><span class="pre">qnexus.filesystem.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Annotated" title="(in Python v3.13)"><span class="pre">Annotated</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="teams.html#qnexus.teams.TeamRef" title="qnexus.models.references.TeamRef"><span class="pre">TeamRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="users.html#qnexus.users.UserRef" title="qnexus.models.references.UserRef"><span class="pre">UserRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="projects.html#qnexus.projects.ProjectRef" title="qnexus.models.references.ProjectRef"><span class="pre">ProjectRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="circuits.html#qnexus.circuits.CircuitRef" title="qnexus.models.references.CircuitRef"><span class="pre">CircuitRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="wasm_modules.html#qnexus.wasm_modules.WasmModuleRef" title="qnexus.models.references.WasmModuleRef"><span class="pre">WasmModuleRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="jobs.html#qnexus.jobs.JobRef" title="qnexus.models.references.JobRef"><span class="pre">JobRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="compile.html#qnexus.jobs.CompileJobRef" title="qnexus.models.references.CompileJobRef"><span class="pre">CompileJobRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="execute.html#qnexus.models.references.ExecuteJobRef" title="qnexus.models.references.ExecuteJobRef"><span class="pre">ExecuteJobRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="compile.html#qnexus.models.references.CompilationResultRef" title="qnexus.models.references.CompilationResultRef"><span class="pre">CompilationResultRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="execute.html#qnexus.models.references.ExecutionResultRef" title="qnexus.models.references.ExecutionResultRef"><span class="pre">ExecutionResultRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="compile.html#qnexus.models.references.CompilationPassRef" title="qnexus.models.references.CompilationPassRef"><span class="pre">CompilationPassRef</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">FieldInfo</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">annotation</span></span><span class="o"><span class="pre">=</span></span><span class="pre">NoneType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">required</span></span><span class="o"><span class="pre">=</span></span><span class="k"><span class="pre">True</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">discriminator</span></span><span class="o"><span class="pre">=</span></span><span class="s"><span class="pre">'type'</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qnexus.filesystem.load" title="Link to this definition">¶</a></dt>
+<dd><p>Load a Nexus Ref from a file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.filesystem.save">
+<span class="sig-prename descclassname"><span class="pre">qnexus.filesystem.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">ref</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Annotated" title="(in Python v3.13)"><span class="pre">Annotated</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="teams.html#qnexus.teams.TeamRef" title="qnexus.models.references.TeamRef"><span class="pre">TeamRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="users.html#qnexus.users.UserRef" title="qnexus.models.references.UserRef"><span class="pre">UserRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="projects.html#qnexus.projects.ProjectRef" title="qnexus.models.references.ProjectRef"><span class="pre">ProjectRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="circuits.html#qnexus.circuits.CircuitRef" title="qnexus.models.references.CircuitRef"><span class="pre">CircuitRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="wasm_modules.html#qnexus.wasm_modules.WasmModuleRef" title="qnexus.models.references.WasmModuleRef"><span class="pre">WasmModuleRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="jobs.html#qnexus.jobs.JobRef" title="qnexus.models.references.JobRef"><span class="pre">JobRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="compile.html#qnexus.jobs.CompileJobRef" title="qnexus.models.references.CompileJobRef"><span class="pre">CompileJobRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="execute.html#qnexus.models.references.ExecuteJobRef" title="qnexus.models.references.ExecuteJobRef"><span class="pre">ExecuteJobRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="compile.html#qnexus.models.references.CompilationResultRef" title="qnexus.models.references.CompilationResultRef"><span class="pre">CompilationResultRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="execute.html#qnexus.models.references.ExecutionResultRef" title="qnexus.models.references.ExecutionResultRef"><span class="pre">ExecutionResultRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="compile.html#qnexus.models.references.CompilationPassRef" title="qnexus.models.references.CompilationPassRef"><span class="pre">CompilationPassRef</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">FieldInfo</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">annotation</span></span><span class="o"><span class="pre">=</span></span><span class="pre">NoneType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">required</span></span><span class="o"><span class="pre">=</span></span><span class="k"><span class="pre">True</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">discriminator</span></span><span class="o"><span class="pre">=</span></span><span class="s"><span class="pre">'type'</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">mkdir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#qnexus.filesystem.save" title="Link to this definition">¶</a></dt>
+<dd><p>Save a Nexus Ref to a file.</p>
+</dd></dl>
+
 </section>
 
         </article>
@@ -438,13 +465,33 @@ as="style">
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">filesystem</a><ul>
+<li><a class="reference internal" href="#qnexus.filesystem.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.filesystem.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f3b36f1a"></script>
+</div><script src="../_static/documentation_options.js?v=82662543"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>

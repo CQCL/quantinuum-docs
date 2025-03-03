@@ -424,6 +424,23 @@ as="style">
 <p>BackendConfigs define the target, in this case we are targetting the <code class="docutils literal notranslate"><span class="pre">H1-1LE</span></code> noiseless simulator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile the circuit (blocking), to receive a list of compiled CircuitRefs</span>
+
+<span class="n">compiled_circuits</span> <span class="o">=</span> <span class="n">qnx</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="n">circuits</span><span class="o">=</span><span class="p">[</span><span class="n">my_circuit_ref</span><span class="p">],</span>
+    <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">my_job_name_prefix</span><span class="si">}</span><span class="s2">_compile&quot;</span><span class="p">,</span>
+    <span class="n">optimisation_level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">backend_config</span><span class="o">=</span><span class="n">qnx</span><span class="o">.</span><span class="n">QuantinuumConfig</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="s2">&quot;H1-1LE&quot;</span><span class="p">),</span>
+    <span class="n">project</span><span class="o">=</span><span class="n">my_project_ref</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">compiled_circuits</span><span class="o">.</span><span class="n">df</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run in an asyncronous manner to receieve a JobRef</span>
 
 <span class="n">compile_job_ref</span> <span class="o">=</span> <span class="n">qnx</span><span class="o">.</span><span class="n">start_compile_job</span><span class="p">(</span>
@@ -437,17 +454,7 @@ as="style">
 <span class="c1"># Block until the job is complete (or perform other tasks while we wait)</span>
 <span class="n">qnx</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span><span class="n">compile_job_ref</span><span class="p">)</span>
 
-<span class="n">compiled_circuits</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">get_output</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">qnx</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">compile_job_ref</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="checking-details-of-the-compilation">
-<h3>Checking details of the compilation<a class="headerlink" href="#checking-details-of-the-compilation" title="Link to this heading">¶</a></h3>
-<p>If desired, the input, output and compilation passes can be checked.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve a CompilationResultRef for every Circuit that was compiled</span>
+<span class="c1"># Retrieve a CompilationResultRef for every Circuit that was compiled</span>
 <span class="n">compile_job_result_refs</span> <span class="o">=</span> <span class="n">qnx</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">compile_job_ref</span><span class="p">)</span>
 
 <span class="n">compile_job_result_refs</span><span class="o">.</span><span class="n">df</span><span class="p">()</span>
@@ -457,25 +464,41 @@ as="style">
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve the input CircuitRef for the Circuit</span>
-<span class="n">compile_job_result_refs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_input</span><span class="p">()</span>
-
-
-<span class="c1"># Retrieve the compiled CircuitRef for the Circuit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve the compiled CircuitRef for the first Circuit</span>
 <span class="n">compile_job_result_refs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_output</span><span class="p">()</span>
-
-
-<span class="c1"># View the compilation passes that we applied when compiling the Circuit</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View the compilation passes that we applied when compiling the circuit</span>
 <span class="n">compile_job_result_refs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_passes</span><span class="p">()</span><span class="o">.</span><span class="n">df</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-</section>
 <section id="execute-jobs">
 <h2>Execute Jobs<a class="headerlink" href="#execute-jobs" title="Link to this heading">¶</a></h2>
 <p>These jobs represent the execution of one or more circuit(s) on a quantum computer or simulator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Execute the circuit (blocking), to receive a list of pytket BackendResults</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">qnx</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+    <span class="n">circuits</span><span class="o">=</span><span class="n">compiled_circuits</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">my_job_name_prefix</span><span class="si">}</span><span class="s2">_execute&quot;</span><span class="p">,</span>
+    <span class="n">n_shots</span><span class="o">=</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span><span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">compiled_circuits</span><span class="p">),</span>
+    <span class="n">backend_config</span><span class="o">=</span><span class="n">qnx</span><span class="o">.</span><span class="n">QuantinuumConfig</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="s2">&quot;H1-1LE&quot;</span><span class="p">),</span>
+    <span class="n">project</span><span class="o">=</span><span class="n">my_project_ref</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run in an asyncronous manner to receieve a JobRef</span>
@@ -585,46 +608,6 @@ as="style">
 </div>
 </div>
 </section>
-<section id="convenience-methods">
-<h3>Convenience methods<a class="headerlink" href="#convenience-methods" title="Link to this heading">¶</a></h3>
-<p>For small jobs that you are confident will complete quickly, we offer convenienve methods to run jobs in a less verbose manner.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile a circuit (blocking), to receive a list of compiled CircuitRefs</span>
-
-<span class="n">compiled_circuits</span> <span class="o">=</span> <span class="n">qnx</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-    <span class="n">circuits</span><span class="o">=</span><span class="p">[</span><span class="n">my_circuit_ref</span><span class="p">],</span>
-    <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">my_job_name_prefix</span><span class="si">}</span><span class="s2">_compile&quot;</span><span class="p">,</span>
-    <span class="n">optimisation_level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">backend_config</span><span class="o">=</span><span class="n">qnx</span><span class="o">.</span><span class="n">QuantinuumConfig</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="s2">&quot;H1-1LE&quot;</span><span class="p">),</span>
-    <span class="n">project</span><span class="o">=</span><span class="n">my_project_ref</span><span class="p">,</span>
-    <span class="n">timeout</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="c1"># wait for the job for 500 seconds before timing out</span>
-<span class="p">)</span>
-
-<span class="n">compiled_circuits</span><span class="o">.</span><span class="n">df</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Execute the circuit (blocking), to receive a list of pytket BackendResults</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="n">qnx</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-    <span class="n">circuits</span><span class="o">=</span><span class="n">compiled_circuits</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">my_job_name_prefix</span><span class="si">}</span><span class="s2">_execute&quot;</span><span class="p">,</span>
-    <span class="n">n_shots</span><span class="o">=</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span><span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">compiled_circuits</span><span class="p">),</span>
-    <span class="n">backend_config</span><span class="o">=</span><span class="n">qnx</span><span class="o">.</span><span class="n">QuantinuumConfig</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="s2">&quot;H1-1LE&quot;</span><span class="p">),</span>
-    <span class="n">project</span><span class="o">=</span><span class="n">my_project_ref</span><span class="p">,</span>
-    <span class="n">timeout</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="c1"># wait for the job for 500 seconds before timing out</span>
-<span class="p">)</span>
-
-<span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 </section>
 
@@ -691,14 +674,10 @@ as="style">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Jobs &amp; Results</a><ul>
-<li><a class="reference internal" href="#compile-jobs">Compile Jobs</a><ul>
-<li><a class="reference internal" href="#checking-details-of-the-compilation">Checking details of the compilation</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#compile-jobs">Compile Jobs</a></li>
 <li><a class="reference internal" href="#execute-jobs">Execute Jobs</a><ul>
 <li><a class="reference internal" href="#getting-results-for-unfinished-or-incomplete-jobs">Getting results for unfinished or incomplete jobs</a></li>
 <li><a class="reference internal" href="#managing-jobs">Managing Jobs</a></li>
-<li><a class="reference internal" href="#convenience-methods">Convenience methods</a></li>
 </ul>
 </li>
 </ul>
@@ -712,7 +691,7 @@ as="style">
       
     </aside>
   </div>
-</div><script src="../../../_static/documentation_options.js?v=f3b36f1a"></script>
+</div><script src="../../../_static/documentation_options.js?v=82662543"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>

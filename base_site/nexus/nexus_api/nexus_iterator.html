@@ -219,7 +219,7 @@ as="style">
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -378,7 +378,7 @@ as="style">
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -386,6 +386,73 @@ as="style">
         <article role="main" id="furo-main-content">
           <section id="nexusiterator-dataframablelist">
 <h1>NexusIterator &amp; DataframableList<a class="headerlink" href="#nexusiterator-dataframablelist" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="qnexus.client.nexus_iterator.NexusIterator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.client.nexus_iterator.</span></span><span class="sig-name descname"><span class="pre">NexusIterator</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">resource_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">nexus_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">wrapper_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.13)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">nexus_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.client.nexus_iterator.NexusIterator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Generic" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code>], <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterator</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code>]</p>
+<p>An object that can be used to summarize or iterate through a filter query made to
+the Nexus database.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qnexus.client.nexus_iterator.NexusIterator.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#qnexus.client.nexus_iterator.NexusIterator.count" title="Link to this definition">¶</a></dt>
+<dd><p>Count the items that match the filter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qnexus.client.nexus_iterator.NexusIterator.df">
+<span class="sig-name descname"><span class="pre">df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#qnexus.client.nexus_iterator.NexusIterator.df" title="Link to this definition">¶</a></dt>
+<dd><p>List and present in a pandas DataFrame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qnexus.client.nexus_iterator.NexusIterator.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qnexus.models.references.DataframableList" title="qnexus.models.references.DataframableList"><span class="pre">DataframableList</span></a><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qnexus.client.nexus_iterator.NexusIterator.list" title="Link to this definition">¶</a></dt>
+<dd><p>Collapse into RefList.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qnexus.client.nexus_iterator.NexusIterator.summarize">
+<span class="sig-name descname"><span class="pre">summarize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#qnexus.client.nexus_iterator.NexusIterator.summarize" title="Link to this definition">¶</a></dt>
+<dd><p>Present in a pandas DataFrame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qnexus.client.nexus_iterator.NexusIterator.try_unique_match">
+<span class="sig-name descname"><span class="pre">try_unique_match</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span><a class="headerlink" href="#qnexus.client.nexus_iterator.NexusIterator.try_unique_match" title="Link to this definition">¶</a></dt>
+<dd><p>Utility function for expecting a single match on the filter.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qnexus.models.references.DataframableList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.models.references.</span></span><span class="sig-name descname"><span class="pre">DataframableList</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.models.references.DataframableList" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code>]</p>
+<p>A Python list that implements the Dataframable protocol.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qnexus.models.references.DataframableList.df">
+<span class="sig-name descname"><span class="pre">df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#qnexus.models.references.DataframableList.df" title="Link to this definition">¶</a></dt>
+<dd><p>Present in a pandas DataFrame.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
         </article>
@@ -438,13 +505,43 @@ as="style">
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">NexusIterator &amp; DataframableList</a><ul>
+<li><a class="reference internal" href="#qnexus.client.nexus_iterator.NexusIterator"><code class="docutils literal notranslate"><span class="pre">NexusIterator</span></code></a><ul>
+<li><a class="reference internal" href="#qnexus.client.nexus_iterator.NexusIterator.count"><code class="docutils literal notranslate"><span class="pre">NexusIterator.count()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.nexus_iterator.NexusIterator.df"><code class="docutils literal notranslate"><span class="pre">NexusIterator.df()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.nexus_iterator.NexusIterator.list"><code class="docutils literal notranslate"><span class="pre">NexusIterator.list()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.nexus_iterator.NexusIterator.summarize"><code class="docutils literal notranslate"><span class="pre">NexusIterator.summarize()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.nexus_iterator.NexusIterator.try_unique_match"><code class="docutils literal notranslate"><span class="pre">NexusIterator.try_unique_match()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#qnexus.models.references.DataframableList"><code class="docutils literal notranslate"><span class="pre">DataframableList</span></code></a><ul>
+<li><a class="reference internal" href="#qnexus.models.references.DataframableList.df"><code class="docutils literal notranslate"><span class="pre">DataframableList.df()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f3b36f1a"></script>
+</div><script src="../_static/documentation_options.js?v=82662543"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>

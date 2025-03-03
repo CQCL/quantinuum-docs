@@ -219,7 +219,7 @@ as="style">
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -378,14 +378,92 @@ as="style">
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="exceptions">
-<h1>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">¶</a></h1>
+          <section id="module-qnexus.exceptions">
+<span id="exceptions"></span><h1>Exceptions<a class="headerlink" href="#module-qnexus.exceptions" title="Link to this heading">¶</a></h1>
+<p>Custom exceptions thrown in qnexus usage.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="qnexus.exceptions.AuthenticationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.exceptions.</span></span><span class="sig-name descname"><span class="pre">AuthenticationError</span></span><a class="headerlink" href="#qnexus.exceptions.AuthenticationError" title="Link to this definition">¶</a></dt>
+<dd><p>Raised when there is an issue authenticating with the Nexus API.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="qnexus.exceptions.JobError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.exceptions.</span></span><span class="sig-name descname"><span class="pre">JobError</span></span><a class="headerlink" href="#qnexus.exceptions.JobError" title="Link to this definition">¶</a></dt>
+<dd><p>Raised when a Nexus Job has errored.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="qnexus.exceptions.NoUniqueMatch">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.exceptions.</span></span><span class="sig-name descname"><span class="pre">NoUniqueMatch</span></span><a class="headerlink" href="#qnexus.exceptions.NoUniqueMatch" title="Link to this definition">¶</a></dt>
+<dd><p>Raised when a <code class="docutils literal notranslate"><span class="pre">get</span></code> call finds more than one match.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="qnexus.exceptions.ResourceCreateFailed">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.exceptions.</span></span><span class="sig-name descname"><span class="pre">ResourceCreateFailed</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">status_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.exceptions.ResourceCreateFailed" title="Link to this definition">¶</a></dt>
+<dd><p>Raised when a resource couldn’t be created on the platform.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="qnexus.exceptions.ResourceDeleteFailed">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.exceptions.</span></span><span class="sig-name descname"><span class="pre">ResourceDeleteFailed</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">status_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.exceptions.ResourceDeleteFailed" title="Link to this definition">¶</a></dt>
+<dd><p>Raised when a resource couldn’t be deleted on the platform.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="qnexus.exceptions.ResourceFetchFailed">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.exceptions.</span></span><span class="sig-name descname"><span class="pre">ResourceFetchFailed</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">status_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.exceptions.ResourceFetchFailed" title="Link to this definition">¶</a></dt>
+<dd><p>Raised when a resource cannot be fetched from the platform to be read, or
+when expected data wasn’t found on an object.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="qnexus.exceptions.ResourceUpdateFailed">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.exceptions.</span></span><span class="sig-name descname"><span class="pre">ResourceUpdateFailed</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">status_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.exceptions.ResourceUpdateFailed" title="Link to this definition">¶</a></dt>
+<dd><p>Raised when a resource cannot be updated on the platform.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="qnexus.exceptions.ZeroMatches">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.exceptions.</span></span><span class="sig-name descname"><span class="pre">ZeroMatches</span></span><a class="headerlink" href="#qnexus.exceptions.ZeroMatches" title="Link to this definition">¶</a></dt>
+<dd><p>Raised when a <code class="docutils literal notranslate"><span class="pre">get</span></code> call finds no matches.</p>
+</dd></dl>
+
 </section>
 
         </article>
@@ -438,13 +516,39 @@ as="style">
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Exceptions</a><ul>
+<li><a class="reference internal" href="#qnexus.exceptions.AuthenticationError"><code class="docutils literal notranslate"><span class="pre">AuthenticationError</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.exceptions.JobError"><code class="docutils literal notranslate"><span class="pre">JobError</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.exceptions.NoUniqueMatch"><code class="docutils literal notranslate"><span class="pre">NoUniqueMatch</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.exceptions.ResourceCreateFailed"><code class="docutils literal notranslate"><span class="pre">ResourceCreateFailed</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.exceptions.ResourceDeleteFailed"><code class="docutils literal notranslate"><span class="pre">ResourceDeleteFailed</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.exceptions.ResourceFetchFailed"><code class="docutils literal notranslate"><span class="pre">ResourceFetchFailed</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.exceptions.ResourceUpdateFailed"><code class="docutils literal notranslate"><span class="pre">ResourceUpdateFailed</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.exceptions.ZeroMatches"><code class="docutils literal notranslate"><span class="pre">ZeroMatches</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f3b36f1a"></script>
+</div><script src="../_static/documentation_options.js?v=82662543"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>

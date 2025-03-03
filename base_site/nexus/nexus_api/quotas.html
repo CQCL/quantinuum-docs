@@ -219,7 +219,7 @@ as="style">
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -378,14 +378,67 @@ as="style">
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="quotas">
-<h1>quotas<a class="headerlink" href="#quotas" title="Link to this heading">¶</a></h1>
+          <section id="module-qnexus.client.quotas">
+<span id="quotas"></span><h1>quotas<a class="headerlink" href="#module-qnexus.client.quotas" title="Link to this heading">¶</a></h1>
+<p>Client API for quotas in Nexus.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.quotas.check_quota">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.quotas.</span></span><span class="sig-name descname"><span class="pre">check_quota</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'compilation'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'simulation'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'jupyterhub'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'database_usage'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#qnexus.client.quotas.check_quota" title="Link to this definition">¶</a></dt>
+<dd><p>Check that the current user has available quota.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.quotas.get">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.quotas.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'compilation'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'simulation'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'jupyterhub'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'database_usage'</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.client.quotas.get" title="Link to this definition">¶</a></dt>
+<dd><p>Get specific quota details by name.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.quotas.get_all">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.quotas.</span></span><span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="nexus_iterator.html#qnexus.models.references.DataframableList" title="qnexus.models.references.DataframableList"><span class="pre">DataframableList</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qnexus.quotas.Quota" title="qnexus.models.Quota"><span class="pre">Quota</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qnexus.client.quotas.get_all" title="Link to this definition">¶</a></dt>
+<dd><p>Get all quotas, including usage.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qnexus.quotas.Quota">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.quotas.</span></span><span class="sig-name descname"><span class="pre">Quota</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">usage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">quota</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.quotas.Quota" title="Link to this definition">¶</a></dt>
+<dd><p>A quota in Nexus.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qnexus.quotas.Quota.df">
+<span class="sig-name descname"><span class="pre">df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#qnexus.quotas.Quota.df" title="Link to this definition">¶</a></dt>
+<dd><p>Convert to a pandas DataFrame.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
         </article>
@@ -438,13 +491,38 @@ as="style">
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">quotas</a><ul>
+<li><a class="reference internal" href="#qnexus.client.quotas.check_quota"><code class="docutils literal notranslate"><span class="pre">check_quota()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.quotas.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.quotas.get_all"><code class="docutils literal notranslate"><span class="pre">get_all()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.quotas.Quota"><code class="docutils literal notranslate"><span class="pre">Quota</span></code></a><ul>
+<li><a class="reference internal" href="#qnexus.quotas.Quota.df"><code class="docutils literal notranslate"><span class="pre">Quota.df()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f3b36f1a"></script>
+</div><script src="../_static/documentation_options.js?v=82662543"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>

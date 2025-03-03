@@ -219,7 +219,7 @@ as="style">
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -378,14 +378,42 @@ as="style">
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="users">
-<h1>users<a class="headerlink" href="#users" title="Link to this heading">¶</a></h1>
+          <section id="module-qnexus.client.users">
+<span id="users"></span><h1>users<a class="headerlink" href="#module-qnexus.client.users" title="Link to this heading">¶</a></h1>
+<p>Client API for users in Nexus.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.users.get_self">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.users.</span></span><span class="sig-name descname"><span class="pre">get_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qnexus.users.UserRef" title="qnexus.models.references.UserRef"><span class="pre">UserRef</span></a></span></span><a class="headerlink" href="#qnexus.client.users.get_self" title="Link to this definition">¶</a></dt>
+<dd><p>Get the logged in user.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qnexus.users.UserRef">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.users.</span></span><span class="sig-name descname"><span class="pre">UserRef</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.13)"><span class="pre">UUID</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">display_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'UserRef'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'UserRef'</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.users.UserRef" title="Link to this definition">¶</a></dt>
+<dd><p>Proxy object to a User in Nexus.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qnexus.users.UserRef.df">
+<span class="sig-name descname"><span class="pre">df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#qnexus.users.UserRef.df" title="Link to this definition">¶</a></dt>
+<dd><p>Present in a pandas DataFrame.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
         </article>
@@ -438,13 +466,36 @@ as="style">
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">users</a><ul>
+<li><a class="reference internal" href="#qnexus.client.users.get_self"><code class="docutils literal notranslate"><span class="pre">get_self()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.users.UserRef"><code class="docutils literal notranslate"><span class="pre">UserRef</span></code></a><ul>
+<li><a class="reference internal" href="#qnexus.users.UserRef.df"><code class="docutils literal notranslate"><span class="pre">UserRef.df()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f3b36f1a"></script>
+</div><script src="../_static/documentation_options.js?v=82662543"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>

@@ -219,7 +219,7 @@ as="style">
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -378,14 +378,361 @@ as="style">
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="jobs">
-<h1>jobs<a class="headerlink" href="#jobs" title="Link to this heading">¶</a></h1>
+          <section id="module-qnexus.client.jobs">
+<span id="jobs"></span><h1>jobs<a class="headerlink" href="#module-qnexus.client.jobs" title="Link to this heading">¶</a></h1>
+<p>Client API for jobs in Nexus.</p>
+<dl class="py class enum">
+<dt class="sig sig-object py" id="qnexus.client.jobs.RemoteRetryStrategy">
+<em class="property"><span class="pre">enum</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.client.jobs.</span></span><span class="sig-name descname"><span class="pre">RemoteRetryStrategy</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.client.jobs.RemoteRetryStrategy" title="Link to this definition">¶</a></dt>
+<dd><p>Strategy to use when retrying jobs.</p>
+<p>Each strategy defines how the system should approach resolving
+potential conflicts with remote state.</p>
+<p>DEFAULT will only attempt to re-sync status and collect results
+from the third party. Duplicate results will not be saved.</p>
+<p>ALLOW_RESUBMIT will submit the job to the third party again if
+# the system has no record of a third party handle.</p>
+<p>FORCE_RESUBMIT will submit the job to the third party again if
+the system has a job handle already but no result.</p>
+<p>FULL_RESTART will act as though the job is entirely fresh and
+re-perform every action.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Member Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+<p>Valid values are as follows:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.client.jobs.RemoteRetryStrategy.DEFAULT">
+<span class="sig-name descname"><span class="pre">DEFAULT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;RemoteRetryStrategy.DEFAULT:</span> <span class="pre">'DEFAULT'&gt;</span></em><a class="headerlink" href="#qnexus.client.jobs.RemoteRetryStrategy.DEFAULT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.client.jobs.RemoteRetryStrategy.ALLOW_RESUBMIT">
+<span class="sig-name descname"><span class="pre">ALLOW_RESUBMIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;RemoteRetryStrategy.ALLOW_RESUBMIT:</span> <span class="pre">'ALLOW_RESUBMIT'&gt;</span></em><a class="headerlink" href="#qnexus.client.jobs.RemoteRetryStrategy.ALLOW_RESUBMIT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.client.jobs.RemoteRetryStrategy.FORCE_RESUBMIT">
+<span class="sig-name descname"><span class="pre">FORCE_RESUBMIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;RemoteRetryStrategy.FORCE_RESUBMIT:</span> <span class="pre">'FORCE_RESUBMIT'&gt;</span></em><a class="headerlink" href="#qnexus.client.jobs.RemoteRetryStrategy.FORCE_RESUBMIT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.client.jobs.RemoteRetryStrategy.FULL_RESTART">
+<span class="sig-name descname"><span class="pre">FULL_RESTART</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;RemoteRetryStrategy.FULL_RESTART:</span> <span class="pre">'FULL_RESTART'&gt;</span></em><a class="headerlink" href="#qnexus.client.jobs.RemoteRetryStrategy.FULL_RESTART" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.jobs.cancel">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.jobs.</span></span><span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">job</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qnexus.jobs.JobRef" title="qnexus.models.references.JobRef"><span class="pre">JobRef</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.client.jobs.cancel" title="Link to this definition">¶</a></dt>
+<dd><p>Attempt cancellation of a job in Nexus.</p>
+<p>If the job has been submitted to a backend, Nexus will request cancellation of the job.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.jobs.get">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.jobs.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.13)"><span class="pre">UUID</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">name_like</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">creator_email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="projects.html#qnexus.projects.ProjectRef" title="qnexus.models.references.ProjectRef"><span class="pre">ProjectRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.13)"><span class="pre">OrderedDict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">job_status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qnexus.jobs.JobStatusEnum" title="qnexus.models.filters.JobStatusEnum"><span class="pre">JobStatusEnum</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">job_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qnexus.jobs.JobType" title="qnexus.models.references.JobType"><span class="pre">JobType</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">created_before</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.13)"><span class="pre">datetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">created_after</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.13)"><span class="pre">datetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">datetime.datetime(2023,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">modified_before</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.13)"><span class="pre">datetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">modified_after</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.13)"><span class="pre">datetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">sort_filters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="models.html#qnexus.models.filters.SortFilterEnum" title="qnexus.models.filters.SortFilterEnum"><span class="pre">SortFilterEnum</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">page_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">page_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ScopeFilterEnum</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qnexus.jobs.JobRef" title="qnexus.models.references.JobRef"><span class="pre">JobRef</span></a></span></span><a class="headerlink" href="#qnexus.client.jobs.get" title="Link to this definition">¶</a></dt>
+<dd><p>Get a single job using filters. Throws an exception if the filters do
+not match exactly one object.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.jobs.get_all">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.jobs.</span></span><span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">name_like</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">creator_email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="projects.html#qnexus.projects.ProjectRef" title="qnexus.models.references.ProjectRef"><span class="pre">ProjectRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.13)"><span class="pre">OrderedDict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">job_status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qnexus.jobs.JobStatusEnum" title="qnexus.models.filters.JobStatusEnum"><span class="pre">JobStatusEnum</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">job_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qnexus.jobs.JobType" title="qnexus.models.references.JobType"><span class="pre">JobType</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">created_before</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.13)"><span class="pre">datetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">created_after</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.13)"><span class="pre">datetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">datetime.datetime(2023,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">modified_before</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.13)"><span class="pre">datetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">modified_after</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.13)"><span class="pre">datetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">sort_filters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="models.html#qnexus.models.filters.SortFilterEnum" title="qnexus.models.filters.SortFilterEnum"><span class="pre">SortFilterEnum</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">page_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">page_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ScopeFilterEnum</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="nexus_iterator.html#qnexus.client.nexus_iterator.NexusIterator" title="qnexus.client.nexus_iterator.NexusIterator"><span class="pre">NexusIterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="compile.html#qnexus.jobs.CompileJobRef" title="qnexus.models.references.CompileJobRef"><span class="pre">CompileJobRef</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="execute.html#qnexus.models.references.ExecuteJobRef" title="qnexus.models.references.ExecuteJobRef"><span class="pre">ExecuteJobRef</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qnexus.client.jobs.get_all" title="Link to this definition">¶</a></dt>
+<dd><p>Get a NexusIterator over jobs with optional filters.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.jobs.listen_job_status">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.client.jobs.</span></span><span class="sig-name descname"><span class="pre">listen_job_status</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">job</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qnexus.jobs.JobRef" title="qnexus.models.references.JobRef"><span class="pre">JobRef</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">wait_for_status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qnexus.jobs.StatusEnum" title="pytket.backends.status.StatusEnum"><span class="pre">StatusEnum</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">StatusEnum.COMPLETED</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JobStatus</span></span></span><a class="headerlink" href="#qnexus.client.jobs.listen_job_status" title="Link to this definition">¶</a></dt>
+<dd><p>Check the Status of a Job via a websocket connection.
+Will use SSO tokens.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.jobs.results">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.jobs.</span></span><span class="sig-name descname"><span class="pre">results</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">job</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="compile.html#qnexus.jobs.CompileJobRef" title="qnexus.models.references.CompileJobRef"><span class="pre">CompileJobRef</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">allow_incomplete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="nexus_iterator.html#qnexus.models.references.DataframableList" title="qnexus.models.references.DataframableList"><span class="pre">DataframableList</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="compile.html#qnexus.models.references.CompilationResultRef" title="qnexus.models.references.CompilationResultRef"><span class="pre">CompilationResultRef</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qnexus.client.jobs.results" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.jobs.</span></span><span class="sig-name descname"><span class="pre">results</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">job</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="execute.html#qnexus.models.references.ExecuteJobRef" title="qnexus.models.references.ExecuteJobRef"><span class="pre">ExecuteJobRef</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">allow_incomplete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="nexus_iterator.html#qnexus.models.references.DataframableList" title="qnexus.models.references.DataframableList"><span class="pre">DataframableList</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="execute.html#qnexus.models.references.ExecutionResultRef" title="qnexus.models.references.ExecutionResultRef"><span class="pre">ExecutionResultRef</span></a><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dd><p>Get the ResultRefs from a JobRef, if the job is complete.
+To enable fetching results from Jobs with incomplete items, set allow_incomplete=True.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.jobs.retry_submission">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.jobs.</span></span><span class="sig-name descname"><span class="pre">retry_submission</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">job</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qnexus.jobs.JobRef" title="qnexus.models.references.JobRef"><span class="pre">JobRef</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">retry_status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qnexus.jobs.StatusEnum" title="pytket.backends.status.StatusEnum"><span class="pre">StatusEnum</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">remote_retry_strategy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qnexus.client.jobs.RemoteRetryStrategy" title="qnexus.client.jobs.RemoteRetryStrategy"><span class="pre">RemoteRetryStrategy</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">RemoteRetryStrategy.DEFAULT</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">user_group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.client.jobs.retry_submission" title="Link to this definition">¶</a></dt>
+<dd><p>Retry a job in Nexus according to status(es) or retry strategy.</p>
+<p>By default, jobs with the ERROR status will be retried.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.jobs.status">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.jobs.</span></span><span class="sig-name descname"><span class="pre">status</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">job</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qnexus.jobs.JobRef" title="qnexus.models.references.JobRef"><span class="pre">JobRef</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JobStatus</span></span></span><a class="headerlink" href="#qnexus.client.jobs.status" title="Link to this definition">¶</a></dt>
+<dd><p>Get the status of a job.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qnexus.client.jobs.wait_for">
+<span class="sig-prename descclassname"><span class="pre">qnexus.client.jobs.</span></span><span class="sig-name descname"><span class="pre">wait_for</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">job</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qnexus.jobs.JobRef" title="qnexus.models.references.JobRef"><span class="pre">JobRef</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">wait_for_status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qnexus.jobs.StatusEnum" title="pytket.backends.status.StatusEnum"><span class="pre">StatusEnum</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">StatusEnum.COMPLETED</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">300.0</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JobStatus</span></span></span><a class="headerlink" href="#qnexus.client.jobs.wait_for" title="Link to this definition">¶</a></dt>
+<dd><p>Check job status until the job is complete (or a specified status).</p>
+</dd></dl>
+
+<dl class="py class enum">
+<dt class="sig sig-object py" id="qnexus.jobs.StatusEnum">
+<em class="property"><span class="pre">enum</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.jobs.</span></span><span class="sig-name descname"><span class="pre">StatusEnum</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.jobs.StatusEnum" title="Link to this definition">¶</a></dt>
+<dd><p>Enumeration for the possible status of a circuit submitted to a backend.</p>
+<p>Valid values are as follows:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.StatusEnum.COMPLETED">
+<span class="sig-name descname"><span class="pre">COMPLETED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;StatusEnum.COMPLETED:</span> <span class="pre">'Circuit</span> <span class="pre">has</span> <span class="pre">completed.</span> <span class="pre">Results</span> <span class="pre">are</span> <span class="pre">ready.'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.StatusEnum.COMPLETED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.StatusEnum.QUEUED">
+<span class="sig-name descname"><span class="pre">QUEUED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;StatusEnum.QUEUED:</span> <span class="pre">'Circuit</span> <span class="pre">is</span> <span class="pre">queued.'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.StatusEnum.QUEUED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.StatusEnum.SUBMITTED">
+<span class="sig-name descname"><span class="pre">SUBMITTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;StatusEnum.SUBMITTED:</span> <span class="pre">'Circuit</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">submitted.'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.StatusEnum.SUBMITTED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.StatusEnum.RUNNING">
+<span class="sig-name descname"><span class="pre">RUNNING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;StatusEnum.RUNNING:</span> <span class="pre">'Circuit</span> <span class="pre">is</span> <span class="pre">running.'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.StatusEnum.RUNNING" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.StatusEnum.RETRYING">
+<span class="sig-name descname"><span class="pre">RETRYING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;StatusEnum.RETRYING:</span> <span class="pre">'Circuit</span> <span class="pre">is</span> <span class="pre">being</span> <span class="pre">retried.'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.StatusEnum.RETRYING" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.StatusEnum.CANCELLING">
+<span class="sig-name descname"><span class="pre">CANCELLING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;StatusEnum.CANCELLING:</span> <span class="pre">'Cancellation</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">requested.'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.StatusEnum.CANCELLING" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.StatusEnum.CANCELLED">
+<span class="sig-name descname"><span class="pre">CANCELLED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;StatusEnum.CANCELLED:</span> <span class="pre">'Circuit</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">cancelled.'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.StatusEnum.CANCELLED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.StatusEnum.ERROR">
+<span class="sig-name descname"><span class="pre">ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;StatusEnum.ERROR:</span> <span class="pre">'Circuit</span> <span class="pre">has</span> <span class="pre">errored.</span> <span class="pre">Check</span> <span class="pre">CircuitStatus.message</span> <span class="pre">for</span> <span class="pre">error</span> <span class="pre">message.'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.StatusEnum.ERROR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class enum">
+<dt class="sig sig-object py" id="qnexus.jobs.JobStatusEnum">
+<em class="property"><span class="pre">enum</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.jobs.</span></span><span class="sig-name descname"><span class="pre">JobStatusEnum</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.jobs.JobStatusEnum" title="Link to this definition">¶</a></dt>
+<dd><p>Possible job statuses</p>
+<dl class="field-list simple">
+<dt class="field-odd">Member Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+<p>Valid values are as follows:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.JobStatusEnum.COMPLETED">
+<span class="sig-name descname"><span class="pre">COMPLETED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;JobStatusEnum.COMPLETED:</span> <span class="pre">'COMPLETED'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.JobStatusEnum.COMPLETED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.JobStatusEnum.QUEUED">
+<span class="sig-name descname"><span class="pre">QUEUED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;JobStatusEnum.QUEUED:</span> <span class="pre">'QUEUED'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.JobStatusEnum.QUEUED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.JobStatusEnum.SUBMITTED">
+<span class="sig-name descname"><span class="pre">SUBMITTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;JobStatusEnum.SUBMITTED:</span> <span class="pre">'SUBMITTED'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.JobStatusEnum.SUBMITTED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.JobStatusEnum.RUNNING">
+<span class="sig-name descname"><span class="pre">RUNNING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;JobStatusEnum.RUNNING:</span> <span class="pre">'RUNNING'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.JobStatusEnum.RUNNING" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.JobStatusEnum.CANCELLED">
+<span class="sig-name descname"><span class="pre">CANCELLED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;JobStatusEnum.CANCELLED:</span> <span class="pre">'CANCELLED'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.JobStatusEnum.CANCELLED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.JobStatusEnum.ERROR">
+<span class="sig-name descname"><span class="pre">ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;JobStatusEnum.ERROR:</span> <span class="pre">'ERROR'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.JobStatusEnum.ERROR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qnexus.jobs.JobRef">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.jobs.</span></span><span class="sig-name descname"><span class="pre">JobRef</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.13)"><span class="pre">UUID</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">annotations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#qnexus.models.annotations.Annotations" title="qnexus.models.annotations.Annotations"><span class="pre">Annotations</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">job_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qnexus.jobs.JobType" title="qnexus.models.references.JobType"><span class="pre">JobType</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">last_status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qnexus.jobs.StatusEnum" title="pytket.backends.status.StatusEnum"><span class="pre">StatusEnum</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">last_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="projects.html#qnexus.projects.ProjectRef" title="qnexus.models.references.ProjectRef"><span class="pre">ProjectRef</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'JobRef'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'CompileJobRef'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ExecuteJobRef'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'JobRef'</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.jobs.JobRef" title="Link to this definition">¶</a></dt>
+<dd><p>Proxy object to a Job in Nexus.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qnexus.jobs.JobRef.df">
+<span class="sig-name descname"><span class="pre">df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#qnexus.jobs.JobRef.df" title="Link to this definition">¶</a></dt>
+<dd><p>Present in a pandas DataFrame.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class enum">
+<dt class="sig sig-object py" id="qnexus.jobs.JobType">
+<em class="property"><span class="pre">enum</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qnexus.jobs.</span></span><span class="sig-name descname"><span class="pre">JobType</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qnexus.jobs.JobType" title="Link to this definition">¶</a></dt>
+<dd><p>Enum for a job’s type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Member Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+<p>Valid values are as follows:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.JobType.EXECUTE">
+<span class="sig-name descname"><span class="pre">EXECUTE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;JobType.EXECUTE:</span> <span class="pre">'execute'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.JobType.EXECUTE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qnexus.jobs.JobType.COMPILE">
+<span class="sig-name descname"><span class="pre">COMPILE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;JobType.COMPILE:</span> <span class="pre">'compile'&gt;</span></em><a class="headerlink" href="#qnexus.jobs.JobType.COMPILE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 
         </article>
@@ -438,13 +785,75 @@ as="style">
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">jobs</a><ul>
+<li><a class="reference internal" href="#qnexus.client.jobs.RemoteRetryStrategy"><code class="docutils literal notranslate"><span class="pre">RemoteRetryStrategy</span></code></a><ul>
+<li><a class="reference internal" href="#qnexus.client.jobs.RemoteRetryStrategy.DEFAULT"><code class="docutils literal notranslate"><span class="pre">RemoteRetryStrategy.DEFAULT</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.jobs.RemoteRetryStrategy.ALLOW_RESUBMIT"><code class="docutils literal notranslate"><span class="pre">RemoteRetryStrategy.ALLOW_RESUBMIT</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.jobs.RemoteRetryStrategy.FORCE_RESUBMIT"><code class="docutils literal notranslate"><span class="pre">RemoteRetryStrategy.FORCE_RESUBMIT</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.jobs.RemoteRetryStrategy.FULL_RESTART"><code class="docutils literal notranslate"><span class="pre">RemoteRetryStrategy.FULL_RESTART</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#qnexus.client.jobs.cancel"><code class="docutils literal notranslate"><span class="pre">cancel()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.jobs.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.jobs.get_all"><code class="docutils literal notranslate"><span class="pre">get_all()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.jobs.listen_job_status"><code class="docutils literal notranslate"><span class="pre">listen_job_status()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.jobs.results"><code class="docutils literal notranslate"><span class="pre">results()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.jobs.retry_submission"><code class="docutils literal notranslate"><span class="pre">retry_submission()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.jobs.status"><code class="docutils literal notranslate"><span class="pre">status()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.client.jobs.wait_for"><code class="docutils literal notranslate"><span class="pre">wait_for()</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.StatusEnum"><code class="docutils literal notranslate"><span class="pre">StatusEnum</span></code></a><ul>
+<li><a class="reference internal" href="#qnexus.jobs.StatusEnum.COMPLETED"><code class="docutils literal notranslate"><span class="pre">StatusEnum.COMPLETED</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.StatusEnum.QUEUED"><code class="docutils literal notranslate"><span class="pre">StatusEnum.QUEUED</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.StatusEnum.SUBMITTED"><code class="docutils literal notranslate"><span class="pre">StatusEnum.SUBMITTED</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.StatusEnum.RUNNING"><code class="docutils literal notranslate"><span class="pre">StatusEnum.RUNNING</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.StatusEnum.RETRYING"><code class="docutils literal notranslate"><span class="pre">StatusEnum.RETRYING</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.StatusEnum.CANCELLING"><code class="docutils literal notranslate"><span class="pre">StatusEnum.CANCELLING</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.StatusEnum.CANCELLED"><code class="docutils literal notranslate"><span class="pre">StatusEnum.CANCELLED</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.StatusEnum.ERROR"><code class="docutils literal notranslate"><span class="pre">StatusEnum.ERROR</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#qnexus.jobs.JobStatusEnum"><code class="docutils literal notranslate"><span class="pre">JobStatusEnum</span></code></a><ul>
+<li><a class="reference internal" href="#qnexus.jobs.JobStatusEnum.COMPLETED"><code class="docutils literal notranslate"><span class="pre">JobStatusEnum.COMPLETED</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.JobStatusEnum.QUEUED"><code class="docutils literal notranslate"><span class="pre">JobStatusEnum.QUEUED</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.JobStatusEnum.SUBMITTED"><code class="docutils literal notranslate"><span class="pre">JobStatusEnum.SUBMITTED</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.JobStatusEnum.RUNNING"><code class="docutils literal notranslate"><span class="pre">JobStatusEnum.RUNNING</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.JobStatusEnum.CANCELLED"><code class="docutils literal notranslate"><span class="pre">JobStatusEnum.CANCELLED</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.JobStatusEnum.ERROR"><code class="docutils literal notranslate"><span class="pre">JobStatusEnum.ERROR</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#qnexus.jobs.JobRef"><code class="docutils literal notranslate"><span class="pre">JobRef</span></code></a><ul>
+<li><a class="reference internal" href="#qnexus.jobs.JobRef.df"><code class="docutils literal notranslate"><span class="pre">JobRef.df()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#qnexus.jobs.JobType"><code class="docutils literal notranslate"><span class="pre">JobType</span></code></a><ul>
+<li><a class="reference internal" href="#qnexus.jobs.JobType.EXECUTE"><code class="docutils literal notranslate"><span class="pre">JobType.EXECUTE</span></code></a></li>
+<li><a class="reference internal" href="#qnexus.jobs.JobType.COMPILE"><code class="docutils literal notranslate"><span class="pre">JobType.COMPILE</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f3b36f1a"></script>
+</div><script src="../_static/documentation_options.js?v=82662543"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
