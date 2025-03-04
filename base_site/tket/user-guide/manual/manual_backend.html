@@ -401,12 +401,9 @@ Compiled circuit valid for AerBackend? True
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 1]
- [1 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 1]
  [0 1]
- [1 1]
- [1 1]
- [1 1]
+ [0 1]
  [0 1]
  [0 1]
  [0 1]
@@ -415,12 +412,15 @@ Compiled circuit valid for AerBackend? True
  [1 1]
  [1 1]
  [0 1]
+ [1 1]
+ [0 1]
+ [1 1]
+ [1 1]
  [0 1]
  [1 1]
  [0 1]
  [0 1]
- [1 1]
- [0 1]]
+ [1 1]]
 </pre></div>
 </div>
 </div>
@@ -447,8 +447,8 @@ Compiled circuit valid for AerBackend? True
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(1, 1): 1007, (0, 1): 993})
-{(0, 1): 0.4965, (1, 1): 0.5035}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(1, 1): 1060, (0, 1): 940})
+{(0, 1): 0.47, (1, 1): 0.53}
 </pre></div>
 </div>
 </div>
@@ -559,7 +559,9 @@ False
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(0, 1): 10})
-Counter({(1, 0): 10})
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(1, 0): 10})
 </pre></div>
 </div>
 </div>
@@ -622,7 +624,7 @@ Counter({(1, 0): 10})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01100000000000001
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0010000000000000009
 </pre></div>
 </div>
 </div>
@@ -683,10 +685,8 @@ Counter({(1, 0): 10})
   0.        +0.j  0.        +0.j  0.        +0.j  0.        +0.j]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(0, 0, 0): 816, (1, 0, 0): 797, (1, 0, 1): 204, (0, 0, 1): 183})
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(0, 0): 1613, (0, 1): 387})
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(1, 0, 0): 799, (0, 0, 0): 781, (0, 0, 1): 217, (1, 0, 1): 203})
+Counter({(0, 0): 1580, (0, 1): 420})
 </pre></div>
 </div>
 </div>
@@ -734,8 +734,8 @@ Counter({(1, 0): 10})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.019000000000000017
-(0.28299999999999986+0j)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.015000000000000013
+(0.3169999999999999+0j)
 </pre></div>
 </div>
 </div>
@@ -764,8 +764,8 @@ Counter({(1, 0): 10})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(0, 0, 1): 412, (0, 0, 0): 406, (0, 1, 0): 392, (0, 1, 1): 390, (1, 0, 1): 110, (1, 1, 1): 110, (1, 1, 0): 91, (1, 0, 0): 89})
--0.0029999999999998916
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(0, 1, 1): 411, (0, 0, 1): 410, (0, 1, 0): 404, (0, 0, 0): 372, (1, 1, 1): 111, (1, 0, 0): 105, (1, 0, 1): 99, (1, 1, 0): 88})
+-0.030000000000000027
 </pre></div>
 </div>
 </div>
@@ -805,7 +805,7 @@ Counter({(1, 0): 10})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(1, 1, 1): 133, (1, 1, 0): 132, (0, 0, 0): 128, (0, 0, 1): 128, (0, 1, 1): 127, (1, 0, 1): 124, (1, 0, 0): 115, (0, 1, 0): 113})
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({(1, 1, 1): 140, (0, 1, 1): 138, (0, 0, 1): 136, (1, 0, 1): 129, (0, 0, 0): 126, (0, 1, 0): 119, (1, 0, 0): 111, (1, 1, 0): 101})
 </pre></div>
 </div>
 </div>
@@ -859,7 +859,7 @@ Counter({(1, 0): 10})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.006000000000000005
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0010000000000000009
 </pre></div>
 </div>
 </div>

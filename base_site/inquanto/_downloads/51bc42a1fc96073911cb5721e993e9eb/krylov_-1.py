@@ -1,7 +1,7 @@
 r"""Example of building your own Lanczos routine, then comparing it to KrylovSubspaceComputable."""
 
 # imports
-import numpy as np
+import numpy
 
 import cmath
 
@@ -71,8 +71,8 @@ moments = moments_expr.default_evaluate(parameters)
 
 # print the results from the custom routine
 print(moments)
-h = np.zeros((krylov, krylov), dtype=complex)
-s = np.zeros((krylov, krylov), dtype=complex)
+h = numpy.zeros((krylov, krylov), dtype=complex)
+s = numpy.zeros((krylov, krylov), dtype=complex)
 
 for n in range(krylov):
     for m in range(krylov):

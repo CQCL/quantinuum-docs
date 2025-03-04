@@ -3,7 +3,7 @@ r"""One-shot DMET calculations on hydrogen rings"""
 # imports
 from typing import Tuple
 
-import numpy as np
+import numpy
 
 from pytket.extensions.qiskit import AerStateBackend
 
@@ -91,13 +91,13 @@ dmet = DMETRHF(
 
 # The boolean mask array marks with True the spatial orbitals that define the fragment
 fr1 = MyFragment(
-    dmet, np.array([True, True, False, False, False, False]), "H2-1", frozen=[0, 3]
+    dmet, numpy.array([True, True, False, False, False, False]), "H2-1", frozen=[0, 3]
 )
 fr2 = MyFragment(
-    dmet, np.array([False, False, True, True, False, False]), "H2-2", frozen=[0, 3]
+    dmet, numpy.array([False, False, True, True, False, False]), "H2-2", frozen=[0, 3]
 )
 fr3 = MyFragment(
-    dmet, np.array([False, False, False, False, True, True]), "H2-3", frozen=[0, 3]
+    dmet, numpy.array([False, False, False, False, True, True]), "H2-3", frozen=[0, 3]
 )
 
 fragments = [fr1, fr2, fr3]

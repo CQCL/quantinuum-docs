@@ -1,7 +1,7 @@
 r"""Symbolic evaluation and comparing integrator methods."""
 
 # imports
-import numpy as np
+import numpy
 
 from sympy import Symbol, Array
 
@@ -78,7 +78,7 @@ def linear_problem(p, t):
 
 
 # prepare range of time-evolution
-time = np.linspace(0, 0.5, 51)
+time = numpy.linspace(0, 0.5, 51)
 
 
 print("# EULER INTEGRATOR...")

@@ -1,7 +1,7 @@
 r"""A AlgorithmMcLachlanRealTime time evolution simulation"""
 
 # imports
-import numpy as np
+import numpy
 
 from pytket.extensions.qiskit import AerStateBackend
 
@@ -113,7 +113,7 @@ ansatz = (
 # Get a set of initial ansatz symbols
 initial = ansatz.state_symbols.construct_random(seed=0, mu=0, sigma=0.01)
 
-time = np.linspace(0, 2, 201)
+time = numpy.linspace(0, 2, 201)
 # Construct a numerical integrator which will define the state at time t+1 using the computables
 integrator = NaiveEulerIntegrator(
     time, disp=True, linear_solver=NaiveEulerIntegrator.linear_solver_scipy_pinvh
@@ -136,13 +136,13 @@ solution = algodeint.run()
 
 
 # After the evolution run, we can measure/evaluate quantities at each time step:
-exp_val_array = np.asarray(
+exp_val_array = numpy.asarray(
     [ExpectationValue(ansatz, op) for op in [hamiltonian, *operators]]
 )
 evs_exp_runner = protocol.get_runner(ComputableNDArray(exp_val_array))
 
 evs = algodeint.post_propagation_evaluation(evs_exp_runner)
-evs = np.asarray(evs)
+evs = numpy.asarray(evs)
 
 # These figures show the orbital occupancy dynamics from the initial 1001 state.
 # Due to numerics in the state definition we observe some drift in the system total energy,

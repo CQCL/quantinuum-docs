@@ -1,7 +1,7 @@
 r"""Orbital optimization using Pipek-Mezey as an example."""
 
 # imports
-import numpy as np
+import numpy
 
 from inquanto.express import load_h5, run_rhf
 from inquanto.minimizers import MinimizerScipy
@@ -14,10 +14,10 @@ h2_3_ring_sto3g = load_h5("h2_3_ring_sto3g.h5", as_tuple=True)
 
 
 # construct the pipek-mezey cost function
-def cost(mo: np.ndarray):
+def cost(mo: numpy.ndarray):
     aggregate = 0.0
     for p in projectors:
-        aggregate += sum(np.dot(mo[:, p], mo[:, p].conj().T).diagonal() ** 2)
+        aggregate += sum(numpy.dot(mo[:, p], mo[:, p].conj().T).diagonal() ** 2)
     return -aggregate
 
 
@@ -29,18 +29,18 @@ total, orbital_energies, mo, dm = run_rhf(
     maxit=1000,
 )
 print("Shape of 3 x H2 HF MOs")
-print(np.shape(mo))
+print(numpy.shape(mo))
 print("3 x H2 HF RHF MO coefficients")
 print(mo)
 
 # projectors defining centers of basis functions
 projectors = [
-    np.array([True, False, False, False, False, False]),
-    np.array([False, True, False, False, False, False]),
-    np.array([False, False, True, False, False, False]),
-    np.array([False, False, False, True, False, False]),
-    np.array([False, False, False, False, True, False]),
-    np.array([False, False, False, False, False, True]),
+    numpy.array([True, False, False, False, False, False]),
+    numpy.array([False, True, False, False, False, False]),
+    numpy.array([False, False, True, False, False, False]),
+    numpy.array([False, False, False, True, False, False]),
+    numpy.array([False, False, False, False, True, False]),
+    numpy.array([False, False, False, False, False, True]),
 ]
 
 # construct OrbitalOptimizer object,
@@ -60,7 +60,7 @@ oo = OrbitalOptimizer(
 # returns the new MO coefficients
 new_mo, unitary, cost_score = oo.optimize(random_initial_variables=False)
 print("New PM localized MO shape ")
-print(np.shape(new_mo))
+print(numpy.shape(new_mo))
 print("3 x H2 HF RHF PM localized orbital coefficients")
 print(new_mo)
 
@@ -69,6 +69,6 @@ print(new_mo)
 from inquanto.operators import OrbitalTransformer
 
 rotation_u = OrbitalTransformer().compute_unitary(v_init=mo, v_final=new_mo)
-print(np.allclose(unitary, rotation_u, atol=1e-06))
+print(numpy.allclose(unitary, rotation_u, atol=1e-06))
 
 # oo() can also be used to return only the new mo coefficients for compatibility with driver transf arguments

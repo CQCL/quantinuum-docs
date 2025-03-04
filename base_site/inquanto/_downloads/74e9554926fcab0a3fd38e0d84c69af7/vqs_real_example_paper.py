@@ -3,7 +3,7 @@ r"""A AlgorithmMcLachlanRealTime time evolution simulation for a small system.""
 # contrast to vqs_real_example_paper_phased https://doi.org/10.22331/q-2019-10-07-191
 
 # imports
-import numpy as np
+import numpy
 
 from pytket.extensions.qiskit import AerStateBackend
 
@@ -63,7 +63,7 @@ hamiltonian = QubitOperator.from_string("(1.0, Y0)")
 initial = ansatz.state_symbols.construct_from_array([0.0, 0.1734, 0.3909])
 
 print(initial)
-time = np.linspace(0, 10, 1001)
+time = numpy.linspace(0, 10, 1001)
 integrator = NaiveEulerIntegrator(
     time, disp=True, linear_solver=NaiveEulerIntegrator.linear_solver_scipy_pinvh
 )
@@ -87,7 +87,7 @@ solution = algodeint.build(
 evs_exp_runner = protocol.get_runner(ExpectationValue(ansatz, hamiltonian))
 
 evs = algodeint.post_propagation_evaluation(evs_exp_runner)
-evs = np.asarray(evs)
+evs = numpy.asarray(evs)
 
 plotting(
     time,

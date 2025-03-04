@@ -354,6 +354,7 @@ as="style">
 <span class="sd">            scratch space; value between 0 and 1. Defaults to ``0.8``.</span>
 <span class="sd">        loglevel: Internal logger output level. Use 30 for warnings only, 20 for</span>
 <span class="sd">            verbose and 10 for debug mode.</span>
+<span class="sd">        logfile: If provided, log is written to this file rather than stream.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -362,8 +363,9 @@ as="style">
         <span class="n">attributes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">scratch_fraction</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span>
         <span class="n">loglevel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span>
+        <span class="n">logfile</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">set_logger</span><span class="p">(</span><span class="s2">&quot;GeneralState&quot;</span><span class="p">,</span> <span class="n">loglevel</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">set_logger</span><span class="p">(</span><span class="s2">&quot;GeneralState&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">loglevel</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">logfile</span><span class="p">)</span>
 
         <span class="c1"># Remove end-of-circuit measurements and keep track of them separately</span>
         <span class="c1"># It also resolves implicit swaps</span>
@@ -663,6 +665,7 @@ as="style">
 <span class="sd">            scratch space; value between 0 and 1. Defaults to ``0.8``.</span>
 <span class="sd">        loglevel: Internal logger output level. Use 30 for warnings only, 20 for</span>
 <span class="sd">            verbose and 10 for debug mode.</span>
+<span class="sd">        logfile: If provided, log is written to this file rather than stream.</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: If the circuits for ``ket`` or ``bra`` contain measurements.</span>
@@ -676,8 +679,9 @@ as="style">
         <span class="n">attributes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">scratch_fraction</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span>
         <span class="n">loglevel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span>
+        <span class="n">logfile</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">set_logger</span><span class="p">(</span><span class="s2">&quot;GeneralBraOpKet&quot;</span><span class="p">,</span> <span class="n">loglevel</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">set_logger</span><span class="p">(</span><span class="s2">&quot;GeneralBraOpKet&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">loglevel</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">logfile</span><span class="p">)</span>
 
         <span class="c1"># Check that the circuits have the same qubits</span>
         <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">ket</span><span class="o">.</span><span class="n">qubits</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="n">bra</span><span class="o">.</span><span class="n">qubits</span><span class="p">):</span>

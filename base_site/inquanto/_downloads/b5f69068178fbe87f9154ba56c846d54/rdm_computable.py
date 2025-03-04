@@ -1,5 +1,5 @@
 r"""An example for constructing an RDM using computables"""
-import numpy as np
+import numpy
 
 from inquanto.ansatzes import TrotterAnsatz
 from inquanto.computables.composite import (
@@ -16,7 +16,7 @@ from inquanto.spaces import FermionSpace
 from inquanto.states import QubitState
 from pytket.partition import PauliPartitionStrat
 
-np.set_printoptions(linewidth=10000, precision=8, suppress=True)
+numpy.set_printoptions(linewidth=10000, precision=8, suppress=True)
 
 # pip install pytket-qiskit==0.18
 from pytket.extensions.qiskit import AerBackend, AerStateBackend

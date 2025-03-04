@@ -1,7 +1,7 @@
 r"""Computation (noiseless statevector) the full GF matrix of the Hubbard dimer at a single frequency."""
 
 # imports
-import numpy as np
+import numpy
 
 from pytket.extensions.qiskit import AerStateBackend
 
@@ -86,5 +86,5 @@ gf_object_matrix_func = gf_class.default_evaluate_as_function(final_parameters)
 
 # plug in a value (possibly imaginary) for omega (frequency), to numerically evaluate the matrix
 gf_matrix = gf_object_matrix_func(0.3j)
-np.set_printoptions(linewidth=1000)
+numpy.set_printoptions(linewidth=1000)
 print("\nquantum GF matrix\n", gf_matrix)

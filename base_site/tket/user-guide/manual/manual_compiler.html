@@ -803,7 +803,7 @@ False
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a5c68c25245dbad5572a8ac1e688bb8dd42a748432c1ba6116c52973e7f3e2cb.svg" src="../_images/a5c68c25245dbad5572a8ac1e688bb8dd42a748432c1ba6116c52973e7f3e2cb.svg" />
+<img alt="../_images/5faf5bd6592874793af1aaddf9a4b11896eda4c58abfa2e0f305558c0117c5f3.svg" src="../_images/5faf5bd6592874793af1aaddf9a4b11896eda4c58abfa2e0f305558c0117c5f3.svg" />
 </div>
 </div>
 <p>This can give great benefits for <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> s where non-Clifford gates are sparse and there is hence a lot of redundancy in the Clifford change-of-basis sections. But if the <a class="reference external" href="https://docs.quantinuum.com/tket/api-docs/circuit_class.html#pytket.circuit.Circuit" title="(in Project name not set)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Circuit</span></code></a> already has a very efficient usage of Clifford gates, this will be lost when converting to the abstract representation, and so the resynthesis is likely to give less efficient sequences. The large structural changes from abstraction and resynthesis can also make routing harder to perform as the interaction graph of the logical qubits can drastically change. The effectiveness of such optimisations depends on the situation, but can be transformative under the right circumstances.</p>
@@ -1561,14 +1561,14 @@ the main circuit and the postprocessing circuit, returning both.</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 0]
  [0 0]
+ [0 0]
+ [1 1]
+ [0 0]
  [1 1]
  [0 0]
  [1 1]
  [1 1]
- [1 1]
- [0 0]
- [1 1]
- [1 1]]
+ [0 0]]
 </pre></div>
 </div>
 </div>

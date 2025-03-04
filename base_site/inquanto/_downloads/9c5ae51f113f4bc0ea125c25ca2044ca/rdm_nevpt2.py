@@ -9,7 +9,7 @@
 r"""Test of NEVPT2 using RDMs from VQE
 """
 
-import numpy as np
+import numpy
 from inquanto.ansatzes import FermionSpaceAnsatzChemicallyAwareUCCSD
 from inquanto.express import load_h5
 from inquanto.mappings import QubitMappingJordanWigner
@@ -32,7 +32,7 @@ qubit_hamiltonian = load_h5(
 space = FermionSpace(
     8,
     point_group="D2h",
-    orb_irreps=np.asarray(["Ag", "Ag", "B1u", "B1u", "Ag", "Ag", "B1u", "B1u"]),
+    orb_irreps=numpy.asarray(["Ag", "Ag", "B1u", "B1u", "Ag", "Ag", "B1u", "B1u"]),
 )
 
 ansatz = FermionSpaceAnsatzChemicallyAwareUCCSD(
@@ -72,10 +72,10 @@ pdm1, pdm2, pdm3, pdm4 = runner(vqe_final_parameters)
 # computable.run(vqe_final_parameters)
 # pdm1, pdm2, pdm3, pdm4 = computable.evaluate(vqe_final_parameters)
 
-assert np.isclose(np.linalg.norm(pdm1), 1.97235934553679)
-assert np.isclose(np.linalg.norm(pdm2), 5.228882128257982)
-assert np.isclose(np.linalg.norm(pdm3), 14.284510832407866)
-assert np.isclose(np.linalg.norm(pdm4), 40.30240063488914)
+assert numpy.isclose(numpy.linalg.norm(pdm1), 1.97235934553679)
+assert numpy.isclose(numpy.linalg.norm(pdm2), 5.228882128257982)
+assert numpy.isclose(numpy.linalg.norm(pdm3), 14.284510832407866)
+assert numpy.isclose(numpy.linalg.norm(pdm4), 40.30240063488914)
 
 computable = RDM1234RealComputable(
     space,
@@ -91,11 +91,11 @@ rdm1, rdm2, rdm3, rdm4 = runner(vqe_final_parameters)
 # computable.run(vqe_final_parameters)
 # rdm1, rdm2, rdm3, rdm4 = computable.evaluate(vqe_final_parameters)
 
-assert np.isclose(np.linalg.norm(rdm1), 1.97235934553679)
-assert np.isclose(np.linalg.norm(rdm2), 1.9999999966355002)
-assert np.isclose(np.linalg.norm(rdm3), 0.0)
-assert np.isclose(np.linalg.norm(rdm4), 0.0)
+assert numpy.isclose(numpy.linalg.norm(rdm1), 1.97235934553679)
+assert numpy.isclose(numpy.linalg.norm(rdm2), 1.9999999966355002)
+assert numpy.isclose(numpy.linalg.norm(rdm3), 0.0)
+assert numpy.isclose(numpy.linalg.norm(rdm4), 0.0)
 
 approx_rdm4 = get_rdm4_approx_conv(rdm1, rdm2, rdm3)
 
-assert np.isclose(np.linalg.norm(approx_rdm4), 0.033917624541908370443)
+assert numpy.isclose(numpy.linalg.norm(approx_rdm4), 0.033917624541908370443)

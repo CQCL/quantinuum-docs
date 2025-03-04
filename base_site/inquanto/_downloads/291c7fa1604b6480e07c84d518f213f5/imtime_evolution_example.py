@@ -1,7 +1,7 @@
 r"""An exact imaginary time evolution simulation using express methods"""
 
 # imports
-import numpy as np
+import numpy
 
 from inquanto.express import DriverHubbardDimer, run_time_evolution
 from inquanto.states import QubitState
@@ -24,8 +24,8 @@ qubit_orbital_number_operators = [
 qubit_hamiltonian = hamiltonian.qubit_encode()
 
 
-# Now we can choose the points in time we wish to simulate. This can be done easily with np.linspace.
-time_span = np.linspace(0, 5, 100)
+# Now we can choose the points in time we wish to simulate. This can be done easily with numpy.linspace.
+time_span = numpy.linspace(0, 5, 100)
 
 # Using the run_time_evolution() convenience function and passing in the appropriate arguments, we can easily propagate
 # the system.

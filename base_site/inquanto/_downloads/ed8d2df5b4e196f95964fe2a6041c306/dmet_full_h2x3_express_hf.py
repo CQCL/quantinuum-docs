@@ -1,7 +1,7 @@
 r"""Full DMET calculations on hydrogen rings."""
 
 # imports
-import numpy as np
+import numpy
 
 from inquanto.express import run_rhf
 from inquanto.embeddings import DMETRHF, DMETRHFFragment
@@ -19,7 +19,7 @@ class MyFragment(DMETRHFFragment):
 
         rdm1 = rdm1_object._rdm1
 
-        rdm2 = np.einsum("ij,kl->ijkl", rdm1, rdm1) - 0.5 * np.einsum(
+        rdm2 = numpy.einsum("ij,kl->ijkl", rdm1, rdm1) - 0.5 * numpy.einsum(
             "il,kj->ijkl", rdm1, rdm1
         )
 
@@ -40,7 +40,7 @@ print(
 # There will be two parameters in an array [u_0, u_1]
 # with index 0 and 1 in the following pattern.
 # The pattern to map that to a correlation potential matrix:
-pattern = np.array(
+pattern = numpy.array(
     [
         [None, 0, None, None, None, None],
         [0, None, None, None, None, None],
@@ -62,9 +62,9 @@ dmet = DMETRHF(
 )
 
 # The boolean mask array marks with True the spatial orbitals that define the fragment
-fr1 = MyFragment(dmet, np.array([True, True, False, False, False, False]), "H2-1")
-fr2 = MyFragment(dmet, np.array([False, False, True, True, False, False]), "H2-2")
-fr3 = MyFragment(dmet, np.array([False, False, False, False, True, True]), "H2-3")
+fr1 = MyFragment(dmet, numpy.array([True, True, False, False, False, False]), "H2-1")
+fr2 = MyFragment(dmet, numpy.array([False, False, True, True, False, False]), "H2-2")
+fr3 = MyFragment(dmet, numpy.array([False, False, False, False, True, True]), "H2-3")
 
 # combine fragments
 fragments = [fr1, fr2, fr3]

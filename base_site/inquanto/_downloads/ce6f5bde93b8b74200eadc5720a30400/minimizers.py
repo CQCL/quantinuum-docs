@@ -1,7 +1,7 @@
 r"""Use of minimizers."""
 
 # imports
-import numpy as np
+import numpy
 
 from pytket.extensions.qiskit import AerStateBackend
 
@@ -53,7 +53,7 @@ def my_objective_function(numpy_parameters):
 # example gradient function to use in SGD
 def my_gradient_function(numpy_parameters):
     parameters = vector_to_dict(ordered_symbols, numpy_parameters)
-    result = np.asarray(list(gradient_objective(parameters).values()))
+    result = numpy.asarray(list(gradient_objective(parameters).values()))
     return result
 
 

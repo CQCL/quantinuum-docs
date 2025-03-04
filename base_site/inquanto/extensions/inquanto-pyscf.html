@@ -664,7 +664,7 @@ build the fermionic hamiltonian and construct the quantum problem.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Hartree-Fock energy:  -1.0760400910891228
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Hartree-Fock energy:  -1.0760400910891192
 </pre></div>
 </div>
 </div>
@@ -694,10 +694,10 @@ Each chemistry driver has an interface to the post-HF calculators provided by Py
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>HF	 -1.12654503453569
-MP2	 -1.1440347834365328
-CCSD	 -1.1516885473648504
-CASCI	 -1.1516885475166099
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>HF	 -1.1265450345356909
+MP2	 -1.1440347834365336
+CCSD	 -1.1516885473648508
+CASCI	 -1.1516885475166103
 </pre></div>
 </div>
 </div>
@@ -949,6 +949,9 @@ the PySCF driver as follows:</p>
 </pre></div>
 </div>
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Fock state (reduced by setting the active space with AVAS):
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
  0 0a         :  1    
  1 0b         :  1    
  2 1a         :  0    
@@ -998,40 +1001,40 @@ the 1-, 2-, 3-, and 4-particle density matrices.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>converged SCF energy = -14.8652654987829
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>converged SCF energy = -14.8652654987828
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>CASSCF energy = -14.8887816123895
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>CASSCF energy = -14.8887816123842
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>CASCI E = -14.8887816123895  E(CI) = -0.619242252107949  S^2 = 0.0000000
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>CASCI E = -14.8887816123842  E(CI) = -0.619242252644318  S^2 = 0.0000000
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Sr    (-1)&#39;,   E = -0.00000000004377
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Sr    (-1)&#39;,   E = -0.00000000004522
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Si    (+1)&#39;,   E = -0.00001592193824
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Si    (+1)&#39;,   E = -0.00001592193484
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Sijrs (0)  ,   E = -0.00022778544045
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Sijrs (0)  ,   E = -0.00022778541266
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Sijr  (+1) ,   E = -0.00007024584582
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Sijr  (+1) ,   E = -0.00007024587801
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Srsi  (-1) ,   E = -0.00023752960854
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Srsi  (-1) ,   E = -0.00023752959214
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Srs   (-2) ,   E = -0.00127421256954
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Srs   (-2) ,   E = -0.00127421284986
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Sij   (+2) ,   E = -0.00002667509435
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Sij   (+2) ,   E = -0.00002667508799
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Sir   (0)&#39; ,   E = -0.00013326098427
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Sir   (0)&#39; ,   E = -0.00013326099477
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Nevpt2 Energy = -0.001985631524982
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Nevpt2 Energy = -0.001985631795499
 </pre></div>
 </div>
 </div>
@@ -1208,46 +1211,46 @@ fragment solvers:</p>
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># NEWTON ITERATION - CHEMICAL POTENTIAL 0.0
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 0 - None: &lt;H&gt;=-301.7956772445183  EFR=-114.78345837272872  Q=-0.04983881865466344 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 0 - None: &lt;H&gt;=-301.7956772445182  EFR=-114.7834583727292  Q=-0.049838818654608374 
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 1 - None: &lt;H&gt;=-301.90654101502685  EFR=-152.88306683468306  Q=-0.005690013606146849 
-# FRAGMENT 2 - None: &lt;H&gt;=-301.9101535819713  EFR=-150.8382702664891  Q=-0.0014970562586640312 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 1 - None: &lt;H&gt;=-301.9065410150269  EFR=-152.88306683468326  Q=-0.005690013606123756 
+# FRAGMENT 2 - None: &lt;H&gt;=-301.91015358197296  EFR=-150.8382702664889  Q=-0.0014970562587439673 
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 3 - None: &lt;H&gt;=-301.9444865391334  EFR=-153.4413572945147  Q=-0.004749782126435065 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 3 - None: &lt;H&gt;=-301.9444865391349  EFR=-153.4413572945144  Q=-0.004749782126674873 
 # NEWTON ITERATION - CHEMICAL POTENTIAL 0.0001
-# FRAGMENT 0 - None: &lt;H&gt;=-301.79657624354627  EFR=-114.78406015411932  Q=-0.04973186128704654 
+# FRAGMENT 0 - None: &lt;H&gt;=-301.79657624354604  EFR=-114.78406015411967  Q=-0.0497318612869897 
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 1 - None: &lt;H&gt;=-301.9078353892906  EFR=-152.88478642548085  Q=-0.005423346447406274 
-# FRAGMENT 2 - None: &lt;H&gt;=-301.91155394010883  EFR=-150.8396128507568  Q=-0.0012572548813754025 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 1 - None: &lt;H&gt;=-301.9078353892907  EFR=-152.8847864254809  Q=-0.005423346447384958 
+# FRAGMENT 2 - None: &lt;H&gt;=-301.91155394011037  EFR=-150.83961285075645  Q=-0.0012572548814500095 
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 3 - None: &lt;H&gt;=-301.9458871008668  EFR=-153.44262085160875  Q=-0.0045325493490526725 
-# NEWTON ITERATION - CHEMICAL POTENTIAL 0.00743694998400796
-# FRAGMENT 0 - None: &lt;H&gt;=-301.862563977367  EFR=-114.8280498818938  Q=-0.04191500418019167 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 3 - None: &lt;H&gt;=-301.9458871008679  EFR=-153.44262085160852  Q=-0.004532549349322679 
+# NEWTON ITERATION - CHEMICAL POTENTIAL 0.007436949984259719
+# FRAGMENT 0 - None: &lt;H&gt;=-301.8625639773691  EFR=-114.82804988189567  Q=-0.04191500417987015 
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 1 - None: &lt;H&gt;=-302.0028761208745  EFR=-153.01088118923693  Q=0.014138160576402825 
-# FRAGMENT 2 - None: &lt;H&gt;=-302.01436028232223  EFR=-150.93805407032755  Q=0.016332731510653176 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 1 - None: &lt;H&gt;=-302.0028761208777  EFR=-153.01088118924142  Q=0.014138160577099157 
+# FRAGMENT 2 - None: &lt;H&gt;=-302.0143602823275  EFR=-150.93805407033088  Q=0.0163327315112074 
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 3 - None: &lt;H&gt;=-302.0487052943614  EFR=-153.53530162450474  Q=0.011407964501255918 
-# NEWTON ITERATION - CHEMICAL POTENTIAL 0.007441304209948721
-# FRAGMENT 0 - None: &lt;H&gt;=-301.86260315552755  EFR=-114.82807589346353  Q=-0.04191038296625038 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 3 - None: &lt;H&gt;=-302.04870529436647  EFR=-153.5353016245075  Q=0.011407964501559675 
+# NEWTON ITERATION - CHEMICAL POTENTIAL 0.0074413042099745206
+# FRAGMENT 0 - None: &lt;H&gt;=-301.8626031555276  EFR=-114.82807589346405  Q=-0.04191038296616867 
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 1 - None: &lt;H&gt;=-302.0029325671191  EFR=-153.01095598148711  Q=0.014149767618786058 
-# FRAGMENT 2 - None: &lt;H&gt;=-302.0144213310945  EFR=-150.93811245576165  Q=0.01634316838741867 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 1 - None: &lt;H&gt;=-302.00293256711973  EFR=-153.01095598148777  Q=0.014149767618883757 
+# FRAGMENT 2 - None: &lt;H&gt;=-302.01442133109634  EFR=-150.93811245576194  Q=0.016343168387431106 
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 3 - None: &lt;H&gt;=-302.0487663483676  EFR=-153.53535661374275  Q=0.011417426261719044 
-# CHEMICAL POTENTIAL 0.007441306704632924
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># FRAGMENT 3 - None: &lt;H&gt;=-302.04876634836893  EFR=-153.53535661374303  Q=0.011417426261520092 
+# CHEMICAL POTENTIAL 0.007441306704659581
 # FINAL PARAMETERS: []
-# FINAL CHEMICAL POTENTIAL: 0.007441306704632924
-# FINAL ENERGY: -302.25891343152364
-(-302.25891343152364, np.float64(0.007441306704632924), array([], dtype=float64))
+# FINAL CHEMICAL POTENTIAL: 0.007441306704659581
+# FINAL ENERGY: -302.25891343152546
+(-302.25891343152546, np.float64(0.007441306704659581), array([], dtype=float64))
 </pre></div>
 </div>
 </div>
@@ -1453,38 +1456,38 @@ example below we create a custom FMO class and perform VQE on the fragment Hamil
 </pre></div>
 </div>
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># CONVERGENCE REACHED!
-# CONVERGED MONOMER ENERGIES: [np.float64(-1.8009644337834718), np.float64(-1.8134981363881528), np.float64(-1.8009642542761397)]
-# TIMER BLOCK-0 BEGINS AT 2025-03-04 00:28:19.328742
+# CONVERGED MONOMER ENERGIES: [np.float64(-1.8009644337834714), np.float64(-1.8134981363881533), np.float64(-1.8009642542761402)]
+# TIMER BLOCK-0 BEGINS AT 2025-03-04 21:50:40.550959
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-0 ENDS - DURATION (s):  0.3095757 [0:00:00.309576]
-# TIMER BLOCK-1 BEGINS AT 2025-03-04 00:28:19.724858
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-0 ENDS - DURATION (s):  0.2963651 [0:00:00.296365]
+# TIMER BLOCK-1 BEGINS AT 2025-03-04 21:50:40.945379
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-1 ENDS - DURATION (s):  0.1888485 [0:00:00.188848]
-# TIMER BLOCK-2 BEGINS AT 2025-03-04 00:28:19.991383
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-1 ENDS - DURATION (s):  0.1851871 [0:00:00.185187]
+# TIMER BLOCK-2 BEGINS AT 2025-03-04 21:50:41.236423
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-2 ENDS - DURATION (s):  0.3097593 [0:00:00.309759]
-# FINAL MONOMER ENERGIES: [np.float64(-1.8244970693394003), np.float64(-1.83732927761619), np.float64(-1.824497051962278)]
-# TIMER BLOCK-3 BEGINS AT 2025-03-04 00:28:20.479985
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-2 ENDS - DURATION (s):  0.3023977 [0:00:00.302398]
+# FINAL MONOMER ENERGIES: [np.float64(-1.8244970693394), np.float64(-1.83732927761619), np.float64(-1.824497051962278)]
+# TIMER BLOCK-3 BEGINS AT 2025-03-04 21:50:41.739402
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-3 ENDS - DURATION (s):  5.6540740 [0:00:05.654074]
-# TIMER BLOCK-4 BEGINS AT 2025-03-04 00:28:26.286841
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-3 ENDS - DURATION (s):  5.6828707 [0:00:05.682871]
+# TIMER BLOCK-4 BEGINS AT 2025-03-04 21:50:47.574503
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-4 ENDS - DURATION (s):  4.3832402 [0:00:04.383240]
-# TIMER BLOCK-5 BEGINS AT 2025-03-04 00:28:30.827056
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-4 ENDS - DURATION (s):  4.4152705 [0:00:04.415270]
+# TIMER BLOCK-5 BEGINS AT 2025-03-04 21:50:52.149924
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-5 ENDS - DURATION (s):  5.5944638 [0:00:05.594464]
-# FINAL DIMER ENERGIES: [np.float64(-4.745456689215114), np.float64(-4.189591290931864), np.float64(-4.745456662426454)]
-# FINAL DIMER CORRECTION ENERGIES: [np.float64(-1.0836303422595241), np.float64(-0.5405971696301863), np.float64(-1.083630332847986)]
-# TOTAL ENERGY: -3.3512648044323488
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span># TIMER BLOCK-5 ENDS - DURATION (s):  5.6716472 [0:00:05.671647]
+# FINAL DIMER ENERGIES: [np.float64(-4.745456689215108), np.float64(-4.189591290931862), np.float64(-4.745456662426454)]
+# FINAL DIMER CORRECTION ENERGIES: [np.float64(-1.083630342259518), np.float64(-0.5405971696301837), np.float64(-1.083630332847986)]
+# TOTAL ENERGY: -3.3512648044323416
 </pre></div>
 </div>
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>np.float64(-3.3512648044323488)
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>np.float64(-3.3512648044323416)
 </pre></div>
 </div>
 </div>

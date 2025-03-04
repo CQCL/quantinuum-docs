@@ -1,6 +1,6 @@
 r"""A simulation of H2 in STO-3G using the QSE algorithm"""
 # Import section.
-import numpy as np
+import numpy
 from pytket.extensions.qiskit import AerStateBackend
 
 from inquanto.algorithms.qse import AlgorithmQSE
@@ -14,7 +14,7 @@ from inquanto.spaces import FermionSpace
 from inquanto.states import QubitState
 
 # We'll use this later to print the states
-np.set_printoptions(linewidth=10000, precision=8, suppress=True)
+numpy.set_printoptions(linewidth=10000, precision=8, suppress=True)
 
 # We will be running QSE on the H2 molecule in the STO-3G basis set. We can obtain the Hamiltonian for this system at
 # equilibrium bond length via the express submodule.
@@ -62,8 +62,8 @@ print(algorithm.final_states)
 
 # Compare with the exact results calculated from diagonalizing the Hamiltonian.
 e = hamiltonian.eigenspectrum(qubit_state.single_term.hamming_weight)
-singlet_energies = np.zeros_like(algorithm.final_values)
+singlet_energies = numpy.zeros_like(algorithm.final_values)
 singlet_energies[0] = e[0]
 singlet_energies[1:] = e[4:]
 print(singlet_energies)
-assert np.allclose(algorithm.final_values, singlet_energies)
+assert numpy.allclose(algorithm.final_values, singlet_energies)

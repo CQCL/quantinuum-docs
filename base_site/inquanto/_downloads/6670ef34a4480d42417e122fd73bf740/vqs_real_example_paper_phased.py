@@ -2,7 +2,7 @@ r"""A custom equation of motion VQS time evolution simulation."""
 # contrast to vqs_real_example_paper https://doi.org/10.22331/q-2019-10-07-191
 
 # imports
-import numpy as np
+import numpy
 from pytket import Circuit
 from pytket.extensions.qiskit import AerStateBackend
 
@@ -68,7 +68,7 @@ hamiltonian = QubitOperator.from_string("(1.0, Y0)")
 
 initial = ansatz.state_symbols.construct_from_array([0.1734, 0.3909])
 
-time = np.linspace(0, 10, 1001)
+time = numpy.linspace(0, 10, 1001)
 integrator = NaiveEulerIntegrator(time, disp=True)
 
 # Build custom EOM computable
@@ -82,8 +82,8 @@ def evaluate_eom(eom_terms):
     energy = eom_terms[2]
     dbra_ovl_re = dict_to_vector(symbols, eom_terms[3])
     dbra_ovl_im = dict_to_vector(symbols, eom_terms[4])
-    mat = np.zeros_like(matrix, dtype=complex)
-    vec = np.zeros_like(vector, dtype=complex)
+    mat = numpy.zeros_like(matrix, dtype=complex)
+    vec = numpy.zeros_like(vector, dtype=complex)
     for i in range(vector.size):
         for j in range(vector.size):
             mat[i, j] = matrix[i, j] + (dbra_ovl_re[i] + 1j * dbra_ovl_im[i]) * (
@@ -124,7 +124,7 @@ solution = algodeint.build(
 evs_exp_runner = protocol.get_runner(ExpectationValue(ansatz, hamiltonian))
 
 evs = algodeint.post_propagation_evaluation(evs_exp_runner)
-evs = np.asarray(evs)
+evs = numpy.asarray(evs)
 
 plotting(
     time,

@@ -1,7 +1,7 @@
 r"""Generation of the circuits required for the full GF matrix of the Hubbard dimer."""
 
 # imports
-import numpy as np
+import numpy
 
 from pytket.extensions.qiskit import AerBackend, AerStateBackend
 from pytket.partition import PauliPartitionStrat

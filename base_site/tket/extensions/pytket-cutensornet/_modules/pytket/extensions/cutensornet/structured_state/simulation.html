@@ -381,7 +381,7 @@ as="style">
 <span class="sd">        An instance of ``StructuredState`` for (an approximation of) the final state</span>
 <span class="sd">        of the circuit. The instance be of the class matching ``algorithm``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">logger</span> <span class="o">=</span> <span class="n">set_logger</span><span class="p">(</span><span class="s2">&quot;Simulation&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">loglevel</span><span class="p">)</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">set_logger</span><span class="p">(</span><span class="s2">&quot;Simulation&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">loglevel</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">logfile</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">compilation_params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">compilation_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -432,6 +432,8 @@ as="style">
 
     <span class="c1"># Run the simulation</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running simulation...&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="n">algorithm</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="nb">vars</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
     <span class="c1"># Apply the gates</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">commands</span><span class="p">):</span>
         <span class="n">state</span><span class="o">.</span><span class="n">apply_gate</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>

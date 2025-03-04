@@ -1,7 +1,7 @@
 r"""Creation of FermionState objects and demonstration of some functionality."""
 
 # imports
-import numpy as np
+import numpy
 
 from sympy import Symbol
 
@@ -33,7 +33,7 @@ print("")
 
 # linear combinations of states
 # normalized
-coeff1, coeff2 = np.sqrt(0.75), np.sqrt(0.25)
+coeff1, coeff2 = numpy.sqrt(0.75), numpy.sqrt(0.25)
 fss1 = FermionStateString([1, 1, 0, 0])
 fss2 = FermionStateString([0, 0, 1, 1])
 fs_dict = FermionState({fss1: coeff1, fss2: coeff2})
@@ -47,7 +47,7 @@ print("Is this state normalized? ", fs_dict.is_normalized())
 print("")
 
 # unnormalized linear combination example with complex coeff
-coeff1, coeff2 = np.sqrt(1.25 + 0.1j), np.sqrt(0.25)
+coeff1, coeff2 = numpy.sqrt(1.25 + 0.1j), numpy.sqrt(0.25)
 fs_dict = FermionState({fss1: coeff1, fss2: coeff2})
 fs_tuple = FermionState(((coeff1, fss1), (coeff2, fss2)))
 print(fs_dict)

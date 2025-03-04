@@ -387,7 +387,7 @@ as="style">
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span> <span class="o">=</span> <span class="n">libhandle</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span> <span class="o">=</span> <span class="n">config</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">set_logger</span><span class="p">(</span><span class="s2">&quot;MPS&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">loglevel</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">set_logger</span><span class="p">(</span><span class="s2">&quot;MPS&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">loglevel</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">logfile</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rng</span> <span class="o">=</span> <span class="n">Random</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rng</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fidelity</span> <span class="o">=</span> <span class="mf">1.0</span>
@@ -558,7 +558,7 @@ as="style">
 <span class="sd">        Args:</span>
 <span class="sd">            new_qubit: The identifier of the qubit to be added to the state.</span>
 <span class="sd">            position: The location the new qubit should be inserted at in the MPS.</span>
-<span class="sd">                Qubits on this and later indexed have their position shifted by 1.</span>
+<span class="sd">                Qubits on this and larger indices have their position shifted by 1.</span>
 <span class="sd">            state: Choose either ``0`` or ``1`` for the new qubit&#39;s state.</span>
 <span class="sd">                Defaults to ``0``.</span>
 
@@ -586,7 +586,9 @@ as="style">
             <span class="p">)</span>
 
         <span class="c1"># Identify the dimension of the virtual bond where the new qubit will appear</span>
-        <span class="k">if</span> <span class="n">position</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">dim</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Dummy virtual bond, since there are no qubits in the MPS</span>
+        <span class="k">elif</span> <span class="n">position</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="n">dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_virtual_dimensions</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Rightmost bond</span>
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># Otherwise, pick the left bond of the tensor currently in ``position``</span>
             <span class="n">dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_virtual_dimensions</span><span class="p">(</span><span class="n">position</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>

@@ -1,7 +1,7 @@
 r"""Computation of the full GF matrix of the Hubbard dimer with shots, and plot the spectral function A(omega)."""
 
 # imports
-import numpy as np
+import numpy
 
 from sympy import Symbol
 
@@ -104,14 +104,14 @@ protocol.build_from(final_parameters, gf_class).compile_circuits().run(seed=0)
 gf_object_matrix_func = gf_class.evaluate_as_function(protocol.get_evaluator())
 
 # Define range of omega, get values of A(omega) = -(1/pi)*Tr[Im(G(omega)]
-omegas = np.linspace(-3.0, 3.0, 100)
+omegas = numpy.linspace(-3.0, 3.0, 100)
 spectral_omegas = []
 for omega in omegas:
     gf_matrix_omega = gf_object_matrix_func(omega)
     TrImG = 0.0
     for dim in range(gf_matrix_omega.shape[0]):
         TrImG += gf_matrix_omega[dim][dim].imag
-    spectral_omegas.append(abs(TrImG) / np.pi)
+    spectral_omegas.append(abs(TrImG) / numpy.pi)
 
 # plot noisy A(omega)
 pyplot.plot(omegas, spectral_omegas, marker="o")

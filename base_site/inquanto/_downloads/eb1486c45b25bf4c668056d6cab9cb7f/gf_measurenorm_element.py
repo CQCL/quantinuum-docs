@@ -2,7 +2,7 @@ r"""Noiseless statevector computation of one element of GF of Hubbard dimer by s
 
 
 # imports
-import numpy as np
+import numpy
 
 from sympy import Symbol
 
@@ -125,7 +125,7 @@ z = Symbol("z")
 gf00_omega_symbolic = gf00_object.subs(z, Symbol("w") + 0.01j)
 
 # define energy range for plotting
-linspace = np.linspace(-3.0, 3.0, 100)
+linspace = numpy.linspace(-3.0, 3.0, 100)
 
 # get imaginary part of GF00 element values at each energy (or frequency, omega), and plot them
 gf00_list = []

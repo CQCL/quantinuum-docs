@@ -339,6 +339,15 @@ as="style">
     <span class="n">Tensor</span> <span class="o">=</span> <span class="n">Any</span>
 
 
+<div class="viewcode-block" id="LowFidelityException">
+<a class="viewcode-back" href="../../../../../modules/structured_state.html#pytket.extensions.cutensornet.structured_state.LowFidelityException">[docs]</a>
+<span class="k">class</span> <span class="nc">LowFidelityException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom Exception raised when the fidelity estimate of a simulation drops below</span>
+<span class="sd">    a threshold set by the user. See ``kill_threshold`` in the ``Config`` class.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
 <div class="viewcode-block" id="Config">
 <a class="viewcode-back" href="../../../../../modules/structured_state.html#pytket.extensions.cutensornet.structured_state.Config">[docs]</a>
 <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
@@ -350,6 +359,7 @@ as="style">
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">chi</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">truncation_fidelity</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">kill_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
         <span class="n">seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">float_precision</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
         <span class="n">value_of_zero</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-16</span><span class="p">,</span>
@@ -357,6 +367,7 @@ as="style">
         <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
         <span class="n">optim_delta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">,</span>
         <span class="n">loglevel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span>
+        <span class="n">logfile</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Instantiate a configuration object for ``StructuredState`` simulation.</span>
 
@@ -373,6 +384,10 @@ as="style">
 <span class="sd">                ``|&lt;psi|phi&gt;|^2 &gt;= trucantion_fidelity``, where ``|psi&gt;`` and ``|phi&gt;``</span>
 <span class="sd">                are the states before and after truncation (both normalised).</span>
 <span class="sd">                If not provided, it will default to its maximum value 1.</span>
+<span class="sd">            kill_threshold: If the fidelity estimate ``self.get_fidelity()`` drops</span>
+<span class="sd">                below the specified threshold, the simulation will be stopped, raising a</span>
+<span class="sd">                ``LowFidelityException`` exception. Defaults to 0, meaning it is never</span>
+<span class="sd">                killed.</span>
 <span class="sd">            seed: Seed for the random number generator. Setting a seed provides</span>
 <span class="sd">                reproducibility across simulations using ``StructuredState``, in the</span>
 <span class="sd">                sense that they will produce the same sequence of measurement outcomes.</span>
@@ -400,11 +415,14 @@ as="style">
 <span class="sd">                Default value is ``1e-5``.</span>
 <span class="sd">            loglevel: Internal logger output level. Use 30 for warnings only, 20 for</span>
 <span class="sd">                verbose and 10 for debug mode.</span>
+<span class="sd">            logfile: If provided, log will be written to the given file.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: If both ``chi`` and ``truncation_fidelity`` are fixed.</span>
 <span class="sd">            ValueError: If the value of ``chi`` is set below 2.</span>
 <span class="sd">            ValueError: If the value of ``truncation_fidelity`` is not in [0,1].</span>
+<span class="sd">            LowFidelityException: If a ``kill_threshold`` specified by the user was</span>
+<span class="sd">                violated.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">_CHI_LIMIT</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">60</span>
         <span class="k">if</span> <span class="p">(</span>
@@ -426,6 +444,7 @@ as="style">
 
         <span class="bp">self</span><span class="o">.</span><span class="n">chi</span> <span class="o">=</span> <span class="n">chi</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">truncation_fidelity</span> <span class="o">=</span> <span class="n">truncation_fidelity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kill_threshold</span> <span class="o">=</span> <span class="n">kill_threshold</span>
 
         <span class="k">if</span> <span class="n">float_precision</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">float_precision</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">:</span>  <span class="c1"># Double precision</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_real_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span>  <span class="c1"># type: ignore</span>
@@ -457,8 +476,9 @@ as="style">
 
         <span class="bp">self</span><span class="o">.</span><span class="n">leaf_size</span> <span class="o">=</span> <span class="n">leaf_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">optim_delta</span> <span class="o">=</span> <span class="mf">1e-5</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">loglevel</span> <span class="o">=</span> <span class="n">loglevel</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optim_delta</span> <span class="o">=</span> <span class="n">optim_delta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loglevel</span> <span class="o">=</span> <span class="n">loglevel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span> <span class="o">=</span> <span class="n">logfile</span></div>
 
 
     <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
@@ -486,6 +506,7 @@ as="style">
     <span class="n">_cfg</span><span class="p">:</span> <span class="n">Config</span>
     <span class="n">_logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span>
     <span class="n">_bits_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Bit</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]</span>  <span class="c1"># Tracks the state of the classical variables</span>
+    <span class="n">fidelity</span><span class="p">:</span> <span class="nb">float</span>
 
 <div class="viewcode-block" id="StructuredState.apply_gate">
 <a class="viewcode-back" href="../../../../../modules/structured_state.html#pytket.extensions.cutensornet.structured_state.StructuredState.apply_gate">[docs]</a>
@@ -508,6 +529,13 @@ as="style">
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Applying </span><span class="si">{</span><span class="n">gate</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_apply_command</span><span class="p">(</span><span class="n">gate</span><span class="o">.</span><span class="n">op</span><span class="p">,</span> <span class="n">gate</span><span class="o">.</span><span class="n">qubits</span><span class="p">,</span> <span class="n">gate</span><span class="o">.</span><span class="n">bits</span><span class="p">,</span> <span class="n">gate</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fidelity</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">kill_threshold</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">LowFidelityException</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Fidelity estimate (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">fidelity</span><span class="si">}</span><span class="s2">) dropped below the &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;kill_threshold set by the user (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">kill_threshold</span><span class="si">}</span><span class="s2">).&quot;</span>
+            <span class="p">)</span>
+
         <span class="k">return</span> <span class="bp">self</span></div>
 
 

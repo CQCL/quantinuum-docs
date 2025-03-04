@@ -1,7 +1,7 @@
 r"""An example running QSE using computables"""
 
 # imports
-import numpy as np
+import numpy
 
 from pytket.extensions.qiskit import AerBackend, AerStateBackend
 from pytket.partition import PauliPartitionStrat
@@ -24,7 +24,7 @@ from inquanto.states import QubitState
 
 
 # applied when printing out matrix results
-np.set_printoptions(linewidth=1000, precision=6, suppress=True)
+numpy.set_printoptions(linewidth=1000, precision=6, suppress=True)
 
 # obtain a model system from express
 h2 = load_h5("h2_sto3g.h5", as_tuple=True)
@@ -65,7 +65,7 @@ e, _, _ = pd_safe_eigh(H.astype(float), S.astype(float))
 # NOTE: it does not need to be E(QSE) = E(FCI) in general, but it should be
 #       in the minimal-basis H2 with YXXX ansatz with a nonzero parameter.
 print(f"E(QSE) = {e[0]}, E(FCI) = {h2.energy_casci}")
-assert np.isclose(e[0], h2.energy_casci)
+assert numpy.isclose(e[0], h2.energy_casci)
 
 
 # Here introduce a shot based quantum measurement protocol to compare to state vector

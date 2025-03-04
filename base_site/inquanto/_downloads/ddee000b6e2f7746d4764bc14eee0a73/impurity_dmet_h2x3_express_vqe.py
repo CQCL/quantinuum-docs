@@ -1,7 +1,7 @@
 r"""An example impurity DMET simulation of a 3-dihydrogen ring using the express module."""
 
 # imports
-import numpy as np
+import numpy
 
 from pytket.extensions.qiskit import AerStateBackend
 
@@ -65,7 +65,7 @@ dmet = ImpurityDMETROHF(
 
 # prepare ImpurityDMETROHFFragmentActive class defined above
 fragment = MyFragment(
-    dmet, np.array([True, True, False, False, False, False]), frozen=[0, 3]
+    dmet, numpy.array([True, True, False, False, False, False]), frozen=[0, 3]
 )
 
 # run the impurity dmet for the VQE fragments

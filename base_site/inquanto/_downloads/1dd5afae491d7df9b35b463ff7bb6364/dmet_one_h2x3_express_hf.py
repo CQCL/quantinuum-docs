@@ -1,7 +1,7 @@
 r"""One-shot DMET calculations on hydrogen rings."""
 
 # imports
-import numpy as np
+import numpy
 
 from inquanto.express import run_rhf
 from inquanto.embeddings import DMETRHF, DMETRHFFragmentDirect
@@ -47,9 +47,9 @@ dmet = DMETRHF(
 )
 
 # The boolean mask array marks with True the spatial orbitals that define the fragment
-fr1 = MyFragment(dmet, np.array([True, True, False, False, False, False]), "H2-1")
-fr2 = MyFragment(dmet, np.array([False, False, True, True, False, False]), "H2-2")
-fr3 = MyFragment(dmet, np.array([False, False, False, False, True, True]), "H2-3")
+fr1 = MyFragment(dmet, numpy.array([True, True, False, False, False, False]), "H2-1")
+fr2 = MyFragment(dmet, numpy.array([False, False, True, True, False, False]), "H2-2")
+fr3 = MyFragment(dmet, numpy.array([False, False, False, False, True, True]), "H2-3")
 
 fragments = [fr1, fr2, fr3]
 
