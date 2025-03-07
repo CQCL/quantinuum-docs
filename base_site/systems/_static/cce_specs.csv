@@ -1,0 +1,8 @@
+Specification, CCE Card, RTE Card
+Processor,Intel Processor E3-1505M v6 (Kaby Lake),Xilinx XCZU29DR RFSoC
+Cores,4,4 (Cortex-A53)
+Threads,8,
+Frequency,3 GHz base (turbo-boost to 4 Ghz),1.2 GHz-1.8 GHz (Cortex-A53)
+Flash Storage,64 GB,
+DDR4 RAM,16 GB,16 GB
+Ethernet,40 GB,
