@@ -12,7 +12,7 @@
         gtag('js', new Date());
         gtag('config', 'G-YPQ1FTGDL3');
     </script>
-    <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Knowledge Articles" href="../../knowledge_articles/ka_index.html" /><link rel="prev" title="pytket-quantinuum" href="../pytket_quantinuum/pytket_quantinuum.html" />
 
     <link rel="shortcut icon" href="../../../_static/quantinuum_favicon.svg"/><!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>NVIDIA CUDA-Q - Quantinuum Systems</title>
@@ -269,8 +269,8 @@ as="style">
 <li class="toctree-l1"><a class="reference external" href="https://docs.quantinuum.com/nexus/admin_guide/admin_guide.html">Nexus Admin Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Trainings</span></p>
-<ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started_index.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Getting Started</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../getting_started_index.html">Getting Started</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Getting Started</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../getting_started_index.html">Unique Capabilities</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/nexus/trainings/getting_started.html">Quantinuum Nexus</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://docs.quantinuum.com/tket/user-guide/index.html">TKET</a></li>
@@ -289,6 +289,7 @@ as="style">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../pytket_quantinuum/pytket_quantinuum.html"><code class="docutils literal notranslate"><span class="pre">pytket-quantinuum</span></code></a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">NVIDIA CUDA-Q</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../knowledge_articles/ka_index.html">Knowledge Articles</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Knowledge Articles</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -347,7 +348,7 @@ as="style">
           <section class="tex2jax_ignore mathjax_ignore" id="nvidia-cuda-q">
 <h1>NVIDIA CUDA-Q<a class="headerlink" href="#nvidia-cuda-q" title="Link to this heading">¶</a></h1>
 <p>CUDA Quantum (CUDA-Q) is a framework developed by NVIDIA designed for quantum computing applications. It is part of NVIDIA’s efforts to integrate quantum computing with classical computing systems, specifically targeting quantum circuit simulation, quantum algorithms, and hybrid quantum-classical workflows. CUDA-Q leverages the power of CUDA (NVIDIA’s parallel computing platform) to accelerate quantum computing simulations and provides a foundation for quantum software development that can run on NVIDIA GPUs. CUDA-Q is available for use as a python package, <code class="docutils literal notranslate"><span class="pre">cudaq</span></code>.</p>
-<p>CUDA-Q provides the ability to program quantum kernels and submit kernels to Quantinuum Systems for execution. All jobs submitted with CUDA-Q to Quantinuum Systems are visible in the <a class="reference external" href="https://nexus.quantinuum.com">Nexus portal</a>. However, end-users are required to write custom code and use local storage to manage and save job, respectively.</p>
+<p>CUDA-Q provides the ability to program quantum kernels and submit kernels to Quantinuum Systems for execution. All jobs submitted with CUDA-Q to Quantinuum Systems are visible in the <a class="reference external" href="https://nexus.quantinuum.com">Nexus portal</a>. However, end users are required to write custom code and use local storage to manage and save job, respectively.</p>
 <img alt="Access Quantinuum Systems with NVIDIA CUDA-Q" class="align-center" src="../../../_images/nvidia_schematic.png" />
 <p>CUDA-Q kernels are compiled to MLIR and then lowered to Quantum Intermediate Representation (QIR). Communication with Quantinuum endpoints are based on the QIR standard. User specification of compiler and emulator noise model API options are not supported.</p>
 <section id="installation">
@@ -365,21 +366,11 @@ as="style">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8888</span><span class="p">:</span><span class="mi">8888</span> <span class="o">-</span><span class="n">it</span> <span class="n">nvcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="n">quantum</span><span class="o">/</span><span class="n">cuda</span><span class="o">-</span><span class="n">quantum</span><span class="p">:</span><span class="n">cu12</span><span class="o">-</span><span class="mf">0.9.0</span>
 </pre></div>
 </div>
-<p>CUDA-Q end-users can access the Quantinuum API from either C++ or Python. Quantinuum requires a credential configuration file. The configuration file can be generated as follows, replacing the email and credentials in the first line with your Quantinuum account details. The REST API needs to be queried with the <code class="docutils literal notranslate"><span class="pre">curl</span></code> and <code class="docutils literal notranslate"><span class="pre">jq</span></code> commands to generate an access token.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">curl</span></code> and <code class="docutils literal notranslate"><span class="pre">jq</span></code> tools can be installed on the image with <code class="docutils literal notranslate"><span class="pre">apt-get</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">curl</span> <span class="n">jq</span>
-</pre></div>
-</div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-```{code} bash
-curl POST -H &quot;Content Type: application/json&quot; \
+<p>CUDA-Q end users can access the Quantinuum API from either C++ or Python. Quantinuum requires a credential configuration file. The email address and the password must be stored in the environment variables, <code class="docutils literal notranslate"><span class="pre">EMAIL</span></code> and <code class="docutils literal notranslate"><span class="pre">PASSWORD</span></code>, respectively. The REST API needs to be queried with the <code class="docutils literal notranslate"><span class="pre">curl</span></code> and <code class="docutils literal notranslate"><span class="pre">jq</span></code> commands to generate an access token.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl POST -H &quot;Content Type: application/json&quot; \
     -d &quot;$(jq -n --arg email &quot;$EMAIL&quot; --arg password &quot;$PASSWORD&quot; \
     &#39;{ &quot;email&quot;: $email, &quot;password&quot;: $password }&#39;)&quot; \
     https://qapi.quantinuum.com/v1/login &gt; $HOME/credentials.json
-
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">jq</span></code> command can be used to load the access token into local config files stored on disk.</p>
@@ -387,23 +378,35 @@ curl POST -H &quot;Content Type: application/json&quot; \
 echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-token&quot;&#39;)&quot; &gt;&gt; $HOME/.quantinuum_config
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">curl</span></code> and <code class="docutils literal notranslate"><span class="pre">jq</span></code> tools can be installed on the image with <code class="docutils literal notranslate"><span class="pre">apt-get</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">curl</span> <span class="n">jq</span>
+</pre></div>
+</div>
+</div>
 <p>The <code class="docutils literal notranslate"><span class="pre">.quantinuum_config</span></code> file needs to be specified with the environment variable <code class="docutils literal notranslate"><span class="pre">CUDAQ_QUANTINUUM_CREDENTIALS</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export CUDAQ_QUANTINUUM_CREDENTIALS=$HOME/.quantinuum_config
 </pre></div>
 </div>
-<p>A jupyter notebook instance can be started in the image with the following command. <code class="docutils literal notranslate"><span class="pre">cudaq</span></code> will be available for use in the jupyter environment. The current jupyter session can be accessed on the host machine via the URL <a class="reference external" href="http://localhost:8888">http://localhost:8888</a>.</p>
+<p>A jupyter notebook instance can be started in the image with the following command.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="n">nvidia</span><span class="o">.</span><span class="n">ipynb</span>  <span class="o">--</span><span class="n">ip</span> <span class="mf">0.0.0.0</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">browser</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">root</span>
 </pre></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">cudaq</span></code> will be available for use in the jupyter environment. The current jupyter session can be accessed on the host machine via the URL <a class="reference external" href="http://localhost:8888">http://localhost:8888</a>.</p>
 </section>
 <section id="application-programming">
 <h2>Application Programming<a class="headerlink" href="#application-programming" title="Link to this heading">¶</a></h2>
-<p>All quantum programs use the kernel decorator, . The available gateset is specified here: . All gate operations are rebased to the native Quantinuum gateset before program execution. All programs submitted to Quantinuum Systems must contain measurement operations on all qubits ().</p>
+<p>All quantum programs use the kernel decorator, <a class="reference external" href="https://nvidia.github.io/cuda-quantum/latest/api/languages/python_api.html#cudaq.kernel" title="(in NVIDIA CUDA-Q vlatest)"><code class="docutils literal notranslate"><span class="pre">cudaq.kernel()</span></code></a>. The available gateset is specified here: <a class="reference external" href="https://nvidia.github.io/cuda-quantum/latest/api/default_ops.html" title="(in NVIDIA CUDA-Q vlatest)"><span>Quantum Operations</span></a>. All gate operations are rebased to the native Quantinuum gateset before program execution. All programs submitted to Quantinuum Systems must contain measurement operations on all qubits (<code class="docutils literal notranslate"><span class="pre">mz</span></code>).</p>
 <p>Gate angles are specified in radians</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@cudaq</span><span class="o">.</span><span class="n">kernel</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">primitive</span><span class="p">(</span><span class="n">coeff</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cudaq</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="nd">@cudaq</span><span class="o">.</span><span class="n">kernel</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">primitive</span><span class="p">():</span>
+    <span class="n">coeff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.111</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> 
     <span class="n">qvector</span> <span class="o">=</span> <span class="n">cudaq</span><span class="o">.</span><span class="n">qvector</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">x</span><span class="o">.</span><span class="n">ctrl</span><span class="p">(</span><span class="n">qvector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">qvector</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">rz</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span> <span class="n">qvector</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -412,7 +415,7 @@ echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-tok
 </div>
 </div>
 </div>
-<p>Mid-circuit meaasurement and reset (MCMR) operations</p>
+<p>Mid-circuit meaasurement and reset (MCMR) operation via <code class="docutils literal notranslate"><span class="pre">mz</span></code> and <code class="docutils literal notranslate"><span class="pre">reset</span></code> operation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@cudaq</span><span class="o">.</span><span class="n">kernel</span>
@@ -429,7 +432,7 @@ echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-tok
 </div>
 </div>
 </div>
-<p>Conditional operations</p>
+<p>Native conditional branching to control operations using MCMR results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -453,7 +456,7 @@ echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-tok
 </section>
 <section id="job-submission">
 <h2>Job Submission<a class="headerlink" href="#job-submission" title="Link to this heading">¶</a></h2>
-<p>The  function can be used to specify <code class="docutils literal notranslate"><span class="pre">quantinuum</span></code> as the target backend and the <code class="docutils literal notranslate"><span class="pre">H1-1SC</span></code> syntax checker as the target machine.</p>
+<p>The <a class="reference external" href="https://nvidia.github.io/cuda-quantum/latest/api/languages/python_api.html#cudaq.set_target" title="(in NVIDIA CUDA-Q vlatest)"><code class="docutils literal notranslate"><span class="pre">cudaq.set_target()</span></code></a> function can be used to specify <code class="docutils literal notranslate"><span class="pre">quantinuum</span></code> as the target backend and the <code class="docutils literal notranslate"><span class="pre">H1-1SC</span></code> syntax checker as the target machine.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cudaq</span>
@@ -484,7 +487,7 @@ echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-tok
 </div>
 </div>
 </div>
-<p>The  function can be called to submit the CX teleportation kernel to the <code class="docutils literal notranslate"><span class="pre">H1-1SC</span></code> syntax checker, returning a python future.</p>
+<p>The <a class="reference external" href="https://nvidia.github.io/cuda-quantum/latest/api/languages/python_api.html#cudaq.sample_async" title="(in NVIDIA CUDA-Q vlatest)"><code class="docutils literal notranslate"><span class="pre">cudaq.sample_async()</span></code></a> function can be called to submit the CX teleportation kernel to the <code class="docutils literal notranslate"><span class="pre">H1-1SC</span></code> syntax checker, returning a python future, <a class="reference external" href="https://nvidia.github.io/cuda-quantum/latest/api/languages/python_api.html#cudaq.AsyncSampleResult" title="(in NVIDIA CUDA-Q vlatest)"><code class="docutils literal notranslate"><span class="pre">cudaq.AsyncSampleResult</span></code></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">syntax_check</span> <span class="o">=</span> <span class="n">cudaq</span><span class="o">.</span><span class="n">sample_async</span><span class="p">(</span><span class="n">cx_teleportation</span><span class="p">,</span> <span class="n">shots_count</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
@@ -506,7 +509,7 @@ echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-tok
 </div>
 </div>
 </div>
-<p>Result retrieval in another python session can be peformed with . The job data must be loaded from disk into the python session.</p>
+<p>Result retrieval in another python session can be performed with <a class="reference external" href="https://nvidia.github.io/cuda-quantum/latest/api/languages/python_api.html#cudaq.AsyncSampleResult" title="(in NVIDIA CUDA-Q vlatest)"><code class="docutils literal notranslate"><span class="pre">cudaq.AsyncSampleResult</span></code></a>. The job data must be loaded from disk into the python session.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
@@ -522,7 +525,7 @@ echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-tok
 </section>
 <section id="default-quantinuum-api-options">
 <h2>Default Quantinuum API Options<a class="headerlink" href="#default-quantinuum-api-options" title="Link to this heading">¶</a></h2>
-<p>CUDA-Q does not allow end-users to modify compiler options via API options. By default, all kernels submitted to a Quantinuum target are optimized with a server-side TKET compilation pass to rewrite the program to use Quantinuum’s native gateset. In addition, all 2-qubit gates are rebased to <code class="docutils literal notranslate"><span class="pre">RZZ</span></code>, a native parameterized 2-qubit gate operation available on Quantinuum Systems.</p>
+<p>CUDA-Q does not allow end users to modify compiler options via API options. By default, all kernels submitted to a Quantinuum target are optimized with a server-side TKET compilation pass to rewrite the program to use Quantinuum’s native gateset. In addition, all 2-qubit gates are rebased to <code class="docutils literal notranslate"><span class="pre">RZZ</span></code>, a native parameterized 2-qubit gate operation available on Quantinuum Systems.</p>
 <p>CUDA-Q does not allow user customization of the emulator noise model. For a specification of noise model API options, please see the <a class="reference internal" href="../../../user_guide/emulator_user_guide/noise_model.html"><span class="std std-doc">emulator user guide</span></a>.</p>
 </section>
 <section id="job-visibility-in-the-nexus-portal">
@@ -533,14 +536,32 @@ echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-tok
 </section>
 <section id="api-reference">
 <h2>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h2>
-<p>Relevant links to the CUDA-Q documentation are specified below. For any issues accessing Quantinuum Systems, please contact <a class="reference internal" href="#QCSupport&#64;quantinuum.com"><span class="xref myst">QCSupport&#64;quantinuum.com</span></a>.</p>
+<p>Relevant links to the CUDA-Q documentation are specified below.</p>
 <ul class="simple">
-<li><p>User Guide: <span class="xref std std-doc">api/api</span></p></li>
-<li><p>Default Operations: <span class="xref std std-doc">api/default_ops</span></p></li>
-<li><p>C++ API: <span class="xref std std-doc">api/languages/cpp_api</span></p></li>
-<li><p>Python API: <span class="xref std std-doc">api/languages/python_api</span></p></li>
-<li><p>Language Specification: <span class="xref std std-doc">specification/cudaq</span></p></li>
+<li><p>User Guide: <a class="reference external" href="https://nvidia.github.io/cuda-quantum/latest/api/api.html" title="(in NVIDIA CUDA-Q vlatest)"><span>Code documentation</span></a></p></li>
+<li><p>Default Operations: <a class="reference external" href="https://nvidia.github.io/cuda-quantum/latest/api/default_ops.html" title="(in NVIDIA CUDA-Q vlatest)"><span>Quantum Operations</span></a></p></li>
+<li><p>C++ API: <a class="reference external" href="https://nvidia.github.io/cuda-quantum/latest/api/languages/cpp_api.html" title="(in NVIDIA CUDA-Q vlatest)"><span>CUDA-Q C++ API</span></a></p></li>
+<li><p>Python API: <a class="reference external" href="https://nvidia.github.io/cuda-quantum/latest/api/languages/python_api.html" title="(in NVIDIA CUDA-Q vlatest)"><span>CUDA-Q Python API</span></a></p></li>
+<li><p>Language Specification: <a class="reference external" href="https://nvidia.github.io/cuda-quantum/latest/specification/cudaq.html" title="(in NVIDIA CUDA-Q vlatest)"><span>Language Specification</span></a></p></li>
 </ul>
+</section>
+<section id="faqs">
+<h2>FAQs<a class="headerlink" href="#faqs" title="Link to this heading">¶</a></h2>
+<p><strong>Q: What are the unique capabilities that cannot be accessed with CUDA-Q?</strong></p>
+<p>A: CUDA-Q provides support to use conditional operations, MCMR and noisy Quantinuum emulators. Only TKET and Nexus enables usage of advanced capabilities, such as <a class="reference internal" href="../batch_jobs.html"><span class="std std-doc">job batching</span></a>, the <a class="reference internal" href="../qec_decoder_toolkit/qec_decoder_toolkit.html"><span class="std std-doc">QEC Decoder Toolkit</span></a>, <span class="math notranslate nohighlight">\(RZZ\)</span> and <span class="math notranslate nohighlight">\(SU(4)\)</span> <a class="reference internal" href="../parameterized_angle_2_qubit_gates.html"><span class="std std-doc">parameterized 2-qubit gates</span></a> and a <a class="reference internal" href="../emulators.html#noise-model-customization"><span class="std std-ref">user-customized noise model</span></a> for emulation.</p>
+<p><strong>Q: What jobs visibility is provided post CUDA-Q submission?</strong></p>
+<p>A: The <strong>Quantinuum Systems</strong> tab on the <strong>Jobs</strong> page of the <a class="reference external" href="https://nexus.quantinuum.com">Nexus Portal</a> provides visibility on CUDA-Q submissions. See <a class="reference internal" href="#job-visibility-in-the-nexus-portal">here</a> for more information.</p>
+<!-- **Q: Which Quantinuum targets are available during the promotional access period?**
+
+A: Quantinuum will provide access to the `H1-1` hardware, `H1-1E` emulator and `H1-1SC` syntax checker during the promotional period. -->
+<p><strong>Q: Do both python and C++ API provide access to Quantinuum Systems?</strong></p>
+<p>A: Yes, both the python and C++ APIs provide access to Quantinuum Systems.</p>
+<p><strong>Q: Is server-side compilation performed on CUDA-Q programs submitted to Quantinuum Systems?</strong></p>
+<p>A: Yes, TKET compilation rewrites the program to use the <a class="reference internal" href="../../../user_guide/hardware_user_guide/system_operation.html#native-gate-set"><span class="std std-ref">native Quantinuum gateset</span></a> and performs further optimizations to minimize redundancy or merge gates. Additionally, the native parameterized angle <span class="math notranslate nohighlight">\(RZZ\)</span> is the native 2-qubit gate executed on the system.</p>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
+<p>For any issues accessing Quantinuum Systems, please contact <a class="reference internal" href="#QCSupport&#64;quantinuum.com"><span class="xref myst">QCSupport&#64;quantinuum.com</span></a>. The <a class="reference internal" href="../../../support/troubleshooting.html"><span class="std std-doc">troubleshooting</span></a> and <a class="reference internal" href="../../../support/faqs.html"><span class="std std-doc">FAQs</span></a> documents also provide support on common issues experienced by customers.</p>
 </section>
 </section>
 
@@ -549,8 +570,26 @@ echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-tok
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="../../knowledge_articles/ka_index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Knowledge Articles</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../pytket_quantinuum/pytket_quantinuum.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title"><code class="docutils literal notranslate"><span class="pre">pytket-quantinuum</span></code></div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -596,6 +635,8 @@ echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-tok
 <li><a class="reference internal" href="#default-quantinuum-api-options">Default Quantinuum API Options</a></li>
 <li><a class="reference internal" href="#job-visibility-in-the-nexus-portal">Job Visibility in the Nexus Portal</a></li>
 <li><a class="reference internal" href="#api-reference">API Reference</a></li>
+<li><a class="reference internal" href="#faqs">FAQs</a></li>
+<li><a class="reference internal" href="#support">Support</a></li>
 </ul>
 </li>
 </ul>
@@ -616,6 +657,8 @@ echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-tok
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="../../../_static/custom.js?v=4ca7370b"></script>
