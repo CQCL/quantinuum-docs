@@ -3,7 +3,7 @@ r"""An example for running impurity DMET on triplet CH2."""
 # imports
 from typing import List, Tuple
 
-import numpy as np
+import numpy
 
 # used and example impurity embedding classes
 from inquanto.extensions.pyscf import (  # inquanto-pyscf extension required here

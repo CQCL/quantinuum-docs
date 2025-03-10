@@ -367,7 +367,7 @@ as="style">
 </pre></div>
 </div>
 <p>CUDA-Q end users can access the Quantinuum API from either C++ or Python. Quantinuum requires a credential configuration file. The email address and the password must be stored in the environment variables, <code class="docutils literal notranslate"><span class="pre">EMAIL</span></code> and <code class="docutils literal notranslate"><span class="pre">PASSWORD</span></code>, respectively. The REST API needs to be queried with the <code class="docutils literal notranslate"><span class="pre">curl</span></code> and <code class="docutils literal notranslate"><span class="pre">jq</span></code> commands to generate an access token.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl POST -H &quot;Content Type: application/json&quot; \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -X POST -H &quot;Content Type: application/json&quot; \
     -d &quot;$(jq -n --arg email &quot;$EMAIL&quot; --arg password &quot;$PASSWORD&quot; \
     &#39;{ &quot;email&quot;: $email, &quot;password&quot;: $password }&#39;)&quot; \
     https://qapi.quantinuum.com/v1/login &gt; $HOME/credentials.json
@@ -503,7 +503,7 @@ echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-tok
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;syntax_check.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_io</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;syntax_check.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_io</span><span class="p">:</span>
     <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">syntax_check</span><span class="p">),</span> <span class="n">file_io</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -514,7 +514,7 @@ echo &quot;refresh: $(cat $HOME/credentials.json | jq -r &#39;.&quot;refresh-tok
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;syntax_check.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_io</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;syntax_check.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_io</span><span class="p">:</span>
     <span class="n">job_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_io</span><span class="p">)</span>
 
 <span class="n">retrieved_async_results</span> <span class="o">=</span> <span class="n">cudaq</span><span class="o">.</span><span class="n">AsyncSampleResult</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">job_data</span><span class="p">))</span>

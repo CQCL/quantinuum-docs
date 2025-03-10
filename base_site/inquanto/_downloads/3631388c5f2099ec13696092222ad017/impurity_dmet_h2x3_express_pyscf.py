@@ -1,7 +1,7 @@
 r"""An Impurity DMET example for simulating a 3-dihydrogen ring."""
 from typing import List, Tuple
 
-import numpy as np
+import numpy
 from inquanto.extensions.pyscf import (  # inquanto-pyscf extension required here
     ChemistryDriverPySCFMolecularRHF,
     ChemistryDriverPySCFMolecularROHF,
@@ -33,7 +33,7 @@ dmet = ImpurityDMETROHF(
 )
 
 fragment = ImpurityDMETROHFFragmentPySCFCCSD(
-    dmet, np.array([True, True, False, False, False, False]), frozen=[0, 3]
+    dmet, numpy.array([True, True, False, False, False, False]), frozen=[0, 3]
 )
 
 result = dmet.run(fragment)

@@ -1,7 +1,7 @@
 r"""An example FMO simulation of a LiH and two H2 with CCSD fragment solver."""
-import numpy as np
+import numpy
 
-np.set_printoptions(linewidth=10000, precision=8, suppress=True)
+numpy.set_printoptions(linewidth=10000, precision=8, suppress=True)
 
 from inquanto.extensions.pyscf.fmo._pyscf_fragments import (
     FMOFragmentPySCFCCSD,

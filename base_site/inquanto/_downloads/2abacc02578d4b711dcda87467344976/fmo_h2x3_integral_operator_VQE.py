@@ -1,7 +1,7 @@
 r"""An example FMO simulation of a 3-dihydrogen chain with custom VQE fragment solver."""
-import numpy as np
+import numpy
 
-np.set_printoptions(linewidth=10000, precision=8, suppress=True)
+numpy.set_printoptions(linewidth=10000, precision=8, suppress=True)
 
 from inquanto.extensions.pyscf.fmo import FMOFragmentPySCFActive
 from inquanto.extensions.pyscf import (

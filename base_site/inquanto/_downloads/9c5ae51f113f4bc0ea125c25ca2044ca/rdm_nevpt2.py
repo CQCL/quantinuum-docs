@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Quantinuum
+# Copyright 2019-2024 Quantinuum
 #
 # You may not use this file except in compliance with the Licence.
 # You may obtain a copy of the Licence in the LICENCE file accompanying
